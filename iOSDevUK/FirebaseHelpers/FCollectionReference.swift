@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 
 enum FCollectionReference: String {
     case Speaker
-    
+    case Location
 }
 
 

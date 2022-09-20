@@ -8,15 +8,24 @@
 import SwiftUI
 
 struct InfoView: View {
-    @StateObject private var viewModel: InfoViewModel
-
-    init(viewModel: InfoViewModel = InfoViewModel()) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
 
     var body: some View {
-        Text("InfoViewModel")
-            .navigationTitle("Info")
+        
+        Form {
+            NavigationLink(destination: InclusivityView()) {
+                Text("Inclusivity")
+            }
+            NavigationLink(destination: Text("Sponsors")) {
+                Text("Sponsors")
+            }
+            NavigationLink(destination: AboutView()) {
+                Text("About iOSDevUK")
+            }
+            NavigationLink(destination: AppInformationView()) {
+                Text("App Information")
+            }
+        }
+        .navigationTitle("Info")
     }
 }
 

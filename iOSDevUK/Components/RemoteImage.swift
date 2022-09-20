@@ -10,9 +10,13 @@ import SwiftUI
 struct RemoteImage: View {
     
     let imageURL: URL!
+//    let width: CGFloat!
+//    let height: CGFloat!
     
     init(urlString: String) {
         self.imageURL = URL(string: urlString)
+//        self.width = width
+//        self.height = height
     }
     
     var body: some View {
@@ -22,10 +26,16 @@ struct RemoteImage: View {
                 ProgressView()
                     .scaleEffect(2)
             case .success(let image):
-                image.resizable()
+                image
+                    .resizable()
+//                    .frame(width: width, height: height)
+                    .aspectRatio(contentMode: .fit)
+                
             case .failure:
                 Image(systemName: "photo")
                     .resizable()
+                    .aspectRatio(contentMode: .fill
+                    )
             @unknown default:
                 EmptyView()
             }
@@ -35,6 +45,6 @@ struct RemoteImage: View {
 
 struct RemoteImage_Previews: PreviewProvider {
     static var previews: some View {
-        RemoteImage(urlString: "https://picsum.photos/200")
+        RemoteImage(urlString: "https://picsum.photos/150/300")
     }
 }
