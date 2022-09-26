@@ -15,27 +15,6 @@ struct HomeView: View {
     }
     
     @ViewBuilder
-    private func speakerView() -> some View {
-        
-        VStack(alignment: .leading) {
-            Text("Speakers")
-                .font(.title2)
-                .bold()
-            
-            ScrollView(.horizontal) {
-                HStack(spacing: 10) {
-                    ForEach(Speaker.arrayOfSpeakers) { speaker in
-                        SpeakerCellView(speaker: speaker)
-                            .frame(width: 130, height: 200)
-                    }
-                }
-            }
-            .scrollIndicators(.hidden)
-        }
-        .padding(.bottom)
-    }
-    
-    @ViewBuilder
     private func headerView() -> some View {
         
         VStack {
@@ -61,6 +40,7 @@ struct HomeView: View {
                 .font(.body)
                 .padding()
             
+            //TODO: Add this to some constants or move to view model
             Button("@iOSDevUK on Twitter") {
                 viewModel.showTwitterAccount("iOSDevUK")
             }
@@ -76,11 +56,80 @@ struct HomeView: View {
     }
     
     @ViewBuilder
+    private func sessionView() -> some View {
+        
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Sessions")
+                    .font(.title2)
+                    .bold()
+                
+                Spacer()
+                
+                NavigationLink("All Sessions") {
+                    Text("All sessions view")
+                }
+            }
+            
+            ScrollView(.horizontal) {
+                HStack(spacing: 10) {
+                    ForEach(Session.arrayOfSessions) { session in
+                        NavigationLink {
+                            Text("Session")
+                        } label: {
+                            SessionCardView(session: session, speaker: Speaker.dummySpeaker, location: Location.dummyLocation)
+                                .frame(width: 300, height: 150)
+                        }
+                    }
+                }
+            }
+            .scrollIndicators(.hidden)
+        }
+        .padding(.bottom)
+    }
+
+    
+    
+    @ViewBuilder
+    private func speakerView() -> some View {
+        
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Speakers")
+                    .font(.title2)
+                    .bold()
+                
+                Spacer()
+                
+                NavigationLink("All Speakers") {
+                    Text("All Speakers view")
+                }
+            }
+            
+            ScrollView(.horizontal) {
+                HStack(spacing: 10) {
+                    ForEach(Speaker.arrayOfSpeakers) { speaker in
+                        NavigationLink {
+                            SpeakerDetailView(speaker: speaker)
+                        } label: {
+                            SpeakerCellView(speaker: speaker)
+                                .frame(width: 130, height: 200)
+                        }
+                    }
+                }
+            }
+            .scrollIndicators(.hidden)
+        }
+        .padding(.bottom)
+    }
+    
+    
+    @ViewBuilder
     private func main() -> some View {
         
         ScrollView {
             headerView()
-            speakerView()
+            sessionView()
             speakerView()
             footerView()
         }

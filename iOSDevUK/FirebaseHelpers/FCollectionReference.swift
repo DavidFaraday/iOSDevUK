@@ -11,6 +11,8 @@ import FirebaseFirestoreSwift
 
 enum FCollectionReference: String {
     case Speaker
+    case Session
+    case Sponsor
     case Location
 }
 

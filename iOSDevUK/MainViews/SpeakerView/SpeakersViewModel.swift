@@ -19,4 +19,10 @@ final class SpeakersViewModel: ObservableObject {
     func createSpeaker() {
         FirebaseSpeakerListener.shared.saveSpeaker(Speaker.dummySpeaker)
     }
+    
+    func showTwitterAccount(_ twitterId: String) {
+    }
+    
+    func showLinkedInAccount(_ linkedInId: String) {
+    }
 }

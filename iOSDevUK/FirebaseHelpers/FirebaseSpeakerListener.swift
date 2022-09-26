@@ -5,6 +5,9 @@
 //  Created by David Kababyan on 10/09/2022.
 //
 
+import Foundation
+import FirebaseFirestoreSwift
+
 class FirebaseSpeakerListener {
     
     static let shared = FirebaseSpeakerListener()

@@ -9,7 +9,12 @@ import SwiftUI
 
 struct SpeakerCellView: View {
     var speaker: Speaker!
-        
+    
+    let gradient =                                             Gradient(colors: [
+        .blue.opacity(0.9),
+        .blue.opacity(0.7),
+        .clear])
+
     init(speaker: Speaker) {
         self.speaker = speaker
     }
@@ -26,10 +31,7 @@ struct SpeakerCellView: View {
                     Rectangle()
                         .background(
                             LinearGradient(gradient:
-                                            Gradient(colors: [
-                                                            .blue.opacity(0.9),
-                                                            .blue.opacity(0.7),
-                                                            .clear]),
+                                            gradient,
                                            startPoint: .bottom,
                                            endPoint: .top)
                         )
@@ -50,7 +52,6 @@ struct SpeakerCellView: View {
                 }
             }
         }
-        
     }
 }
 
