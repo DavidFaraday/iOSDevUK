@@ -15,12 +15,18 @@ struct SessionsView: View {
     }
 
     var body: some View {
-        List {
+        ScrollView(showsIndicators: false) {
             ForEach(viewModel.sessions) { session in
-                Text(session.title)
+                NavigationLink {
+                    SessionDetailView(session: session)
+                } label: {
+                    SessionCardView(session: session, speakers: [Speaker.dummySpeaker, Speaker.dummySpeaker], location: Location.dummyLocation)
+                        .frame(minHeight: 170)
+                }
             }
+            .listRowSeparator(.hidden)
         }
-        .listStyle(.grouped)
+        .padding([.leading, .trailing])
         .navigationTitle("Sessions")
         .task {
             await viewModel.getSessions()
@@ -30,6 +36,8 @@ struct SessionsView: View {
 
 struct SessionsView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionsView()
+        NavigationView {
+            SessionsView()
+        }
     }
 }

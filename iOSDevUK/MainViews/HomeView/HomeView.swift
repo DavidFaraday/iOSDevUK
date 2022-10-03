@@ -26,7 +26,7 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(10)
-        .background(.ultraThickMaterial)
+        .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 
@@ -51,7 +51,7 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(10)
-        .background(.ultraThickMaterial)
+        .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
     
@@ -67,7 +67,7 @@ struct HomeView: View {
                 Spacer()
                 
                 NavigationLink("All Sessions") {
-                    Text("All sessions view")
+                    SessionsView()
                 }
             }
             
@@ -75,10 +75,10 @@ struct HomeView: View {
                 HStack(spacing: 10) {
                     ForEach(Session.arrayOfSessions) { session in
                         NavigationLink {
-                            Text("Session")
+                            SessionDetailView(session: session)
                         } label: {
-                            SessionCardView(session: session, speaker: Speaker.dummySpeaker, location: Location.dummyLocation)
-                                .frame(width: 300, height: 150)
+                            SessionCardView(session: session, speakers: [Speaker.dummySpeaker, Speaker.dummySpeaker], location: Location.dummyLocation)
+                                .frame(width: 300, height: 170)
                         }
                     }
                 }
@@ -102,7 +102,7 @@ struct HomeView: View {
                 Spacer()
                 
                 NavigationLink("All Speakers") {
-                    Text("All Speakers view")
+                    SpeakersView()
                 }
             }
             
@@ -112,7 +112,7 @@ struct HomeView: View {
                         NavigationLink {
                             SpeakerDetailView(speaker: speaker)
                         } label: {
-                            SpeakerCellView(speaker: speaker)
+                            SpeakerCardView(speaker: speaker)
                                 .frame(width: 130, height: 200)
                         }
                     }

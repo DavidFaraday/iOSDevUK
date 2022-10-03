@@ -15,12 +15,18 @@ struct SpeakersView: View {
     }
 
     var body: some View {
-        List {
-            ForEach(viewModel.speakers) { speaker in
-                SpeakerCellView(speaker: speaker)
+        ScrollView {
+            LazyVGrid(columns: viewModel.columns, spacing: 20) {
+                ForEach(Speaker.arrayOfSpeakers) { speaker in
+                    NavigationLink {
+                        SpeakerDetailView(speaker: speaker)
+                    } label: {
+                        SpeakerCardView(speaker: speaker)
+                    }
+                }
             }
+            .padding(.horizontal)
         }
-        .listStyle(.grouped)
         .navigationTitle("Speakers")
         .task {
             await viewModel.getSpeakers()

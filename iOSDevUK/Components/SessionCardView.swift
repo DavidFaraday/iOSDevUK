@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct SessionCardView: View {
-    var session: Session!
-    var speaker: Speaker!
-    var location: Location!
+    private let session: Session
+    private let speakers: [Speaker]
+    private let location: Location
     
     let offset: CGFloat = 3
     
-    init(session: Session, speaker: Speaker, location: Location) {
+    init(session: Session, speakers: [Speaker], location: Location) {
         self.session = session
-        self.speaker = speaker
+        self.speakers = speakers
         self.location = location
     }
     
@@ -24,14 +24,13 @@ struct SessionCardView: View {
         
         VStack {
             ZStack(alignment: .topLeading) {
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(.blue.opacity(0.7))
 
                 Rectangle()
+                    .foregroundColor(.blue.opacity(0.7))
                     .background(.ultraThinMaterial)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .offset(CGSize(width: offset, height: 2))
 
+                //TODO: refactor the text format
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
                         Text(session.title)
@@ -42,33 +41,38 @@ struct SessionCardView: View {
                             .font(.title2)
                             .bold()
 
-                        Text(speaker.name)
+                        VStack(spacing: 5) {
+                            ForEach(speakers) { speaker in
+                                Text(speaker.name)
+                                    .multilineTextAlignment(.leading)
+                                    .minimumScaleFactor(0.6)
+                                    .foregroundColor(.white)
+                                    .lineLimit(2)
+                                    .font(.subheadline)
+                                    .bold()
+                            }
+                        }
+
+                        Text("\(location.name) - \(session.startDate.weekDayTime())")
                             .multilineTextAlignment(.leading)
                             .minimumScaleFactor(0.6)
                             .foregroundColor(.white)
                             .lineLimit(2)
                             .font(.subheadline)
                             .bold()
-                        
-                        //TODO: Set the date to week day and time add multiple speakers
-                        Text("\(location.name) - \(session.startDate)")
-                            .multilineTextAlignment(.leading)
-                            .minimumScaleFactor(0.6)
-                            .foregroundColor(.white)
-                            .lineLimit(2)
-                            .font(.subheadline)
-                            .bold()
-
-
                     }
-                    
+
                     Spacer()
-                    //TODO: Multiple speakers
-                    RemoteImage(urlString: "https://picsum.photos/100")
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 60)
-                        .cornerRadius(30)
-                        .padding(5)
+
+                    VStack(spacing: 0) {
+                        ForEach(speakers) { speaker in
+                            RemoteImage(urlString: "https://picsum.photos/100")
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 45)
+                                .cornerRadius(30)
+                                .padding(5)
+                        }
+                    }
                 }
                 .padding([.top, .leading])
             }
@@ -79,6 +83,6 @@ struct SessionCardView: View {
 
 struct SessionCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionCardView(session: Session.dummySession, speaker: Speaker.dummySpeaker, location: Location.dummyLocation)
+        SessionCardView(session: Session.dummySession, speakers: [Speaker.dummySpeaker, Speaker.dummySpeaker], location: Location.dummyLocation)
     }
 }

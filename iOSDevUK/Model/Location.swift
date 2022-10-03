@@ -25,7 +25,7 @@ struct Location: Codable, Identifiable {
     let locationTypeRecordName: String
     let webLink: WebLink?
     
-    static let dummyLocation = Location(name: "Theater Foyer, Arts Center", note: "Some notes about the location", imageLink: "https://picsum.photos/200", latitude: 52.416120, longitude: -4.083800, locationTypeRecordName: "pub", webLink: WebLink.dummyLink)
+    static let dummyLocation = Location(name: "Great Hall", note: "Some notes about the location", imageLink: "https://picsum.photos/200", latitude: 52.416120, longitude: -4.083800, locationTypeRecordName: "pub", webLink: WebLink.dummyLink)
 }
 
 struct WebLink: Codable {

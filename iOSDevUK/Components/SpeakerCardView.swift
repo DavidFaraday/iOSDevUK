@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct SpeakerCellView: View {
-    var speaker: Speaker!
+struct SpeakerCardView: View {
+    let speaker: Speaker
     
-    let gradient =                                             Gradient(colors: [
+    let gradient = Gradient(colors: [
         .blue.opacity(0.9),
         .blue.opacity(0.7),
         .clear])
@@ -57,6 +57,6 @@ struct SpeakerCellView: View {
 
 struct SpeakerCellView_Previews: PreviewProvider {
     static var previews: some View {
-        SpeakerCellView(speaker: Speaker.dummySpeaker)
+        SpeakerCardView(speaker: Speaker.dummySpeaker)
     }
 }
