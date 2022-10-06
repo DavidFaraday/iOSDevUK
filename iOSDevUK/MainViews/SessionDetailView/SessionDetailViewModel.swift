@@ -22,11 +22,11 @@ final class SessionDetailViewModel: ObservableObject {
     
     
     private func getSpeakers() async -> [Speaker] {
-        return [Speaker.dummySpeaker]
+        return [DummyData.speaker]
     }
     
     private func getLocation() async -> Location {
-        return Location.dummyLocation
+        return DummyData.location
     }
 
 }

@@ -57,6 +57,6 @@ struct SpeakerCardView: View {
 
 struct SpeakerCellView_Previews: PreviewProvider {
     static var previews: some View {
-        SpeakerCardView(speaker: Speaker.dummySpeaker)
+        SpeakerCardView(speaker: DummyData.speaker)
     }
 }

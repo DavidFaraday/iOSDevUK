@@ -119,6 +119,6 @@ struct SessionDetailView: View {
 
 struct SessionDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionDetailView(session: Session.dummySession)
+        SessionDetailView(session: DummyData.session)
     }
 }

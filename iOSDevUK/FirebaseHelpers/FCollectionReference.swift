@@ -14,6 +14,7 @@ enum FCollectionReference: String {
     case Session
     case Sponsor
     case Location
+    case InformationItem
 }
 
 

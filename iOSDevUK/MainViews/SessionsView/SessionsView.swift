@@ -20,7 +20,7 @@ struct SessionsView: View {
                 NavigationLink {
                     SessionDetailView(session: session)
                 } label: {
-                    SessionCardView(session: session, speakers: [Speaker.dummySpeaker, Speaker.dummySpeaker], location: Location.dummyLocation)
+                    SessionCardView(session: session, speakers: [DummyData.speaker, DummyData.speaker], location: DummyData.location)
                         .frame(minHeight: 170)
                 }
             }

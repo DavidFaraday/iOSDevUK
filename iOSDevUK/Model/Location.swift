@@ -7,9 +7,23 @@
 
 import SwiftUI
 
-//enum LocationType: Codable {
-//    case au, transport, ev, pubs, sm
-//}
+
+func locationName(from: String) -> String {
+    switch from {
+    case "au":
+        return "Aberystwyth University"
+    case "transport":
+        return "Transport"
+    case "ev":
+        return "EV"
+    case "pubs":
+        return "Pubs"
+    case "sm":
+        return "Supermarket"
+    default:
+        return ""
+    }
+}
 
 struct LocationObject: Codable {
     let locations: [Location]
@@ -24,14 +38,10 @@ struct Location: Codable, Identifiable {
     let longitude: Double
     let locationTypeRecordName: String
     let webLink: WebLink?
-    
-    static let dummyLocation = Location(name: "Great Hall", note: "Some notes about the location", imageLink: "https://picsum.photos/200", latitude: 52.416120, longitude: -4.083800, locationTypeRecordName: "pub", webLink: WebLink.dummyLink)
 }
 
 struct WebLink: Codable {
     let recordName: String?
     let name: String?
     let url: String?
-    
-    static let dummyLink = WebLink(recordName: "Google", name: "google", url: "https://google.com")
 }

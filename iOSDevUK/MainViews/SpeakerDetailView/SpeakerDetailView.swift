@@ -12,7 +12,6 @@ struct SpeakerDetailView: View {
 
     var speaker: Speaker!
     
-
     init(speaker: Speaker, viewModel: SpeakerDetailViewModel = SpeakerDetailViewModel()) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.speaker = speaker
@@ -96,6 +95,6 @@ struct SpeakerDetailView: View {
 
 struct SpeakerDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SpeakerDetailView(speaker: Speaker.dummySpeaker)
+        SpeakerDetailView(speaker: DummyData.speaker)
     }
 }

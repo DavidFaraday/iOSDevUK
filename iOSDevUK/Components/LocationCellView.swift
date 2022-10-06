@@ -35,6 +35,6 @@ struct LocationCellView: View {
 
 struct LocationCellView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationCellView(location: Location.dummyLocation)
+        LocationCellView(location: DummyData.location)
     }
 }

@@ -9,15 +9,74 @@ import SwiftUI
 
 struct AttendeeView: View {
     @StateObject private var viewModel: AttendeeViewModel
+    
+    var categories: [String : [Location]] {
+        .init(
+            grouping: viewModel.allLocations,
+            by: {$0.locationTypeRecordName }
+        )
+    }
 
     init(viewModel: AttendeeViewModel = AttendeeViewModel()) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
+    
+    
+    @ViewBuilder
+    private func locationCategoryView() -> some View {
+        
+        ForEach(categories.keys.sorted(), id: \String.self) { key in
+            
+            Section(locationName(from: key)) {
+                ForEach(categories[key] ?? [], id: \.id) { location in
+                    NavigationLink {
+                        Text(location.name)
+                    } label: {
+                        Text(location.name)
+                    }
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func informationCategoryView() -> some View {
+        
+        ForEach(viewModel.informationItems) { item in
+            NavigationLink(item.name) {
+                Text(item.name)
+            }
+        }
+    }
+
+
+    
+    @ViewBuilder
+    private func main() -> some View {
+        
+        VStack(alignment: .leading) {
+            Form {
+                Section("Information") {
+                    informationCategoryView()
+                }
+                
+                Section("Locations") { }
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .padding(.bottom, -10)
+                locationCategoryView()
+            }
+        }
+    }
 
     var body: some View {
-        Text("AttendeeView")
+        main()
             .navigationTitle("Attendee Info")
+            .task(viewModel.fetchLocations)
+            .task(viewModel.fetchInformationItems)
     }
+    
+    
 }
 
 struct AttendeeView_Previews: PreviewProvider {

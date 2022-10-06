@@ -13,7 +13,7 @@ final class SessionsViewModel: ObservableObject {
 
     @MainActor
     func getSessions() async {
-        sessions = Session.arrayOfSessions
+        sessions = DummyData.sessions
 //        sessions = await FirebaseSessionListener.shared.getSessions()
     }
 }

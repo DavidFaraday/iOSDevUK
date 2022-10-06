@@ -73,11 +73,11 @@ struct HomeView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
-                    ForEach(Session.arrayOfSessions) { session in
+                    ForEach(DummyData.sessions) { session in
                         NavigationLink {
                             SessionDetailView(session: session)
                         } label: {
-                            SessionCardView(session: session, speakers: [Speaker.dummySpeaker, Speaker.dummySpeaker], location: Location.dummyLocation)
+                            SessionCardView(session: session, speakers: [DummyData.speaker, DummyData.speaker], location: DummyData.location)
                                 .frame(width: 300, height: 170)
                         }
                     }
@@ -108,7 +108,7 @@ struct HomeView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
-                    ForEach(Speaker.arrayOfSpeakers) { speaker in
+                    ForEach(DummyData.speakers) { speaker in
                         NavigationLink {
                             SpeakerDetailView(speaker: speaker)
                         } label: {

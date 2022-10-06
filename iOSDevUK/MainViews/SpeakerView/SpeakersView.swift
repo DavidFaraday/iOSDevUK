@@ -17,7 +17,7 @@ struct SpeakersView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                ForEach(Speaker.arrayOfSpeakers) { speaker in
+                ForEach(DummyData.speakers) { speaker in
                     NavigationLink {
                         SpeakerDetailView(speaker: speaker)
                     } label: {
