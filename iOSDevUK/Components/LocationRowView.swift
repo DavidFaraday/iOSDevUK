@@ -7,13 +7,9 @@
 
 import SwiftUI
 
-struct LocationCellView: View {
+struct LocationRowView: View {
     var location: Location!
-    let imageWidth: CGFloat = 60
-
-    init(location: Location) {
-        self.location = location
-    }
+    private let imageWidth: CGFloat = 40
     
     var body: some View {
         HStack {
@@ -21,20 +17,22 @@ struct LocationCellView: View {
                 Circle()
                     .frame(width: imageWidth + 5)
                     .foregroundColor(.green)
+                
                 RemoteImage(urlString: location.imageLink ?? "")
                     .frame(width: imageWidth, height: imageWidth)
                     .clipShape(Circle())
             }
             
             Text(location.name)
-                .font(.title2)
+                .font(.subheadline)
+                .lineLimit(1)
                 .minimumScaleFactor(0.6)
         }
     }
 }
 
-struct LocationCellView_Previews: PreviewProvider {
+struct LocationRowView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationCellView(location: DummyData.location)
+        LocationRowView(location: DummyData.location)
     }
 }

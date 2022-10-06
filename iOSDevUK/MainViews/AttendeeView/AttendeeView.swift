@@ -31,8 +31,9 @@ struct AttendeeView: View {
                 ForEach(categories[key] ?? [], id: \.id) { location in
                     NavigationLink {
                         Text(location.name)
+                        //TODO: show mapView with the location
                     } label: {
-                        Text(location.name)
+                        LocationRowView(location: location)
                     }
                 }
             }
@@ -40,7 +41,7 @@ struct AttendeeView: View {
     }
     
     @ViewBuilder
-    private func informationCategoryView() -> some View {
+    private func informationView() -> some View {
         
         ForEach(viewModel.informationItems) { item in
             NavigationLink(item.name) {
@@ -49,23 +50,20 @@ struct AttendeeView: View {
         }
     }
 
-
     
     @ViewBuilder
     private func main() -> some View {
         
-        VStack(alignment: .leading) {
-            Form {
-                Section("Information") {
-                    informationCategoryView()
-                }
-                
-                Section("Locations") { }
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                    .padding(.bottom, -10)
-                locationCategoryView()
+        Form {
+            Section("Information") {
+                informationView()
             }
+            
+            Section("Locations") { }
+                .font(.headline)
+                .foregroundColor(.primary)
+                .padding(.bottom, -10)
+            locationCategoryView()
         }
     }
 
@@ -75,8 +73,6 @@ struct AttendeeView: View {
             .task(viewModel.fetchLocations)
             .task(viewModel.fetchInformationItems)
     }
-    
-    
 }
 
 struct AttendeeView_Previews: PreviewProvider {

@@ -24,7 +24,7 @@ struct RemoteImage: View {
             switch phase {
             case .empty:
                 ProgressView()
-                    .scaleEffect(2)
+//                    .scaleEffect(2)
             case .success(let image):
                 image
                     .resizable()
