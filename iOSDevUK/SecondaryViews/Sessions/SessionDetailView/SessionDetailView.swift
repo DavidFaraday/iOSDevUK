@@ -113,7 +113,7 @@ struct SessionDetailView: View {
     
     var body: some View {
         main()
-            .ignoresSafeArea(SafeAreaRegions.all)
+            .edgesIgnoringSafeArea(.top)
             .task(viewModel.fetchSpeakers)
             .task(viewModel.fetchLocation)
             .toolbar {

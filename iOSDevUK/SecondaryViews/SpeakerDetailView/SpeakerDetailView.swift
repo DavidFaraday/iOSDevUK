@@ -97,6 +97,7 @@ struct SpeakerDetailView: View {
     
     var body: some View {
         main()
+            .navigationBarTitleDisplayMode(.inline)
             .task(viewModel.getSpeakerSessions)
     }
 }
