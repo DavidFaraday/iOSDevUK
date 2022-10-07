@@ -10,12 +10,33 @@ import SwiftUI
 final class HomeViewModel: ObservableObject {
     @Environment(\.openURL) var openURL
 
-    let aboutString = "iOSDevUK is a conference organised by the Computer Science Department at Aberystwyth University. iOS, iPhone, iPad, Apple Watch, watchOS, Apple TV and tvOS are trademarks of Apple Inc. For the avoidance of doubt, Apple Inc. has no association with this conference."
-    
-    let eventNotification = "iOSDevUK 10 has finished.\n Follow @iOSDevUK for details about next year."
+    @Published private(set) var aboutString = ""
+    @Published private(set) var eventNotification = ""
+    @Published private(set) var sessions: [Session] = []
+    @Published private(set) var speakers: [Speaker] = []
     
     func showTwitterAccount(_ twitterId: String) {
         guard let url = URL(string: "https://twitter.com/\(twitterId)") else { return }
         self.openURL(url)
+    }
+    
+    @MainActor
+    @Sendable func fetchSessions() async {
+        self.sessions = DummyData.sessions
+    }
+
+    @MainActor
+    @Sendable func fetchSpeakers() async {
+        self.speakers = DummyData.speakers
+    }
+    
+    @MainActor
+    @Sendable func fetchEventNotification() async {
+        self.aboutString = DummyData.aboutString
+    }
+
+    @MainActor
+    @Sendable func fetchAboutString() async {
+        self.eventNotification = DummyData.eventNotification
     }
 }

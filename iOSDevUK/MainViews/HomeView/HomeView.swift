@@ -16,13 +16,10 @@ struct HomeView: View {
     
     @ViewBuilder
     private func headerView() -> some View {
-        
         VStack {
             Text(viewModel.eventNotification)
-                .font(.title3)
-                .minimumScaleFactor(0.8)
+                .font(.headline)
                 .multilineTextAlignment(.center)
-
         }
         .frame(maxWidth: .infinity)
         .padding(10)
@@ -36,18 +33,11 @@ struct HomeView: View {
         VStack(alignment: .center, spacing: 10) {
             Text(viewModel.aboutString)
                 .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.8)
                 .font(.body)
-                .padding()
-            
-            //TODO: Add this to some constants or move to view model
-            Button("@iOSDevUK on Twitter") {
-                viewModel.showTwitterAccount("iOSDevUK")
-            }
-            
-            Button("@AberCompSci on Twitter") {
-                viewModel.showTwitterAccount("AberCompSci")
-            }
+                .padding(10)
+
+            Button("@iOSDevUK on Twitter") { viewModel.showTwitterAccount("iOSDevUK") }
+            Button("@AberCompSci on Twitter") { viewModel.showTwitterAccount("AberCompSci") }
         }
         .frame(maxWidth: .infinity)
         .padding(10)
@@ -60,25 +50,17 @@ struct HomeView: View {
         
         VStack(alignment: .leading) {
             HStack {
-                Text("Sessions")
-                    .font(.title2)
-                    .bold()
-                
+                Text("Sessions").font(.title2).bold()
                 Spacer()
-                
-                NavigationLink("All Sessions") {
-                    SessionsView()
-                }
+                NavigationLink("All Sessions") { SessionsView() }
             }
             
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
-                    ForEach(DummyData.sessions) { session in
-                        NavigationLink {
-                            SessionDetailView(session: session)
-                        } label: {
-                            SessionCardView(session: session, speakers: [DummyData.speaker, DummyData.speaker], location: DummyData.location)
-                                .frame(width: 300, height: 170)
+                    ForEach(viewModel.sessions) { session in
+                        NavigationLink { SessionDetailView(session: session) }
+                        label: {
+                            SessionCardView(session: session).frame(width: 300, height: 170)
                         }
                     }
                 }
@@ -88,30 +70,21 @@ struct HomeView: View {
         .padding(.bottom)
     }
 
-    
-    
     @ViewBuilder
     private func speakerView() -> some View {
         
         VStack(alignment: .leading) {
             HStack {
-                Text("Speakers")
-                    .font(.title2)
-                    .bold()
-                
+                Text("Speakers") .font(.title2).bold()
                 Spacer()
-                
-                NavigationLink("All Speakers") {
-                    SpeakersView()
-                }
+                NavigationLink("All Speakers") { SpeakersView() }
             }
             
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
-                    ForEach(DummyData.speakers) { speaker in
-                        NavigationLink {
-                            SpeakerDetailView(speaker: speaker)
-                        } label: {
+                    ForEach(viewModel.speakers) { speaker in
+                        NavigationLink { SpeakerDetailView(speaker: speaker) }
+                        label: {
                             SpeakerCardView(speaker: speaker)
                                 .frame(width: 130, height: 200)
                         }
@@ -126,7 +99,6 @@ struct HomeView: View {
     
     @ViewBuilder
     private func main() -> some View {
-        
         ScrollView {
             headerView()
             sessionView()
@@ -139,7 +111,11 @@ struct HomeView: View {
 
     var body: some View {
         main()
-            .navigationTitle("iOSDevUK")
+            .navigationTitle("iOSDev UK")
+            .task(viewModel.fetchAboutString)
+            .task(viewModel.fetchEventNotification)
+            .task(viewModel.fetchSessions)
+            .task(viewModel.fetchSpeakers)
     }
 }
 

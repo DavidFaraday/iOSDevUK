@@ -9,15 +9,16 @@ import SwiftUI
 
 final class SpeakersViewModel: ObservableObject {
     
-    @Published var speakers: [Speaker] = []
+    @Published private(set) var speakers: [Speaker] = []
     
     let columns = [
+        GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     
     @MainActor
-    func getSpeakers() async {
+    @Sendable func getSpeakers() async {
         speakers = await FirebaseSpeakerListener.shared.getSpeakers()
     }
 }

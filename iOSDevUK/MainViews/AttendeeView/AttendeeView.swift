@@ -21,6 +21,14 @@ struct AttendeeView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
+    @ViewBuilder
+    private func informationView() -> some View {
+        ForEach(viewModel.informationItems) { item in
+            NavigationLink(item.name) {
+                Text(item.name)
+            }
+        }
+    }
     
     @ViewBuilder
     private func locationCategoryView() -> some View {
@@ -40,16 +48,6 @@ struct AttendeeView: View {
         }
     }
     
-    @ViewBuilder
-    private func informationView() -> some View {
-        
-        ForEach(viewModel.informationItems) { item in
-            NavigationLink(item.name) {
-                Text(item.name)
-            }
-        }
-    }
-
     
     @ViewBuilder
     private func main() -> some View {

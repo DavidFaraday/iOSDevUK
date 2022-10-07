@@ -18,9 +18,8 @@ struct SpeakersView: View {
         ScrollView {
             LazyVGrid(columns: viewModel.columns, spacing: 20) {
                 ForEach(DummyData.speakers) { speaker in
-                    NavigationLink {
-                        SpeakerDetailView(speaker: speaker)
-                    } label: {
+                    NavigationLink { SpeakerDetailView(speaker: speaker) }
+                    label: {
                         SpeakerCardView(speaker: speaker)
                     }
                 }
@@ -28,9 +27,7 @@ struct SpeakersView: View {
             .padding(.horizontal)
         }
         .navigationTitle("Speakers")
-        .task {
-            await viewModel.getSpeakers()
-        }
+        .task(viewModel.getSpeakers)
     }
 }
 

@@ -9,12 +9,13 @@ import SwiftUI
 
 struct SpeakerDetailView: View {
     @StateObject private var viewModel: SpeakerDetailViewModel
-
-    var speaker: Speaker!
     
-    init(speaker: Speaker, viewModel: SpeakerDetailViewModel = SpeakerDetailViewModel()) {
+    init(speaker: Speaker) {
+        self.init(viewModel: SpeakerDetailViewModel(speaker: speaker))
+    }
+    
+    private init(viewModel: SpeakerDetailViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        self.speaker = speaker
     }
     
     
@@ -22,22 +23,22 @@ struct SpeakerDetailView: View {
     private func headerView() -> some View {
         
         HStack {
-            RemoteImage(urlString: speaker.imageLink)
+            RemoteImage(urlString: viewModel.speaker.imageLink)
                 .cornerRadius(15)
                 .frame(width: 100, height: 170)
                 .aspectRatio(contentMode: .fit)
             
             VStack(alignment: .leading, spacing: 10) {
-                Text(speaker.name)
+                Text(viewModel.speaker.name)
                     .font(.title)
                     .minimumScaleFactor(0.7)
                 
-                Button("Twitter \(speaker.twitterId)") {
-                    viewModel.showTwitterAccount(speaker.twitterId)
+                Button("Twitter \(viewModel.speaker.twitterId)") {
+                    viewModel.showTwitterAccount()
                 }
                 
                 Button("LinkedIn") {
-                    viewModel.showLinkedInAccount(speaker.linkedIn)
+                    viewModel.showLinkedInAccount()
                 }
             }
             .padding(.bottom, 20)
@@ -48,11 +49,11 @@ struct SpeakerDetailView: View {
     private func descriptionView() -> some View {
         Text("Biography")
             .font(.title3)
-            .foregroundColor(.gray)
             .bold()
-            .padding([.top, .bottom])
-
-        Text(speaker.biography)
+            .foregroundColor(.gray)
+            .padding(.vertical)
+        
+        Text(viewModel.speaker.biography)
             .multilineTextAlignment(.leading)
             .padding(.bottom, 10)
     }
@@ -64,7 +65,18 @@ struct SpeakerDetailView: View {
             .font(.title3)
             .foregroundColor(.gray)
             .bold()
-            .padding([.top, .bottom])
+            .padding(.vertical, 10)
+        
+        ForEach(viewModel.sessions) { session in
+            NavigationLink(destination: {
+                SessionDetailView(session: session)
+            }, label: {
+                Text("\(session.title) - \(session.startDate.weekDayTime())")
+                    .font(.title3)
+                    .bold()
+                    .padding(.bottom, 10)
+            })
+        }
     }
     
     @ViewBuilder
@@ -82,19 +94,17 @@ struct SpeakerDetailView: View {
         .scrollIndicators(.hidden)
         .padding()
     }
-
+    
     var body: some View {
         main()
-            .navigationTitle(speaker.name)
-            .navigationBarTitleDisplayMode(.inline)
-            .task {
-                await viewModel.getSessionsFor(speaker.id)
-            }
+            .task(viewModel.getSpeakerSessions)
     }
 }
 
 struct SpeakerDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SpeakerDetailView(speaker: DummyData.speaker)
+        NavigationView {
+            SpeakerDetailView(speaker: DummyData.speaker)
+        }
     }
 }

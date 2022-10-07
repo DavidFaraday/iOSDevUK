@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 func locationName(from: String) -> String {
     switch from {
     case "au":
@@ -25,23 +24,28 @@ func locationName(from: String) -> String {
     }
 }
 
+//not needed for the app, used only to get locations from JSON and save to Firebase
 struct LocationObject: Codable {
     let locations: [Location]
 }
 
 struct Location: Codable, Identifiable {
-    let id: String = UUID().uuidString
+    let id: String
     let name: String
     let note: String
     let imageLink: String?
     let latitude: Double
     let longitude: Double
     let locationTypeRecordName: String
-    let webLink: WebLink?
+    let webLink: Weblink?
+//    let locationType: LocationType
 }
 
-struct WebLink: Codable {
-    let recordName: String?
-    let name: String?
-    let url: String?
+enum LocationType: Codable {
+    case au
+    case transport
+    case ev
+    case pubs
+    case sm
 }
+

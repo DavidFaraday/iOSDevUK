@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct SpeakerCardView: View {
-    let speaker: Speaker
     
-    let gradient = Gradient(colors: [
-        .blue.opacity(0.9),
-        .blue.opacity(0.7),
-        .clear])
-
+    private let speaker: Speaker
+    private let gradient = Gradient(colors:
+                                        [.blue.opacity(0.9),
+                                         .blue.opacity(0.7),
+                                         .clear])
     init(speaker: Speaker) {
         self.speaker = speaker
     }
     
     var body: some View {
         ZStack {
-            RemoteImage(urlString: "https://picsum.photos/200/300")
+            RemoteImage(urlString: speaker.imageLink)
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(15)
 
@@ -46,7 +45,7 @@ struct SpeakerCardView: View {
                         .lineLimit(2)
                         .font(.subheadline)
                         .bold()
-                        .padding([.leading, .trailing], 10)
+                        .padding(.horizontal, 10)
                         .padding(.top, 15)
 
                 }

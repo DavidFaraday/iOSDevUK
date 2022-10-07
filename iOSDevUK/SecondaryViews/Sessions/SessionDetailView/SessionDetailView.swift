@@ -10,23 +10,21 @@ import SwiftUI
 struct SessionDetailView: View {
     @StateObject private var viewModel: SessionDetailViewModel
     
-    var session: Session!
-    
-    init(session: Session, viewModel: SessionDetailViewModel = SessionDetailViewModel()) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-        self.session = session
+    init(session: Session) {
+        self.init(viewModel: SessionDetailViewModel(session: session))
     }
     
+    private init(viewModel: SessionDetailViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     @ViewBuilder
     private func headerView() -> some View {
-        
         ZStack(alignment: .leading) {
             RemoteImage(urlString: "https://picsum.photos/1500/1000")
-            //                .frame(maxHeight: 500)
                 .aspectRatio(contentMode: .fit)
             
-            Text(session.title)
+            Text(viewModel.session.title)
                 .font(.largeTitle)
                 .foregroundColor(.white)
                 .padding(.leading)
@@ -40,13 +38,13 @@ struct SessionDetailView: View {
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
-                .padding([.top, .bottom])
+                .padding(.vertical)
             
-            Text(session.content)
+            Text(viewModel.session.content)
                 .multilineTextAlignment(.leading)
                 .padding(.bottom, 10)
         }
-        .padding([.leading, .trailing])
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -59,13 +57,17 @@ struct SessionDetailView: View {
                 .bold()
                 .padding(.bottom)
             
-            ForEach(viewModel.speakers) { speaker in
-                //TODO: Should be button
-                Text(speaker.name)
-                    .font(.title3)
+            ForEach(viewModel.speakers ?? []) { speaker in
+                NavigationLink {
+                    SpeakerDetailView(speaker: speaker)
+                } label: {
+                    Text(speaker.name)
+                        .font(.title3)
+                        .padding(.bottom, 5)
+                }
             }
         }
-        .padding([.leading, .trailing])
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -78,15 +80,20 @@ struct SessionDetailView: View {
                 .bold()
                 .padding(.bottom)
 
-            //TODO: Should be button
-            Text(viewModel.location?.name ?? "")
+            Button {
+                print("go to location view")
+            } label: {
+                LocationRowView(location: viewModel.location)
+            }
         }
         .padding()
     }
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-
+        Button("Add to list") {
+            print("Added to my list")
+        }
     }
 
     
@@ -107,18 +114,18 @@ struct SessionDetailView: View {
     var body: some View {
         main()
             .ignoresSafeArea(SafeAreaRegions.all)
+            .task(viewModel.fetchSpeakers)
+            .task(viewModel.fetchLocation)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
-            }
-
-            .task {
-                await viewModel.loadData(for: session)
             }
     }
 }
 
 struct SessionDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionDetailView(session: DummyData.session)
+        NavigationView {
+            SessionDetailView(session: DummyData.session)
+        }
     }
 }

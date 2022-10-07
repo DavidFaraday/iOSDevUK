@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 final class AttendeeViewModel: ObservableObject {
     
     @Published private(set) var allLocations: [Location] = []

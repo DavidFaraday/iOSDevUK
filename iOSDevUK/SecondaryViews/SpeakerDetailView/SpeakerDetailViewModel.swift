@@ -10,22 +10,29 @@ import SwiftUI
 final class SpeakerDetailViewModel: ObservableObject {
 
     @Environment(\.openURL) var openURL
-    //    @Published var sessions:[Session] = []
-
+    
+    @Published private(set) var sessions:[Session] = []
+    @Published private(set) var speaker: Speaker
+    
+    init(speaker: Speaker) {
+        self.speaker = speaker
+    }
+    
+    
     @MainActor
-    func getSessionsFor(_ speakerId: String) async {
-        print("getting session for", speakerId)
+    @Sendable func getSpeakerSessions() async {
+        self.sessions = [DummyData.session, DummyData.session]
 //        sessions = await FirebaseSessionListener.shared.getSessions()
     }
 
     
-    func showTwitterAccount(_ twitterId: String) {
-        guard let url = URL(string: "https://twitter.com/\(twitterId)") else { return }
+    func showTwitterAccount() {
+        guard let url = URL(string: "https://twitter.com/\(speaker.twitterId)") else { return }
         self.openURL(url)
     }
 
-    func showLinkedInAccount(_ linkedInId: String) {
-        guard let url = URL(string: "https://linkedIn.com/in/\(linkedInId)") else { return }
+    func showLinkedInAccount() {
+        guard let url = URL(string: "https://linkedIn.com/in/\(speaker.linkedIn)") else { return }
         self.openURL(url)
     }
 }

@@ -19,6 +19,9 @@
 		6366D5CA28D0B6720051542E /* AppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366D5C928D0B6720051542E /* AppInformationView.swift */; };
 		6366D5CC28D0B7120051542E /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366D5CB28D0B7120051542E /* Bundle+Extensions.swift */; };
 		6366D5CF28D0BA180051542E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366D5CE28D0BA180051542E /* AboutView.swift */; };
+		63B80EDD28F01EC400445E63 /* SessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */; };
+		63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE028F075D400445E63 /* SessionRowView.swift */; };
+		63B80EE328F0760A00445E63 /* SessionRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */; };
 		63E9C55228EAE6FF00710C8F /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9C55128EAE6FF00710C8F /* SessionDetailView.swift */; };
 		63E9C55528EAE73000710C8F /* SessionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9C55428EAE73000710C8F /* SessionDetailViewModel.swift */; };
 		63E9C55728EF3FB400710C8F /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9C55628EF3FB400710C8F /* DummyData.swift */; };
@@ -90,6 +93,9 @@
 		6366D5C928D0B6720051542E /* AppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationView.swift; sourceTree = "<group>"; };
 		6366D5CB28D0B7120051542E /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		6366D5CE28D0BA180051542E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCardViewModel.swift; sourceTree = "<group>"; };
+		63B80EE028F075D400445E63 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
+		63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModel.swift; sourceTree = "<group>"; };
 		63E9C55128EAE6FF00710C8F /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		63E9C55428EAE73000710C8F /* SessionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewModel.swift; sourceTree = "<group>"; };
 		63E9C55628EF3FB400710C8F /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
@@ -187,6 +193,27 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		63B80EDE28F01F4200445E63 /* SessionCardView */ = {
+			isa = PBXGroup;
+			children = (
+				634E7AC028DB8166001DC796 /* SessionCardView.swift */,
+				63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */,
+				63B80EE028F075D400445E63 /* SessionRowView.swift */,
+				63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */,
+			);
+			path = SessionCardView;
+			sourceTree = "<group>";
+		};
+		63B80EDF28F075B000445E63 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				634E7ABF28DB8090001DC796 /* SessionsView */,
+				63E9C55328EAE70400710C8F /* SessionDetailView */,
+				63B80EDE28F01F4200445E63 /* SessionCardView */,
+			);
+			path = Sessions;
+			sourceTree = "<group>";
+		};
 		63E9C55328EAE70400710C8F /* SessionDetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,8 +226,7 @@
 		63E9C55A28EF476D00710C8F /* SecondaryViews */ = {
 			isa = PBXGroup;
 			children = (
-				634E7ABF28DB8090001DC796 /* SessionsView */,
-				63E9C55328EAE70400710C8F /* SessionDetailView */,
+				63B80EDF28F075B000445E63 /* Sessions */,
 				63F7E11A28CCF64E00B2E1B7 /* SpeakerView */,
 				63221B1D28DA31F4003EC2D5 /* SpeakerDetailView */,
 			);
@@ -331,7 +357,6 @@
 				63F7E10028CC9B4B00B2E1B7 /* CustomNavigationView.swift */,
 				63F7E10628CC9E7300B2E1B7 /* RemoteImage.swift */,
 				63F7E11B28CCF6B200B2E1B7 /* SpeakerCardView.swift */,
-				634E7AC028DB8166001DC796 /* SessionCardView.swift */,
 				63F7E12428CD053700B2E1B7 /* LocationRowView.swift */,
 			);
 			path = Components;
@@ -531,6 +556,7 @@
 				63F7E10B28CC9F6C00B2E1B7 /* FCollectionReference.swift in Sources */,
 				63F7E0BC28CC942100B2E1B7 /* ContentView.swift in Sources */,
 				63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailView.swift in Sources */,
+				63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */,
 				63F7E0FB28CC999000B2E1B7 /* MyScheduleViewModel.swift in Sources */,
 				63F7E12E28CE527700B2E1B7 /* InclusivityView.swift in Sources */,
 				63E9C55228EAE6FF00710C8F /* SessionDetailView.swift in Sources */,
@@ -548,6 +574,7 @@
 				63E9C55928EF419A00710C8F /* InformationItem.swift in Sources */,
 				63F7E11928CCF54800B2E1B7 /* SpeakersViewModel.swift in Sources */,
 				63F7E10728CC9E7300B2E1B7 /* RemoteImage.swift in Sources */,
+				63B80EDD28F01EC400445E63 /* SessionCardViewModel.swift in Sources */,
 				63F7E0EE28CC981500B2E1B7 /* MyScheduleView.swift in Sources */,
 				63F7E10428CC9D9500B2E1B7 /* Speaker.swift in Sources */,
 				634E7ABA28DB7DFD001DC796 /* FirebaseSponsorListener.swift in Sources */,
@@ -555,6 +582,7 @@
 				63F7E0F228CC982900B2E1B7 /* InfoView.swift in Sources */,
 				63F7E10928CC9F0C00B2E1B7 /* FirebaseSpeakerListener.swift in Sources */,
 				634E7AB828DB7B5C001DC796 /* Sponsor.swift in Sources */,
+				63B80EE328F0760A00445E63 /* SessionRowViewModel.swift in Sources */,
 				63221B1F28DADB1E003EC2D5 /* Session.swift in Sources */,
 				63F7E0C628CC942200B2E1B7 /* iOSDevUK.xcdatamodeld in Sources */,
 				63E9C55728EF3FB400710C8F /* DummyData.swift in Sources */,
