@@ -18,11 +18,9 @@ final class SpeakerDetailViewModel: ObservableObject {
         self.speaker = speaker
     }
     
-    
     @MainActor
     @Sendable func getSpeakerSessions() async {
-        self.sessions = [DummyData.session, DummyData.session]
-//        sessions = await FirebaseSessionListener.shared.getSessions()
+        sessions = await FirebaseSessionListener.shared.getSessions(of: speaker.id)
     }
 
     

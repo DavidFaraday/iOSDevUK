@@ -39,41 +39,37 @@ class FirebaseSpeakerListener {
         
         return subject.eraseToAnyPublisher()
     }
+    
+    
+    func getSpeaker(with id: String) async -> Speaker? {
+        
+        return await withCheckedContinuation { continuation in
+            
+            FirebaseReference(.Speaker).document(id).getDocument { documentSnapshot, error in
 
-    
-//    func getSpeakers() async -> [Speaker] {
-//       
-//        return await withCheckedContinuation { continuation in
-//            
-//            FirebaseReference(.Speaker).getDocuments { querySnapshot, error in
-//                
-//                var speakers: [Speaker] = []
-//                
-//                guard let documents = querySnapshot?.documents else {
-//                    continuation.resume(returning: speakers)
-//                    return
-//                }
-//
-//                speakers = documents.compactMap { (queryDocumentSnapshot) -> Speaker? in
-//                    return try? queryDocumentSnapshot.data(as: Speaker.self)
-//                }
-//                
-//                continuation.resume(returning: speakers)
-//            }
-//        }
-//    }
-        
-    func saveSpeaker(_ speaker: Speaker) {
-        
-        do {
-            try FirebaseReference(.Speaker).document(speaker.id).setData(from: speaker)
-        }
-        catch {
-            print("Error saving speaker", error.localizedDescription)
+                guard let document = documentSnapshot else {
+                    continuation.resume(returning: nil)
+                    return
+                }
+                
+                let speaker = try? document.data(as: Speaker.self)
+                continuation.resume(returning: speaker)
+            }
         }
     }
     
-    func deleteSpeaker(_ speaker: Speaker) {
-        FirebaseReference(.Speaker).document(speaker.id).delete()
-    }
+    //
+    //    func saveSpeaker(_ speaker: Speaker) {
+    //
+    //        do {
+    //            try FirebaseReference(.Speaker).document(speaker.id).setData(from: speaker)
+    //        }
+    //        catch {
+    //            print("Error saving speaker", error.localizedDescription)
+    //        }
+    //    }
+    //
+    //    func deleteSpeaker(_ speaker: Speaker) {
+    //        FirebaseReference(.Speaker).document(speaker.id).delete()
+    //    }
 }

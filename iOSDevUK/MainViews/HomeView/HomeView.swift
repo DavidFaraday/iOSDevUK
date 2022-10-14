@@ -52,7 +52,7 @@ struct HomeView: View {
             HStack {
                 Text("Sessions").font(.title2).bold()
                 Spacer()
-                NavigationLink("All Sessions") { SessionsView() }
+                NavigationLink("All Sessions") { AllSessionsView(sessions: viewModel.sessions) }
             }
             
             ScrollView(.horizontal) {
@@ -77,7 +77,7 @@ struct HomeView: View {
             HStack {
                 Text("Speakers") .font(.title2).bold()
                 Spacer()
-                NavigationLink("All Speakers") { SpeakersView() }
+                NavigationLink("All Speakers") { AllSpeakersView(speakers: viewModel.speakers) }
             }
             
             ScrollView(.horizontal) {
@@ -112,10 +112,10 @@ struct HomeView: View {
     var body: some View {
         main()
             .navigationTitle("iOSDev UK")
-            .task(viewModel.fetchAboutString)
-            .task(viewModel.fetchEventNotification)
-            .task(viewModel.fetchSessions)
-            .task(viewModel.fetchSpeakers)
+            .task(viewModel.listenForAboutString)
+            .task(viewModel.listenForEventNotification)
+            .task(viewModel.listenForSessions)
+            .task(viewModel.listenForSpeakers)
     }
 }
 

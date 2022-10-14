@@ -19,10 +19,10 @@ class FirebaseSessionListener {
     
     private init () { }
     
-    func getSessions() -> AnyPublisher<[Session], Error> {
+    func listenForSessions() -> AnyPublisher<[Session], Error> {
         let subject = PassthroughSubject<[Session], Error>()
         
-        FirebaseReference(.Speaker).addSnapshotListener { querySnapshot, error in
+        FirebaseReference(.Session).addSnapshotListener { querySnapshot, error in
             
             if let error = error {
                 subject.send(completion: .failure(error))
@@ -37,12 +37,34 @@ class FirebaseSessionListener {
             let sessions = documents.compactMap {
                 try? $0.data(as: Session.self)
             }
-            
             subject.send(sessions)
         }
         
         return subject.eraseToAnyPublisher()
     }
+
+    func getSessions(of speakerId: String) async -> [Session] {
+       
+        return await withCheckedContinuation { continuation in
+            
+            FirebaseReference(.Session).whereField("speakerIds", arrayContains: speakerId).getDocuments { querySnapshot, error in
+                
+                var sessions: [Session] = []
+                
+                guard let documents = querySnapshot?.documents else {
+                    continuation.resume(returning: sessions)
+                    return
+                }
+
+                sessions = documents.compactMap { (queryDocumentSnapshot) -> Session? in
+                    return try? queryDocumentSnapshot.data(as: Session.self)
+                }
+                
+                continuation.resume(returning: sessions)
+            }
+        }
+    }
+
 
         
     func saveSession(_ session: Session) {

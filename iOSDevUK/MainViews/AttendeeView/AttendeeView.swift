@@ -68,7 +68,7 @@ struct AttendeeView: View {
     var body: some View {
         main()
             .navigationTitle("Attendee Info")
-            .task(viewModel.fetchLocations)
+            .task(viewModel.listenForLocations)
             .task(viewModel.fetchInformationItems)
     }
 }

@@ -13,12 +13,12 @@
 		634E7AB628DB7A4A001DC796 /* FirebaseSessionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E7AB528DB7A4A001DC796 /* FirebaseSessionListener.swift */; };
 		634E7AB828DB7B5C001DC796 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E7AB728DB7B5C001DC796 /* Sponsor.swift */; };
 		634E7ABA28DB7DFD001DC796 /* FirebaseSponsorListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E7AB928DB7DFD001DC796 /* FirebaseSponsorListener.swift */; };
-		634E7ABC28DB806F001DC796 /* SessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E7ABB28DB806F001DC796 /* SessionsView.swift */; };
-		634E7ABE28DB807B001DC796 /* SessionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E7ABD28DB807B001DC796 /* SessionsViewModel.swift */; };
+		634E7ABC28DB806F001DC796 /* AllSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E7ABB28DB806F001DC796 /* AllSessionsView.swift */; };
 		634E7AC128DB8166001DC796 /* SessionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E7AC028DB8166001DC796 /* SessionCardView.swift */; };
 		6366D5CA28D0B6720051542E /* AppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366D5C928D0B6720051542E /* AppInformationView.swift */; };
 		6366D5CC28D0B7120051542E /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366D5CB28D0B7120051542E /* Bundle+Extensions.swift */; };
 		6366D5CF28D0BA180051542E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366D5CE28D0BA180051542E /* AboutView.swift */; };
+		636D260528F9BD3300D84123 /* FirebaseHomeListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D260428F9BD3300D84123 /* FirebaseHomeListener.swift */; };
 		63B80EDD28F01EC400445E63 /* SessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */; };
 		63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE028F075D400445E63 /* SessionRowView.swift */; };
 		63B80EE328F0760A00445E63 /* SessionRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */; };
@@ -52,8 +52,7 @@
 		63F7E11028CCA04900B2E1B7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 63F7E10F28CCA04900B2E1B7 /* FirebaseStorage */; };
 		63F7E11328CCA10400B2E1B7 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63F7E11228CCA10400B2E1B7 /* FirebaseDatabaseSwift */; };
 		63F7E11528CCAEF000B2E1B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63F7E11428CCAEF000B2E1B7 /* GoogleService-Info.plist */; };
-		63F7E11728CCF50A00B2E1B7 /* SpeakersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11628CCF50A00B2E1B7 /* SpeakersView.swift */; };
-		63F7E11928CCF54800B2E1B7 /* SpeakersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11828CCF54800B2E1B7 /* SpeakersViewModel.swift */; };
+		63F7E11728CCF50A00B2E1B7 /* AllSpeakersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11628CCF50A00B2E1B7 /* AllSpeakersView.swift */; };
 		63F7E11C28CCF6B200B2E1B7 /* SpeakerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11B28CCF6B200B2E1B7 /* SpeakerCardView.swift */; };
 		63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11D28CCFC0C00B2E1B7 /* SpeakerDetailView.swift */; };
 		63F7E12028CD022E00B2E1B7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11F28CD022E00B2E1B7 /* Location.swift */; };
@@ -87,12 +86,12 @@
 		634E7AB528DB7A4A001DC796 /* FirebaseSessionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSessionListener.swift; sourceTree = "<group>"; };
 		634E7AB728DB7B5C001DC796 /* Sponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
 		634E7AB928DB7DFD001DC796 /* FirebaseSponsorListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSponsorListener.swift; sourceTree = "<group>"; };
-		634E7ABB28DB806F001DC796 /* SessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsView.swift; sourceTree = "<group>"; };
-		634E7ABD28DB807B001DC796 /* SessionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsViewModel.swift; sourceTree = "<group>"; };
+		634E7ABB28DB806F001DC796 /* AllSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsView.swift; sourceTree = "<group>"; };
 		634E7AC028DB8166001DC796 /* SessionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCardView.swift; sourceTree = "<group>"; };
 		6366D5C928D0B6720051542E /* AppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationView.swift; sourceTree = "<group>"; };
 		6366D5CB28D0B7120051542E /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		6366D5CE28D0BA180051542E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		636D260428F9BD3300D84123 /* FirebaseHomeListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHomeListener.swift; sourceTree = "<group>"; };
 		63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCardViewModel.swift; sourceTree = "<group>"; };
 		63B80EE028F075D400445E63 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
 		63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModel.swift; sourceTree = "<group>"; };
@@ -127,8 +126,7 @@
 		63F7E10828CC9F0C00B2E1B7 /* FirebaseSpeakerListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSpeakerListener.swift; sourceTree = "<group>"; };
 		63F7E10A28CC9F6C00B2E1B7 /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
 		63F7E11428CCAEF000B2E1B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		63F7E11628CCF50A00B2E1B7 /* SpeakersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakersView.swift; sourceTree = "<group>"; };
-		63F7E11828CCF54800B2E1B7 /* SpeakersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakersViewModel.swift; sourceTree = "<group>"; };
+		63F7E11628CCF50A00B2E1B7 /* AllSpeakersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSpeakersView.swift; sourceTree = "<group>"; };
 		63F7E11B28CCF6B200B2E1B7 /* SpeakerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardView.swift; sourceTree = "<group>"; };
 		63F7E11D28CCFC0C00B2E1B7 /* SpeakerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailView.swift; sourceTree = "<group>"; };
 		63F7E11F28CD022E00B2E1B7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -175,15 +173,6 @@
 			path = SpeakerDetailView;
 			sourceTree = "<group>";
 		};
-		634E7ABF28DB8090001DC796 /* SessionsView */ = {
-			isa = PBXGroup;
-			children = (
-				634E7ABB28DB806F001DC796 /* SessionsView.swift */,
-				634E7ABD28DB807B001DC796 /* SessionsViewModel.swift */,
-			);
-			path = SessionsView;
-			sourceTree = "<group>";
-		};
 		6366D5CD28D0B74A0051542E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,9 +194,10 @@
 		63B80EDF28F075B000445E63 /* Sessions */ = {
 			isa = PBXGroup;
 			children = (
-				634E7ABF28DB8090001DC796 /* SessionsView */,
+				634E7ABB28DB806F001DC796 /* AllSessionsView.swift */,
 				63E9C55328EAE70400710C8F /* SessionDetailView */,
 				63B80EDE28F01F4200445E63 /* SessionCardView */,
+				63C3E0D928F4878E00D4B4B1 /* SessionRowView */,
 			);
 			path = Sessions;
 			sourceTree = "<group>";
@@ -234,9 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				63B80EDF28F075B000445E63 /* Sessions */,
-				63C3E0D928F4878E00D4B4B1 /* SessionRowView */,
 				63F7E11A28CCF64E00B2E1B7 /* SpeakerView */,
-				63221B1D28DA31F4003EC2D5 /* SpeakerDetailView */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -393,8 +381,8 @@
 		63F7E11A28CCF64E00B2E1B7 /* SpeakerView */ = {
 			isa = PBXGroup;
 			children = (
-				63F7E11628CCF50A00B2E1B7 /* SpeakersView.swift */,
-				63F7E11828CCF54800B2E1B7 /* SpeakersViewModel.swift */,
+				63F7E11628CCF50A00B2E1B7 /* AllSpeakersView.swift */,
+				63221B1D28DA31F4003EC2D5 /* SpeakerDetailView */,
 			);
 			path = SpeakerView;
 			sourceTree = "<group>";
@@ -406,6 +394,7 @@
 				634E7AB528DB7A4A001DC796 /* FirebaseSessionListener.swift */,
 				634E7AB928DB7DFD001DC796 /* FirebaseSponsorListener.swift */,
 				63F7E12228CD036400B2E1B7 /* FirebaseLocationListener.swift */,
+				636D260428F9BD3300D84123 /* FirebaseHomeListener.swift */,
 				63F7E10A28CC9F6C00B2E1B7 /* FCollectionReference.swift */,
 			);
 			path = FirebaseHelpers;
@@ -551,15 +540,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6366D5CF28D0BA180051542E /* AboutView.swift in Sources */,
+				636D260528F9BD3300D84123 /* FirebaseHomeListener.swift in Sources */,
 				634E7AB628DB7A4A001DC796 /* FirebaseSessionListener.swift in Sources */,
 				63221B1C28DA295A003EC2D5 /* SpeakerDetailViewModel.swift in Sources */,
 				63F7E11C28CCF6B200B2E1B7 /* SpeakerCardView.swift in Sources */,
 				63F7E0FD28CC999900B2E1B7 /* AttendeeViewModel.swift in Sources */,
-				634E7ABE28DB807B001DC796 /* SessionsViewModel.swift in Sources */,
 				63F7E12528CD053700B2E1B7 /* LocationRowView.swift in Sources */,
 				63F7E0C328CC942200B2E1B7 /* Persistence.swift in Sources */,
 				63F7E10128CC9B4B00B2E1B7 /* CustomNavigationView.swift in Sources */,
-				634E7ABC28DB806F001DC796 /* SessionsView.swift in Sources */,
+				634E7ABC28DB806F001DC796 /* AllSessionsView.swift in Sources */,
 				63497D5128E6084300C7613B /* Date + Extensions.swift in Sources */,
 				63F7E10B28CC9F6C00B2E1B7 /* FCollectionReference.swift in Sources */,
 				63F7E0BC28CC942100B2E1B7 /* ContentView.swift in Sources */,
@@ -580,13 +569,12 @@
 				63F7E12028CD022E00B2E1B7 /* Location.swift in Sources */,
 				6366D5CA28D0B6720051542E /* AppInformationView.swift in Sources */,
 				63E9C55928EF419A00710C8F /* InformationItem.swift in Sources */,
-				63F7E11928CCF54800B2E1B7 /* SpeakersViewModel.swift in Sources */,
 				63F7E10728CC9E7300B2E1B7 /* RemoteImage.swift in Sources */,
 				63B80EDD28F01EC400445E63 /* SessionCardViewModel.swift in Sources */,
 				63F7E0EE28CC981500B2E1B7 /* MyScheduleView.swift in Sources */,
 				63F7E10428CC9D9500B2E1B7 /* Speaker.swift in Sources */,
 				634E7ABA28DB7DFD001DC796 /* FirebaseSponsorListener.swift in Sources */,
-				63F7E11728CCF50A00B2E1B7 /* SpeakersView.swift in Sources */,
+				63F7E11728CCF50A00B2E1B7 /* AllSpeakersView.swift in Sources */,
 				63F7E0F228CC982900B2E1B7 /* InfoView.swift in Sources */,
 				63F7E10928CC9F0C00B2E1B7 /* FirebaseSpeakerListener.swift in Sources */,
 				634E7AB828DB7B5C001DC796 /* Sponsor.swift in Sources */,

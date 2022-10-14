@@ -25,7 +25,7 @@ struct SpeakerDetailView: View {
         HStack {
             RemoteImage(urlString: viewModel.speaker.imageLink)
                 .cornerRadius(15)
-                .frame(width: 100, height: 170)
+                .frame(width: 100, height: 120)
                 .aspectRatio(contentMode: .fit)
             
             VStack(alignment: .leading, spacing: 10) {
@@ -33,13 +33,10 @@ struct SpeakerDetailView: View {
                     .font(.title)
                     .minimumScaleFactor(0.7)
                 
-                Button("Twitter \(viewModel.speaker.twitterId)") {
-                    viewModel.showTwitterAccount()
-                }
-                
-                Button("LinkedIn") {
-                    viewModel.showLinkedInAccount()
-                }
+                Button("Twitter \(viewModel.speaker.twitterId)", action: viewModel.showTwitterAccount)
+                Button("LinkedIn", action: viewModel.showLinkedInAccount)
+
+                Spacer()
             }
             .padding(.bottom, 20)
         }
@@ -48,7 +45,7 @@ struct SpeakerDetailView: View {
     @ViewBuilder
     private func descriptionView() -> some View {
         Text("Biography")
-            .font(.title3)
+            .font(.title2)
             .bold()
             .foregroundColor(.gray)
             .padding(.vertical)
@@ -59,8 +56,23 @@ struct SpeakerDetailView: View {
     }
     
     @ViewBuilder
+    private func sessionsRaw(session: Session) -> some View {
+        VStack(alignment: .leading) {
+            Text("\(session.title)")
+                .font(.subheadline)
+                .lineLimit(2)
+                
+            Text("\(session.startDate.weekDayTime())")
+                .font(.caption)
+                .foregroundColor(.gray)
+        }
+        .padding(.bottom, 10)
+    }
+
+    
+    @ViewBuilder
     private func sessionsView() -> some View {
-        
+
         Text("Session(s)")
             .font(.title3)
             .foregroundColor(.gray)
@@ -68,14 +80,11 @@ struct SpeakerDetailView: View {
             .padding(.vertical, 10)
         
         ForEach(viewModel.sessions) { session in
-            NavigationLink(destination: {
+            NavigationLink {
                 SessionDetailView(session: session)
-            }, label: {
-                Text("\(session.title) - \(session.startDate.weekDayTime())")
-                    .font(.title3)
-                    .bold()
-                    .padding(.bottom, 10)
-            })
+            } label: {
+                sessionsRaw(session: session)
+            }
         }
     }
     

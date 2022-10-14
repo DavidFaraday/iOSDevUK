@@ -21,7 +21,7 @@ struct SessionDetailView: View {
     @ViewBuilder
     private func headerView() -> some View {
         ZStack(alignment: .leading) {
-            Image(viewModel.imageNames.randomElement() ?? "img1")
+            Image("img1")
                 .resizable()
                 .frame(height: 250)
                 .aspectRatio(contentMode: .fit)
@@ -29,7 +29,7 @@ struct SessionDetailView: View {
             Text(viewModel.session.title)
                 .font(.largeTitle)
                 .foregroundColor(.white)
-                .padding([.leading, .top])
+                .padding([.horizontal, .top])
         }
     }
     

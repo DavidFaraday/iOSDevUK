@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SessionCardView: View {       
     @StateObject private var viewModel: SessionCardViewModel
-
+    //TODO: change session passing so it will update automatically from FB
     init(session: Session) {
         self.init(viewModel: SessionCardViewModel(session: session))
     }
@@ -21,27 +21,15 @@ struct SessionCardView: View {
     
     @ViewBuilder
     private func speakerImageView() -> some View {
-        VStack(spacing: 0) {
-            ForEach(viewModel.speakers ?? []) { speaker in
+        VStack(spacing: 5) {
+            ForEach(viewModel.speakers?.prefix(3) ?? []) { speaker in
                 RemoteImage(urlString: speaker.imageLink)
+                    .frame(width: 40, height: 40)
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 50)
                     .clipShape(Circle())
             }
         }
         .padding(.trailing, 10)
-    }
-    
-    @ViewBuilder
-    private func speakerNameView() -> some View {
-        VStack(alignment: .leading, spacing: 5) {
-            ForEach(viewModel.speakers ?? []) { speaker in
-                Text(speaker.name)
-                    .font(.subheadline)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.8)
-            }
-        }
     }
     
     @ViewBuilder
@@ -52,7 +40,10 @@ struct SessionCardView: View {
                     .font(.title2)
                     .padding(.bottom, 10)
 
-                speakerNameView()
+                Text(viewModel.speakers != nil ? speakerNames(from: viewModel.speakers!) : "Unknown Speaker")
+                    .font(.subheadline)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
 
                 Spacer()
                 
@@ -91,6 +82,17 @@ struct SessionCardView: View {
             .task(viewModel.fetchSpeakers)
             .task(viewModel.fetchLocation)
             .frame(height: 150)
+    }
+    
+    
+    private func speakerNames(from speakers: [Speaker]) -> String {
+
+        let sortedNames = speakers.sorted { $0.name < $1.name }
+        
+        var joinedNames = ""
+        joinedNames.append(sortedNames.map{ "\($0.name)" }.joined(separator: ", "))
+       
+        return joinedNames
     }
 }
 

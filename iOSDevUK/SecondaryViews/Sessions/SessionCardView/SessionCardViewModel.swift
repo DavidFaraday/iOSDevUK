@@ -20,16 +20,22 @@ final class SessionCardViewModel: ObservableObject {
     @MainActor
     @Sendable func fetchSpeakers() async {
         if speakers == nil {
-            print("fetch speakers for card")
-            self.speakers = [DummyData.speaker, DummyData.speakers[0]]
+            //TODO: Make group task here
+            var tempSpeakers: [Speaker] = []
+            
+            for id in session.speakerIds {
+                let speaker = await FirebaseSpeakerListener.shared.getSpeaker(with: id)
+                guard let speaker = speaker else { return }
+                tempSpeakers.append(speaker)
+            }
+            self.speakers = tempSpeakers
         }
     }
 
     @MainActor
     @Sendable func fetchLocation() async {
         if location == nil {
-            print("fetch location for Card")
-            self.location = DummyData.location
+            self.location = await FirebaseLocationListener.shared.getLocation(with: session.locationId)
         }
     }
 }

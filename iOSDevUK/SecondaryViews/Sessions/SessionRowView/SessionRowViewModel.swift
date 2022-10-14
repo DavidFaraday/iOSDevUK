@@ -8,18 +8,12 @@
 import SwiftUI
 
 final class SessionRowViewModel: ObservableObject {
-    @Published private(set) var session: Session
     @Published private(set) var location: Location?
-    
-    init(session: Session) {
-        self.session = session
-    }
-    
+       
     @MainActor
-    @Sendable func fetchLocation() async {
+    func fetchLocation(with id: String) async {
         if location == nil {
-            print("fetch location for row")
-            self.location = DummyData.location
+            self.location = await FirebaseLocationListener.shared.getLocation(with: id)
         }
     }
 }
