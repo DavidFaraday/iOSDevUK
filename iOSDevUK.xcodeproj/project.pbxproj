@@ -198,8 +198,6 @@
 			children = (
 				634E7AC028DB8166001DC796 /* SessionCardView.swift */,
 				63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */,
-				63B80EE028F075D400445E63 /* SessionRowView.swift */,
-				63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */,
 			);
 			path = SessionCardView;
 			sourceTree = "<group>";
@@ -212,6 +210,15 @@
 				63B80EDE28F01F4200445E63 /* SessionCardView */,
 			);
 			path = Sessions;
+			sourceTree = "<group>";
+		};
+		63C3E0D928F4878E00D4B4B1 /* SessionRowView */ = {
+			isa = PBXGroup;
+			children = (
+				63B80EE028F075D400445E63 /* SessionRowView.swift */,
+				63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */,
+			);
+			path = SessionRowView;
 			sourceTree = "<group>";
 		};
 		63E9C55328EAE70400710C8F /* SessionDetailView */ = {
@@ -227,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				63B80EDF28F075B000445E63 /* Sessions */,
+				63C3E0D928F4878E00D4B4B1 /* SessionRowView */,
 				63F7E11A28CCF64E00B2E1B7 /* SpeakerView */,
 				63221B1D28DA31F4003EC2D5 /* SpeakerDetailView */,
 			);

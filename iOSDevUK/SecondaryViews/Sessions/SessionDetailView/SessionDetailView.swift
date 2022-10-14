@@ -21,13 +21,15 @@ struct SessionDetailView: View {
     @ViewBuilder
     private func headerView() -> some View {
         ZStack(alignment: .leading) {
-            RemoteImage(urlString: "https://picsum.photos/1500/1000")
+            Image(viewModel.imageNames.randomElement() ?? "img1")
+                .resizable()
+                .frame(height: 250)
                 .aspectRatio(contentMode: .fit)
             
             Text(viewModel.session.title)
                 .font(.largeTitle)
                 .foregroundColor(.white)
-                .padding(.leading)
+                .padding([.leading, .top])
         }
     }
     

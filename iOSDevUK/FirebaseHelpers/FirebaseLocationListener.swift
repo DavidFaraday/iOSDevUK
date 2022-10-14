@@ -30,7 +30,6 @@ class FirebaseLocationListener {
                 locations = documents.compactMap { (queryDocumentSnapshot) -> Location? in
                     return try? queryDocumentSnapshot.data(as: Location.self)
                 }
-                
                 continuation.resume(returning: locations)
             }
         }

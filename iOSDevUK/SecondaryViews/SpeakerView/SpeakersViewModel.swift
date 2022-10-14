@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 final class SpeakersViewModel: ObservableObject {
     
     @Published private(set) var speakers: [Speaker] = []
+    private var cancellables: Set<AnyCancellable> = []
     
     let columns = [
         GridItem(.flexible()),
@@ -17,8 +19,18 @@ final class SpeakersViewModel: ObservableObject {
         GridItem(.flexible())
     ]
     
-    @MainActor
-    @Sendable func getSpeakers() async {
-        speakers = await FirebaseSpeakerListener.shared.getSpeakers()
+    func getSpeakers() {
+        FirebaseSpeakerListener.shared.getSpeakers()
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    return
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                }
+            }, receiveValue: { [weak self] allSpeakers in
+                self?.speakers = allSpeakers
+            })
+            .store(in: &cancellables)
     }
 }

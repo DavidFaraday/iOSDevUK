@@ -12,6 +12,7 @@ final class SessionDetailViewModel: ObservableObject {
     @Published private(set) var session: Session
     @Published private(set) var speakers: [Speaker]?
     @Published private(set) var location: Location?
+    let imageNames = ["img1", "img2", "img3", "img4"]
     
     init(session: Session) {
         self.session = session

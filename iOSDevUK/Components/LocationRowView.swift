@@ -13,16 +13,16 @@ struct LocationRowView: View {
     
     var body: some View {
         HStack {
-            ZStack {
-                Circle()
-                    .frame(width: imageWidth + 5)
-                    .foregroundColor(.green)
-                
-                RemoteImage(urlString: location?.imageLink ?? "")
+            if let imageLink = location?.imageLink {
+                RemoteImage(urlString: imageLink)
                     .frame(width: imageWidth, height: imageWidth)
                     .clipShape(Circle())
+            } else {
+                Circle()
+                    .foregroundColor(.primary)
+                    .frame(width: imageWidth, height: imageWidth)
             }
-            
+
             Text(location?.name ?? "")
                 .font(.subheadline)
                 .lineLimit(1)

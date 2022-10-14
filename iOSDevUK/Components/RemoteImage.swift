@@ -27,13 +27,11 @@ struct RemoteImage: View {
             case .success(let image):
                 image
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
                 
             case .failure:
-                Image(systemName: "photo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill
-                    )
+                Rectangle()
+                    .foregroundColor(.gray)
+                    .cornerRadius(15)
             @unknown default:
                 EmptyView()
             }

@@ -9,7 +9,8 @@ import Foundation
 
 struct Weblink: Codable {
     let name: String
-    let link: String
+    let recordName: String
+    let url: String
 }
 
 struct Speaker: Codable, Identifiable {

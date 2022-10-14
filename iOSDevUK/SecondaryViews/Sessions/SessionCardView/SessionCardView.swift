@@ -47,11 +47,10 @@ struct SessionCardView: View {
     @ViewBuilder
     private func cardContent() -> some View {
         HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading) {
                 Text(viewModel.session.title)
                     .font(.title2)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.6)
+                    .padding(.bottom, 10)
 
                 speakerNameView()
 
@@ -59,16 +58,15 @@ struct SessionCardView: View {
                 
                 Text("\(viewModel.location != nil ? viewModel.location!.name : "") - \(viewModel.session.startDate.weekDayTime())")
                     .font(.subheadline)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.6)
                     .padding(.bottom, 10)
             }
             .foregroundColor(.white)
             .multilineTextAlignment(.leading)
+            .minimumScaleFactor(0.6)
+            .lineLimit(2)
             .bold()
 
             Spacer()
-
             speakerImageView()
         }
         .padding([.top, .leading])
@@ -92,6 +90,7 @@ struct SessionCardView: View {
         main()
             .task(viewModel.fetchSpeakers)
             .task(viewModel.fetchLocation)
+            .frame(height: 150)
     }
 }
 

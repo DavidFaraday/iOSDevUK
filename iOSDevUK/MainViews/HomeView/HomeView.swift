@@ -60,7 +60,7 @@ struct HomeView: View {
                     ForEach(viewModel.sessions) { session in
                         NavigationLink { SessionDetailView(session: session) }
                         label: {
-                            SessionCardView(session: session).frame(width: 300, height: 170)
+                            SessionCardView(session: session).frame(width: 300, height: 150)
                         }
                     }
                 }

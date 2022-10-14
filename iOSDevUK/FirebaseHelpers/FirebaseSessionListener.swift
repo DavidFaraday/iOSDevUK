@@ -7,6 +7,11 @@
 
 import Foundation
 import FirebaseFirestoreSwift
+import Combine
+
+enum FirebaseError: Error {
+    case badSnapshot
+}
 
 class FirebaseSessionListener {
     
@@ -14,27 +19,31 @@ class FirebaseSessionListener {
     
     private init () { }
     
-    func getSessions() async -> [Session] {
-       
-        return await withCheckedContinuation { continuation in
+    func getSessions() -> AnyPublisher<[Session], Error> {
+        let subject = PassthroughSubject<[Session], Error>()
+        
+        FirebaseReference(.Speaker).addSnapshotListener { querySnapshot, error in
             
-            FirebaseReference(.Session).getDocuments { querySnapshot, error in
-                
-                var sessions: [Session] = []
-                
-                guard let documents = querySnapshot?.documents else {
-                    continuation.resume(returning: sessions)
-                    return
-                }
-
-                sessions = documents.compactMap { (queryDocumentSnapshot) -> Session? in
-                    return try? queryDocumentSnapshot.data(as: Session.self)
-                }
-                
-                continuation.resume(returning: sessions)
+            if let error = error {
+                subject.send(completion: .failure(error))
+                return
             }
+            
+            guard let documents = querySnapshot?.documents else {
+                subject.send(completion: .failure(FirebaseError.badSnapshot))
+                return
+            }
+            
+            let sessions = documents.compactMap {
+                try? $0.data(as: Session.self)
+            }
+            
+            subject.send(sessions)
         }
+        
+        return subject.eraseToAnyPublisher()
     }
+
         
     func saveSession(_ session: Session) {
         
