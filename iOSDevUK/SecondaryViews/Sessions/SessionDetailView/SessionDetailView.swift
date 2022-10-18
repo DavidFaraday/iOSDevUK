@@ -21,7 +21,7 @@ struct SessionDetailView: View {
     @ViewBuilder
     private func headerView() -> some View {
         ZStack(alignment: .leading) {
-            Image("img1")
+            Image(ImageNames.img1)
                 .resizable()
                 .frame(height: 250)
                 .aspectRatio(contentMode: .fit)

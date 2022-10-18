@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 func locationName(from: String) -> String {
     switch from {
@@ -39,6 +40,9 @@ struct Location: Codable, Identifiable {
     let locationTypeRecordName: String
     let webLink: Weblink?
 //    let locationType: LocationType
+    var coordinate: CLLocationCoordinate2D {
+        CLLocation(latitude: latitude, longitude: longitude).coordinate
+    }
 }
 
 enum LocationType: Codable {

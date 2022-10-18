@@ -11,6 +11,7 @@ import Firebase
 @main
 struct iOSDevUKApp: App {
     let persistenceController = PersistenceController.shared
+    let locationManager = LocationManager.shared
 
     init() {
         FirebaseApp.configure()
@@ -20,6 +21,7 @@ struct iOSDevUKApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(locationManager)
         }
     }
 }

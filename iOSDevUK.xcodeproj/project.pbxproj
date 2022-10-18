@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630FEA8C28FF147600D483B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FEA8B28FF147600D483B2 /* Constants.swift */; };
+		630FEA8E28FF159400D483B2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FEA8D28FF159400D483B2 /* MapView.swift */; };
+		630FEA9028FF15E900D483B2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FEA8F28FF15E900D483B2 /* LocationService.swift */; };
 		63221B1C28DA295A003EC2D5 /* SpeakerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */; };
 		63221B1F28DADB1E003EC2D5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63221B1E28DADB1E003EC2D5 /* Session.swift */; };
 		63497D5128E6084300C7613B /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63497D5028E6084300C7613B /* Date + Extensions.swift */; };
@@ -80,6 +83,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		630FEA8B28FF147600D483B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		630FEA8D28FF159400D483B2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		630FEA8F28FF15E900D483B2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewModel.swift; sourceTree = "<group>"; };
 		63221B1E28DADB1E003EC2D5 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		63497D5028E6084300C7613B /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
@@ -225,6 +231,7 @@
 			children = (
 				63B80EDF28F075B000445E63 /* Sessions */,
 				63F7E11A28CCF64E00B2E1B7 /* SpeakerView */,
+				630FEA8D28FF159400D483B2 /* MapView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -256,6 +263,8 @@
 				63F7E0B928CC942100B2E1B7 /* iOSDevUKApp.swift */,
 				63F7E0BB28CC942100B2E1B7 /* ContentView.swift */,
 				63F7E12B28CDB61F00B2E1B7 /* Networking.swift */,
+				630FEA8B28FF147600D483B2 /* Constants.swift */,
+				630FEA8F28FF15E900D483B2 /* LocationService.swift */,
 				63F7E0F328CC993F00B2E1B7 /* MainViews */,
 				63E9C55A28EF476D00710C8F /* SecondaryViews */,
 				63F7E10228CC9BA200B2E1B7 /* Components */,
@@ -548,6 +557,7 @@
 				63F7E12528CD053700B2E1B7 /* LocationRowView.swift in Sources */,
 				63F7E0C328CC942200B2E1B7 /* Persistence.swift in Sources */,
 				63F7E10128CC9B4B00B2E1B7 /* CustomNavigationView.swift in Sources */,
+				630FEA8E28FF159400D483B2 /* MapView.swift in Sources */,
 				634E7ABC28DB806F001DC796 /* AllSessionsView.swift in Sources */,
 				63497D5128E6084300C7613B /* Date + Extensions.swift in Sources */,
 				63F7E10B28CC9F6C00B2E1B7 /* FCollectionReference.swift in Sources */,
@@ -572,6 +582,7 @@
 				63F7E10728CC9E7300B2E1B7 /* RemoteImage.swift in Sources */,
 				63B80EDD28F01EC400445E63 /* SessionCardViewModel.swift in Sources */,
 				63F7E0EE28CC981500B2E1B7 /* MyScheduleView.swift in Sources */,
+				630FEA9028FF15E900D483B2 /* LocationService.swift in Sources */,
 				63F7E10428CC9D9500B2E1B7 /* Speaker.swift in Sources */,
 				634E7ABA28DB7DFD001DC796 /* FirebaseSponsorListener.swift in Sources */,
 				63F7E11728CCF50A00B2E1B7 /* AllSpeakersView.swift in Sources */,
@@ -583,6 +594,7 @@
 				63F7E0C628CC942200B2E1B7 /* iOSDevUK.xcdatamodeld in Sources */,
 				63E9C55728EF3FB400710C8F /* DummyData.swift in Sources */,
 				63F7E12C28CDB61F00B2E1B7 /* Networking.swift in Sources */,
+				630FEA8C28FF147600D483B2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +756,7 @@
 				DEVELOPMENT_TEAM = 7P6AJEE272;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) uses your location to show on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -773,6 +786,7 @@
 				DEVELOPMENT_TEAM = 7P6AJEE272;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) uses your location to show on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

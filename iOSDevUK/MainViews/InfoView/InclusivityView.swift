@@ -28,10 +28,9 @@ The policy applies at all conference and workshop venues and conference-related 
 """
     var body: some View {
         ScrollView {
-            Image("conferenceImage")
+            Image(ImageNames.conferenceImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 200)
 
             Text("Inclusivity Policy")
                 .font(.largeTitle)
@@ -43,8 +42,7 @@ The policy applies at all conference and workshop venues and conference-related 
                 .lineLimit(nil)
                 .padding()
         }
-        .navigationTitle("Inclusivity")
-        .navigationBarTitleDisplayMode(.inline)
+        .edgesIgnoringSafeArea(.top)
     }
 }
 

@@ -38,8 +38,7 @@ struct AttendeeView: View {
             Section(locationName(from: key)) {
                 ForEach(categories[key] ?? [], id: \.id) { location in
                     NavigationLink {
-                        Text(location.name)
-                        //TODO: show mapView with the location
+                        MapView(allLocations: [location])
                     } label: {
                         LocationRowView(location: location)
                     }
@@ -57,10 +56,20 @@ struct AttendeeView: View {
                 informationView()
             }
             
-            Section("Locations") { }
-                .font(.headline)
-                .foregroundColor(.primary)
-                .padding(.bottom, -10)
+            Section { } header: {
+                HStack {
+                  Text("Locations")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+
+                    Spacer()
+                    NavigationLink("Show All") {
+                        MapView(allLocations: viewModel.allLocations)
+                    }
+                }
+            }
+            .padding(.bottom, -10)
+                
             locationCategoryView()
         }
     }
