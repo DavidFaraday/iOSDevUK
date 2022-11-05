@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel: HomeViewModel
-
-    init(viewModel: HomeViewModel = HomeViewModel()) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @EnvironmentObject var viewModel: BaseViewModel
     
     @ViewBuilder
     private func headerView() -> some View {
@@ -116,6 +112,7 @@ struct HomeView: View {
             .task(viewModel.listenForEventNotification)
             .task(viewModel.listenForSessions)
             .task(viewModel.listenForSpeakers)
+            .task(viewModel.listenForSponsors)
     }
 }
 

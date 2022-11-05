@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SessionDetailView: View {
+    @Environment(\.managedObjectContext) var moc
+    
     @StateObject private var viewModel: SessionDetailViewModel
+    @State private var showMapView = false
     
     init(session: Session) {
         self.init(viewModel: SessionDetailViewModel(session: session))
@@ -83,9 +87,13 @@ struct SessionDetailView: View {
                 .padding(.bottom)
 
             Button {
-                print("go to location view")
+                guard viewModel.location != nil else { return }
+                showMapView = true
             } label: {
-                LocationRowView(location: viewModel.location)
+                Text(viewModel.location?.name ?? "Unknown location")
+                    .font(.subheadline)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
             }
         }
         .padding()
@@ -93,9 +101,7 @@ struct SessionDetailView: View {
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        Button("Add to list") {
-            print("Added to my list")
-        }
+        Button("Add to list", action: addToMySession)
     }
 
     
@@ -106,7 +112,9 @@ struct SessionDetailView: View {
             VStack(alignment: .leading) {
                 headerView()
                 descriptionView()
-                speakersView()
+                if let speakers = viewModel.speakers, !speakers.isEmpty {
+                    speakersView()
+                }
                 locationView()
             }
         }
@@ -121,7 +129,30 @@ struct SessionDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }
+            .sheet(isPresented: $showMapView) {
+                MapView(allLocations: [viewModel.location!])
+            }
     }
+    
+    private func addToMySession() {
+        let mySession = viewModel.session
+        
+        let session = SavedSession(context: moc)
+        session.title = mySession.title
+        session.id = mySession.id
+        session.startDate = mySession.startDate
+        session.endDate = mySession.endDate
+        session.content = mySession.content
+        session.startDateName = mySession.startingDay
+        session.locationName = viewModel.location?.name
+        
+        do {
+            try moc.save()
+        } catch {
+            print("Error saving session to CD")
+        }
+    }
+
 }
 
 struct SessionDetailView_Previews: PreviewProvider {

@@ -10,13 +10,9 @@ import SwiftUI
 struct RemoteImage: View {
     
     let imageURL: URL!
-//    let width: CGFloat!
-//    let height: CGFloat!
     
     init(urlString: String) {
         self.imageURL = URL(string: urlString)
-//        self.width = width
-//        self.height = height
     }
     
     var body: some View {

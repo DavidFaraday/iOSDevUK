@@ -9,20 +9,45 @@ import SwiftUI
 
 struct AllSessionsView: View {
     
-    let sessions: [Session]
+    @StateObject private var viewModel: AllSessionsViewModel
+       
+    private var groupedSessions: [String : [Session]] {
+        .init(
+            grouping: viewModel.sessions,
+            by: {$0.startingDay }
+        )
+    }
+    
+    init(sessions: [Session]) {
+        _viewModel = StateObject(wrappedValue: AllSessionsViewModel(sessions: sessions))
+    }
+        
     
     var body: some View {
-        Form {
-            ForEach(sessions) { session in
-                
-                NavigationLink {
-                    SessionDetailView(session: session)
-                } label: {
-                    SessionRowView(session: session)
+        VStack {
+            
+            Picker("", selection: $viewModel.selectedDate.animation()) {
+                ForEach(groupedSessions.keys.sorted(), id: \String.self) { weekDay in
+                    Text(weekDay.removeDigits)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            
+            
+            Form {
+                ForEach(groupedSessions[viewModel.selectedDate]?.sorted(by: {$0.startDate < $1.startDate }) ?? [], id: \.id) { session in
+                    
+                    NavigationLink {
+                        SessionDetailView(session: session)
+                    } label: {
+                        SessionRowView(session: session)
+                    }
                 }
             }
         }
         .navigationTitle("Sessions")
+        .task{ viewModel.setCurrentDate() }
     }
 }
 

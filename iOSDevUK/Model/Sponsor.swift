@@ -6,11 +6,39 @@
 //
 
 import Foundation
+import SwiftUI
 
-enum SponsorCategory: String, Codable {
+enum SponsorCategory: String, Codable, Comparable {
     case Platinum
     case Gold
     case Silver
+    
+    var sortOrder: Int {
+        switch self {
+        case .Platinum:
+            return 0
+        case .Gold:
+            return 1
+        case .Silver:
+            return 2
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .Platinum:
+            return Color("platinumColor")
+        case .Gold:
+            return Color("goldColor")
+        case .Silver:
+            return Color("silverColor")
+        }
+    }
+    
+    static func < (lhs: SponsorCategory, rhs: SponsorCategory) -> Bool {
+        lhs.sortOrder < rhs.sortOrder
+    }
+
 }
 
 struct Sponsor: Codable, Identifiable {

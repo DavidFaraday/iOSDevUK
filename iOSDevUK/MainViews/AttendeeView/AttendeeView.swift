@@ -22,6 +22,17 @@ struct AttendeeView: View {
     }
     
     @ViewBuilder
+    private func navigationBarTrailingItem() -> some View {
+        NavigationLink {
+            MapView(allLocations: viewModel.allLocations)
+        } label: {
+            Text("All locations")
+                .bold()
+        }
+    }
+
+    
+    @ViewBuilder
     private func informationView() -> some View {
         ForEach(viewModel.informationItems) { item in
             NavigationLink(item.name) {
@@ -40,7 +51,10 @@ struct AttendeeView: View {
                     NavigationLink {
                         MapView(allLocations: [location])
                     } label: {
-                        LocationRowView(location: location)
+                        Text(location.name)
+                            .font(.subheadline)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.6)
                     }
                 }
             }
@@ -57,16 +71,9 @@ struct AttendeeView: View {
             }
             
             Section { } header: {
-                HStack {
-                  Text("Locations")
-                        .font(.headline)
-                        .foregroundColor(.primary)
-
-                    Spacer()
-                    NavigationLink("Show All") {
-                        MapView(allLocations: viewModel.allLocations)
-                    }
-                }
+                Text("Locations")
+                      .font(.headline)
+                      .foregroundColor(.primary)
             }
             .padding(.bottom, -10)
                 
@@ -79,6 +86,9 @@ struct AttendeeView: View {
             .navigationTitle("Attendee Info")
             .task(viewModel.listenForLocations)
             .task(viewModel.fetchInformationItems)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
+            }
     }
 }
 

@@ -62,7 +62,7 @@ struct SpeakerDetailView: View {
                 .font(.subheadline)
                 .lineLimit(2)
                 
-            Text("\(session.startDate.weekDayTime())")
+            Text("\(session.duration)")
                 .font(.caption)
                 .foregroundColor(.gray)
         }

@@ -47,7 +47,7 @@ struct SessionCardView: View {
 
                 Spacer()
                 
-                Text("\(viewModel.location != nil ? viewModel.location!.name : "") - \(viewModel.session.startDate.weekDayTime())")
+                Text("\(viewModel.location != nil ? viewModel.location!.name : "") - \(viewModel.session.duration)")
                     .font(.subheadline)
                     .padding(.bottom, 10)
             }

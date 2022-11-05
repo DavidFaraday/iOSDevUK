@@ -7,21 +7,24 @@
 
 import SwiftUI
 import Firebase
+import FirebaseDatabase
 
 @main
 struct iOSDevUKApp: App {
-    let persistenceController = PersistenceController.shared
-    let locationManager = LocationManager.shared
+    let dataController = DataController()
+    let baseViewModel = BaseViewModel()
 
     init() {
         FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
+
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(locationManager)
+                .environmentObject(baseViewModel)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

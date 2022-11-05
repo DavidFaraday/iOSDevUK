@@ -26,17 +26,36 @@ extension Date {
         Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()
     }
     
-    func longDate() -> String {
+    var longDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         return dateFormatter.string(from: self)
     }
     
-    func weekDayTime() -> String {
+    var weekDayTime: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EE HH:mm"
         return dateFormatter.string(from: self)
     }
+    
+    var dayOfTheMonth: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d EE"
+        return dateFormatter.string(from: self)
+    }
+    
+    var weekDay: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EE"
+        return dateFormatter.string(from: self)
+    }
+    
+    var time: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: self)
+    }
+
     
 //    func dateFrom(_ dateString: String) -> Date {
 //        let dateStr = dateString.components(separatedBy: "T").first ?? ""

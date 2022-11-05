@@ -9,23 +9,34 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @EnvironmentObject var locationManager: LocationManager
+    @Environment(\.dismiss) private var dismiss
     
-    let allLocations: [Location]
+    var allLocations: [Location]
+        
+    @State var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 52.414704, longitude: -4.080645),
+        span: MKCoordinateSpan.init(latitudeDelta: 0.03, longitudeDelta: 0.03)
+    )
 
+    
     var body: some View {
-        Map(coordinateRegion: $locationManager.region, showsUserLocation: true, userTrackingMode: .constant(.follow), annotationItems: allLocations) {
+        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: allLocations) { location in
             
-            MapMarker(coordinate: $0.coordinate)
+            MapAnnotation(coordinate: location.coordinate) {
+                LocationMapAnnotation(location: location)
+            }
+            
         }
         .ignoresSafeArea(SafeAreaRegions.all, edges: .top)
         .accentColor(Color(.systemPink))
+        .navigationTitle("Map")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(allLocations: [])
+        MapView(allLocations: [DummyData.location])
     }
 }
 

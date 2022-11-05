@@ -20,5 +20,13 @@ struct Session: Codable, Identifiable {
     let locationId: String
     let speakerIds: [String]
     let type: SessionType
+    
+    var startingDay: String {
+        startDate.dayOfTheMonth
+    }
+    
+    var duration: String {
+        "\(startDate.weekDayTime) - \(endDate.time)"
+    }
 }
 

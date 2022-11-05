@@ -8,18 +8,24 @@
 import SwiftUI
 import Combine
 
-final class HomeViewModel: ObservableObject {
+class BaseViewModel: ObservableObject {
     @Environment(\.openURL) var openURL
 
     @Published private(set) var aboutString = ""
     @Published private(set) var eventNotification = ""
     @Published private(set) var sessions: [Session] = []
     @Published private(set) var speakers: [Speaker] = []
+    @Published private(set) var sponsors: [Sponsor] = []
     
     private var cancellables: Set<AnyCancellable> = []
 
     func showTwitterAccount(_ twitterId: String) {
         guard let url = URL(string: "https://twitter.com/\(twitterId)") else { return }
+        self.openURL(url)
+    }
+
+    func goTo(link: String) {
+        guard let url = URL(string: "\(link)") else { return }
         self.openURL(url)
     }
     
@@ -85,5 +91,27 @@ final class HomeViewModel: ObservableObject {
                 self?.aboutString = about
             }
             .store(in: &cancellables)
+    }
+    
+    @MainActor
+    @Sendable func listenForSponsors() async {
+        FirebaseSponsorListener.shared.listenForSponsors()
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    return
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                }
+            }, receiveValue: { [weak self] allSponsors in
+                self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
+            })
+            .store(in: &cancellables)
+    }
+    
+    func saveSessions() {
+        for session in DummyData.sessionsToSave {
+            FirebaseSessionListener.shared.saveSession(session)
         }
+    }
 }

@@ -12,15 +12,24 @@ struct SessionRowView: View {
     let session: Session
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(session.title)
-                .font(.title3)
-            Text("\(viewModel.location?.name ?? ""), \(session.startDate.weekDayTime())")
-                .font(.caption)
-                .foregroundColor(.gray)
+        HStack {
+            VStack {
+                Text("\(session.startDate.time)")
+                Text("\(session.endDate.time)")
+            }
+            .font(.caption)
+            .foregroundColor(.gray)
+
+            VStack(alignment: .leading, spacing: 10) {
+                Text(session.title)
+                    .font(.title3)
+                Text("\(viewModel.location?.name ?? "")")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
+            .minimumScaleFactor(0.8)
+            .lineLimit(2)
         }
-        .minimumScaleFactor(0.8)
-        .lineLimit(2)
         .task {
             await viewModel.fetchLocation(with: session.locationId)
         }

@@ -5,6 +5,7 @@
 //  Created by David Kababyan on 21/09/2022.
 //
 
+import Combine
 import Foundation
 import FirebaseFirestoreSwift
 
@@ -14,28 +15,31 @@ class FirebaseSponsorListener {
     
     private init () { }
     
-    func getSponsors() async -> [Sponsor] {
-       
-        return await withCheckedContinuation { continuation in
-            
-            FirebaseReference(.Sponsor).getDocuments { querySnapshot, error in
-                
-                var sponsors: [Sponsor] = []
-                
-                guard let documents = querySnapshot?.documents else {
-                    continuation.resume(returning: sponsors)
-                    return
-                }
-
-                sponsors = documents.compactMap { (queryDocumentSnapshot) -> Sponsor? in
-                    return try? queryDocumentSnapshot.data(as: Sponsor.self)
-                }
-                
-                continuation.resume(returning: sponsors)
-            }
-        }
-    }
+    func listenForSponsors() -> AnyPublisher<[Sponsor], Error> {
+        let subject = PassthroughSubject<[Sponsor], Error>()
         
+        FirebaseReference(.Sponsor).addSnapshotListener { querySnapshot, error in
+            
+            if let error = error {
+                subject.send(completion: .failure(error))
+                return
+            }
+            
+            guard let documents = querySnapshot?.documents else {
+                subject.send(completion: .failure(FirebaseError.badSnapshot))
+                return
+            }
+            
+            let sponsors = documents.compactMap {
+                try? $0.data(as: Sponsor.self)
+            }
+            subject.send(sponsors)
+        }
+        
+        return subject.eraseToAnyPublisher()
+    }
+
+    
     func saveSponsor(_ sponsor: Sponsor) {
         
         do {
