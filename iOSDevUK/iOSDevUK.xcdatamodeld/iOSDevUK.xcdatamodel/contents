@@ -4,6 +4,7 @@
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="locationId" optional="YES" attributeType="String"/>
         <attribute name="locationName" optional="YES" attributeType="String"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="startDateName" optional="YES" attributeType="String"/>

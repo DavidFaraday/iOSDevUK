@@ -81,7 +81,7 @@ struct SpeakerDetailView: View {
         
         ForEach(viewModel.sessions) { session in
             NavigationLink {
-                SessionDetailView(session: session)
+                SessionDetailView(sessionId: session.id)
             } label: {
                 sessionsRaw(session: session)
             }

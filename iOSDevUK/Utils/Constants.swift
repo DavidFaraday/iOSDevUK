@@ -14,4 +14,14 @@ struct ImageNames {
     static let img4 = "img4"
     static let appIcon = "appIcon"
     static let conferenceImage = "conferenceImage"
+    static let bookmark = "bookmark"
+    static let bookmarkFill = "bookmark.fill"
+    static let house = "house"
+    static let list = "list.bullet"
+    static let person = "person"
+    static let info = "info"
+    static let mapPin = "mappin.circle.fill"
+    static let chevronRight = "chevron.right"
 }
+
+

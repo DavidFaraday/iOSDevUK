@@ -30,7 +30,7 @@ struct LocationObject: Codable {
     let locations: [Location]
 }
 
-struct Location: Codable, Identifiable {
+struct Location: Codable, Identifiable, Hashable {
     let id: String
     let name: String
     let note: String

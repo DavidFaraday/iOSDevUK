@@ -10,29 +10,28 @@ import CoreData
 
 struct MyScheduleView: View {
     @Environment(\.managedObjectContext) var moc
-    @StateObject private var viewModel: MyScheduleViewModel
     
     
     @SectionedFetchRequest(sectionIdentifier: \.startDateName, sortDescriptors: [SortDescriptor(\.startDate)], animation: .default)
     private var records: SectionedFetchResults<String?, SavedSession>
     
-    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.startDate)]) var sessions: FetchedResults<SavedSession>
     
-    init(viewModel: MyScheduleViewModel = MyScheduleViewModel()) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @StateObject private var viewModel = MyScheduleViewModel()
 
     var body: some View {
-        VStack {
-            List {
-                ForEach(records) { section in
-                    Section(header: Text(section.id ?? "hmm")) {
-                        ForEach(section) { session in
-                            Text(session.title ?? "")
+        List {
+            ForEach(records) { section in
+                Section(header: Text(section.id ?? "")) {
+                    ForEach(section) { session in
+                        
+                        NavigationLink {
+                            SessionDetailView(sessionId: session.id ?? "")
+                        } label: {
+                            SessionRowForLocalSession(session: session)
                         }
-                        .onDelete(perform: delete)
                     }
+                    .onDelete(perform: delete)
                 }
             }
         }

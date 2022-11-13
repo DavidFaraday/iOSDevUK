@@ -39,7 +39,7 @@ struct AllSessionsView: View {
                 ForEach(groupedSessions[viewModel.selectedDate]?.sorted(by: {$0.startDate < $1.startDate }) ?? [], id: \.id) { session in
                     
                     NavigationLink {
-                        SessionDetailView(session: session)
+                        SessionDetailView(sessionId: session.id)
                     } label: {
                         SessionRowView(session: session)
                     }

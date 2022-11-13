@@ -12,10 +12,9 @@ struct SessionDetailView: View {
     @Environment(\.managedObjectContext) var moc
     
     @StateObject private var viewModel: SessionDetailViewModel
-    @State private var showMapView = false
     
-    init(session: Session) {
-        self.init(viewModel: SessionDetailViewModel(session: session))
+    init(sessionId: String) {
+        self.init(viewModel: SessionDetailViewModel(sessionId: sessionId))
     }
     
     private init(viewModel: SessionDetailViewModel) {
@@ -24,16 +23,16 @@ struct SessionDetailView: View {
     
     @ViewBuilder
     private func headerView() -> some View {
-        ZStack(alignment: .leading) {
+        ZStack(alignment: .bottomLeading) {
             Image(ImageNames.img1)
                 .resizable()
                 .frame(height: 250)
                 .aspectRatio(contentMode: .fit)
             
-            Text(viewModel.session.title)
+            Text(viewModel.session?.title ?? "Loading...")
                 .font(.largeTitle)
                 .foregroundColor(.white)
-                .padding([.horizontal, .top])
+                .padding([.horizontal, .bottom])
         }
     }
     
@@ -46,7 +45,7 @@ struct SessionDetailView: View {
                 .bold()
                 .padding(.vertical)
             
-            Text(viewModel.session.content)
+            Text(viewModel.session?.content ?? "Loading...")
                 .multilineTextAlignment(.leading)
                 .padding(.bottom, 10)
         }
@@ -77,7 +76,7 @@ struct SessionDetailView: View {
     }
     
     @ViewBuilder
-    private func locationView() -> some View {
+    private func locationView(_ location: Location) -> some View {
         
         VStack(alignment: .leading) {
             Text("Location")
@@ -86,22 +85,26 @@ struct SessionDetailView: View {
                 .bold()
                 .padding(.bottom)
 
-            Button {
-                guard viewModel.location != nil else { return }
-                showMapView = true
-            } label: {
-                Text(viewModel.location?.name ?? "Unknown location")
-                    .font(.subheadline)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.6)
-            }
+                NavigationLink {
+                        MapView(allLocations: [location])
+                } label: {
+                    Text(location.name)
+                        .font(.subheadline)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
+                }
+            
         }
         .padding()
     }
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        Button("Add to list", action: addToMySession)
+        Button {
+            viewModel.addToMySession(moc: moc)
+        } label: {
+            Image(systemName: ImageNames.bookmark)
+        }
     }
 
     
@@ -115,7 +118,9 @@ struct SessionDetailView: View {
                 if let speakers = viewModel.speakers, !speakers.isEmpty {
                     speakersView()
                 }
-                locationView()
+                if let location = viewModel.location {
+                    locationView(location)
+                }
             }
         }
         .scrollIndicators(.hidden)
@@ -124,41 +129,22 @@ struct SessionDetailView: View {
     var body: some View {
         main()
             .edgesIgnoringSafeArea(.top)
-            .task(viewModel.fetchSpeakers)
-            .task(viewModel.fetchLocation)
+            .task {
+                //TODO: Why its called on pop
+                await viewModel.fetchSession()
+                await viewModel.fetchSpeakers()
+                await viewModel.fetchLocation()
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }
-            .sheet(isPresented: $showMapView) {
-                MapView(allLocations: [viewModel.location!])
-            }
     }
-    
-    private func addToMySession() {
-        let mySession = viewModel.session
-        
-        let session = SavedSession(context: moc)
-        session.title = mySession.title
-        session.id = mySession.id
-        session.startDate = mySession.startDate
-        session.endDate = mySession.endDate
-        session.content = mySession.content
-        session.startDateName = mySession.startingDay
-        session.locationName = viewModel.location?.name
-        
-        do {
-            try moc.save()
-        } catch {
-            print("Error saving session to CD")
-        }
-    }
-
 }
 
 struct SessionDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SessionDetailView(session: DummyData.session)
+            SessionDetailView(sessionId: DummyData.session.id)
         }
     }
 }

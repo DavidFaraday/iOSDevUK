@@ -11,7 +11,8 @@ final class SessionRowViewModel: ObservableObject {
     @Published private(set) var location: Location?
        
     @MainActor
-    func fetchLocation(with id: String) async {
+    func fetchLocation(with id: String?) async {
+        guard let id = id else { return }
         if location == nil {
             self.location = await FirebaseLocationListener.shared.getLocation(with: id)
         }

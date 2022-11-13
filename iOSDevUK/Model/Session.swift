@@ -11,7 +11,7 @@ enum SessionType: Codable {
     case talk, workshop, lightningTalk
 }
 
-struct Session: Codable, Identifiable {
+struct Session: Codable, Identifiable, Hashable {
     let id: String
     let title: String
     let content: String

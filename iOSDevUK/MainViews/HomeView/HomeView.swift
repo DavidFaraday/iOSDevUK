@@ -23,23 +23,6 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 
-    @ViewBuilder
-    private func footerView() -> some View {
-        
-        VStack(alignment: .center, spacing: 10) {
-            Text(viewModel.aboutString)
-                .multilineTextAlignment(.center)
-                .font(.body)
-                .padding(10)
-
-            Button("@iOSDevUK on Twitter") { viewModel.showTwitterAccount("iOSDevUK") }
-            Button("@AberCompSci on Twitter") { viewModel.showTwitterAccount("AberCompSci") }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(10)
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-    }
     
     @ViewBuilder
     private func sessionView() -> some View {
@@ -52,10 +35,11 @@ struct HomeView: View {
             }
             
             ScrollView(.horizontal) {
-                HStack(spacing: 10) {
+                LazyHStack(spacing: 10) {
                     ForEach(viewModel.sessions) { session in
-                        NavigationLink { SessionDetailView(session: session) }
-                        label: {
+                        NavigationLink {
+                            SessionDetailView(sessionId: session.id)
+                        } label: {
                             SessionCardView(session: session).frame(width: 300, height: 150)
                         }
                     }
@@ -77,10 +61,11 @@ struct HomeView: View {
             }
             
             ScrollView(.horizontal) {
-                HStack(spacing: 10) {
+                LazyHStack(spacing: 10) {
                     ForEach(viewModel.speakers) { speaker in
-                        NavigationLink { SpeakerDetailView(speaker: speaker) }
-                        label: {
+                        NavigationLink {
+                            SpeakerDetailView(speaker: speaker)
+                        } label: {
                             SpeakerCardView(speaker: speaker)
                                 .frame(width: 130, height: 200)
                         }
@@ -91,6 +76,24 @@ struct HomeView: View {
         }
         .padding(.bottom)
     }
+    
+    @ViewBuilder
+    private func footerView() -> some View {
+        VStack(alignment: .center, spacing: 10) {
+            Text(viewModel.aboutString)
+                .multilineTextAlignment(.center)
+                .font(.body)
+                .padding(10)
+
+            Button("@iOSDevUK on Twitter") { viewModel.showTwitterAccount("iOSDevUK") }
+            Button("@AberCompSci on Twitter") { viewModel.showTwitterAccount("AberCompSci") }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(10)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+
     
     
     @ViewBuilder
@@ -113,6 +116,8 @@ struct HomeView: View {
             .task(viewModel.listenForSessions)
             .task(viewModel.listenForSpeakers)
             .task(viewModel.listenForSponsors)
+            .task(viewModel.listenForLocations)
+            .task(viewModel.listenForInfoItems)
     }
 }
 

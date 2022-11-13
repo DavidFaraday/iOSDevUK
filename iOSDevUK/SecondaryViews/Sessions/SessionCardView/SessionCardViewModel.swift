@@ -20,14 +20,15 @@ final class SessionCardViewModel: ObservableObject {
     @MainActor
     @Sendable func fetchSpeakers() async {
         if speakers == nil {
-            //TODO: Make group task here
+
             var tempSpeakers: [Speaker] = []
-            
+                    
             for id in session.speakerIds {
                 let speaker = await FirebaseSpeakerListener.shared.getSpeaker(with: id)
                 guard let speaker = speaker else { return }
                 tempSpeakers.append(speaker)
             }
+            
             self.speakers = tempSpeakers
         }
     }
@@ -38,4 +39,15 @@ final class SessionCardViewModel: ObservableObject {
             self.location = await FirebaseLocationListener.shared.getLocation(with: session.locationId)
         }
     }
+    
+    func speakerNames(from speakers: [Speaker]) -> String {
+
+        let sortedNames = speakers.sorted { $0.name < $1.name }
+        
+        var joinedNames = ""
+        joinedNames.append(sortedNames.map{ "\($0.name)" }.joined(separator: ", "))
+       
+        return joinedNames
+    }
+
 }

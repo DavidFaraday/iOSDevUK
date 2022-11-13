@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Weblink: Codable {
+struct Weblink: Codable, Hashable {
     let name: String
     let recordName: String
     let url: String
 }
 
-struct Speaker: Codable, Identifiable {
+struct Speaker: Codable, Identifiable, Hashable {
     let id: String
     let name: String
     let biography: String

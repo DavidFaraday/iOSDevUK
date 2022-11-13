@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SessionCardView: View {       
     @StateObject private var viewModel: SessionCardViewModel
-    //TODO: change session passing so it will update automatically from FB
+
     init(session: Session) {
         self.init(viewModel: SessionCardViewModel(session: session))
     }
@@ -40,16 +40,21 @@ struct SessionCardView: View {
                     .font(.title2)
                     .padding(.bottom, 10)
 
-                Text(viewModel.speakers != nil ? speakerNames(from: viewModel.speakers!) : "Unknown Speaker")
-                    .font(.subheadline)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.8)
+                if let speakers = viewModel.speakers {
+                    Text(viewModel.speakerNames(from: speakers))
+                        .font(.subheadline)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.8)
+                }
 
                 Spacer()
                 
-                Text("\(viewModel.location != nil ? viewModel.location!.name : "") - \(viewModel.session.duration)")
-                    .font(.subheadline)
-                    .padding(.bottom, 10)
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(viewModel.location?.name ?? "")
+                    Text(viewModel.session.duration)
+                }
+                .font(.subheadline)
+                .padding(.bottom, 10)
             }
             .foregroundColor(.white)
             .multilineTextAlignment(.leading)
@@ -82,17 +87,6 @@ struct SessionCardView: View {
             .task(viewModel.fetchSpeakers)
             .task(viewModel.fetchLocation)
             .frame(height: 150)
-    }
-    
-    
-    private func speakerNames(from speakers: [Speaker]) -> String {
-
-        let sortedNames = speakers.sorted { $0.name < $1.name }
-        
-        var joinedNames = ""
-        joinedNames.append(sortedNames.map{ "\($0.name)" }.joined(separator: ", "))
-       
-        return joinedNames
     }
 }
 

@@ -19,7 +19,7 @@ struct LocationMapAnnotation: View {
     var body: some View {
         
         VStack(spacing: 0) {
-            Image(systemName: "mappin.circle.fill")
+            Image(systemName: ImageNames.mapPin)
                 .scaleEffect(pinTapped ? 2.5 : 2.0)
                 .foregroundStyle(.white, .blue)
             

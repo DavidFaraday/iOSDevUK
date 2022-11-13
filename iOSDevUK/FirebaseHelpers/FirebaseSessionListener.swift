@@ -43,11 +43,11 @@ class FirebaseSessionListener {
         return subject.eraseToAnyPublisher()
     }
 
-    func getSessions(of speakerId: String) async -> [Session] {
+    func getSessionsOfSpeaker(with id: String) async -> [Session] {
        
         return await withCheckedContinuation { continuation in
             
-            FirebaseReference(.Session).whereField("speakerIds", arrayContains: speakerId).getDocuments { querySnapshot, error in
+            FirebaseReference(.Session).whereField("speakerIds", arrayContains: id).getDocuments { querySnapshot, error in
                 
                 var sessions: [Session] = []
                 
@@ -65,6 +65,23 @@ class FirebaseSessionListener {
         }
     }
 
+    func getSession(with id: String) async -> Session? {
+       
+        return await withCheckedContinuation { continuation in
+            
+            FirebaseReference(.Session).document(id).getDocument { documentSnapshot, error in
+                                
+                guard let document = documentSnapshot else {
+                    continuation.resume(returning: nil)
+                    return
+                }
+
+                let session = try? document.data(as: Session.self)
+                
+                continuation.resume(returning: session)
+            }
+        }
+    }
 
         
     func saveSession(_ session: Session) {

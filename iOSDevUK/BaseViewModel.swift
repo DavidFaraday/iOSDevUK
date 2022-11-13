@@ -16,6 +16,8 @@ class BaseViewModel: ObservableObject {
     @Published private(set) var sessions: [Session] = []
     @Published private(set) var speakers: [Speaker] = []
     @Published private(set) var sponsors: [Sponsor] = []
+    @Published private(set) var locations: [Location] = []
+    @Published private(set) var infoItems: [InformationItem] = []
     
     private var cancellables: Set<AnyCancellable> = []
 
@@ -109,9 +111,42 @@ class BaseViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func saveSessions() {
-        for session in DummyData.sessionsToSave {
-            FirebaseSessionListener.shared.saveSession(session)
-        }
+    @MainActor
+    @Sendable func listenForLocations() async {
+        FirebaseLocationListener.shared.listenForLocations()
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    return
+                case .failure(let error):
+                    print("Error fetching locations: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] locations in
+                self?.locations = locations
+            }
+            .store(in: &cancellables)
     }
+    
+    @MainActor
+    @Sendable func listenForInfoItems() async {
+        FirebaseAppSettingsListener.shared.listenForInfoItems()
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    return
+                case .failure(let error):
+                    print("Error fetching locations: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] infoItems in
+                self?.infoItems = infoItems.sorted(by: { $0.name < $1.name })
+            }
+            .store(in: &cancellables)
+    }
+
+    
+//    func saveSessions() {
+//        for session in DummyData.sessionsToSave {
+//            FirebaseSessionListener.shared.saveSession(session)
+//        }
+//    }
 }

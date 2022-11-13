@@ -17,7 +17,6 @@ struct iOSDevUKApp: App {
     init() {
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
-
     }
     
     var body: some Scene {

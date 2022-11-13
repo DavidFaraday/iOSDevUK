@@ -8,35 +8,36 @@
 import SwiftUI
 
 struct AttendeeView: View {
-    @StateObject private var viewModel: AttendeeViewModel
-    
+    @EnvironmentObject var viewModel: BaseViewModel
+
     var categories: [String : [Location]] {
         .init(
-            grouping: viewModel.allLocations,
+            grouping: viewModel.locations,
             by: {$0.locationTypeRecordName }
         )
-    }
-
-    init(viewModel: AttendeeViewModel = AttendeeViewModel()) {
-        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         NavigationLink {
-            MapView(allLocations: viewModel.allLocations)
+            MapView(allLocations: viewModel.locations)
         } label: {
             Text("All locations")
                 .bold()
         }
     }
-
     
     @ViewBuilder
     private func informationView() -> some View {
-        ForEach(viewModel.informationItems) { item in
-            NavigationLink(item.name) {
+        ForEach(viewModel.infoItems) { item in
+            HStack {
                 Text(item.name)
+                Spacer()
+                Image(systemName: ImageNames.chevronRight)
+                    .font(.caption2)
+            }
+            .onTapGesture {
+                viewModel.goTo(link: item.link)
             }
         }
     }
@@ -48,9 +49,8 @@ struct AttendeeView: View {
             
             Section(locationName(from: key)) {
                 ForEach(categories[key] ?? [], id: \.id) { location in
-                    NavigationLink {
-                        MapView(allLocations: [location])
-                    } label: {
+                    
+                    NavigationLink(value: location) {
                         Text(location.name)
                             .font(.subheadline)
                             .lineLimit(1)
@@ -60,7 +60,6 @@ struct AttendeeView: View {
             }
         }
     }
-    
     
     @ViewBuilder
     private func main() -> some View {
@@ -84,10 +83,11 @@ struct AttendeeView: View {
     var body: some View {
         main()
             .navigationTitle("Attendee Info")
-            .task(viewModel.listenForLocations)
-            .task(viewModel.fetchInformationItems)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
+            }
+            .navigationDestination(for: Location.self) { location in
+                MapView(allLocations: [location])
             }
     }
 }

@@ -21,8 +21,9 @@ struct AllSpeakersView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(speakers) { speaker in
-                    NavigationLink { SpeakerDetailView(speaker: speaker) }
-                    label: {
+                    NavigationLink {
+                        SpeakerDetailView(speaker: speaker)
+                    } label: {
                         SpeakerCardView(speaker: speaker)
                     }
                 }
