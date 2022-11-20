@@ -11,35 +11,37 @@ import CoreData
 struct MyScheduleView: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var router: NavigationRouter
-    
+
     @SectionedFetchRequest(sectionIdentifier: \.startDateName, sortDescriptors: [SortDescriptor(\.startDate)], animation: .default)
-    
+
     private var records: SectionedFetchResults<String?, SavedSession>
-    
+
     @FetchRequest(sortDescriptors: [SortDescriptor(\.startDate)]) var sessions: FetchedResults<SavedSession>
-    
+
     @StateObject private var viewModel = MyScheduleViewModel()
-    
+
     @ViewBuilder
     private func main() -> some View {
-        List {
-            ForEach(records) { section in
-                Section {
-                    ForEach(section) { session in
-                        
-                        NavigationLink(value: Destination.savedSession(session)) {
-                            SessionRowForLocalSession(session: session)
+        VStack {
+            List {
+                ForEach(records) { section in
+                    
+                    Section {
+                        ForEach(section) { session in
+                            NavigationLink(value: Destination.savedSession(session)) {
+                                SessionRowForLocalSession(session: session)
+                            }
                         }
+                        .onDelete(perform: delete)
+                    } header: {
+                        SectionHeaderView(title: section.id ?? "")
+                            .font(.headline)
                     }
-                    .onDelete(perform: delete)
-                } header: {
-                    SectionHeaderView(title: section.id ?? "")
-                        .font(.headline)
                 }
             }
         }
     }
-    
+
     var body: some View {
         NavigationStack(path: $router.schedulePath) {
             main()
@@ -71,7 +73,7 @@ struct MyScheduleView: View {
             let session = sessions[offset]
             moc.delete(session)
         }
-        
+
         try? moc.save()
     }
 }
