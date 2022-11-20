@@ -16,7 +16,7 @@ struct SponsorRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            RemoteImage(urlString: sponsor.imageLink ?? "")
+            RemoteImageView(url: sponsor.imageUrl)
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
                 .aspectRatio(contentMode: .fill)

@@ -13,8 +13,8 @@ struct LocationRowView: View {
     
     var body: some View {
         HStack {
-            if let imageLink = location?.imageLink {
-                RemoteImage(urlString: imageLink)
+            if let url = location?.imageUrl {
+                RemoteImageView(url: url)
                     .frame(width: imageWidth, height: imageWidth)
                     .clipShape(Circle())
             } else {

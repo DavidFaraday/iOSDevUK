@@ -23,7 +23,7 @@ struct SpeakerDetailView: View {
     private func headerView() -> some View {
         
         HStack {
-            RemoteImage(urlString: viewModel.speaker.imageLink)
+            RemoteImageView(url: viewModel.speaker.imageUrl)
                 .cornerRadius(15)
                 .frame(width: 100, height: 120)
                 .aspectRatio(contentMode: .fit)

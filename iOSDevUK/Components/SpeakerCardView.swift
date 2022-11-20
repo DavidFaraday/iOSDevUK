@@ -20,7 +20,7 @@ struct SpeakerCardView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            RemoteImage(urlString: speaker.imageLink)
+            RemoteImageView(url: speaker.imageUrl)
                 .frame(height: 170)
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(15)

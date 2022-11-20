@@ -53,4 +53,8 @@ struct Sponsor: Codable, Identifiable, Equatable, Hashable {
     static func ==(lhs: Sponsor, rhs: Sponsor) -> Bool {
         lhs.id == rhs.id
     }
+    
+    var imageUrl: URL? {
+        URL(string: imageLink ?? "")
+    }
 }

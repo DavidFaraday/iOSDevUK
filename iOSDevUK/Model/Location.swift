@@ -47,7 +47,10 @@ struct Location: Codable, Identifiable, Hashable {
     static func ==(lhs: Location, rhs: Location) -> Bool {
         lhs.id == rhs.id
     }
-
+    
+    var imageUrl: URL? {
+        URL(string: imageLink ?? "")
+    }
 }
 
 enum LocationType: Codable {

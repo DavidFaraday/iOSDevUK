@@ -5,38 +5,28 @@
 //  Created by David Kababyan on 10/09/2022.
 //
 
+import CachedAsyncImage
 import SwiftUI
 
-struct RemoteImage: View {
-    
-    let imageURL: URL!
-    
-    init(urlString: String) {
-        self.imageURL = URL(string: urlString)
-    }
-    
-    var body: some View {
-        AsyncImage(url: imageURL) { phase in
-            switch phase {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                
-            case .failure:
-                Rectangle()
-                    .foregroundColor(.gray)
-                    .cornerRadius(15)
-            @unknown default:
-                EmptyView()
-            }
-        }
-    }
-}
+struct RemoteImageView: View {
+    private let url: URL?
 
-struct RemoteImage_Previews: PreviewProvider {
-    static var previews: some View {
-        RemoteImage(urlString: "https://picsum.photos/150/300")
+    init(url: URL?) {
+        self.url = url
+    }
+
+    var body: some View {
+        ZStack {
+            CachedAsyncImage(
+                url: url,
+                content: { image in
+                    image.resizable()
+                },
+                placeholder: {
+                    Rectangle()
+                        .fill(.gray.gradient)
+                        .cornerRadius(15)
+                })
+        }
     }
 }

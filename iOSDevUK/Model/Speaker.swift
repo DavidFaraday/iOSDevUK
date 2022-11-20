@@ -21,4 +21,8 @@ struct Speaker: Codable, Identifiable, Hashable {
     let twitterId: String
     let imageLink: String
     let webLinks: [Weblink]?
+    
+    var imageUrl: URL? {
+        URL(string: imageLink)
+    }
 }

@@ -24,7 +24,7 @@ struct MyScheduleView: View {
     private func main() -> some View {
         List {
             ForEach(records) { section in
-                Section(header: Text(section.id ?? "")) {
+                Section {
                     ForEach(section) { session in
                         
                         NavigationLink(value: Destination.savedSession(session)) {
@@ -32,6 +32,9 @@ struct MyScheduleView: View {
                         }
                     }
                     .onDelete(perform: delete)
+                } header: {
+                    SectionHeaderView(title: section.id ?? "")
+                        .font(.headline)
                 }
             }
         }

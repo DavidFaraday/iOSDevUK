@@ -43,7 +43,7 @@ struct AttendeeView: View {
         
         ForEach(categories.keys.sorted(), id: \String.self) { key in
             
-            Section(locationName(from: key)) {
+            Section {
                 ForEach(categories[key] ?? [], id: \.id) { location in
                     
                     NavigationLink(value: Destination.locations([location])) {
@@ -53,6 +53,9 @@ struct AttendeeView: View {
                             .minimumScaleFactor(0.6)
                     }
                 }
+            } header: {
+                SectionHeaderView(title: locationName(from: key))
+                    .font(.headline)
             }
         }
     }
@@ -61,8 +64,11 @@ struct AttendeeView: View {
     private func main() -> some View {
         
         Form {
-            Section("Information") {
+            Section {
                 informationView()
+            } header: {
+                SectionHeaderView(title: "Information")
+                    .font(.headline)
             }
             
             Section { } header: {
