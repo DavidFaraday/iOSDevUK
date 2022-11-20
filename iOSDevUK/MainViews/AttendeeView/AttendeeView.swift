@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AttendeeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
+    @EnvironmentObject var router: NavigationRouter
 
     var categories: [String : [Location]] {
         .init(
@@ -19,12 +20,7 @@ struct AttendeeView: View {
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        NavigationLink {
-            MapView(allLocations: viewModel.locations)
-        } label: {
-            Text("All locations")
-                .bold()
-        }
+        NavigationLink("All locations", value: Destination.locations(viewModel.locations))
     }
     
     @ViewBuilder
@@ -50,7 +46,7 @@ struct AttendeeView: View {
             Section(locationName(from: key)) {
                 ForEach(categories[key] ?? [], id: \.id) { location in
                     
-                    NavigationLink(value: location) {
+                    NavigationLink(value: Destination.locations([location])) {
                         Text(location.name)
                             .font(.subheadline)
                             .lineLimit(1)
@@ -81,14 +77,31 @@ struct AttendeeView: View {
     }
 
     var body: some View {
-        main()
-            .navigationTitle("Attendee Info")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
-            }
-            .navigationDestination(for: Location.self) { location in
-                MapView(allLocations: [location])
-            }
+        NavigationStack(path: $router.attendeePath) {
+            main()
+                .navigationTitle("Attendee Info")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
+                }
+                .navigationDestination(for: Destination.self) { destination in
+                    switch destination {
+                    case .session(let session):
+                        SessionDetailView(sessionId: session.id)
+                    case .sessions(let sessions):
+                        AllSessionsView(sessions: sessions)
+                    case .speaker(let speaker):
+                        SpeakerDetailView(speaker: speaker)
+                    case .speakers(let speakers):
+                        AllSpeakersView(speakers: speakers)
+                    case .sponsor:
+                        SponsorsView()
+                    case .locations(let locations):
+                        MapView(allLocations: locations)
+                    case .savedSession(let savedSession):
+                        SessionDetailView(sessionId: savedSession.id ?? "")
+                    }
+                }
+        }
     }
 }
 

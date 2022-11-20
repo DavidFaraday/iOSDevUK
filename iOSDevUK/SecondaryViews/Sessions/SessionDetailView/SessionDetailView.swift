@@ -40,7 +40,7 @@ struct SessionDetailView: View {
     private func descriptionView() -> some View {
         VStack(alignment: .leading) {
             Text("Description")
-                .font(.title3)
+                .font(.title2)
                 .foregroundColor(.gray)
                 .bold()
                 .padding(.vertical)
@@ -63,9 +63,8 @@ struct SessionDetailView: View {
                 .padding(.bottom)
             
             ForEach(viewModel.speakers ?? []) { speaker in
-                NavigationLink {
-                    SpeakerDetailView(speaker: speaker)
-                } label: {
+                
+                NavigationLink(value: Destination.speaker(speaker)) {
                     Text(speaker.name)
                         .font(.title3)
                         .padding(.bottom, 5)
@@ -85,15 +84,12 @@ struct SessionDetailView: View {
                 .bold()
                 .padding(.bottom)
 
-                NavigationLink {
-                        MapView(allLocations: [location])
-                } label: {
+                NavigationLink(value: Destination.locations([location])) {
                     Text(location.name)
                         .font(.subheadline)
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
                 }
-            
         }
         .padding()
     }

@@ -43,6 +43,11 @@ struct Location: Codable, Identifiable, Hashable {
     var coordinate: CLLocationCoordinate2D {
         CLLocation(latitude: latitude, longitude: longitude).coordinate
     }
+    
+    static func ==(lhs: Location, rhs: Location) -> Bool {
+        lhs.id == rhs.id
+    }
+
 }
 
 enum LocationType: Codable {

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
-    
+    @EnvironmentObject var router: NavigationRouter
+
     @ViewBuilder
     private func headerView() -> some View {
         VStack {
@@ -31,15 +32,14 @@ struct HomeView: View {
             HStack {
                 Text("Sessions").font(.title2).bold()
                 Spacer()
-                NavigationLink("All Sessions") { AllSessionsView(sessions: viewModel.sessions) }
+                NavigationLink("All Sessions", value: Destination.sessions(viewModel.sessions))
             }
             
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
                     ForEach(viewModel.sessions) { session in
-                        NavigationLink {
-                            SessionDetailView(sessionId: session.id)
-                        } label: {
+                        
+                        NavigationLink(value: Destination.session(session)) {
                             SessionCardView(session: session).frame(width: 300, height: 150)
                         }
                     }
@@ -57,15 +57,14 @@ struct HomeView: View {
             HStack {
                 Text("Speakers") .font(.title2).bold()
                 Spacer()
-                NavigationLink("All Speakers") { AllSpeakersView(speakers: viewModel.speakers) }
+                NavigationLink("All Sessions", value: Destination.speakers(viewModel.speakers))
             }
             
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
                     ForEach(viewModel.speakers) { speaker in
-                        NavigationLink {
-                            SpeakerDetailView(speaker: speaker)
-                        } label: {
+                       
+                        NavigationLink(value: Destination.speaker(speaker)) {
                             SpeakerCardView(speaker: speaker)
                                 .frame(width: 130, height: 200)
                         }
@@ -109,15 +108,35 @@ struct HomeView: View {
     }
 
     var body: some View {
-        main()
-            .navigationTitle("iOSDev UK")
-            .task(viewModel.listenForAboutString)
-            .task(viewModel.listenForEventNotification)
-            .task(viewModel.listenForSessions)
-            .task(viewModel.listenForSpeakers)
-            .task(viewModel.listenForSponsors)
-            .task(viewModel.listenForLocations)
-            .task(viewModel.listenForInfoItems)
+        NavigationStack(path: $router.homePath) {
+            main()
+                .navigationTitle("iOSDev UK")
+                .task(viewModel.listenForAboutString)
+                .task(viewModel.listenForEventNotification)
+                .task(viewModel.listenForSessions)
+                .task(viewModel.listenForSpeakers)
+                .task(viewModel.listenForSponsors)
+                .task(viewModel.listenForLocations)
+                .task(viewModel.listenForInfoItems)
+                .navigationDestination(for: Destination.self) { destination in
+                    switch destination {
+                    case .session(let session):
+                        SessionDetailView(sessionId: session.id)
+                    case .sessions(let sessions):
+                        AllSessionsView(sessions: sessions)
+                    case .speaker(let speaker):
+                        SpeakerDetailView(speaker: speaker)
+                    case .speakers(let speakers):
+                        AllSpeakersView(speakers: speakers)
+                    case .sponsor:
+                        SponsorsView()
+                    case .locations(let locations):
+                        MapView(allLocations: locations)
+                    case .savedSession(let savedSession):
+                        SessionDetailView(sessionId: savedSession.id ?? "")
+                    }
+                }
+        }
     }
 }
 

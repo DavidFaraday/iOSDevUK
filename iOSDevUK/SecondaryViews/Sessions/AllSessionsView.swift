@@ -10,7 +10,7 @@ import SwiftUI
 struct AllSessionsView: View {
     
     @StateObject private var viewModel: AllSessionsViewModel
-       
+    
     private var groupedSessions: [String : [Session]] {
         .init(
             grouping: viewModel.sessions,
@@ -21,7 +21,7 @@ struct AllSessionsView: View {
     init(sessions: [Session]) {
         _viewModel = StateObject(wrappedValue: AllSessionsViewModel(sessions: sessions))
     }
-        
+    
     
     var body: some View {
         VStack {
@@ -38,9 +38,7 @@ struct AllSessionsView: View {
             Form {
                 ForEach(groupedSessions[viewModel.selectedDate]?.sorted(by: {$0.startDate < $1.startDate }) ?? [], id: \.id) { session in
                     
-                    NavigationLink {
-                        SessionDetailView(sessionId: session.id)
-                    } label: {
+                    NavigationLink(value: Destination.session(session)) {
                         SessionRowView(session: session)
                     }
                 }

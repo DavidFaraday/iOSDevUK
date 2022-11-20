@@ -9,8 +9,11 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @StateObject var router = NavigationRouter()
+
     var body: some View {
         TabBarView()
+            .environmentObject(router)
     }
 
 }

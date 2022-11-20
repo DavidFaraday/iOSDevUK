@@ -80,9 +80,8 @@ struct SpeakerDetailView: View {
             .padding(.vertical, 10)
         
         ForEach(viewModel.sessions) { session in
-            NavigationLink {
-                SessionDetailView(sessionId: session.id)
-            } label: {
+            
+            NavigationLink(value: Destination.session(session)) {
                 sessionsRaw(session: session)
             }
         }

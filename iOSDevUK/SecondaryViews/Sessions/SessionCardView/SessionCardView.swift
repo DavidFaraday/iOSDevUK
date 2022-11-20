@@ -73,7 +73,7 @@ struct SessionCardView: View {
         VStack {
             ZStack(alignment: .topLeading) {
                 Rectangle()
-                    .foregroundColor(.blue.opacity(0.7))
+                    .fill(Color("primary").gradient)
                     .background(.ultraThinMaterial)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
 

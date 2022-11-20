@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum SponsorCategory: String, Codable, Comparable {
+enum SponsorCategory: String, Codable, Comparable, Hashable {
     case Platinum
     case Gold
     case Silver
@@ -41,7 +41,7 @@ enum SponsorCategory: String, Codable, Comparable {
 
 }
 
-struct Sponsor: Codable, Identifiable {
+struct Sponsor: Codable, Identifiable, Equatable, Hashable {
     let id: String
     let name: String
     let tagline: String
@@ -49,4 +49,8 @@ struct Sponsor: Codable, Identifiable {
     let urlText: String?
     let sponsorCategory: SponsorCategory
     let imageLink: String?
+    
+    static func ==(lhs: Sponsor, rhs: Sponsor) -> Bool {
+        lhs.id == rhs.id
+    }
 }

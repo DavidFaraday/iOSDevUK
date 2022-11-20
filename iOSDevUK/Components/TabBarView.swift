@@ -12,15 +12,13 @@ struct TabBarView: View {
     var body: some View {
         TabView {
             ForEach(Tab.allCases) { tab in
-                CustomNavigationView {
-                    tab.view
-                }
-                .tabItem {
-                    tab.icon
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                    Text(tab.name)
-                }
+                tab.view
+                    .tabItem {
+                        tab.icon
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Text(tab.name)
+                    }
             }
         }
     }
