@@ -81,6 +81,7 @@
 		EF999124292A1DD900B4DB8B /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF999123292A1DD900B4DB8B /* NavigationRouter.swift */; };
 		EF999127292A865F00B4DB8B /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = EF999126292A865F00B4DB8B /* CachedAsyncImage */; };
 		EF99912B292A8C9F00B4DB8B /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF99912A292A8C9F00B4DB8B /* SectionHeaderView.swift */; };
+		EFDE6B56292CA8E100F0C61F /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDE6B55292CA8E100F0C61F /* FirebaseRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,7 @@
 		63F7E12D28CE527700B2E1B7 /* InclusivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InclusivityView.swift; sourceTree = "<group>"; };
 		EF999123292A1DD900B4DB8B /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		EF99912A292A8C9F00B4DB8B /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		EFDE6B55292CA8E100F0C61F /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -530,6 +532,7 @@
 				636D260428F9BD3300D84123 /* FirebaseHomeListener.swift */,
 				63CA24252920DA0D000EEB1E /* FirebaseAppSettingsListener.swift */,
 				63F7E10A28CC9F6C00B2E1B7 /* FCollectionReference.swift */,
+				EFDE6B55292CA8E100F0C61F /* FirebaseRepository.swift */,
 			);
 			path = FirebaseHelpers;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				63D989682901B06B0018FDD6 /* AddSession.swift in Sources */,
 				63B80EE328F0760A00445E63 /* SessionRowViewModel.swift in Sources */,
 				63221B1F28DADB1E003EC2D5 /* Session.swift in Sources */,
+				EFDE6B56292CA8E100F0C61F /* FirebaseRepository.swift in Sources */,
 				63D9896A2901B0730018FDD6 /* AddSpeakerView.swift in Sources */,
 				63F7E0C628CC942200B2E1B7 /* iOSDevUK.xcdatamodeld in Sources */,
 				63E9C55728EF3FB400710C8F /* DummyData.swift in Sources */,

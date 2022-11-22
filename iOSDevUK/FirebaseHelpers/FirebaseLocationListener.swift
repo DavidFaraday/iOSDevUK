@@ -15,23 +15,23 @@ class FirebaseLocationListener {
     
     private init () { }
     
-    func getLocation(with id: String) async -> Location? {
-       
-        return await withCheckedContinuation { continuation in
-            
-            FirebaseReference(.Location).document(id).getDocument { documentSnapshot, error in
-                                
-                guard let document = documentSnapshot else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-
-                let location = try? document.data(as: Location.self)
-                
-                continuation.resume(returning: location)
-            }
-        }
-    }
+//    func getLocation(with id: String) async -> Location? {
+//
+//        return await withCheckedContinuation { continuation in
+//
+//            FirebaseReference(.Location).document(id).getDocument { documentSnapshot, error in
+//
+//                guard let document = documentSnapshot else {
+//                    continuation.resume(returning: nil)
+//                    return
+//                }
+//
+//                let location = try? document.data(as: Location.self)
+//
+//                continuation.resume(returning: location)
+//            }
+//        }
+//    }
 
     func listenForLocations() -> AnyPublisher<[Location], Error> {
         let subject = PassthroughSubject<[Location], Error>()

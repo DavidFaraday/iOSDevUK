@@ -22,7 +22,12 @@ final class SessionDetailViewModel: ObservableObject {
     @MainActor
     func fetchSession() async {
         if session == nil {
-            session = await FirebaseSessionListener.shared.getSession(with: sessionId)
+            do {
+                session = try await FirebaseRepository<Session>().getDocument(from: .Session, with: sessionId)
+            } catch {
+                print("Session fetching error")
+            }
+//            session = await FirebaseSessionListener.shared.getSession(with: sessionId)
         }
     }
 
@@ -32,25 +37,46 @@ final class SessionDetailViewModel: ObservableObject {
         guard let session = session else { return }
 
         if speakers == nil {
-            print("fetching speaker \(sessionId)")
-            //TODO: Make group task here
-            var tempSpeakers: [Speaker] = []
+            speakers = []
             
-            for id in session.speakerIds {
-                let speaker = await FirebaseSpeakerListener.shared.getSpeaker(with: id)
-                guard let speaker = speaker else { return }
-                tempSpeakers.append(speaker)
+            await withTaskGroup(of: Void.self) { taskGroup in
+                
+                for id in session.speakerIds {
+                    taskGroup.addTask {
+                        await self.fetchSpeaker(with: id)
+                    }
+                }
             }
-            self.speakers = tempSpeakers
         }
     }
+    
+    @MainActor
+    private func fetchSpeaker(with id: String) async {
+        
+        do {
+            let speaker = try await FirebaseRepository<Speaker>().getDocument(from: .Speaker, with: id)
+            guard let speaker = speaker else { return }
+            self.speakers?.append(speaker)
+        } catch {
+            print("error speaker for session")
+        }
+        
+    }
+
+    
 
     @MainActor
     func fetchLocation() async {
         guard let session = session else { return }
 
         if location == nil {
-            self.location = await FirebaseLocationListener.shared.getLocation(with: session.locationId)
+            do {
+                self.location = try await FirebaseRepository<Location>().getDocument(from: .Location, with: session.locationId)
+            } catch {
+                print("error speaker for session")
+            }
+
+//            self.location = await FirebaseLocationListener.shared.getLocation(with: session.locationId)
         }
     }
     

@@ -14,7 +14,13 @@ final class SessionRowViewModel: ObservableObject {
     func fetchLocation(with id: String?) async {
         guard let id = id else { return }
         if location == nil {
-            self.location = await FirebaseLocationListener.shared.getLocation(with: id)
+            do {
+                self.location = try await FirebaseRepository<Location>().getDocument(from: .Location, with: id)
+            } catch {
+                print("error speaker for session")
+            }
+
+//            self.location = await FirebaseLocationListener.shared.getLocation(with: id)
         }
     }
 }

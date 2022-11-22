@@ -43,45 +43,45 @@ class FirebaseSessionListener {
         return subject.eraseToAnyPublisher()
     }
 
-    func getSessionsOfSpeaker(with id: String) async -> [Session] {
-       
-        return await withCheckedContinuation { continuation in
-            
-            FirebaseReference(.Session).whereField("speakerIds", arrayContains: id).getDocuments { querySnapshot, error in
-                
-                var sessions: [Session] = []
-                
-                guard let documents = querySnapshot?.documents else {
-                    continuation.resume(returning: sessions)
-                    return
-                }
+//    func getSessionsOfSpeaker(with id: String) async -> [Session] {
+//
+//        return await withCheckedContinuation { continuation in
+//
+//            FirebaseReference(.Session).whereField("speakerIds", arrayContains: id).getDocuments { querySnapshot, error in
+//
+//                var sessions: [Session] = []
+//
+//                guard let documents = querySnapshot?.documents else {
+//                    continuation.resume(returning: sessions)
+//                    return
+//                }
+//
+//                sessions = documents.compactMap { (queryDocumentSnapshot) -> Session? in
+//                    return try? queryDocumentSnapshot.data(as: Session.self)
+//                }
+//
+//                continuation.resume(returning: sessions)
+//            }
+//        }
+//    }
 
-                sessions = documents.compactMap { (queryDocumentSnapshot) -> Session? in
-                    return try? queryDocumentSnapshot.data(as: Session.self)
-                }
-                
-                continuation.resume(returning: sessions)
-            }
-        }
-    }
-
-    func getSession(with id: String) async -> Session? {
-       
-        return await withCheckedContinuation { continuation in
-            
-            FirebaseReference(.Session).document(id).getDocument { documentSnapshot, error in
-                                
-                guard let document = documentSnapshot else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-
-                let session = try? document.data(as: Session.self)
-                
-                continuation.resume(returning: session)
-            }
-        }
-    }
+//    func getSession(with id: String) async -> Session? {
+//
+//        return await withCheckedContinuation { continuation in
+//
+//            FirebaseReference(.Session).document(id).getDocument { documentSnapshot, error in
+//
+//                guard let document = documentSnapshot else {
+//                    continuation.resume(returning: nil)
+//                    return
+//                }
+//
+//                let session = try? document.data(as: Session.self)
+//
+//                continuation.resume(returning: session)
+//            }
+//        }
+//    }
 
         
     func saveSession(_ session: Session) {

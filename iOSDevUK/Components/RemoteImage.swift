@@ -25,7 +25,7 @@ struct RemoteImageView: View {
                 placeholder: {
                     Rectangle()
                         .fill(.gray.gradient)
-                        .cornerRadius(15)
+//                        .cornerRadius(15)
                 })
         }
     }

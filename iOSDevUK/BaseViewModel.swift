@@ -49,7 +49,25 @@ class BaseViewModel: ObservableObject {
 
     @MainActor
     @Sendable func listenForSpeakers() async {
-        FirebaseSpeakerListener.shared.getSpeakers()
+//        do {
+//            try await FirebaseRepository<Speaker>().listen(from: .Speaker)
+//                .sink(receiveCompletion: { completion in
+//                    switch completion {
+//                    case .finished:
+//                        return
+//                    case .failure(let error):
+//                        print("Error: \(error.localizedDescription)")
+//                    }
+//                }, receiveValue: { [weak self] allSpeakers in
+//                    self?.speakers = allSpeakers
+//                    print("Have speakers ", self?.speakers.count)
+//                })
+//                .store(in: &cancellables)
+//        } catch {
+//            print(error)
+//        }
+        
+        FirebaseSpeakerListener.shared.listenForSpeakers()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -97,18 +115,39 @@ class BaseViewModel: ObservableObject {
     
     @MainActor
     @Sendable func listenForSponsors() async {
-        FirebaseSponsorListener.shared.listenForSponsors()
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    return
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
-                }
-            }, receiveValue: { [weak self] allSponsors in
-                self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
-            })
-            .store(in: &cancellables)
+        if self.sponsors.isEmpty {
+            do {
+                try await FirebaseRepository<Sponsor>().listen(from: .Sponsor)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    }, receiveValue: { [weak self] allSponsors in
+                        self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
+                        print("Have sponsors ", self?.sponsors.count)
+                    })
+                    .store(in: &cancellables)
+            } catch {
+                print(error)
+            }
+        } else {
+            print("Already listening for sponsors")
+        }
+//        FirebaseSponsorListener.shared.listenForSponsors()
+//            .sink(receiveCompletion: { completion in
+//                switch completion {
+//                case .finished:
+//                    return
+//                case .failure(let error):
+//                    print("Error: \(error.localizedDescription)")
+//                }
+//            }, receiveValue: { [weak self] allSponsors in
+//                self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
+//            })
+//            .store(in: &cancellables)
     }
     
     @MainActor

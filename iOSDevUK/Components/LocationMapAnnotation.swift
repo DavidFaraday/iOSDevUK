@@ -32,6 +32,7 @@ struct LocationMapAnnotation: View {
                     .font(.caption)
                     .foregroundColor(.white)
                     .padding(10)
+                    .fixedSize()
             }
             .opacity(pinTapped ? 1.0 : 0.0)
             .offset(y: pinTapped ? 15 : 0)

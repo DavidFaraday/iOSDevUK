@@ -20,7 +20,13 @@ final class SpeakerDetailViewModel: ObservableObject {
     
     @MainActor
     @Sendable func getSpeakerSessions() async {
-        sessions = await FirebaseSessionListener.shared.getSessionsOfSpeaker(with: speaker.id)
+        do {
+            sessions = try await FirebaseRepository<Session>().getDocument(from: .Session, where: "speakerIds", arrayContains: speaker.id) ?? []
+        } catch {
+            print("Error getting sessions")
+        }
+        
+//        await FirebaseSessionListener.shared.getSessionsOfSpeaker(with: speaker.id)
     }
 
     

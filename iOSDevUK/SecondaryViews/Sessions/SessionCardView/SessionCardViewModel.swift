@@ -24,9 +24,14 @@ final class SessionCardViewModel: ObservableObject {
             var tempSpeakers: [Speaker] = []
                     
             for id in session.speakerIds {
-                let speaker = await FirebaseSpeakerListener.shared.getSpeaker(with: id)
-                guard let speaker = speaker else { return }
-                tempSpeakers.append(speaker)
+                do {
+                    let speaker = try await FirebaseRepository<Speaker>().getDocument(from: .Speaker, with: id)
+    //                let speaker = await FirebaseSpeakerListener.shared.getSpeaker(with: id)
+                    guard let speaker = speaker else { return }
+                    tempSpeakers.append(speaker)
+                } catch {
+                    print("error speaker for session")
+                }
             }
             
             self.speakers = tempSpeakers
@@ -36,7 +41,13 @@ final class SessionCardViewModel: ObservableObject {
     @MainActor
     @Sendable func fetchLocation() async {
         if location == nil {
-            self.location = await FirebaseLocationListener.shared.getLocation(with: session.locationId)
+            do {
+                self.location = try await FirebaseRepository<Location>().getDocument(from: .Location, with: session.locationId)
+            } catch {
+                print("error speaker for session")
+            }
+            
+//            self.location = await FirebaseLocationListener.shared.getLocation(with: session.locationId)
         }
     }
     

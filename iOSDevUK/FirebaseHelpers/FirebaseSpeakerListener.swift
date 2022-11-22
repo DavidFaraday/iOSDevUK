@@ -15,7 +15,7 @@ class FirebaseSpeakerListener {
     
     private init () { }
     
-    func getSpeakers() -> AnyPublisher<[Speaker], Error> {
+    func listenForSpeakers() -> AnyPublisher<[Speaker], Error> {
         let subject = PassthroughSubject<[Speaker], Error>()
         
         FirebaseReference(.Speaker).addSnapshotListener { querySnapshot, error in
@@ -41,20 +41,20 @@ class FirebaseSpeakerListener {
     }
     
     
-    func getSpeaker(with id: String) async -> Speaker? {
-        
-        return await withCheckedContinuation { continuation in
-            
-            FirebaseReference(.Speaker).document(id).getDocument { documentSnapshot, error in
-
-                guard let document = documentSnapshot else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-                
-                let speaker = try? document.data(as: Speaker.self)
-                continuation.resume(returning: speaker)
-            }
-        }
-    }
+//    func getSpeaker(with id: String) async -> Speaker? {
+//
+//        return await withCheckedContinuation { continuation in
+//
+//            FirebaseReference(.Speaker).document(id).getDocument { documentSnapshot, error in
+//
+//                guard let document = documentSnapshot else {
+//                    continuation.resume(returning: nil)
+//                    return
+//                }
+//
+//                let speaker = try? document.data(as: Speaker.self)
+//                continuation.resume(returning: speaker)
+//            }
+//        }
+//    }
 }
