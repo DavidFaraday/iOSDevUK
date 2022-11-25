@@ -11,13 +11,8 @@ struct SessionCardView: View {
     @StateObject private var viewModel: SessionCardViewModel
 
     init(session: Session) {
-        self.init(viewModel: SessionCardViewModel(session: session))
+        _viewModel = StateObject(wrappedValue: SessionCardViewModel(session: session))
     }
-    
-    private init(viewModel: SessionCardViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
-    
     
     @ViewBuilder
     private func speakerImageView() -> some View {

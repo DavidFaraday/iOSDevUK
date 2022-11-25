@@ -38,9 +38,21 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    var dayOfTheMonth: String {
+    var dateAndWeekDay: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d EE"
+        return dateFormatter.string(from: self)
+    }
+
+    var dayOfTheMonth: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        return dateFormatter.string(from: self)
+    }
+    
+    var dayAndMonth: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMM"
         return dateFormatter.string(from: self)
     }
     

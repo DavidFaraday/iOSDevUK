@@ -25,8 +25,6 @@ final class SpeakerDetailViewModel: ObservableObject {
         } catch {
             print("Error getting sessions")
         }
-        
-//        await FirebaseSessionListener.shared.getSessionsOfSpeaker(with: speaker.id)
     }
 
     

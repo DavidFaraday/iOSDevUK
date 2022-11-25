@@ -14,7 +14,7 @@ struct HomeView: View {
     @ViewBuilder
     private func headerView() -> some View {
         VStack {
-            Text(viewModel.eventNotification)
+            Text(viewModel.eventInformation?.notification ?? "Loading...")
                 .font(.headline)
                 .multilineTextAlignment(.center)
         }
@@ -79,10 +79,12 @@ struct HomeView: View {
     @ViewBuilder
     private func footerView() -> some View {
         VStack(alignment: .center, spacing: 10) {
-            Text(viewModel.aboutString)
-                .multilineTextAlignment(.center)
-                .font(.body)
-                .padding(10)
+            if viewModel.eventInformation != nil {
+                Text(viewModel.eventInformation?.about ?? "Loading...")
+                    .multilineTextAlignment(.center)
+                    .font(.body)
+                    .padding(10)
+            }
 
             Button("@iOSDevUK on Twitter") { viewModel.showTwitterAccount("iOSDevUK") }
             Button("@AberCompSci on Twitter") { viewModel.showTwitterAccount("AberCompSci") }
@@ -98,7 +100,9 @@ struct HomeView: View {
     @ViewBuilder
     private func main() -> some View {
         ScrollView {
-            headerView()
+            if viewModel.eventInformation != nil {
+                headerView()
+            }
             sessionView()
             speakerView()
             footerView()
@@ -111,7 +115,6 @@ struct HomeView: View {
         NavigationStack(path: $router.homePath) {
             main()
                 .navigationTitle("iOSDev UK")
-                .task(viewModel.listenForAboutString)
                 .task(viewModel.listenForEventNotification)
                 .task(viewModel.listenForSessions)
                 .task(viewModel.listenForSpeakers)

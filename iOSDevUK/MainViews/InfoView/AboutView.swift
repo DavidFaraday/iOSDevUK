@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AboutView: View {
-    
+    @EnvironmentObject var viewModel: BaseViewModel
+
     var body: some View {
         ScrollView {
             Image(ImageNames.img4)
@@ -16,8 +17,8 @@ struct AboutView: View {
                 .aspectRatio(contentMode: .fit)
 
             VStack(alignment: .leading, spacing: 20) {
-                //TODO: pass dates from FB
-                Text("iOSDevUK is the UK conference for iOS developers. It takes place in Aberystwyth, on the mid-Wales coast, from 5th to the 8th September.")
+
+                Text("iOSDevUK is the UK conference for iOS developers. It takes place in Aberystwyth, on the mid-Wales coast, from \(viewModel.eventInformation?.startDate.dayOfTheMonth ?? "") to the \(viewModel.eventInformation?.endDate.dayAndMonth ?? "").")
                 
                 Text("•Great talks \n•Great get-togethers \n•Optional workshops")
                     .multilineTextAlignment(.leading)

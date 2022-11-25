@@ -10,9 +10,8 @@ import Combine
 
 class BaseViewModel: ObservableObject {
     @Environment(\.openURL) var openURL
-
-    @Published private(set) var aboutString = ""
-    @Published private(set) var eventNotification = ""
+    
+    @Published private(set) var eventInformation: EventInformation?
     @Published private(set) var sessions: [Session] = []
     @Published private(set) var speakers: [Speaker] = []
     @Published private(set) var sponsors: [Sponsor] = []
@@ -20,12 +19,12 @@ class BaseViewModel: ObservableObject {
     @Published private(set) var infoItems: [InformationItem] = []
     
     private var cancellables: Set<AnyCancellable> = []
-
+    
     func showTwitterAccount(_ twitterId: String) {
         guard let url = URL(string: "https://twitter.com/\(twitterId)") else { return }
         self.openURL(url)
     }
-
+    
     func goTo(link: String) {
         guard let url = URL(string: "\(link)") else { return }
         self.openURL(url)
@@ -33,85 +32,73 @@ class BaseViewModel: ObservableObject {
     
     @MainActor
     @Sendable func listenForSessions() async {
-        FirebaseSessionListener.shared.listenForSessions()
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    return
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
-                }
-            }, receiveValue: { [weak self] allSessions in
-                self?.sessions = allSessions.sorted { $0.startDate < $1.startDate }
-            })
-            .store(in: &cancellables)
+        if self.sessions.isEmpty {
+            do {
+                try await FirebaseRepository<Session>().listen(from: .Session)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    }, receiveValue: { [weak self] allSessions in
+                        self?.sessions = allSessions
+                        print("Have sessios ", self?.sessions.count)
+                    })
+                    .store(in: &cancellables)
+            } catch {
+                print(error)
+            }
+        }
     }
-
+    
     @MainActor
     @Sendable func listenForSpeakers() async {
-//        do {
-//            try await FirebaseRepository<Speaker>().listen(from: .Speaker)
-//                .sink(receiveCompletion: { completion in
-//                    switch completion {
-//                    case .finished:
-//                        return
-//                    case .failure(let error):
-//                        print("Error: \(error.localizedDescription)")
-//                    }
-//                }, receiveValue: { [weak self] allSpeakers in
-//                    self?.speakers = allSpeakers
-//                    print("Have speakers ", self?.speakers.count)
-//                })
-//                .store(in: &cancellables)
-//        } catch {
-//            print(error)
-//        }
-        
-        FirebaseSpeakerListener.shared.listenForSpeakers()
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    return
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
-                }
-            }, receiveValue: { [weak self] allSpeakers in
-                self?.speakers = allSpeakers
-            })
-            .store(in: &cancellables)
+        if self.speakers.isEmpty {
+            do {
+                try await FirebaseRepository<Speaker>().listen(from: .Speaker)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    }, receiveValue: { [weak self] allSpeakers in
+                        self?.speakers = allSpeakers
+                        print("Have speakers ", self?.speakers.count)
+                    })
+                    .store(in: &cancellables)
+            } catch {
+                print(error)
+            }
+        }
     }
     
     @MainActor
     @Sendable func listenForEventNotification() async {
-        FirebaseHomeListener.shared.listenForNotification()
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    return
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
-                }
-            } receiveValue: { [weak self] notificationString in
-                self?.eventNotification = notificationString
+        if eventInformation == nil {
+            do {
+                try await FirebaseRepository<EventInformation>().listen(from: .Home)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    }, receiveValue: { [weak self] eventInformations in
+                        self?.eventInformation = eventInformations.first
+                        print("Have notification ", self?.speakers.count)
+                    })
+                    .store(in: &cancellables)
+            } catch {
+                print(error)
             }
-            .store(in: &cancellables)
+        }
     }
-
-    @MainActor
-    @Sendable func listenForAboutString() async {
-        FirebaseHomeListener.shared.listenForAboutString()
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    return
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
-                }
-            } receiveValue: { [weak self] about in
-                self?.aboutString = about
-            }
-            .store(in: &cancellables)
-    }
+    
     
     @MainActor
     @Sendable func listenForSponsors() async {
@@ -127,65 +114,65 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allSponsors in
                         self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
-                        print("Have sponsors ", self?.sponsors.count)
+                        print("Have sponsors \(self?.sponsors.count)")
                     })
                     .store(in: &cancellables)
             } catch {
                 print(error)
             }
-        } else {
-            print("Already listening for sponsors")
         }
-//        FirebaseSponsorListener.shared.listenForSponsors()
-//            .sink(receiveCompletion: { completion in
-//                switch completion {
-//                case .finished:
-//                    return
-//                case .failure(let error):
-//                    print("Error: \(error.localizedDescription)")
-//                }
-//            }, receiveValue: { [weak self] allSponsors in
-//                self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
-//            })
-//            .store(in: &cancellables)
     }
     
     @MainActor
     @Sendable func listenForLocations() async {
-        FirebaseLocationListener.shared.listenForLocations()
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    return
-                case .failure(let error):
-                    print("Error fetching locations: \(error.localizedDescription)")
-                }
-            } receiveValue: { [weak self] locations in
-                self?.locations = locations
+        if self.locations.isEmpty {
+            do {
+                try await FirebaseRepository<Location>().listen(from: .Location)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    }, receiveValue: { [weak self] allLocations in
+                        self?.locations = allLocations
+                        print("Have locations ", self?.sessions.count)
+                    })
+                    .store(in: &cancellables)
+            } catch {
+                print(error)
             }
-            .store(in: &cancellables)
+        }
     }
     
     @MainActor
     @Sendable func listenForInfoItems() async {
-        FirebaseAppSettingsListener.shared.listenForInfoItems()
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    return
-                case .failure(let error):
-                    print("Error fetching locations: \(error.localizedDescription)")
-                }
-            } receiveValue: { [weak self] infoItems in
-                self?.infoItems = infoItems.sorted(by: { $0.name < $1.name })
+        if self.infoItems.isEmpty {
+            do {
+                try await FirebaseRepository<InformationItem>().listen(from: .InformationItem)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    }, receiveValue: { [weak self] infoItems in
+                        self?.infoItems = infoItems
+                        print("Have sessios ", self?.sessions.count)
+                    })
+                    .store(in: &cancellables)
+            } catch {
+                print(error)
             }
-            .store(in: &cancellables)
+        }
     }
-
     
-//    func saveSessions() {
-//        for session in DummyData.sessionsToSave {
-//            FirebaseSessionListener.shared.saveSession(session)
-//        }
-//    }
+    
+    //    func saveSessions() {
+    //        for session in DummyData.sessionsToSave {
+    //            FirebaseSessionListener.shared.saveSession(session)
+    //        }
+    //    }
 }

@@ -11,7 +11,8 @@ enum SessionType: Codable {
     case talk, workshop, lightningTalk
 }
 
-struct Session: Codable, Identifiable, Hashable {
+struct Session: Codable, Identifiable, Hashable, Comparable {
+    
     let id: String
     let title: String
     let content: String
@@ -22,11 +23,16 @@ struct Session: Codable, Identifiable, Hashable {
     let type: SessionType
     
     var startingDay: String {
-        startDate.dayOfTheMonth
+        startDate.dateAndWeekDay
     }
     
     var duration: String {
         "\(startDate.weekDayTime) - \(endDate.time)"
     }
+    
+    static func < (lhs: Session, rhs: Session) -> Bool {
+        lhs.startDate < rhs.startDate
+    }
+
 }
 

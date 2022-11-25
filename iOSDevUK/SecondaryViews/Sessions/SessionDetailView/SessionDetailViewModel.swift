@@ -27,7 +27,6 @@ final class SessionDetailViewModel: ObservableObject {
             } catch {
                 print("Session fetching error")
             }
-//            session = await FirebaseSessionListener.shared.getSession(with: sessionId)
         }
     }
 
@@ -55,12 +54,12 @@ final class SessionDetailViewModel: ObservableObject {
         
         do {
             let speaker = try await FirebaseRepository<Speaker>().getDocument(from: .Speaker, with: id)
+
             guard let speaker = speaker else { return }
             self.speakers?.append(speaker)
         } catch {
             print("error speaker for session")
         }
-        
     }
 
     
@@ -75,8 +74,6 @@ final class SessionDetailViewModel: ObservableObject {
             } catch {
                 print("error speaker for session")
             }
-
-//            self.location = await FirebaseLocationListener.shared.getLocation(with: session.locationId)
         }
     }
     

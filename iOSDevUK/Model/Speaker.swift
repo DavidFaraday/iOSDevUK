@@ -13,7 +13,9 @@ struct Weblink: Codable, Hashable {
     let url: String
 }
 
-struct Speaker: Codable, Identifiable, Hashable {
+struct Speaker: Codable, Identifiable, Hashable, Comparable {
+
+    
     let id: String
     let name: String
     let biography: String
@@ -24,5 +26,9 @@ struct Speaker: Codable, Identifiable, Hashable {
     
     var imageUrl: URL? {
         URL(string: imageLink)
+    }
+    
+    static func < (lhs: Speaker, rhs: Speaker) -> Bool {
+        lhs.name < rhs.name
     }
 }

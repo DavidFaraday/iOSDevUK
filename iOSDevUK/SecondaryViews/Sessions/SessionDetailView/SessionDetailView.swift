@@ -14,11 +14,7 @@ struct SessionDetailView: View {
     @StateObject private var viewModel: SessionDetailViewModel
     
     init(sessionId: String) {
-        self.init(viewModel: SessionDetailViewModel(sessionId: sessionId))
-    }
-    
-    private init(viewModel: SessionDetailViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = StateObject(wrappedValue: SessionDetailViewModel(sessionId: sessionId))
     }
     
     @ViewBuilder
@@ -126,7 +122,6 @@ struct SessionDetailView: View {
         main()
             .edgesIgnoringSafeArea(.top)
             .task {
-                //TODO: Why its called on pop
                 await viewModel.fetchSession()
                 await viewModel.fetchSpeakers()
                 await viewModel.fetchLocation()

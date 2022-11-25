@@ -22,7 +22,12 @@ struct LocationMapAnnotation: View {
             Image(systemName: ImageNames.mapPin)
                 .scaleEffect(pinTapped ? 2.5 : 2.0)
                 .foregroundStyle(.white, .blue)
-            
+                .padding(10)
+                .onTapGesture {
+                    withAnimation {
+                        pinTapped.toggle()
+                    }
+                }
             
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
@@ -35,12 +40,7 @@ struct LocationMapAnnotation: View {
                     .fixedSize()
             }
             .opacity(pinTapped ? 1.0 : 0.0)
-            .offset(y: pinTapped ? 15 : 0)
-        }
-        .onTapGesture {
-            withAnimation {
-                pinTapped.toggle()
-            }
+            .offset(y: pinTapped ? 5 : -10)
         }
     }
 }

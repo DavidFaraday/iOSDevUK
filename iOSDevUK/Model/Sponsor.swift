@@ -41,7 +41,7 @@ enum SponsorCategory: String, Codable, Comparable, Hashable {
 
 }
 
-struct Sponsor: Codable, Identifiable, Equatable, Hashable {
+struct Sponsor: Codable, Identifiable, Equatable, Hashable, Comparable {
     let id: String
     let name: String
     let tagline: String
@@ -57,4 +57,9 @@ struct Sponsor: Codable, Identifiable, Equatable, Hashable {
     var imageUrl: URL? {
         URL(string: imageLink ?? "")
     }
+    
+    static func < (lhs: Sponsor, rhs: Sponsor) -> Bool {
+        lhs.sponsorCategory < rhs.sponsorCategory
+    }
+    
 }

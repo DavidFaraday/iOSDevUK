@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AppInformationView: View {
-    
-    
+    @EnvironmentObject var viewModel: BaseViewModel
+
     var body: some View {
         
         VStack(spacing: 20) {
@@ -25,12 +25,12 @@ struct AppInformationView: View {
             Text("Some of the artwork uses icons from @glyphish(www.glyphish.com).")
             Text("Other images by Neil & Chris.")
             
-            Button("Email the developer") {
-                //TODO: add email link
+            Button("Contact the developer") {
+                viewModel.showTwitterAccount("@Dave_iOSDev")
             }
             
             Button("Contact @digibol") {
-                //TODO: Add twitter link
+                viewModel.showTwitterAccount("@digibol")
             }
 
             Spacer()

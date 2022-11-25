@@ -19,8 +19,6 @@ final class SessionRowViewModel: ObservableObject {
             } catch {
                 print("error speaker for session")
             }
-
-//            self.location = await FirebaseLocationListener.shared.getLocation(with: id)
         }
     }
 }

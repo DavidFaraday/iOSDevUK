@@ -30,7 +30,8 @@ struct LocationObject: Codable {
     let locations: [Location]
 }
 
-struct Location: Codable, Identifiable, Hashable {
+struct Location: Codable, Identifiable, Hashable, Comparable {
+    
     let id: String
     let name: String
     let note: String
@@ -47,6 +48,11 @@ struct Location: Codable, Identifiable, Hashable {
     static func ==(lhs: Location, rhs: Location) -> Bool {
         lhs.id == rhs.id
     }
+    
+    static func < (lhs: Location, rhs: Location) -> Bool {
+        lhs.name < rhs.name
+    }
+
     
     var imageUrl: URL? {
         URL(string: imageLink ?? "")

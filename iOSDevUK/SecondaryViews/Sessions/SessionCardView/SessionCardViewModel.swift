@@ -26,7 +26,6 @@ final class SessionCardViewModel: ObservableObject {
             for id in session.speakerIds {
                 do {
                     let speaker = try await FirebaseRepository<Speaker>().getDocument(from: .Speaker, with: id)
-    //                let speaker = await FirebaseSpeakerListener.shared.getSpeaker(with: id)
                     guard let speaker = speaker else { return }
                     tempSpeakers.append(speaker)
                 } catch {
@@ -46,14 +45,12 @@ final class SessionCardViewModel: ObservableObject {
             } catch {
                 print("error speaker for session")
             }
-            
-//            self.location = await FirebaseLocationListener.shared.getLocation(with: session.locationId)
         }
     }
     
     func speakerNames(from speakers: [Speaker]) -> String {
 
-        let sortedNames = speakers.sorted { $0.name < $1.name }
+        let sortedNames = speakers.sorted()
         
         var joinedNames = ""
         joinedNames.append(sortedNames.map{ "\($0.name)" }.joined(separator: ", "))
