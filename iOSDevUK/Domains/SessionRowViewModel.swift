@@ -15,7 +15,7 @@ final class SessionRowViewModel: ObservableObject {
         guard let id = id else { return }
         if location == nil {
             do {
-                self.location = try await FirebaseRepository<Location>().getDocument(from: .Location, with: id)
+                self.location = try await FirebaseRepository().getDocument(from: .Location, with: id)
             } catch {
                 print("error speaker for session")
             }

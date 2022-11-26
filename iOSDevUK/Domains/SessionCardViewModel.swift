@@ -5,10 +5,12 @@
 //  Created by David Kababyan on 07/10/2022.
 //
 
+import Factory
 import SwiftUI
 
 final class SessionCardViewModel: ObservableObject {
-    
+    @Injected(Container.firebaseRepository) private var firebaseRepository
+
     @Published private(set) var session: Session
     @Published private(set) var speakers: [Speaker]?
     @Published private(set) var location: Location?
@@ -25,7 +27,7 @@ final class SessionCardViewModel: ObservableObject {
                     
             for id in session.speakerIds {
                 do {
-                    let speaker = try await FirebaseRepository<Speaker>().getDocument(from: .Speaker, with: id)
+                    let speaker: Speaker? = try await firebaseRepository.getDocument(from: .Speaker, with: id)
                     guard let speaker = speaker else { return }
                     tempSpeakers.append(speaker)
                 } catch {
@@ -41,7 +43,7 @@ final class SessionCardViewModel: ObservableObject {
     @Sendable func fetchLocation() async {
         if location == nil {
             do {
-                self.location = try await FirebaseRepository<Location>().getDocument(from: .Location, with: session.locationId)
+                self.location = try await firebaseRepository.getDocument(from: .Location, with: session.locationId)
             } catch {
                 print("error speaker for session")
             }

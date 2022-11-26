@@ -5,11 +5,13 @@
 //  Created by David Kababyan on 10/09/2022.
 //
 
-import SwiftUI
+import Factory
 import Combine
+import SwiftUI
 
 class BaseViewModel: ObservableObject {
     @Environment(\.openURL) var openURL
+    @Injected(Container.firebaseRepository) private var firebaseRepository
     
     @Published private(set) var eventInformation: EventInformation?
     @Published private(set) var sessions: [Session] = []
@@ -30,11 +32,21 @@ class BaseViewModel: ObservableObject {
         self.openURL(url)
     }
     
+//    @MainActor
+//    func testing() async {
+//        do {
+//            self.sessions  = try await firebaseRepository.getDocuments(from: .Session) ?? []
+//            print(sessions.count)
+//        } catch {
+//            print(error)
+//        }
+//    }
+    
     @MainActor
     @Sendable func listenForSessions() async {
         if self.sessions.isEmpty {
             do {
-                try await FirebaseRepository<Session>().listen(from: .Session)
+                try await firebaseRepository.listen(from: .Session)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
@@ -44,6 +56,7 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allSessions in
                         self?.sessions = allSessions.sorted()
+                        print("sessions ", allSessions.count)
                     })
                     .store(in: &cancellables)
             } catch {
@@ -56,7 +69,7 @@ class BaseViewModel: ObservableObject {
     @Sendable func listenForSpeakers() async {
         if self.speakers.isEmpty {
             do {
-                try await FirebaseRepository<Speaker>().listen(from: .Speaker)
+                try await firebaseRepository.listen(from: .Speaker)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
@@ -66,6 +79,8 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allSpeakers in
                         self?.speakers = allSpeakers
+                        print("speakers ", allSpeakers.count)
+
                     })
                     .store(in: &cancellables)
             } catch {
@@ -78,7 +93,7 @@ class BaseViewModel: ObservableObject {
     @Sendable func listenForEventNotification() async {
         if eventInformation == nil {
             do {
-                try await FirebaseRepository<EventInformation>().listen(from: .AppInformation)
+                try await firebaseRepository.listen(from: .AppInformation)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
@@ -101,7 +116,7 @@ class BaseViewModel: ObservableObject {
     @Sendable func listenForSponsors() async {
         if self.sponsors.isEmpty {
             do {
-                try await FirebaseRepository<Sponsor>().listen(from: .Sponsor)
+                try await firebaseRepository.listen(from: .Sponsor)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
@@ -123,7 +138,8 @@ class BaseViewModel: ObservableObject {
     @Sendable func listenForLocations() async {
         if self.locations.isEmpty {
             do {
-                try await FirebaseRepository<Location>().listen(from: .Location)
+                
+                try await firebaseRepository.listen(from: .Location)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
@@ -133,6 +149,7 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allLocations in
                         self?.locations = allLocations
+                        print("locations ", allLocations.count)
                     })
                     .store(in: &cancellables)
             } catch {
@@ -145,7 +162,7 @@ class BaseViewModel: ObservableObject {
     @Sendable func listenForInfoItems() async {
         if self.infoItems.isEmpty {
             do {
-                try await FirebaseRepository<InformationItem>().listen(from: .InformationItem)
+                try await firebaseRepository.listen(from: .InformationItem)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
@@ -155,6 +172,7 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] infoItems in
                         self?.infoItems = infoItems
+                        print("info ", infoItems.count)
                     })
                     .store(in: &cancellables)
             } catch {

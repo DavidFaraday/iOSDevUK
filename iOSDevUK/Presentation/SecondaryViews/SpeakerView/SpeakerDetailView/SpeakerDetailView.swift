@@ -79,7 +79,7 @@ struct SpeakerDetailView: View {
             .bold()
             .padding(.vertical, 10)
         
-        ForEach(viewModel.sessions) { session in
+        ForEach(viewModel.sessions ?? []) { session in
             
             NavigationLink(value: Destination.session(session)) {
                 sessionsRaw(session: session)

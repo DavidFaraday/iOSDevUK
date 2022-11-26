@@ -16,11 +16,20 @@ enum FirebaseError: Error {
 }
 
 
-final class FirebaseRepository<T : Codable>: NSObject {
-        
-    func getDocuments(from collection: FCollectionReference) async throws -> [T]? {
+protocol FirebaseRepositoryProtocol {
+    func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]?
+    func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]?
+    func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]?
+    func getDocument<T: Codable>(from collection: FCollectionReference, with id: String) async throws -> T?
+    func listen<T: Codable>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error>
+    func deleteDocument(with id: String, from collection: FCollectionReference)
+}
 
-        return try await withCheckedThrowingContinuation { continuation in
+final class FirebaseRepository: FirebaseRepositoryProtocol {
+    
+    func getDocuments<T>(from collection: FCollectionReference) async throws -> [T]? where T : Codable {
+
+        try await withCheckedThrowingContinuation { continuation in
 
             FirebaseReference(collection).getDocuments { querySnapshot, error in
                 if let error = error {
@@ -41,10 +50,9 @@ final class FirebaseRepository<T : Codable>: NSObject {
             }
         }
     }
-
-    func getDocuments(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? {
-
-        return try await withCheckedThrowingContinuation { continuation in
+    
+    func getDocuments<T>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? where T : Codable {
+        try await withCheckedThrowingContinuation { continuation in
 
             FirebaseReference(collection).whereField(field, isEqualTo: value).getDocuments { querySnapshot, error in
                 if let error = error {
@@ -65,11 +73,11 @@ final class FirebaseRepository<T : Codable>: NSObject {
             }
         }
     }
+    
+    
+    func getDocuments<T>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? where T : Codable {
 
-
-    func getDocuments(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {
-
-        return try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { continuation in
 
             FirebaseReference(collection).whereField(field, arrayContains: value).getDocuments { querySnapshot, error in
                 if let error = error {
@@ -91,9 +99,9 @@ final class FirebaseRepository<T : Codable>: NSObject {
         }
     }
     
-    func getDocument(from collection: FCollectionReference, with id: String) async throws -> T? {
+    func getDocument<T>(from collection: FCollectionReference, with id: String) async throws -> T? where T : Codable {
 
-        return try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { continuation in
 
             FirebaseReference(collection).document(id).getDocument { querySnapshot, error in
                 if let error = error {
@@ -114,8 +122,8 @@ final class FirebaseRepository<T : Codable>: NSObject {
     }
 
     
-    func listen(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error> {
-
+    func listen<T>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error> where T : Codable {
+        
         let subject = PassthroughSubject<[T], Error>()
         
         FirebaseReference(collection).addSnapshotListener { querySnapshot, error in
@@ -154,3 +162,29 @@ final class FirebaseRepository<T : Codable>: NSObject {
         FirebaseReference(collection).document(id).delete()
     }
 }
+
+
+//class FBR: FirebaseRepositoryProtocol {
+//    func getDocuments<T>(from collection: FCollectionReference) async throws -> [T]? where T : Codable {
+//        try await withCheckedThrowingContinuation { continuation in
+//
+//            FirebaseReference(collection).getDocuments { querySnapshot, error in
+//                if let error = error {
+//                    continuation.resume(throwing: error)
+//                    return
+//                }
+//
+//                guard let documents = querySnapshot?.documents else {
+//                    continuation.resume(returning: nil)
+//                    return
+//                }
+//
+//                let result = documents.compactMap { queryDocumentSnapshot -> T? in
+//                    return try? queryDocumentSnapshot.data(as: T.self)
+//                }
+//
+//                continuation.resume(returning: result)
+//            }
+//        }
+//    }
+//}

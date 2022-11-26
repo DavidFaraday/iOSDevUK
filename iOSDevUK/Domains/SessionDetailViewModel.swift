@@ -5,11 +5,13 @@
 //  Created by David Kababyan on 03/10/2022.
 //
 
+import Factory
 import Foundation
 import CoreData
 
 final class SessionDetailViewModel: ObservableObject {
-    
+    @Injected(Container.firebaseRepository) private var firebaseRepository
+
     @Published private(set) var session: Session?
     @Published private(set) var speakers: [Speaker]?
     @Published private(set) var location: Location?
@@ -23,7 +25,7 @@ final class SessionDetailViewModel: ObservableObject {
     func fetchSession() async {
         if session == nil {
             do {
-                session = try await FirebaseRepository<Session>().getDocument(from: .Session, with: sessionId)
+                session = try await firebaseRepository.getDocument(from: .Session, with: sessionId)
             } catch {
                 print("Session fetching error")
             }
@@ -53,7 +55,7 @@ final class SessionDetailViewModel: ObservableObject {
     private func fetchSpeaker(with id: String) async {
         
         do {
-            let speaker = try await FirebaseRepository<Speaker>().getDocument(from: .Speaker, with: id)
+            let speaker: Speaker? = try await firebaseRepository.getDocument(from: .Speaker, with: id)
 
             guard let speaker = speaker else { return }
             self.speakers?.append(speaker)
@@ -70,7 +72,7 @@ final class SessionDetailViewModel: ObservableObject {
 
         if location == nil {
             do {
-                self.location = try await FirebaseRepository<Location>().getDocument(from: .Location, with: session.locationId)
+                self.location = try await firebaseRepository.getDocument(from: .Location, with: session.locationId)
             } catch {
                 print("error speaker for session")
             }
@@ -89,7 +91,6 @@ final class SessionDetailViewModel: ObservableObject {
         cdSession.startDateName = session.startingDay
         cdSession.locationName = location?.name
         cdSession.locationId = location?.id
-        
         
         do {
             try moc.save()
