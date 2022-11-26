@@ -52,7 +52,6 @@ struct Location: Codable, Identifiable, Hashable, Comparable {
     static func < (lhs: Location, rhs: Location) -> Bool {
         lhs.name < rhs.name
     }
-
     
     var imageUrl: URL? {
         URL(string: imageLink ?? "")

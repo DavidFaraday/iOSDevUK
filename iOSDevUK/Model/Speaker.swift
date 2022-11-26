@@ -15,7 +15,6 @@ struct Weblink: Codable, Hashable {
 
 struct Speaker: Codable, Identifiable, Hashable, Comparable {
 
-    
     let id: String
     let name: String
     let biography: String

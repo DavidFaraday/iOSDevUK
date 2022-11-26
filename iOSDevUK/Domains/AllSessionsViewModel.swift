@@ -18,16 +18,17 @@ final class AllSessionsViewModel: ObservableObject {
     
     @MainActor
     func setCurrentDate() {
-        let currentDay = Calendar.current.dateComponents([. month], from: Date())
-
+        let currentDayMonth = Calendar.current.dateComponents([.month, .day], from: Date())
+        
         for session in sessions {
-            let sessionStartDay = Calendar.current.dateComponents([. month], from: session.startDate)
-            
-            if currentDay == sessionStartDay {
+            let sessionDayMont = Calendar.current.dateComponents([.month, .day], from: session.startDate)
+
+            if currentDayMonth == sessionDayMont {
                 selectedDate = session.startingDay
                 return
             }
         }
+        
         selectedDate = sessions.first?.startingDay ?? ""
     }
 }

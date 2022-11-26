@@ -52,7 +52,7 @@ extension Date {
     
     var dayAndMonth: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMM"
+        dateFormatter.dateFormat = "d MMMM"
         return dateFormatter.string(from: self)
     }
     

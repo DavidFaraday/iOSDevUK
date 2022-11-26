@@ -9,6 +9,6 @@ import Foundation
 
 extension String {
     var removeDigits: String {
-        self.components(separatedBy: CharacterSet.decimalDigits).joined()
+        components(separatedBy: CharacterSet.decimalDigits).joined()
     }
 }

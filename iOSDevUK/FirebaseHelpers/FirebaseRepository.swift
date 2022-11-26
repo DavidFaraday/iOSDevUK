@@ -18,7 +18,7 @@ enum FirebaseError: Error {
 
 final class FirebaseRepository<T : Codable>: NSObject {
         
-    func getDocument(from collection: FCollectionReference) async throws -> [T]? {
+    func getDocuments(from collection: FCollectionReference) async throws -> [T]? {
 
         return try await withCheckedThrowingContinuation { continuation in
 
@@ -42,7 +42,7 @@ final class FirebaseRepository<T : Codable>: NSObject {
         }
     }
 
-    func getDocument(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? {
+    func getDocuments(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? {
 
         return try await withCheckedThrowingContinuation { continuation in
 
@@ -67,7 +67,7 @@ final class FirebaseRepository<T : Codable>: NSObject {
     }
 
 
-    func getDocument(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {
+    func getDocuments(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {
 
         return try await withCheckedThrowingContinuation { continuation in
 
@@ -92,6 +92,7 @@ final class FirebaseRepository<T : Codable>: NSObject {
     }
     
     func getDocument(from collection: FCollectionReference, with id: String) async throws -> T? {
+
         return try await withCheckedThrowingContinuation { continuation in
 
             FirebaseReference(collection).document(id).getDocument { querySnapshot, error in
@@ -114,7 +115,7 @@ final class FirebaseRepository<T : Codable>: NSObject {
 
     
     func listen(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error> {
-        
+
         let subject = PassthroughSubject<[T], Error>()
         
         FirebaseReference(collection).addSnapshotListener { querySnapshot, error in
@@ -132,25 +133,24 @@ final class FirebaseRepository<T : Codable>: NSObject {
             let data = documents.compactMap {
                 try? $0.data(as: T.self)
             }
+            
             subject.send(data)
         }
         
         return subject.eraseToAnyPublisher()
     }
     
-//    func saveSession(_ session: Session) {
-//        
+//    func saveData(_ data: T, to collection: FCollectionReference) {
+//
 //        do {
-//            try FirebaseReference(.Session).document(session.id).setData(from: session)
+//            try FirebaseReference(collection).setData(from: data)
 //        }
 //        catch {
 //            print("Error saving session", error.localizedDescription)
 //        }
 //    }
-//    
-//    func deleteSession(_ session: Session) {
-//        FirebaseReference(.Session).document(session.id).delete()
-//    }
-
-
+    
+    func deleteDocument(with id: String, from collection: FCollectionReference) {
+        FirebaseReference(collection).document(id).delete()
+    }
 }

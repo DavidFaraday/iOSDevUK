@@ -43,8 +43,7 @@ class BaseViewModel: ObservableObject {
                             print("Error: \(error.localizedDescription)")
                         }
                     }, receiveValue: { [weak self] allSessions in
-                        self?.sessions = allSessions
-                        print("Have sessios ", self?.sessions.count)
+                        self?.sessions = allSessions.sorted()
                     })
                     .store(in: &cancellables)
             } catch {
@@ -67,7 +66,6 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allSpeakers in
                         self?.speakers = allSpeakers
-                        print("Have speakers ", self?.speakers.count)
                     })
                     .store(in: &cancellables)
             } catch {
@@ -80,7 +78,7 @@ class BaseViewModel: ObservableObject {
     @Sendable func listenForEventNotification() async {
         if eventInformation == nil {
             do {
-                try await FirebaseRepository<EventInformation>().listen(from: .Home)
+                try await FirebaseRepository<EventInformation>().listen(from: .AppInformation)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
@@ -90,7 +88,6 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] eventInformations in
                         self?.eventInformation = eventInformations.first
-                        print("Have notification ", self?.speakers.count)
                     })
                     .store(in: &cancellables)
             } catch {
@@ -114,7 +111,6 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allSponsors in
                         self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
-                        print("Have sponsors \(self?.sponsors.count)")
                     })
                     .store(in: &cancellables)
             } catch {
@@ -137,7 +133,6 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allLocations in
                         self?.locations = allLocations
-                        print("Have locations ", self?.sessions.count)
                     })
                     .store(in: &cancellables)
             } catch {
@@ -160,7 +155,6 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] infoItems in
                         self?.infoItems = infoItems
-                        print("Have sessios ", self?.sessions.count)
                     })
                     .store(in: &cancellables)
             } catch {
@@ -168,11 +162,4 @@ class BaseViewModel: ObservableObject {
             }
         }
     }
-    
-    
-    //    func saveSessions() {
-    //        for session in DummyData.sessionsToSave {
-    //            FirebaseSessionListener.shared.saveSession(session)
-    //        }
-    //    }
 }

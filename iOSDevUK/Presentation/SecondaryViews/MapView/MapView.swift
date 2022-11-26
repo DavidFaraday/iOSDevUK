@@ -12,10 +12,10 @@ struct MapView: View {
     @Environment(\.dismiss) private var dismiss
     
     var allLocations: [Location]
-        
+
     @State var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 52.414704, longitude: -4.080645),
-        span: MKCoordinateSpan.init(latitudeDelta: 0.03, longitudeDelta: 0.03)
+        center: CLLocationCoordinate2D(latitude: 52.41483885670968, longitude: -4.076185527558135),
+        span: MKCoordinateSpan.init(latitudeDelta: 0.025, longitudeDelta: 0.025)
     )
 
     
