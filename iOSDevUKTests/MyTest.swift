@@ -1,14 +1,14 @@
 //
-//  iOSDevUKTests.swift
+//  MyTest.swift
 //  iOSDevUKTests
 //
-//  Created by David Kababyan on 10/09/2022.
+//  Created by David Kababyan on 27/11/2022.
 //
 
 import XCTest
 @testable import iOSDevUK
 
-final class iOSDevUKTests: XCTestCase {
+final class MyTest: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

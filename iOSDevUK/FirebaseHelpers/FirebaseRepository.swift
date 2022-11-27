@@ -10,12 +10,6 @@ import FirebaseFirestoreSwift
 import Firebase
 import Combine
 
-
-enum FirebaseError: Error {
-    case badSnapshot
-}
-
-
 protocol FirebaseRepositoryProtocol {
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]?
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]?
@@ -27,7 +21,7 @@ protocol FirebaseRepositoryProtocol {
 
 final class FirebaseRepository: FirebaseRepositoryProtocol {
     
-    func getDocuments<T>(from collection: FCollectionReference) async throws -> [T]? where T : Codable {
+    func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]? {
 
         try await withCheckedThrowingContinuation { continuation in
 
@@ -51,7 +45,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
         }
     }
     
-    func getDocuments<T>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? where T : Codable {
+    func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? {
         try await withCheckedThrowingContinuation { continuation in
 
             FirebaseReference(collection).whereField(field, isEqualTo: value).getDocuments { querySnapshot, error in
@@ -75,7 +69,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     }
     
     
-    func getDocuments<T>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? where T : Codable {
+    func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {
 
         try await withCheckedThrowingContinuation { continuation in
 
@@ -99,7 +93,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
         }
     }
     
-    func getDocument<T>(from collection: FCollectionReference, with id: String) async throws -> T? where T : Codable {
+    func getDocument<T: Codable>(from collection: FCollectionReference, with id: String) async throws -> T? {
 
         try await withCheckedThrowingContinuation { continuation in
 
@@ -122,7 +116,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     }
 
     
-    func listen<T>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error> where T : Codable {
+    func listen<T: Codable>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error> {
         
         let subject = PassthroughSubject<[T], Error>()
         
