@@ -12,7 +12,7 @@ import SwiftUI
 class BaseViewModel: ObservableObject {
     @Environment(\.openURL) var openURL
     @Injected(Container.firebaseRepository) private var firebaseRepository
-    
+
     @Published private(set) var eventInformation: EventInformation?
     @Published private(set) var sessions: [Session] = []
     @Published private(set) var speakers: [Speaker] = []
@@ -56,7 +56,6 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allSessions in
                         self?.sessions = allSessions.sorted()
-                        print("sessions ", allSessions.count)
                     })
                     .store(in: &cancellables)
             } catch {
@@ -79,8 +78,6 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allSpeakers in
                         self?.speakers = allSpeakers
-                        print("speakers ", allSpeakers.count)
-
                     })
                     .store(in: &cancellables)
             } catch {
@@ -149,7 +146,6 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] allLocations in
                         self?.locations = allLocations
-                        print("locations ", allLocations.count)
                     })
                     .store(in: &cancellables)
             } catch {
@@ -172,7 +168,6 @@ class BaseViewModel: ObservableObject {
                         }
                     }, receiveValue: { [weak self] infoItems in
                         self?.infoItems = infoItems
-                        print("info ", infoItems.count)
                     })
                     .store(in: &cancellables)
             } catch {

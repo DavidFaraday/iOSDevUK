@@ -9,7 +9,7 @@ import Foundation
 import Factory
 
 extension Container {
-    static let firebaseRepository = Factory<FirebaseRepositoryProtocol>(scope: .shared) {
+    static let firebaseRepository = Factory<FirebaseRepositoryProtocol>(scope: .singleton) {
         return FirebaseRepository()
     }
 }

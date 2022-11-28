@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Factory
 
 struct HomeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
