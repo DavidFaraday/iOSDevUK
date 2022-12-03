@@ -25,7 +25,7 @@ struct SpeakerCardView: View {
         ZStack(alignment: .bottom) {
             RemoteImageView(url: speaker.imageUrl)
                 .frame(height: 170)
-                .aspectRatio(contentMode: .fit)
+                .scaledToFit()
                 .cornerRadius(15)
 
             ZStack(alignment: .leading) {
@@ -55,6 +55,6 @@ struct SpeakerCardView: View {
 
 struct SpeakerCellView_Previews: PreviewProvider {
     static var previews: some View {
-        SpeakerCardView(speaker: DummyData.speaker)
+        SpeakerCardView(speaker: DummyData.speakers[0])
     }
 }

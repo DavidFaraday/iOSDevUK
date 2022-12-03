@@ -23,9 +23,7 @@ struct RemoteImageView: View {
                     image.resizable()
                 },
                 placeholder: {
-                    Rectangle()
-                        .fill(.gray.gradient)
-                        .cornerRadius(15)
+                    ProgressView()
                 })
         }
     }

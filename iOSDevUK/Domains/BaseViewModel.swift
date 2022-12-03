@@ -50,6 +50,7 @@ class BaseViewModel: ObservableObject {
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
+                            print("finished sessions")
                             return
                         case .failure(let error):
                             print("Error: \(error.localizedDescription)")
@@ -175,4 +176,22 @@ class BaseViewModel: ObservableObject {
             }
         }
     }
+    
+//    @Sendable func getAllLocations() async {
+//        do {
+//            var locations: [NewLocation] = try await firebaseRepository.getDocuments(from: .Locations) ?? []
+//
+//            
+//            for location in locations {
+//                firebaseRepository.saveData(location, to: .Location)
+//            }
+//
+//
+//
+//            print(locations.count)
+//        } catch {
+//            print("Error getting sessions")
+//        }
+//
+//    }
 }

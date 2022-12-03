@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Factory
 
 final class SessionRowViewModel: ObservableObject {
+    @Injected(Container.firebaseRepository) private var firebaseRepository
+
     @Published private(set) var location: Location?
        
     @MainActor
@@ -15,7 +18,7 @@ final class SessionRowViewModel: ObservableObject {
         guard let id = id else { return }
         if location == nil {
             do {
-                self.location = try await FirebaseRepository().getDocument(from: .Location, with: id)
+                self.location = try await firebaseRepository.getDocument(from: .Location, with: id)
             } catch {
                 print("error speaker for session")
             }

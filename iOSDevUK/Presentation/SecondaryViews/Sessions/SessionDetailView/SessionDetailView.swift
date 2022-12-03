@@ -9,12 +9,15 @@ import SwiftUI
 import CoreData
 
 struct SessionDetailView: View {
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.managedObjectContext) var context
     
     @StateObject private var viewModel: SessionDetailViewModel
     
+    @FetchRequest var savedSession: FetchedResults<SavedSession>
+    
     init(sessionId: String) {
         _viewModel = StateObject(wrappedValue: SessionDetailViewModel(sessionId: sessionId))
+        _savedSession = FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "id = %@", sessionId))
     }
     
     @ViewBuilder
@@ -93,9 +96,13 @@ struct SessionDetailView: View {
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         Button {
-            viewModel.addToMySession(moc: moc)
+            if let savedSession = savedSession.first {
+                viewModel.removeFromMySessions(savedSession: savedSession, context: context)
+            } else {
+                viewModel.addToMySession(context: context)
+            }
         } label: {
-            Image(systemName: ImageNames.bookmark)
+            Image(systemName: savedSession.isEmpty ? ImageNames.bookmark : ImageNames.bookmarkFill)
         }
     }
 

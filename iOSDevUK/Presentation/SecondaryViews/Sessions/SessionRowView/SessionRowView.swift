@@ -38,6 +38,6 @@ struct SessionRowView: View {
 
 struct SessionRowView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionRowView(session: DummyData.session)
+        SessionRowView(session: DummyData.sessions[0])
     }
 }

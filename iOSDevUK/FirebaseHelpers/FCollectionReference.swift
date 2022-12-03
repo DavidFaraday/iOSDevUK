@@ -16,9 +16,10 @@ enum FCollectionReference: String {
     case Location
     case InformationItem
     case AppInformation
+    case Locations
 }
 
 
-func FirebaseReference(_ collectionReference: FCollectionReference) -> CollectionReference{
+func FirebaseReference(_ collectionReference: FCollectionReference) -> CollectionReference {
     return Firestore.firestore().collection(collectionReference.rawValue)
 }

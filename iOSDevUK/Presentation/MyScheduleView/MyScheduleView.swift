@@ -12,11 +12,10 @@ struct MyScheduleView: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var router: NavigationRouter
 
-    @SectionedFetchRequest(sectionIdentifier: \.startDateName, sortDescriptors: [SortDescriptor(\.startDate)], animation: .default)
+    @SectionedFetchRequest(sectionIdentifier: \.startDateName!, sortDescriptors: [SortDescriptor(\.startDate)], animation: .default)
 
-    private var records: SectionedFetchResults<String?, SavedSession>
+    private var records: SectionedFetchResults<String, SavedSession>
 
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.startDate)]) var sessions: FetchedResults<SavedSession>
 
     @StateObject private var viewModel = MyScheduleViewModel()
 
@@ -32,9 +31,17 @@ struct MyScheduleView: View {
                                 SessionRowForLocalSession(session: session)
                             }
                         }
-                        .onDelete(perform: delete)
+                        .onDelete { indexSet in
+                          withAnimation {
+                            // 4
+                            viewModel.deleteItem(
+                              for: indexSet,
+                              section: section,
+                              viewContext: moc)
+                          }
+                        }
                     } header: {
-                        SectionHeaderView(title: section.id ?? "")
+                        SectionHeaderView(title: section.id)
                             .font(.headline)
                     }
                 }
@@ -65,16 +72,6 @@ struct MyScheduleView: View {
                     }
                 }
         }
-    }
-
-    //TODO: move to VM
-    private func delete(at offsets: IndexSet) {
-        for offset in offsets {
-            let session = sessions[offset]
-            moc.delete(session)
-        }
-
-        try? moc.save()
     }
 }
 

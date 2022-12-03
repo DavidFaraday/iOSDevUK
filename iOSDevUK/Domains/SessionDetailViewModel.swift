@@ -6,21 +6,27 @@
 //
 
 import Factory
-import Foundation
+import SwiftUI
 import CoreData
 
 final class SessionDetailViewModel: ObservableObject {
     @Injected(Container.firebaseRepository) private var firebaseRepository
+//    @Environment(\.managedObjectContext) var moc
 
     @Published private(set) var session: Session?
     @Published private(set) var speakers: [Speaker]?
     @Published private(set) var location: Location?
+//    @Published private(set) var savedSessions: SavedSession?
+    
+    
     private let sessionId: String
     
     init(sessionId: String) {
         self.sessionId = sessionId
-    }
 
+//        savedSessions = try? moc.existingObject(with: sessionId) as? SavedSession
+    }
+    
     @MainActor
     func fetchSession() async {
         if session == nil {
@@ -79,10 +85,10 @@ final class SessionDetailViewModel: ObservableObject {
         }
     }
     
-    func addToMySession(moc: NSManagedObjectContext) {
+    func addToMySession(context: NSManagedObjectContext) {
         guard let session = session else { return }
 
-        let cdSession = SavedSession(context: moc)
+        let cdSession = SavedSession(context: context)
         cdSession.title = session.title
         cdSession.id = session.id
         cdSession.startDate = session.startDate
@@ -92,10 +98,17 @@ final class SessionDetailViewModel: ObservableObject {
         cdSession.locationName = location?.name
         cdSession.locationId = location?.id
         
+        DataController.save(context: context)
+    }
+    
+    func removeFromMySessions(savedSession: SavedSession, context: NSManagedObjectContext) {
+        
+        context.delete(savedSession)
+        
         do {
-            try moc.save()
+          try context.save()
         } catch {
-            print("Error saving session to CD")
+            print("error saving after delete")
         }
     }
 }

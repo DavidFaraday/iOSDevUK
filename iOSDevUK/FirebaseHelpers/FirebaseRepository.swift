@@ -20,6 +20,7 @@ protocol FirebaseRepositoryProtocol {
 }
 
 final class FirebaseRepository: FirebaseRepositoryProtocol {
+    private var cancelables = Set<AnyCancellable>()
     
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]? {
 
@@ -44,6 +45,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
             }
         }
     }
+
     
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? {
         try await withCheckedThrowingContinuation { continuation in
@@ -117,10 +119,10 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
 
     
     func listen<T: Codable>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error> {
-        print("getting from real")
+
         let subject = PassthroughSubject<[T], Error>()
         
-        FirebaseReference(collection).addSnapshotListener { querySnapshot, error in
+        let handle = FirebaseReference(collection).addSnapshotListener { querySnapshot, error in
             
             if let error = error {
                 subject.send(completion: .failure(error))
@@ -139,13 +141,17 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
             subject.send(data)
         }
         
-        return subject.eraseToAnyPublisher()
+        return subject.handleEvents(receiveCancel: {
+            handle.remove()
+        }).eraseToAnyPublisher()
     }
     
-//    func saveData(_ data: T, to collection: FCollectionReference) {
+
+    
+//    func saveData(_ data: NewLocation, to collection: FCollectionReference) {
 //
 //        do {
-//            try FirebaseReference(collection).setData(from: data)
+//            try FirebaseReference(collection).document(data.id).setData(from: data.self)
 //        }
 //        catch {
 //            print("Error saving session", error.localizedDescription)
@@ -184,7 +190,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
 //}
 
 
-final class MocFirebaseRepository: FirebaseRepositoryProtocol {
+final class MocFirebaseRepository: FirebaseRepositoryProtocol {    
     
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]? {
         print("calling moc")
@@ -198,7 +204,8 @@ final class MocFirebaseRepository: FirebaseRepositoryProtocol {
     }
     
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {
-        return nil
+        print("getting moc")
+        return [DummyData.speakers.first] as? [T]
     }
     
     func getDocument<T: Codable>(from collection: FCollectionReference, with id: String) async throws -> T? {

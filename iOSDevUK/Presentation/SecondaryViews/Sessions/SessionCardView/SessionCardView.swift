@@ -19,8 +19,8 @@ struct SessionCardView: View {
         VStack(spacing: 5) {
             ForEach(viewModel.speakers?.prefix(3) ?? []) { speaker in
                 RemoteImageView(url: speaker.imageUrl)
+                    .scaledToFill()
                     .frame(width: 40, height: 40)
-                    .aspectRatio(contentMode: .fit)
                     .clipShape(Circle())
             }
         }

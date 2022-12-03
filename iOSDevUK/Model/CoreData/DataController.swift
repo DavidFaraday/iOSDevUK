@@ -21,4 +21,15 @@ class DataController: ObservableObject {
             self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         }
     }
+    
+    static func save(context: NSManagedObjectContext) {
+        
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                print("error saving to CD")
+            }
+        }
+    }
 }

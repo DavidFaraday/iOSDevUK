@@ -14,14 +14,15 @@ import Combine
 
 final class Base_ViewModel_Test: XCTestCase {
 
-//    private var sut: BaseViewModel!
+    private var sut: SpeakerDetailViewModel!
     private var cancellables: Set<AnyCancellable>!
 
     override func setUp() {
         super.setUp()
-        cancellables = Set<AnyCancellable>()
         Container.Registrations.push()
-        Container.setupMocks()
+//        Container.setupMocks()
+        sut = SpeakerDetailViewModel(speaker: DummyData.speaker)
+        cancellables = Set<AnyCancellable>()
     }
 
     override func tearDown() {
@@ -31,21 +32,21 @@ final class Base_ViewModel_Test: XCTestCase {
 
 
     func test_FetchingSpeakersReturnSix() async {
+        Container.firebaseRepository.register(factory: { MocFirebaseRepository() } )
         //Given
         let expectation = XCTestExpectation(description: "waiting for network call")
-        let sut = BaseViewModel()
 
-        sut.$speakers
+        sut.$sessions
             .dropFirst()
             .sink { newValue in
-                XCTAssertEqual(newValue.count, 6)
+                XCTAssertEqual(newValue.count, 1)
                 expectation.fulfill()
             }
             .store(in: &cancellables)
         
         // When
         Task {
-            await sut.listenForSpeakers()
+            await sut.getSpeakerSessions()
         }
 
         // Then

@@ -25,8 +25,8 @@ struct SpeakerDetailView: View {
         HStack {
             RemoteImageView(url: viewModel.speaker.imageUrl)
                 .cornerRadius(15)
+                .scaledToFit()
                 .frame(width: 100, height: 120)
-                .aspectRatio(contentMode: .fit)
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(viewModel.speaker.name)

@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Factory
 
 final class SpeakerDetailViewModel: ObservableObject {
+    @Injected(Container.firebaseRepository) private var firebaseRepository
 
     @Environment(\.openURL) var openURL
     
@@ -21,7 +23,7 @@ final class SpeakerDetailViewModel: ObservableObject {
     @MainActor
     @Sendable func getSpeakerSessions() async {
         do {
-            sessions = try await FirebaseRepository().getDocuments(from: .Session, where: "speakerIds", arrayContains: speaker.id) ?? []
+            sessions = try await firebaseRepository.getDocuments(from: .Session, where: "speakerIds", arrayContains: speaker.id) ?? []
         } catch {
             print("Error getting sessions")
         }

@@ -14,7 +14,7 @@ struct AttendeeView: View {
     var categories: [String : [Location]] {
         .init(
             grouping: viewModel.locations,
-            by: {$0.locationTypeRecordName }
+            by: {$0.locationType.rawValue }
         )
     }
     
@@ -54,7 +54,7 @@ struct AttendeeView: View {
                     }
                 }
             } header: {
-                SectionHeaderView(title: locationName(from: key))
+                SectionHeaderView(title: Location.locationName(from: key))
                     .font(.headline)
             }
         }
