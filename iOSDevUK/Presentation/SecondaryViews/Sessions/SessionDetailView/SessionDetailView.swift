@@ -142,7 +142,7 @@ struct SessionDetailView: View {
 struct SessionDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SessionDetailView(sessionId: DummyData.session.id)
+            SessionDetailView(sessionId: DummyData.sessions[0].id)
         }
     }
 }

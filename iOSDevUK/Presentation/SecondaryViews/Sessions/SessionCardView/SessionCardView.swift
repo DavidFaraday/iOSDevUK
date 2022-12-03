@@ -87,6 +87,6 @@ struct SessionCardView: View {
 
 struct SessionCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionCardView(session: DummyData.session)
+        SessionCardView(session: DummyData.sessions[0])
     }
 }
