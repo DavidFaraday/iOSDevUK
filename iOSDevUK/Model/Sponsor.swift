@@ -46,8 +46,8 @@ struct Sponsor: Codable, Identifiable, Equatable, Hashable, Comparable {
     let id: String
     let name: String
     let tagline: String
-    let url: String?
-    let urlText: String?
+    let url: String
+    let urlText: String
     let sponsorCategory: SponsorCategory
     let imageLink: String?
     
@@ -57,6 +57,10 @@ struct Sponsor: Codable, Identifiable, Equatable, Hashable, Comparable {
     
     var imageUrl: URL? {
         URL(string: imageLink ?? "")
+    }
+    
+    var webUrl: URL? {
+        URL(string: url)
     }
     
     static func < (lhs: Sponsor, rhs: Sponsor) -> Bool {

@@ -10,21 +10,24 @@ import SwiftUI
 struct SpeakerCardView: View {
     
     private let speaker: Speaker
+    private let height: CGFloat
     private let gradient = Gradient(colors:
-                                        [.green.opacity(0.9),
+                                        [.green.opacity(1.0),
                                          .green.opacity(0.8),
                                          .green.opacity(0.7),
                                          .green.opacity(0.2),
                                          .green.opacity(0.1),
                                          .clear])
-    init(speaker: Speaker) {
+    
+    init(speaker: Speaker, height: CGFloat = 170) {
         self.speaker = speaker
+        self.height = height
     }
     
     var body: some View {
         ZStack(alignment: .bottom) {
             RemoteImageView(url: speaker.imageUrl)
-                .frame(height: 170)
+                .frame(height: height)
                 .scaledToFit()
                 .cornerRadius(15)
 
@@ -50,6 +53,7 @@ struct SpeakerCardView: View {
                     .padding(.top, 15)
             }
         }
+        .frame(height: height)
     }
 }
 

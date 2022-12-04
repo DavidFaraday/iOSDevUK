@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum SocialMedia {
+    case twitter, linkedIn
+}
+
 struct Weblink: Codable, Hashable {
     let name: String
     let recordName: String

@@ -12,24 +12,27 @@ struct AllSpeakersView: View {
     let speakers: [Speaker]
     
     let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120))
     ]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(speakers) { speaker in
-                    
-                    NavigationLink(value: Destination.speaker(speaker)) {
-                        SpeakerCardView(speaker: speaker)
+        GeometryReader { geometry in
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(speakers) { speaker in
+                        
+                        NavigationLink(value: Destination.speaker(speaker)) {
+                            SpeakerCardView(speaker: speaker,
+                                            height: geometry.size.height > geometry.size.width ? geometry.size.height / 4 : geometry.size.width / 4)
+                        }
                     }
                 }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
+            .navigationTitle("Speakers")
         }
-        .navigationTitle("Speakers")
     }
 }
 

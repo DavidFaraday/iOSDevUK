@@ -87,8 +87,13 @@ struct HomeView: View {
                     .padding(10)
             }
 
-            Button("@iOSDevUK on Twitter") { viewModel.showTwitterAccount("iOSDevUK") }
-            Button("@AberCompSci on Twitter") { viewModel.showTwitterAccount("AberCompSci") }
+            if let twitterUrl = URL(string: "https://twitter.com/iOSDevUK") {
+                Link("@iOSDevUK on Twitter", destination: twitterUrl)
+            }
+            if let twitterUrl = URL(string: "https://twitter.com/AberCompSci") {
+                Link("@AberCompSci on Twitter", destination: twitterUrl)
+            }
+
         }
         .frame(maxWidth: .infinity)
         .padding(10)

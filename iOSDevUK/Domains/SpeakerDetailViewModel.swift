@@ -10,8 +10,6 @@ import Factory
 
 final class SpeakerDetailViewModel: ObservableObject {
     @Injected(Container.firebaseRepository) private var firebaseRepository
-
-    @Environment(\.openURL) var openURL
     
     @Published private(set) var sessions:[Session] = []
     @Published private(set) var speaker: Speaker
@@ -27,16 +25,5 @@ final class SpeakerDetailViewModel: ObservableObject {
         } catch {
             print("Error getting sessions")
         }
-    }
-
-    
-    func showTwitterAccount() {
-        guard let url = URL(string: "https://twitter.com/\(speaker.twitterId)") else { return }
-        self.openURL(url)
-    }
-
-    func showLinkedInAccount() {
-        guard let url = URL(string: "https://linkedIn.com/in/\(speaker.linkedIn)") else { return }
-        self.openURL(url)
     }
 }

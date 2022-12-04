@@ -13,10 +13,13 @@ struct SponsorsView: View {
     var body: some View {
         List {
             ForEach(viewModel.sponsors, id: \.id) { sponsor in
-                SponsorRow(sponsor: sponsor)
-                    .onTapGesture {
-                        viewModel.goTo(link: sponsor.url ?? "")
+                if let url = sponsor.webUrl {
+                    Link(destination: url) {
+                        SponsorRow(sponsor: sponsor)
                     }
+                } else {
+                    SponsorRow(sponsor: sponsor)
+                }
             }
         }
         .listStyle(.plain)

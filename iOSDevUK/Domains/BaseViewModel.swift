@@ -10,7 +10,6 @@ import Combine
 import SwiftUI
 
 class BaseViewModel: ObservableObject {
-    @Environment(\.openURL) var openURL
     @Injected(Container.firebaseRepository) private var firebaseRepository
 
     @Published private(set) var eventInformation: EventInformation?
@@ -21,26 +20,6 @@ class BaseViewModel: ObservableObject {
     @Published private(set) var infoItems: [InformationItem] = []
     
     private var cancellables: Set<AnyCancellable> = []
-    
-    func showTwitterAccount(_ twitterId: String) {
-        guard let url = URL(string: "https://twitter.com/\(twitterId)") else { return }
-        self.openURL(url)
-    }
-    
-    func goTo(link: String) {
-        guard let url = URL(string: "\(link)") else { return }
-        self.openURL(url)
-    }
-    
-//    @MainActor
-//    func testing() async {
-//        do {
-//            self.sessions  = try await firebaseRepository.getDocuments(from: .Session) ?? []
-//            print(sessions.count)
-//        } catch {
-//            print(error)
-//        }
-//    }
     
     @MainActor
     @Sendable func listenForSessions() async {
@@ -176,22 +155,4 @@ class BaseViewModel: ObservableObject {
             }
         }
     }
-    
-//    @Sendable func getAllLocations() async {
-//        do {
-//            var locations: [NewLocation] = try await firebaseRepository.getDocuments(from: .Locations) ?? []
-//
-//            
-//            for location in locations {
-//                firebaseRepository.saveData(location, to: .Location)
-//            }
-//
-//
-//
-//            print(locations.count)
-//        } catch {
-//            print("Error getting sessions")
-//        }
-//
-//    }
 }

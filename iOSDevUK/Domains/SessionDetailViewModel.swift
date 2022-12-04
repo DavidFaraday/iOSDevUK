@@ -11,20 +11,15 @@ import CoreData
 
 final class SessionDetailViewModel: ObservableObject {
     @Injected(Container.firebaseRepository) private var firebaseRepository
-//    @Environment(\.managedObjectContext) var moc
 
     @Published private(set) var session: Session?
     @Published private(set) var speakers: [Speaker]?
     @Published private(set) var location: Location?
-//    @Published private(set) var savedSessions: SavedSession?
-    
     
     private let sessionId: String
     
     init(sessionId: String) {
         self.sessionId = sessionId
-
-//        savedSessions = try? moc.existingObject(with: sessionId) as? SavedSession
     }
     
     @MainActor

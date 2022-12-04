@@ -26,14 +26,13 @@ struct AttendeeView: View {
     @ViewBuilder
     private func informationView() -> some View {
         ForEach(viewModel.infoItems) { item in
-            HStack {
+            if let url = item.url {
+                Link(destination: url) {
+                    Text(item.name)
+                        .fontWeight(.semibold)
+                }
+            } else {
                 Text(item.name)
-                Spacer()
-                Image(systemName: ImageNames.chevronRight)
-                    .font(.caption2)
-            }
-            .onTapGesture {
-                viewModel.goTo(link: item.link)
             }
         }
     }

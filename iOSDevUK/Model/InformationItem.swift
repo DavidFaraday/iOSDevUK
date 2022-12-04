@@ -13,6 +13,10 @@ struct InformationItem: Codable, Identifiable, Comparable {
     let name: String
     let link: String
     
+    var url: URL? {
+        URL(string: link)
+    }
+    
     static func < (lhs: InformationItem, rhs: InformationItem) -> Bool {
         lhs.name < rhs.name
     }

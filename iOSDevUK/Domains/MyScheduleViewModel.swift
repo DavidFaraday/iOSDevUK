@@ -15,5 +15,4 @@ final class MyScheduleViewModel: ObservableObject {
 
         DataController.save(context: viewContext)
     }
-
 }

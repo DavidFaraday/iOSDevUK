@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpeakerDetailView: View {
     @StateObject private var viewModel: SpeakerDetailViewModel
+    @EnvironmentObject var baseViewModel: BaseViewModel
     
     init(speaker: Speaker) {
         self.init(viewModel: SpeakerDetailViewModel(speaker: speaker))
@@ -32,10 +33,14 @@ struct SpeakerDetailView: View {
                 Text(viewModel.speaker.name)
                     .font(.title)
                     .minimumScaleFactor(0.7)
-                
-                Button("Twitter \(viewModel.speaker.twitterId)", action: viewModel.showTwitterAccount)
-                Button("LinkedIn", action: viewModel.showLinkedInAccount)
 
+                if let twitterUrl = URL(string: "https://twitter.com/\(viewModel.speaker.twitterId)") {
+                    Link("Twitter \(viewModel.speaker.twitterId)", destination: twitterUrl)
+                }
+                if let linkedInUrl = URL(string: "https://linkedIn.com/in/\(viewModel.speaker.twitterId)") {
+                    Link("LinkedIn \(viewModel.speaker.twitterId)", destination: linkedInUrl)
+                }
+                
                 Spacer()
             }
             .padding(.bottom, 20)

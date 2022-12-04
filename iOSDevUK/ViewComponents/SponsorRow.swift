@@ -19,7 +19,7 @@ struct SponsorRow: View {
             RemoteImageView(url: sponsor.imageUrl)
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
-                .aspectRatio(contentMode: .fill)
+                .aspectRatio(contentMode: .fit)
             
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 10)
