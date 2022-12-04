@@ -19,7 +19,7 @@ struct SpeakerCardView: View {
                                          .green.opacity(0.1),
                                          .clear])
     
-    init(speaker: Speaker, height: CGFloat = 170) {
+    init(speaker: Speaker, height: CGFloat = 180) {
         self.speaker = speaker
         self.height = height
     }

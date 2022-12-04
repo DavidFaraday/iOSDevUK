@@ -21,32 +21,31 @@ final class SessionCardViewModel: ObservableObject {
     
     @MainActor
     @Sendable func fetchSpeakers() async {
-        if speakers == nil {
+        guard speakers == nil else { return }
 
-            var tempSpeakers: [Speaker] = []
-                    
-            for id in session.speakerIds {
-                do {
-                    let speaker: Speaker? = try await firebaseRepository.getDocument(from: .Speaker, with: id)
-                    guard let speaker = speaker else { return }
-                    tempSpeakers.append(speaker)
-                } catch {
-                    print("error speaker for session")
-                }
+        var tempSpeakers: [Speaker] = []
+                
+        for id in session.speakerIds {
+            do {
+                let speaker: Speaker? = try await firebaseRepository.getDocument(from: .Speaker, with: id)
+                guard let speaker = speaker else { return }
+                tempSpeakers.append(speaker)
+            } catch {
+                print("error speaker for session")
             }
-            
-            self.speakers = tempSpeakers
         }
+        
+        self.speakers = tempSpeakers
     }
 
     @MainActor
     @Sendable func fetchLocation() async {
-        if location == nil {
-            do {
-                self.location = try await firebaseRepository.getDocument(from: .Location, with: session.locationId)
-            } catch {
-                print("error speaker for session")
-            }
+        guard location == nil else { return }
+        
+        do {
+            self.location = try await firebaseRepository.getDocument(from: .Location, with: session.locationId)
+        } catch {
+            print("error speaker for session")
         }
     }
     

@@ -11,6 +11,12 @@ enum AppError: Error {
     case failedToFetchLocations
 }
 
+struct LocationObject: Codable {
+    let locations: [Location]
+}
+
+
+
 //MARK: - used only to get files from JSON and save to Firebase
 final class NetworkService {
     

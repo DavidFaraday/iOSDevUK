@@ -9,9 +9,7 @@ import Foundation
 import SwiftUI
 
 enum SponsorCategory: String, Codable, Comparable, Hashable {
-    case Platinum
-    case Gold
-    case Silver
+    case Platinum, Gold, Silver
     
     var sortOrder: Int {
         switch self {
@@ -27,11 +25,11 @@ enum SponsorCategory: String, Codable, Comparable, Hashable {
     var color: Color {
         switch self {
         case .Platinum:
-            return Color("platinumColor")
+            return Color(ColorNames.platinumColor)
         case .Gold:
-            return Color("goldColor")
+            return Color(ColorNames.goldColor)
         case .Silver:
-            return Color("silverColor")
+            return Color(ColorNames.silverColor)
         }
     }
     
@@ -51,10 +49,6 @@ struct Sponsor: Codable, Identifiable, Equatable, Hashable, Comparable {
     let sponsorCategory: SponsorCategory
     let imageLink: String?
     
-    static func ==(lhs: Sponsor, rhs: Sponsor) -> Bool {
-        lhs.id == rhs.id
-    }
-    
     var imageUrl: URL? {
         URL(string: imageLink ?? "")
     }
@@ -67,4 +61,7 @@ struct Sponsor: Codable, Identifiable, Equatable, Hashable, Comparable {
         lhs.sponsorCategory < rhs.sponsorCategory
     }
     
+    static func ==(lhs: Sponsor, rhs: Sponsor) -> Bool {
+        lhs.id == rhs.id
+    }
 }

@@ -164,32 +164,6 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
 }
 
 
-//class FBR: FirebaseRepositoryProtocol {
-//    func getDocuments<T>(from collection: FCollectionReference) async throws -> [T]? where T : Codable {
-//        try await withCheckedThrowingContinuation { continuation in
-//
-//            FirebaseReference(collection).getDocuments { querySnapshot, error in
-//                if let error = error {
-//                    continuation.resume(throwing: error)
-//                    return
-//                }
-//
-//                guard let documents = querySnapshot?.documents else {
-//                    continuation.resume(returning: nil)
-//                    return
-//                }
-//
-//                let result = documents.compactMap { queryDocumentSnapshot -> T? in
-//                    return try? queryDocumentSnapshot.data(as: T.self)
-//                }
-//
-//                continuation.resume(returning: result)
-//            }
-//        }
-//    }
-//}
-
-
 final class MocFirebaseRepository: FirebaseRepositoryProtocol {    
     
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]? {

@@ -24,12 +24,12 @@ final class SessionDetailViewModel: ObservableObject {
     
     @MainActor
     func fetchSession() async {
-        if session == nil {
-            do {
-                session = try await firebaseRepository.getDocument(from: .Session, with: sessionId)
-            } catch {
-                print("Session fetching error")
-            }
+        guard session == nil else { return }
+
+        do {
+            session = try await firebaseRepository.getDocument(from: .Session, with: sessionId)
+        } catch {
+            print("Session fetching error")
         }
     }
 
@@ -69,15 +69,16 @@ final class SessionDetailViewModel: ObservableObject {
 
     @MainActor
     func fetchLocation() async {
-        guard let session = session else { return }
 
-        if location == nil {
-            do {
-                self.location = try await firebaseRepository.getDocument(from: .Location, with: session.locationId)
-            } catch {
-                print("error speaker for session")
-            }
+        guard let session = session else { return }
+        guard location == nil else { return }
+
+        do {
+            self.location = try await firebaseRepository.getDocument(from: .Location, with: session.locationId)
+        } catch {
+            print("error speaker for session")
         }
+
     }
     
     func addToMySession(context: NSManagedObjectContext) {

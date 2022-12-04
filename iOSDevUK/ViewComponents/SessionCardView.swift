@@ -45,7 +45,9 @@ struct SessionCardView: View {
                 Spacer()
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(viewModel.location?.name ?? "")
+                    if let locationName = viewModel.location?.name {
+                        Text(locationName)
+                    }
                     Text(viewModel.session.duration)
                 }
                 .font(.subheadline)
@@ -68,7 +70,7 @@ struct SessionCardView: View {
         VStack {
             ZStack(alignment: .topLeading) {
                 Rectangle()
-                    .fill(Color("primary").gradient)
+                    .fill(Color(ColorNames.primary).gradient)
                     .background(.ultraThinMaterial)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
 

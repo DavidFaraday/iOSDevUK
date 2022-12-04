@@ -26,7 +26,7 @@ struct SponsorRow: View {
                     .frame(height: 50)
                     .foregroundColor(sponsor.sponsorCategory.color)
                 
-                Text("\(sponsor.name)")
+                Text(sponsor.name)
                     .font(.title2)
             }
             Text(sponsor.tagline)

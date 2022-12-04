@@ -24,4 +24,11 @@ struct ImageNames {
     static let chevronRight = "chevron.right"
 }
 
+struct ColorNames {
+    static let goldColor = "goldColor"
+    static let platinumColor = "platinumColor"
+    static let silverColor = "silverColor"
+    static let primary = "primary"
+    static let secondary = "secondary"
+}
 

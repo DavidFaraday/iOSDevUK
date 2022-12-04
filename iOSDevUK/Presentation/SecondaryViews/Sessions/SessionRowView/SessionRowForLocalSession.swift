@@ -25,7 +25,7 @@ struct SessionRowForLocalSession: View {
                     .font(.title3)
                 
                 if let name = viewModel.location?.name {
-                    Text("\(name)")
+                    Text(name)
                         .font(.caption)
                         .foregroundColor(.gray)
                 }

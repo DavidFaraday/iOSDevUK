@@ -67,22 +67,4 @@ extension Date {
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
-
-    
-//    func dateFrom(_ dateString: String) -> Date {
-//        let dateStr = dateString.components(separatedBy: "T").first ?? ""
-//        let timeStr = dateString.components(separatedBy: "T").last ?? "09:00"
-//
-//        let combinedDateAndTime = dateStr + " " + timeStr
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//
-//        return dateFormatter.date(from: combinedDateAndTime)?.toCurrentTimezone() ?? Date()
-//    }
-//
-//    func toCurrentTimezone() -> Date {
-//        let timeZoneDifference =
-//        TimeInterval(TimeZone.current.secondsFromGMT())
-//        return self.addingTimeInterval(timeZoneDifference)
-//    }
 }

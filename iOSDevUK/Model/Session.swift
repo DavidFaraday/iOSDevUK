@@ -33,6 +33,5 @@ struct Session: Codable, Identifiable, Hashable, Comparable {
     static func < (lhs: Session, rhs: Session) -> Bool {
         lhs.startDate < rhs.startDate
     }
-
 }
 

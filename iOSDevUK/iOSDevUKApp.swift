@@ -11,8 +11,9 @@ import FirebaseDatabase
 
 @main
 struct iOSDevUKApp: App {
-    let dataController = DataController()
-    let baseViewModel = BaseViewModel()
+    @StateObject var dataController = DataController()
+    @StateObject var baseViewModel = BaseViewModel()
+    @StateObject var router = NavigationRouter()
 
     init() {
         FirebaseApp.configure()
@@ -21,7 +22,8 @@ struct iOSDevUKApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarView()
+                .environmentObject(router)
                 .environmentObject(baseViewModel)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }

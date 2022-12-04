@@ -14,8 +14,8 @@ struct SessionRowView: View {
     var body: some View {
         HStack {
             VStack {
-                Text("\(session.startDate.time)")
-                Text("\(session.endDate.time)")
+                Text(session.startDate.time)
+                Text(session.endDate.time)
             }
             .font(.caption)
             .foregroundColor(.gray)
@@ -23,9 +23,11 @@ struct SessionRowView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(session.title)
                     .font(.title3)
-                Text("\(viewModel.location?.name ?? "")")
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                if let locationName = viewModel.location?.name {
+                    Text(locationName)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
             }
             .minimumScaleFactor(0.8)
             .lineLimit(2)

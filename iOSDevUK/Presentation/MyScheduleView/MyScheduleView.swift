@@ -9,13 +9,11 @@ import SwiftUI
 import CoreData
 
 struct MyScheduleView: View {
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.managedObjectContext) var context
     @EnvironmentObject var router: NavigationRouter
 
     @SectionedFetchRequest(sectionIdentifier: \.startDateName!, sortDescriptors: [SortDescriptor(\.startDate)], animation: .default)
-
     private var records: SectionedFetchResults<String, SavedSession>
-
 
     @StateObject private var viewModel = MyScheduleViewModel()
 
@@ -33,11 +31,10 @@ struct MyScheduleView: View {
                         }
                         .onDelete { indexSet in
                           withAnimation {
-                            // 4
                             viewModel.deleteItem(
                               for: indexSet,
                               section: section,
-                              viewContext: moc)
+                              viewContext: context)
                           }
                         }
                     } header: {

@@ -9,10 +9,12 @@ import SwiftUI
 import MapKit
 
 
-
-//not needed for the app, used only to get locations from JSON and save to Firebase
-struct LocationObject: Codable {
-    let locations: [Location]
+enum LocationType: String, Codable {
+    case au
+    case transport
+    case ev
+    case pubs
+    case sm
 }
 
 struct Location: Codable, Identifiable, Hashable, Comparable {
@@ -57,13 +59,5 @@ struct Location: Codable, Identifiable, Hashable, Comparable {
             return ""
         }
     }
-}
-
-enum LocationType: String, Codable {
-    case au
-    case transport
-    case ev
-    case pubs
-    case sm
 }
 
