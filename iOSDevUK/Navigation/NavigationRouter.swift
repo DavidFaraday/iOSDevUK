@@ -11,7 +11,7 @@ final class NavigationRouter: ObservableObject {
     @Published var homePath: [Destination] = []
     @Published var schedulePath: [Destination] = []
     @Published var attendeePath: [Destination] = []
-    @Published var infoPath: [Destination] = []
+    @Published var infoPath: [InfoDestination] = []
 }
 
 
@@ -23,4 +23,11 @@ enum Destination: Hashable {
     case sponsor
     case locations([Location])
     case savedSession(SavedSession)
+}
+
+enum InfoDestination: Hashable {
+    case inclusivity
+    case sponsors
+    case aboutApp
+    case appInformation
 }

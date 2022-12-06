@@ -13,13 +13,24 @@ struct InfoView: View {
     var body: some View {
         NavigationStack(path: $router.infoPath) {
             Form {
-                NavigationLink(destination: InclusivityView()) { Text("Inclusivity") }
-                NavigationLink(destination: SponsorsView()) { Text("Sponsors") }
-                NavigationLink(destination: AboutView()) { Text("About iOSDevUK") }
-                NavigationLink(destination: AppInformationView()) { Text("App Information") }
-                //NavigationLink(destination: AdminView()) { Text("Admin Section") }
+                NavigationLink("Inclusivity", value: InfoDestination.inclusivity)
+                NavigationLink("Sponsors", value: InfoDestination.sponsors)
+                NavigationLink("About iOSDevUK", value: InfoDestination.aboutApp)
+                NavigationLink("App Information", value: InfoDestination.appInformation)
             }
             .navigationTitle("Info")
+            .navigationDestination(for: InfoDestination.self) { destination in
+                switch destination {
+                case .inclusivity:
+                    InclusivityView()
+                case .sponsors:
+                    SponsorsView()
+                case .aboutApp:
+                    AboutView()
+                case .appInformation:
+                    AppInformationView()
+                }
+            }
         }
     }
 }
