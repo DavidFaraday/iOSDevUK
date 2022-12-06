@@ -32,3 +32,18 @@ struct ColorNames {
     static let secondary = "secondary"
 }
 
+struct TwitterAccounts {
+    static let developer = "\(BaseUrl.twitter)Dave_iOSDev"
+    static let aberCompSci = "\(BaseUrl.twitter)AberCompSci"
+    static let iOSDevUK = "\(BaseUrl.twitter)iOSDevUK"
+    static let digidol = "\(BaseUrl.twitter)digidol"
+}
+
+struct BaseUrl {
+    static let twitter = "https://twitter.com/"
+    static let linkedIn = "https://linkedIn.com/in/"
+}
+
+struct FirebaseKeys {
+    static let speakerIds = "speakerIds"
+}

@@ -58,7 +58,7 @@ struct HomeView: View {
             HStack {
                 Text("Speakers") .font(.title2).bold()
                 Spacer()
-                NavigationLink("All Sessions", value: Destination.speakers(viewModel.speakers))
+                NavigationLink("All Speakers", value: Destination.speakers(viewModel.speakers))
             }
             
             ScrollView(.horizontal) {
@@ -87,10 +87,10 @@ struct HomeView: View {
                     .padding(10)
             }
 
-            if let twitterUrl = URL(string: "https://twitter.com/iOSDevUK") {
+            if let twitterUrl = URL(string: TwitterAccounts.iOSDevUK) {
                 Link("@iOSDevUK on Twitter", destination: twitterUrl)
             }
-            if let twitterUrl = URL(string: "https://twitter.com/AberCompSci") {
+            if let twitterUrl = URL(string: TwitterAccounts.aberCompSci) {
                 Link("@AberCompSci on Twitter", destination: twitterUrl)
             }
 

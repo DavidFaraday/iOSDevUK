@@ -26,11 +26,11 @@ struct AppInformationView: View {
                 Text("Some of the artwork uses icons from @glyphish(www.glyphish.com).")
                 Text("Other images by Neil & Chris.")
                 
-                if let twitterUrl = URL(string: "https://twitter.com/Dave_iOSDev") {
+                if let twitterUrl = URL(string: TwitterAccounts.developer) {
                     Link("Contact the developer", destination: twitterUrl)
                 }
-                if let twitterUrl = URL(string: "https://twitter.com/digibol") {
-                    Link("Contact @digibol", destination: twitterUrl)
+                if let twitterUrl = URL(string: TwitterAccounts.digidol) {
+                    Link("Contact @digidol", destination: twitterUrl)
                 }
 
                 Spacer()
@@ -55,6 +55,5 @@ struct AppInformationView_Previews: PreviewProvider {
                     .preferredColorScheme(.light)
             }
         }
-        
     }
 }

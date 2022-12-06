@@ -34,11 +34,11 @@ struct SpeakerDetailView: View {
                     .font(.title)
                     .minimumScaleFactor(0.7)
 
-                if let twitterUrl = URL(string: "https://twitter.com/\(viewModel.speaker.twitterId)") {
-                    Link("Twitter \(viewModel.speaker.twitterId)", destination: twitterUrl)
+                if let twitterUrl = URL(string: "\(BaseUrl.twitter)\(viewModel.speaker.twitterId)") {
+                    Link("Twitter: @\(viewModel.speaker.twitterId)", destination: twitterUrl)
                 }
-                if let linkedInUrl = URL(string: "https://linkedIn.com/in/\(viewModel.speaker.twitterId)") {
-                    Link("LinkedIn \(viewModel.speaker.twitterId)", destination: linkedInUrl)
+                if let linkedInUrl = URL(string: "\(BaseUrl.linkedIn)\(viewModel.speaker.linkedIn)") {
+                    Link("LinkedIn: \(viewModel.speaker.linkedIn)", destination: linkedInUrl)
                 }
                 
                 Spacer()
