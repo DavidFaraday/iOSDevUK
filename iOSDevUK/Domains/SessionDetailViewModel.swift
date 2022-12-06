@@ -65,7 +65,6 @@ final class SessionDetailViewModel: ObservableObject {
         }
     }
 
-    
 
     @MainActor
     func fetchLocation() async {
@@ -78,7 +77,6 @@ final class SessionDetailViewModel: ObservableObject {
         } catch {
             print("error speaker for session")
         }
-
     }
     
     func addToMySession(context: NSManagedObjectContext) {
@@ -98,13 +96,7 @@ final class SessionDetailViewModel: ObservableObject {
     }
     
     func removeFromMySessions(savedSession: SavedSession, context: NSManagedObjectContext) {
-        
         context.delete(savedSession)
-        
-        do {
-          try context.save()
-        } catch {
-            print("error saving after delete")
-        }
+        DataController.save(context: context)
     }
 }
