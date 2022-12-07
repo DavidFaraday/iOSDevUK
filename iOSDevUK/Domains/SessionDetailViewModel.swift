@@ -8,18 +8,31 @@
 import Factory
 import SwiftUI
 import CoreData
+import Combine
 
 final class SessionDetailViewModel: ObservableObject {
     @Injected(Container.firebaseRepository) private var firebaseRepository
+    @Published private(set) var fetchError: Error?
 
     @Published private(set) var session: Session?
     @Published private(set) var speakers: [Speaker]?
     @Published private(set) var location: Location?
     
+    @Published var showError = false
+    private var cancellables: Set<AnyCancellable> = []
+
     private let sessionId: String
     
+
     init(sessionId: String) {
         self.sessionId = sessionId
+        
+        $fetchError
+            .dropFirst()
+            .sink { [weak self] _ in
+            self?.showError = true
+            }
+            .store(in: &cancellables)
     }
     
     @MainActor
@@ -28,8 +41,8 @@ final class SessionDetailViewModel: ObservableObject {
 
         do {
             session = try await firebaseRepository.getDocument(from: .Session, with: sessionId)
-        } catch {
-            print("Session fetching error")
+        } catch (let error) {
+            fetchError = error
         }
     }
 
@@ -60,8 +73,8 @@ final class SessionDetailViewModel: ObservableObject {
 
             guard let speaker = speaker else { return }
             self.speakers?.append(speaker)
-        } catch {
-            print("error speaker for session")
+        } catch (let error) {
+            fetchError = error
         }
     }
 
@@ -74,9 +87,14 @@ final class SessionDetailViewModel: ObservableObject {
 
         do {
             self.location = try await firebaseRepository.getDocument(from: .Location, with: session.locationId)
-        } catch {
-            print("error speaker for session")
+        } catch (let error) {
+            fetchError = error
         }
+    }
+    
+    @MainActor
+    func resetError() {
+        self.fetchError = nil
     }
     
     func addToMySession(context: NSManagedObjectContext) {

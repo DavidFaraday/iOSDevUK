@@ -106,6 +106,9 @@ struct SpeakerDetailView: View {
         }
         .scrollIndicators(.hidden)
         .padding()
+        .alert(isPresented: $viewModel.showError, content: {
+            Alert(title: Text("Error!"), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+        })
     }
     
     var body: some View {

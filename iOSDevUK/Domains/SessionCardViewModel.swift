@@ -10,6 +10,7 @@ import SwiftUI
 
 final class SessionCardViewModel: ObservableObject {
     @Injected(Container.firebaseRepository) private var firebaseRepository
+    @Published private(set) var fetchError: Error?
 
     @Published private(set) var session: Session
     @Published private(set) var speakers: [Speaker]?
@@ -30,8 +31,8 @@ final class SessionCardViewModel: ObservableObject {
                 let speaker: Speaker? = try await firebaseRepository.getDocument(from: .Speaker, with: id)
                 guard let speaker = speaker else { return }
                 tempSpeakers.append(speaker)
-            } catch {
-                print("error speaker for session")
+            } catch (let error) {
+                fetchError = error
             }
         }
         
@@ -44,8 +45,8 @@ final class SessionCardViewModel: ObservableObject {
         
         do {
             self.location = try await firebaseRepository.getDocument(from: .Location, with: session.locationId)
-        } catch {
-            print("error speaker for session")
+        } catch (let error) {
+            fetchError = error
         }
     }
     

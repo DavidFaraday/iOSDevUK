@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-enum AppError: Error {
-    case failedToFetchLocations
-}
 
 struct LocationObject: Codable {
     let locations: [Location]
@@ -31,7 +28,7 @@ final class NetworkService {
         let locationsUrlString = baseUrlString.appending("/locations.json")
 
         guard let dataUrl = URL(string: locationsUrlString) else {
-            throw AppError.failedToFetchLocations
+            throw AppError.unknownError
         }
         
         do {
@@ -44,7 +41,7 @@ final class NetworkService {
             let locationObject = try JSONDecoder().decode(LocationObject.self, from: data)
             return locationObject.locations
         } catch {
-            throw AppError.failedToFetchLocations
+            throw AppError.unknownError
         }
     }
 }

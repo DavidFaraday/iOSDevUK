@@ -11,6 +11,7 @@ import SwiftUI
 
 class BaseViewModel: ObservableObject {
     @Injected(Container.firebaseRepository) private var firebaseRepository
+    @Published private(set) var fetchError: Error?
 
     @Published private(set) var eventInformation: EventInformation?
     @Published private(set) var sessions: [Session] = []
@@ -24,7 +25,6 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSessions() async {
         guard self.sessions.isEmpty else { return }
-        
         do {
             try await firebaseRepository.listen(from: .Session)
                 .sink(receiveCompletion: { completion in
@@ -38,8 +38,8 @@ class BaseViewModel: ObservableObject {
                     self?.sessions = allSessions.sorted()
                 })
                 .store(in: &cancellables)
-        } catch {
-            print(error)
+        } catch (let error) {
+            fetchError = error
         }
     }
     
@@ -60,8 +60,8 @@ class BaseViewModel: ObservableObject {
                     self?.speakers = allSpeakers
                 })
                 .store(in: &cancellables)
-        } catch {
-            print(error)
+        } catch (let error) {
+            fetchError = error
         }
     }
     
@@ -82,8 +82,8 @@ class BaseViewModel: ObservableObject {
                     self?.eventInformation = eventInformations.first
                 })
                 .store(in: &cancellables)
-        } catch {
-            print(error)
+        } catch (let error) {
+            fetchError = error
         }
     }
     
@@ -105,8 +105,8 @@ class BaseViewModel: ObservableObject {
                     self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
                 })
                 .store(in: &cancellables)
-        } catch {
-            print(error)
+        } catch (let error) {
+            fetchError = error
         }
         
     }
@@ -129,8 +129,8 @@ class BaseViewModel: ObservableObject {
                     self?.locations = allLocations
                 })
                 .store(in: &cancellables)
-        } catch {
-            print(error)
+        } catch (let error) {
+            fetchError = error
         }
         
     }
@@ -152,8 +152,8 @@ class BaseViewModel: ObservableObject {
                     self?.infoItems = infoItems
                 })
                 .store(in: &cancellables)
-        } catch {
-            print(error)
+        } catch (let error) {
+            fetchError = error
         }
     }
 }

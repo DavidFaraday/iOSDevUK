@@ -10,7 +10,7 @@ import Factory
 
 final class SessionRowViewModel: ObservableObject {
     @Injected(Container.firebaseRepository) private var firebaseRepository
-
+    @Published private(set) var fetchError: Error?
     @Published private(set) var location: Location?
        
     @MainActor
@@ -19,8 +19,8 @@ final class SessionRowViewModel: ObservableObject {
         if location == nil {
             do {
                 self.location = try await firebaseRepository.getDocument(from: .Location, with: id)
-            } catch {
-                print("error speaker for session")
+            } catch (let error) {
+                fetchError = error
             }
         }
     }

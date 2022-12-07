@@ -28,7 +28,7 @@ struct SessionDetailView: View {
                 .frame(height: 250)
                 .aspectRatio(contentMode: .fit)
             
-            Text(viewModel.session?.title ?? "Loading...")
+            Text(viewModel.session?.title ?? "")
                 .font(.largeTitle)
                 .foregroundColor(.white)
                 .padding([.horizontal, .bottom])
@@ -44,7 +44,7 @@ struct SessionDetailView: View {
                 .bold()
                 .padding(.vertical)
             
-            Text(viewModel.session?.content ?? "Loading...")
+            Text(viewModel.session?.content ?? "")
                 .multilineTextAlignment(.leading)
                 .padding(.bottom, 10)
         }
@@ -123,6 +123,9 @@ struct SessionDetailView: View {
             }
         }
         .scrollIndicators(.hidden)
+        .alert(isPresented: $viewModel.showError, content: {
+            Alert(title: Text("Error!"), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+        })
     }
     
     var body: some View {
@@ -136,6 +139,7 @@ struct SessionDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }
+        
     }
 }
 

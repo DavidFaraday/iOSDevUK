@@ -51,6 +51,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
         try await withCheckedThrowingContinuation { continuation in
 
             FirebaseReference(collection).whereField(field, isEqualTo: value).getDocuments { querySnapshot, error in
+
                 if let error = error {
                     continuation.resume(throwing: error)
                     return
@@ -100,6 +101,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
         try await withCheckedThrowingContinuation { continuation in
 
             FirebaseReference(collection).document(id).getDocument { querySnapshot, error in
+
                 if let error = error {
                     continuation.resume(throwing: error)
                     return
@@ -130,7 +132,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
             }
             
             guard let documents = querySnapshot?.documents else {
-                subject.send(completion: .failure(FirebaseError.badSnapshot))
+                subject.send(completion: .failure(AppError.badSnapshot))
                 return
             }
             
