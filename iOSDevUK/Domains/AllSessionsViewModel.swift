@@ -18,6 +18,8 @@ final class AllSessionsViewModel: ObservableObject {
     
     @MainActor
     func setCurrentDate() {
+        guard !sessions.isEmpty else { return }
+        
         let currentDayMonth = Calendar.current.dateComponents([.month, .day], from: Date())
         
         for session in sessions {

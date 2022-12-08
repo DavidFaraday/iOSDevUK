@@ -2,35 +2,45 @@
 //  iOSDevUKTests.swift
 //  iOSDevUKTests
 //
-//  Created by David Kababyan on 27/11/2022.
+//  Created by David Kababyan on 08/12/2022.
 //
 
 import XCTest
+import Factory
+import Combine
+
 @testable import iOSDevUK
 
 final class iOSDevUKTests: XCTestCase {
 
+    private var cancellables: Set<AnyCancellable> = []
+
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        Container.Registrations.push()
+        Container.setupMocks()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        Container.Registrations.pop()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func test_FetchSpeakerSessions_ReturnOne() {
+        let sut = SpeakerDetailViewModel(speaker: DummyData.speakers[0])
+        
+        let expectation = expectation(description: "waiting for network call")
+        
+        sut.$sessions
+            .dropFirst()
+            .sink { newValue in
+                XCTAssertEqual(newValue.count, 1)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        Task {
+            await sut.getSpeakerSessions()
         }
+        
+        waitForExpectations(timeout: 0.1)
     }
-
 }

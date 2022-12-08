@@ -119,6 +119,7 @@ struct SpeakerDetailView: View {
 }
 
 struct SpeakerDetailView_Previews: PreviewProvider {
+
     static var previews: some View {
         NavigationView {
             SpeakerDetailView(speaker: DummyData.speakers[0])
