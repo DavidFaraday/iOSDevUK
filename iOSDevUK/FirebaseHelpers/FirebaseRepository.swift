@@ -74,7 +74,6 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {
         try await withCheckedThrowingContinuation { continuation in
-            print("real func")
 
             FirebaseReference(collection).whereField(field, arrayContains: value).getDocuments { querySnapshot, error in
                 if let error = error {
@@ -175,7 +174,7 @@ final class MocFirebaseRepository: FirebaseRepositoryProtocol {
     }
     
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]? {
-        print("calling moc")
+
         return try await withCheckedThrowingContinuation { continuation in
             continuation.resume(returning: DummyData.speakers as! [T])
         }
@@ -186,7 +185,6 @@ final class MocFirebaseRepository: FirebaseRepositoryProtocol {
     }
     
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {
-        print("getting moc")
         
         return objectsToReturn as? [T]
     }
@@ -196,7 +194,6 @@ final class MocFirebaseRepository: FirebaseRepositoryProtocol {
     }
     
     func listen<T: Codable>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error> {
-        print("calling moc Listen")
 
         let subject = PassthroughSubject<[T], Error>()
         
