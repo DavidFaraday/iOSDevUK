@@ -11,7 +11,7 @@ import Combine
 @testable import iOSDevUK
 
 final class AllSessionsViewModelTest: XCTestCase {
-
+    
     private var cancellables: Set<AnyCancellable> = []
 
     override func setUpWithError() throws {

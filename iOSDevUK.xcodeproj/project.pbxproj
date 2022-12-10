@@ -69,7 +69,7 @@
 		EF1782592941EC0200EFFB2D /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EF1782582941EC0200EFFB2D /* FirebaseDatabaseSwift */; };
 		EF17825B2941EC0200EFFB2D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EF17825A2941EC0200EFFB2D /* FirebaseFirestoreSwift */; };
 		EF17825D2941EC0200EFFB2D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EF17825C2941EC0200EFFB2D /* FirebaseStorage */; };
-		EF1782832941F2D800EFFB2D /* iOSDevUKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1782822941F2D800EFFB2D /* iOSDevUKTests.swift */; };
+		EF1782832941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1782822941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift */; };
 		EF17828B2941F3C300EFFB2D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EF17828A2941F3C300EFFB2D /* FirebaseDatabase */; };
 		EF17828D2941F3C300EFFB2D /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EF17828C2941F3C300EFFB2D /* FirebaseDatabaseSwift */; };
 		EF17828F2941F3C300EFFB2D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EF17828E2941F3C300EFFB2D /* FirebaseFirestore */; };
@@ -77,6 +77,7 @@
 		EF1782932941F3C300EFFB2D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EF1782922941F3C300EFFB2D /* FirebaseStorage */; };
 		EF1782952941F58400EFFB2D /* FactorySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1782942941F58400EFFB2D /* FactorySetup.swift */; };
 		EF178297294207D900EFFB2D /* AllSessionsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */; };
+		EF3470992944F18700B24854 /* SessionRowViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */; };
 		EF8AC50F2932389300E19859 /* ServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AC50E2932389300E19859 /* ServiceDependencies.swift */; };
 		EF8AC511293350FA00E19859 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AC510293350FA00E19859 /* AppErrors.swift */; };
 		EF999124292A1DD900B4DB8B /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF999123292A1DD900B4DB8B /* NavigationRouter.swift */; };
@@ -156,9 +157,10 @@
 		EF0DADBF2930A535000B74E7 /* EventInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInformation.swift; sourceTree = "<group>"; };
 		EF17827B2941F08600EFFB2D /* iOSDevUK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSDevUK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1782802941F2D800EFFB2D /* iOSDevUKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSDevUKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF1782822941F2D800EFFB2D /* iOSDevUKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDevUKTests.swift; sourceTree = "<group>"; };
+		EF1782822941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewModelTests.swift; sourceTree = "<group>"; };
 		EF1782942941F58400EFFB2D /* FactorySetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorySetup.swift; sourceTree = "<group>"; };
 		EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsViewModelTest.swift; sourceTree = "<group>"; };
+		EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModelTest.swift; sourceTree = "<group>"; };
 		EF8AC50E2932389300E19859 /* ServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDependencies.swift; sourceTree = "<group>"; };
 		EF8AC510293350FA00E19859 /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		EF999123292A1DD900B4DB8B /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				63F7E12128CD034800B2E1B7 /* FirebaseHelpers */,
 				6366D5CD28D0B74A0051542E /* Extensions */,
 				63E584102917A9080034F0D7 /* Utils */,
+				EF34709A2944FAA400B24854 /* MOC */,
 				63E584112917A9240034F0D7 /* Unused */,
 				63F7E0BD28CC942200B2E1B7 /* Assets.xcassets */,
 				63F7E0C728CC942200B2E1B7 /* Info.plist */,
@@ -439,7 +442,6 @@
 			isa = PBXGroup;
 			children = (
 				EF8AC510293350FA00E19859 /* AppErrors.swift */,
-				63E9C55628EF3FB400710C8F /* DummyData.swift */,
 				EF0DADBF2930A535000B74E7 /* EventInformation.swift */,
 				63E9C55828EF419A00710C8F /* InformationItem.swift */,
 				63F7E11F28CD022E00B2E1B7 /* Location.swift */,
@@ -472,8 +474,9 @@
 		EF1782812941F2D800EFFB2D /* iOSDevUKTests */ = {
 			isa = PBXGroup;
 			children = (
-				EF1782822941F2D800EFFB2D /* iOSDevUKTests.swift */,
+				EF1782822941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift */,
 				EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */,
+				EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */,
 				EF1782942941F58400EFFB2D /* FactorySetup.swift */,
 			);
 			path = iOSDevUKTests;
@@ -484,6 +487,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF34709A2944FAA400B24854 /* MOC */ = {
+			isa = PBXGroup;
+			children = (
+				63E9C55628EF3FB400710C8F /* DummyData.swift */,
+			);
+			path = MOC;
 			sourceTree = "<group>";
 		};
 		EF8AC5082931F7CF00E19859 /* Domains */ = {
@@ -704,9 +715,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF3470992944F18700B24854 /* SessionRowViewModelTest.swift in Sources */,
 				EF1782952941F58400EFFB2D /* FactorySetup.swift in Sources */,
 				EF178297294207D900EFFB2D /* AllSessionsViewModelTest.swift in Sources */,
-				EF1782832941F2D800EFFB2D /* iOSDevUKTests.swift in Sources */,
+				EF1782832941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

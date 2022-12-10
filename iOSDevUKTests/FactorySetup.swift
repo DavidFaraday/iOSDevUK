@@ -10,7 +10,7 @@ import Factory
 @testable import iOSDevUK
 
 extension Container {
-    static func setupMocks() {
-        firebaseRepository.register(factory: { MocFirebaseRepository() })
+    static func setupMocks(objectsToReturn: [Codable], shouldReturnError: Bool = false) {
+        firebaseRepository.register(factory: { MocFirebaseRepository(objectsToReturn: objectsToReturn, shouldReturnError: shouldReturnError) })
     }
 }

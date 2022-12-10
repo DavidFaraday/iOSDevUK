@@ -1,5 +1,5 @@
 //
-//  iOSDevUKTests.swift
+//  SpeakerDetailViewModelTests.swift
 //  iOSDevUKTests
 //
 //  Created by David Kababyan on 08/12/2022.
@@ -11,20 +11,20 @@ import Combine
 
 @testable import iOSDevUK
 
-final class iOSDevUKTests: XCTestCase {
+final class SpeakerDetailViewModelTests: XCTestCase {
 
     private var cancellables: Set<AnyCancellable> = []
 
     override func setUpWithError() throws {
         Container.Registrations.push()
-        Container.setupMocks()
+        Container.setupMocks(objectsToReturn: DummyData.sessions)
     }
 
     override func tearDownWithError() throws {
         Container.Registrations.pop()
     }
 
-    func test_FetchSpeakerSessions_ReturnOne() {
+    func test_FetchSpeakerSessions_ReturnTwo() {
         let sut = SpeakerDetailViewModel(speaker: DummyData.speakers[0])
         
         let expectation = expectation(description: "waiting for network call")
@@ -32,7 +32,7 @@ final class iOSDevUKTests: XCTestCase {
         sut.$sessions
             .dropFirst()
             .sink { newValue in
-                XCTAssertEqual(newValue.count, 1)
+                XCTAssertEqual(newValue.count, 2)
                 expectation.fulfill()
             }
             .store(in: &cancellables)
