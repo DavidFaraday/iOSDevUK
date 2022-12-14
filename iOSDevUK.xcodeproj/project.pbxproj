@@ -78,6 +78,7 @@
 		EF1782952941F58400EFFB2D /* FactorySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1782942941F58400EFFB2D /* FactorySetup.swift */; };
 		EF178297294207D900EFFB2D /* AllSessionsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */; };
 		EF3470992944F18700B24854 /* SessionRowViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */; };
+		EF34709C2945C73F00B24854 /* SessionDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34709B2945C73F00B24854 /* SessionDetailViewModelTest.swift */; };
 		EF8AC50F2932389300E19859 /* ServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AC50E2932389300E19859 /* ServiceDependencies.swift */; };
 		EF8AC511293350FA00E19859 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AC510293350FA00E19859 /* AppErrors.swift */; };
 		EF999124292A1DD900B4DB8B /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF999123292A1DD900B4DB8B /* NavigationRouter.swift */; };
@@ -161,6 +162,7 @@
 		EF1782942941F58400EFFB2D /* FactorySetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorySetup.swift; sourceTree = "<group>"; };
 		EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsViewModelTest.swift; sourceTree = "<group>"; };
 		EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModelTest.swift; sourceTree = "<group>"; };
+		EF34709B2945C73F00B24854 /* SessionDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewModelTest.swift; sourceTree = "<group>"; };
 		EF8AC50E2932389300E19859 /* ServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDependencies.swift; sourceTree = "<group>"; };
 		EF8AC510293350FA00E19859 /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		EF999123292A1DD900B4DB8B /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
@@ -474,8 +476,9 @@
 		EF1782812941F2D800EFFB2D /* iOSDevUKTests */ = {
 			isa = PBXGroup;
 			children = (
-				EF1782822941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift */,
 				EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */,
+				EF34709B2945C73F00B24854 /* SessionDetailViewModelTest.swift */,
+				EF1782822941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift */,
 				EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */,
 				EF1782942941F58400EFFB2D /* FactorySetup.swift */,
 			);
@@ -719,6 +722,7 @@
 				EF1782952941F58400EFFB2D /* FactorySetup.swift in Sources */,
 				EF178297294207D900EFFB2D /* AllSessionsViewModelTest.swift in Sources */,
 				EF1782832941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift in Sources */,
+				EF34709C2945C73F00B24854 /* SessionDetailViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

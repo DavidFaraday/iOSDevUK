@@ -22,15 +22,15 @@ final class SessionDetailViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     private let sessionId: String
-    
 
-    init(sessionId: String) {
+    init(sessionId: String, session: Session? = nil) {
         self.sessionId = sessionId
+        self.session = session
         
         $fetchError
             .dropFirst()
             .sink { [weak self] _ in
-            self?.showError = true
+                self?.showError = true
             }
             .store(in: &cancellables)
     }

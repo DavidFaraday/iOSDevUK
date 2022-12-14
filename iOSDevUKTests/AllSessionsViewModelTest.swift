@@ -72,4 +72,17 @@ final class AllSessionsViewModelTest: XCTestCase {
 
         sut.setCurrentDate()
     }
+    
+    @MainActor
+    func test_SetCurrentDateWithEmptySessionReturns() {
+        let sut = AllSessionsViewModel(sessions: [])
+        
+        sut.$selectedDate
+            .sink { newValue in
+                XCTAssertEqual(newValue, "")
+            }
+            .store(in: &cancellables)
+
+        sut.setCurrentDate()
+    }
 }

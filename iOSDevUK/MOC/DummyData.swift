@@ -45,6 +45,7 @@ final class MocFirebaseRepository: FirebaseRepositoryProtocol {
     }
     
     func getDocument<T: Codable>(from collection: FCollectionReference, with id: String) async throws -> T? {
+        print("sending back")
         if shouldReturnError {
             throw AppError.badSnapshot
         } else {
@@ -86,9 +87,9 @@ struct DummyData {
     ]
     
     static let sessions = [
-        Session(id: UUID().uuidString, title: "Lorem Ipsum has been the industry's", content: contentForSession, startDate: Date().date(with: 2022, month: 11, day: 10), endDate: Date(), locationId: "376A09A8-6E1D-404E-AAD6-05C8E950DF32", speakerIds: ["1667F0A8-A62E-4C66-8957-96B08550DB4D"], type: .talk),
+        Session(id: "Session123", title: "Lorem Ipsum has been the industry's", content: contentForSession, startDate: Date().date(with: 2022, month: 11, day: 10), endDate: Date(), locationId: "376A09A8-6E1D-404E-AAD6-05C8E950DF32", speakerIds: ["1667F0A8-A62E-4C66-8957-96B08550DB4D"], type: .talk),
         
-        Session(id: UUID().uuidString, title: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout", content: contentForSession, startDate: Date(), endDate: Date(), locationId: "376A09A8-6E1D-404E-AAD6-05C8E950DF32", speakerIds: ["1667F0A8-A62E-4C66-8957-96B08550DB4D", "C3DD9203-7B66-492B-AE8B-FB77168FAED5"], type: .talk)
+        Session(id: "Session321", title: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout", content: contentForSession, startDate: Date(), endDate: Date(), locationId: "376A09A8-6E1D-404E-AAD6-05C8E950DF32", speakerIds: ["1667F0A8-A62E-4C66-8957-96B08550DB4D", "C3DD9203-7B66-492B-AE8B-FB77168FAED5"], type: .talk)
     ]
 
         
