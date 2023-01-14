@@ -9,15 +9,15 @@ import SwiftUI
 
 struct AdminView: View {
     @EnvironmentObject var router: NavigationRouter
-    let firebaseAuth = FirebaseAuthentication.shared
 
+    @StateObject private var viewModel = AdminViewModel()
+    
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         Button("Log Out") {
-            firebaseAuth.logOutUser { error in
-                if error == nil {
-                    router.infoPath.removeLast()
-                }
+            Task {
+                await viewModel.logOutUser()
+                router.infoPath.removeLast()
             }
         }
     }
@@ -33,7 +33,9 @@ struct AdminView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
         }
-
+        .alert(isPresented: $viewModel.showError, content: {
+            Alert(title: Text("Error!"), message: Text(viewModel.logoutError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+        })
     }
 }
 

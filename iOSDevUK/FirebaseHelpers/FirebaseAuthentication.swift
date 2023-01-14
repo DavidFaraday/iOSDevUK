@@ -17,28 +17,28 @@ class FirebaseAuthentication {
     var hasCurrentUser: Bool {
         Auth.auth().currentUser != nil
     }
-
     
-    func loginUserWith(email: String, password: String, completion: @escaping (_ error: Error?) -> Void) {
+    func loginUserWith(email: String, password: String) async throws -> Bool {
         
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            
-            print("logged in with ", authResult?.user.email)
-            completion(error)
+        try await withCheckedThrowingContinuation { continuation in
+
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let error = error {                     continuation.resume(throwing: error)
+                    return
+                }
+                continuation.resume(returning: true)
+            }
         }
     }
 
-    func logOutUser(completion: @escaping(_ error: Error?) -> Void) {
-        
+    func logOutUser() async -> Error? {
         do {
             try Auth.auth().signOut()
-            
-            completion(nil)
-        } catch let error as NSError {
-            completion(error)
+            return nil
+        } catch let error {
+            return error
         }
     }
-
 }
 
 

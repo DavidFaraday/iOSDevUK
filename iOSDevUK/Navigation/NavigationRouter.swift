@@ -31,7 +31,6 @@ enum InfoDestination: Hashable {
     case aboutApp
     case appInformation
     case admin
-    case loginView
     case adminSpeakers
     case adminAddSpeaker(Speaker?)
     case adminSessions

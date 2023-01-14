@@ -10,14 +10,25 @@ import SwiftUI
 struct InfoView: View {
     @EnvironmentObject var router: NavigationRouter
     let firebaseAuth = FirebaseAuthentication.shared
-    
-    let loggedIn = true
+    @State var showLoginView = false
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        NavigationLink("Admin", value: firebaseAuth.hasCurrentUser ? InfoDestination.admin : InfoDestination.loginView)
+        if firebaseAuth.hasCurrentUser {
+            NavigationLink("Admin", value: InfoDestination.admin)
+        } else {
+            Button("Admin") {
+                showLoginView = true
+            }
+            .sheet(isPresented: $showLoginView, onDismiss: {
+                if firebaseAuth.hasCurrentUser {
+                    router.infoPath.append(InfoDestination.admin)
+                }
+            }, content: {
+                LoginView()
+            })
+        }
     }
-    
     
     var body: some View {
         NavigationStack(path: $router.infoPath) {
@@ -43,8 +54,6 @@ struct InfoView: View {
                     AppInformationView()
                 case .admin:
                     AdminView()
-                case .loginView:
-                    LoginView()
                 case .adminSpeakers:
                     AdminSpeakers()
                 case .adminAddSpeaker(let speaker):

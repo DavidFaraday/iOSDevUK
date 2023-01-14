@@ -9,28 +9,49 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var router: NavigationRouter
-
+    @Environment(\.dismiss) var dismiss
+    
+    @StateObject var viewModel = LoginViewModel()
+    
     @State private var email = ""
     @State private var password = ""
-    
-    let firebaseAuth = FirebaseAuthentication.shared
 
+    @ViewBuilder
+    private func dismissButton() -> some View {
+        ZStack(alignment: .topTrailing) {
+            HStack {
+                Spacer()
+                Button { dismiss() }
+                label: {
+                    Image(systemName: "xmark.circle")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.accentColor)
+                }
+                .padding()
+            }
+        }
+    }
+    
     @ViewBuilder
     private func loginButton() -> some View {
         Button {
-            firebaseAuth.loginUserWith(email: email, password: password) { error in
-                if error == nil {
-                    router.infoPath.removeLast()
-                    router.infoPath.append(InfoDestination.admin)
-                }
+            Task {
+               await viewModel.loginUserWith(email: email, password: password)
             }
-        }label: {
+            
+        } label: {
             Text("Login")
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(.borderedProminent)
         .padding(.top, 10)
+        .onChange(of: viewModel.loginSuccessful, perform: { newValue in
+            if newValue {
+                dismiss()
+            }
+        })
     }
     
     @ViewBuilder
@@ -70,11 +91,14 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            Spacer()
+            dismissButton()
             loginComponent()
             Spacer()
             Spacer()
         }
+        .alert(isPresented: $viewModel.showError, content: {
+            Alert(title: Text("Error!"), message: Text(viewModel.loginError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+        })
     }
 }
 
