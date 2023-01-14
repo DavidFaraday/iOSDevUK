@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct AdminSpeakers: View {
-//    @StateObject private var viewModel = AdminSpeakersViewModel()
-    @EnvironmentObject var viewModel: BaseViewModel    
+    @EnvironmentObject var viewModel: BaseViewModel
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        NavigationLink {
-            AddSpeakerView()
-        } label: {
-            Image(systemName: "plus.circle")
+        NavigationLink(value: InfoDestination.adminAddSpeaker(nil)) {
+            Image(systemName: "plus")
+                .font(.title3)
         }
     }
 
@@ -24,9 +22,7 @@ struct AdminSpeakers: View {
     private func main() -> some View {
         Form {
             ForEach(viewModel.speakers) { speaker in
-                NavigationLink {
-                    AddSpeakerView(speaker: speaker)
-                } label: {
+                NavigationLink(value: InfoDestination.adminAddSpeaker(speaker)) {
                     Text(speaker.name)
                         .font(.subheadline)
                 }

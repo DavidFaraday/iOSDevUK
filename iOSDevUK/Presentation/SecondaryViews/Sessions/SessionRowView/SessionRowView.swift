@@ -23,11 +23,9 @@ struct SessionRowView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(session.title)
                     .font(.title3)
-                if let locationName = viewModel.location?.name {
-                    Text(locationName)
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
+                Text(viewModel.location?.name ?? "")
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
             .minimumScaleFactor(0.8)
             .lineLimit(2)

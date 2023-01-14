@@ -30,4 +30,14 @@ enum InfoDestination: Hashable {
     case sponsors
     case aboutApp
     case appInformation
+    case admin
+    case loginView
+    case adminSpeakers
+    case adminAddSpeaker(Speaker?)
+    case adminSessions
+    case adminAddSession(Session?)
+    case adminLocations
+    case adminAddLocation(Location?)
+    case adminSponsors
+    case adminAddSponsor(Sponsor?)
 }

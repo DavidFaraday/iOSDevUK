@@ -45,9 +45,7 @@ struct SessionCardView: View {
                 Spacer()
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    if let locationName = viewModel.location?.name {
-                        Text(locationName)
-                    }
+                    Text(viewModel.location?.name ?? "")
                     Text(viewModel.session.duration)
                 }
                 .font(.subheadline)
