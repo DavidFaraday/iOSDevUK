@@ -23,6 +23,7 @@ struct HomeView: View {
         .padding(10)
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding(.horizontal)
     }
 
     
@@ -35,6 +36,7 @@ struct HomeView: View {
                 Spacer()
                 NavigationLink("All Sessions", value: Destination.sessions(viewModel.sessions))
             }
+            .padding(.horizontal)
             
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
@@ -47,6 +49,8 @@ struct HomeView: View {
                 }
             }
             .scrollIndicators(.hidden)
+            .padding(.leading)
+
         }
         .padding(.bottom)
     }
@@ -60,6 +64,8 @@ struct HomeView: View {
                 Spacer()
                 NavigationLink("All Speakers", value: Destination.speakers(viewModel.speakers))
             }
+            .padding(.horizontal)
+
             
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
@@ -73,6 +79,7 @@ struct HomeView: View {
                 }
             }
             .scrollIndicators(.hidden)
+            .padding(.leading)
         }
         .padding(.bottom)
     }
@@ -99,6 +106,7 @@ struct HomeView: View {
         .padding(10)
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding(.horizontal)
     }
 
     
@@ -114,7 +122,7 @@ struct HomeView: View {
             footerView()
         }
         .scrollIndicators(.hidden)
-        .padding()
+        .padding(.vertical)
     }
 
     var body: some View {

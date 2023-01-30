@@ -28,6 +28,7 @@
 		63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE028F075D400445E63 /* SessionRowView.swift */; };
 		63B80EE328F0760A00445E63 /* SessionRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */; };
 		63D602DE290E9B8E00BC01B9 /* LocationMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */; };
+		63D660372974021300EAAFEB /* AdminSpeakerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D660362974021300EAAFEB /* AdminSpeakerViewModel.swift */; };
 		63D989652901B04B0018FDD6 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989642901B04B0018FDD6 /* AdminView.swift */; };
 		63D989682901B06B0018FDD6 /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989672901B06B0018FDD6 /* AddSession.swift */; };
 		63D9896A2901B0730018FDD6 /* AddSpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989692901B0730018FDD6 /* AddSpeakerView.swift */; };
@@ -122,6 +123,7 @@
 		63B80EE028F075D400445E63 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
 		63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModel.swift; sourceTree = "<group>"; };
 		63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapAnnotation.swift; sourceTree = "<group>"; };
+		63D660362974021300EAAFEB /* AdminSpeakerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSpeakerViewModel.swift; sourceTree = "<group>"; };
 		63D989642901B04B0018FDD6 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		63D989672901B06B0018FDD6 /* AddSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSession.swift; sourceTree = "<group>"; };
 		63D989692901B0730018FDD6 /* AddSpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpeakerView.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				639BEAF829099E8D009C3870 /* AdminViewModel.swift */,
+				63D660362974021300EAAFEB /* AdminSpeakerViewModel.swift */,
 				638402A52972F1D100DE8D59 /* LoginViewModel.swift */,
 			);
 			path = Domains;
@@ -721,6 +724,7 @@
 				63F7E0F228CC982900B2E1B7 /* InfoView.swift in Sources */,
 				63D989722901B1420018FDD6 /* AdminSessions.swift in Sources */,
 				638402A62972F1D100DE8D59 /* LoginViewModel.swift in Sources */,
+				63D660372974021300EAAFEB /* AdminSpeakerViewModel.swift in Sources */,
 				63A6A770290AED4C00940170 /* SponsorsView.swift in Sources */,
 				634E7AB828DB7B5C001DC796 /* Sponsor.swift in Sources */,
 				EF99912B292A8C9F00B4DB8B /* SectionHeaderView.swift in Sources */,

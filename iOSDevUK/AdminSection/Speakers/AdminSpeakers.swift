@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AdminSpeakers: View {
     @EnvironmentObject var viewModel: BaseViewModel
+    @StateObject private var adminSpeakerViewModel = AdminSpeakerViewModel()
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
@@ -26,6 +27,10 @@ struct AdminSpeakers: View {
                     Text(speaker.name)
                         .font(.subheadline)
                 }
+            }
+            .onDelete { indexSet in
+                guard let index = indexSet.first else { return }
+                adminSpeakerViewModel.deleteSpeaker(viewModel.speakers[index])
             }
         }
         .toolbar {
