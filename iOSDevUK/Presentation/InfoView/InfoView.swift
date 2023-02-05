@@ -57,7 +57,7 @@ struct InfoView: View {
                 case .adminSpeakers:
                     AdminSpeakers()
                 case .adminAddSpeaker(let speaker):
-                    AddSpeakerView(speaker: speaker)
+                    AddSpeakerView(viewModel: AdminSpeakerViewModel(speaker: speaker))
                 case .adminSessions:
                     AdminSessions()
                 case .adminAddSession(let session):

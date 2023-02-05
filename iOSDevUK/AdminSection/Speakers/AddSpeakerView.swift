@@ -9,26 +9,18 @@ import SwiftUI
 import PhotosUI
 
 struct AddSpeakerView: View {
-    @StateObject private var viewModel =  AdminSpeakerViewModel()
-    var speaker: Speaker?
+    @Environment(\.dismiss) var dismiss
+    @ObservedObject var viewModel: AdminSpeakerViewModel
     
-    @State private var fullName = ""
-    @State private var twitter = ""
-    @State private var linkedIn = ""
-    @State private var selectedItem: PhotosPickerItem?
-    @State private var selectedImageData: Data? = nil
-    @State private var bio = "Bio"
-    
-    @State private var webLinkName = ""
-    @State private var url = ""
-
+//    @State private var selectedItem: PhotosPickerItem?
+//    @State private var selectedImageData: Data? = nil
+//
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         Button {
-            let speaker = Speaker(id: UUID().uuidString, name: fullName, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: "", webLinks: nil)
-            
-            viewModel.save(speaker: speaker)
+            viewModel.save()
+            dismiss()
         } label: {
             Text("Save")
         }
@@ -36,12 +28,12 @@ struct AddSpeakerView: View {
     
     @ViewBuilder
     private func photoPickerView() -> some View {
-        PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+        PhotosPicker(selection: $viewModel.selectedItem, matching: .images, photoLibrary: .shared()) {
             HStack {
                 Text("Select image")
                 Spacer()
-                if let selectedImageData,
-                   let uiImage = UIImage(data: selectedImageData) {
+                if let imageData = viewModel.selectedImageData,
+                   let uiImage = UIImage(data: imageData) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFit()
@@ -54,10 +46,10 @@ struct AddSpeakerView: View {
             }
             .frame(height: 50)
         }
-        .onChange(of: selectedItem) { newItem in
+        .onChange(of: viewModel.selectedItem) { newItem in
             Task {
                 if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                    selectedImageData = data
+                    viewModel.selectedImageData = data
                 }
             }
         }
@@ -67,11 +59,11 @@ struct AddSpeakerView: View {
     private func main() -> some View {
         Form {
             Section {
-                TextField("Full name", text: $fullName)
-                TextField("Twitter", text: $twitter)
-                TextField("Linkedin", text: $linkedIn)
+                TextField("Full name", text: $viewModel.fullName)
+                TextField("Twitter", text: $viewModel.twitter)
+                TextField("Linkedin", text: $viewModel.linkedIn)
                 photoPickerView()
-                TextEditor(text: $bio)
+                TextEditor(text: $viewModel.bio)
                     .frame(height: 80)
             } header: {
                 Text("Personal Info")
@@ -89,7 +81,7 @@ struct AddSpeakerView: View {
     
     var body: some View {
         main()
-        .navigationTitle(speaker?.name ?? "Add Speaker")
+            .navigationTitle(viewModel.speaker?.name ?? "Add Speaker")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
         }
@@ -99,6 +91,6 @@ struct AddSpeakerView: View {
 
 struct AddSpeaker_Previews: PreviewProvider {
     static var previews: some View {
-        AddSpeakerView()
+        AddSpeakerView(viewModel: AdminSpeakerViewModel())
     }
 }
