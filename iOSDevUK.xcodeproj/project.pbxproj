@@ -24,6 +24,8 @@
 		639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639BEAF829099E8D009C3870 /* AdminViewModel.swift */; };
 		63A6A770290AED4C00940170 /* SponsorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6A76F290AED4C00940170 /* SponsorsView.swift */; };
 		63A6A772290AF08300940170 /* SponsorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6A771290AF08300940170 /* SponsorRow.swift */; };
+		63A8509B29917C1D0000AB15 /* FirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8509A29917C1D0000AB15 /* FirebaseFileManager.swift */; };
+		63A8509D29917D7C0000AB15 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8509C29917D7C0000AB15 /* Reachability.swift */; };
 		63B80EDD28F01EC400445E63 /* SessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */; };
 		63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE028F075D400445E63 /* SessionRowView.swift */; };
 		63B80EE328F0760A00445E63 /* SessionRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */; };
@@ -33,7 +35,7 @@
 		63D989682901B06B0018FDD6 /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989672901B06B0018FDD6 /* AddSession.swift */; };
 		63D9896A2901B0730018FDD6 /* AddSpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989692901B0730018FDD6 /* AddSpeakerView.swift */; };
 		63D9896C2901B0810018FDD6 /* AddLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D9896B2901B0810018FDD6 /* AddLocation.swift */; };
-		63D9896E2901B08A0018FDD6 /* AddSponsore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D9896D2901B08A0018FDD6 /* AddSponsore.swift */; };
+		63D9896E2901B08A0018FDD6 /* AddSponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D9896D2901B08A0018FDD6 /* AddSponsor.swift */; };
 		63D989722901B1420018FDD6 /* AdminSessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989712901B1420018FDD6 /* AdminSessions.swift */; };
 		63D989742901B14C0018FDD6 /* AdminSpeakers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989732901B14C0018FDD6 /* AdminSpeakers.swift */; };
 		63D989782901B19F0018FDD6 /* AdminLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989772901B19F0018FDD6 /* AdminLocations.swift */; };
@@ -119,6 +121,8 @@
 		639BEAF829099E8D009C3870 /* AdminViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewModel.swift; sourceTree = "<group>"; };
 		63A6A76F290AED4C00940170 /* SponsorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsView.swift; sourceTree = "<group>"; };
 		63A6A771290AF08300940170 /* SponsorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorRow.swift; sourceTree = "<group>"; };
+		63A8509A29917C1D0000AB15 /* FirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFileManager.swift; sourceTree = "<group>"; };
+		63A8509C29917D7C0000AB15 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCardViewModel.swift; sourceTree = "<group>"; };
 		63B80EE028F075D400445E63 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
 		63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModel.swift; sourceTree = "<group>"; };
@@ -128,7 +132,7 @@
 		63D989672901B06B0018FDD6 /* AddSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSession.swift; sourceTree = "<group>"; };
 		63D989692901B0730018FDD6 /* AddSpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpeakerView.swift; sourceTree = "<group>"; };
 		63D9896B2901B0810018FDD6 /* AddLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocation.swift; sourceTree = "<group>"; };
-		63D9896D2901B08A0018FDD6 /* AddSponsore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSponsore.swift; sourceTree = "<group>"; };
+		63D9896D2901B08A0018FDD6 /* AddSponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSponsor.swift; sourceTree = "<group>"; };
 		63D989712901B1420018FDD6 /* AdminSessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSessions.swift; sourceTree = "<group>"; };
 		63D989732901B14C0018FDD6 /* AdminSpeakers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSpeakers.swift; sourceTree = "<group>"; };
 		63D989772901B19F0018FDD6 /* AdminLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLocations.swift; sourceTree = "<group>"; };
@@ -281,7 +285,7 @@
 		63D9897B2901B1AF0018FDD6 /* Sponsors */ = {
 			isa = PBXGroup;
 			children = (
-				63D9896D2901B08A0018FDD6 /* AddSponsore.swift */,
+				63D9896D2901B08A0018FDD6 /* AddSponsor.swift */,
 				63D989792901B1A90018FDD6 /* AdminSponsors.swift */,
 			);
 			path = Sponsors;
@@ -326,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				630FEA8B28FF147600D483B2 /* Constants.swift */,
+				63A8509C29917D7C0000AB15 /* Reachability.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				63F7E10A28CC9F6C00B2E1B7 /* FCollectionReference.swift */,
 				EFDE6B55292CA8E100F0C61F /* FirebaseRepository.swift */,
 				63E394E72972B1ED0035C1E0 /* FirebaseAuthentication.swift */,
+				63A8509A29917C1D0000AB15 /* FirebaseFileManager.swift */,
 			);
 			path = FirebaseHelpers;
 			sourceTree = "<group>";
@@ -681,7 +687,7 @@
 				63221B1C28DA295A003EC2D5 /* SpeakerDetailViewModel.swift in Sources */,
 				63F7E11C28CCF6B200B2E1B7 /* SpeakerCardView.swift in Sources */,
 				63E949592916DEB500D6B9B1 /* SessionRowForLocalSession.swift in Sources */,
-				63D9896E2901B08A0018FDD6 /* AddSponsore.swift in Sources */,
+				63D9896E2901B08A0018FDD6 /* AddSponsor.swift in Sources */,
 				630FEA8E28FF159400D483B2 /* MapView.swift in Sources */,
 				634E7ABC28DB806F001DC796 /* AllSessionsView.swift in Sources */,
 				EF8AC511293350FA00E19859 /* AppErrors.swift in Sources */,
@@ -691,6 +697,7 @@
 				63D989652901B04B0018FDD6 /* AdminView.swift in Sources */,
 				63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailView.swift in Sources */,
 				63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */,
+				63A8509B29917C1D0000AB15 /* FirebaseFileManager.swift in Sources */,
 				639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */,
 				63F7E0FB28CC999000B2E1B7 /* MyScheduleViewModel.swift in Sources */,
 				63E394E42971DCCB0035C1E0 /* LoginView.swift in Sources */,
@@ -735,6 +742,7 @@
 				EFDE6B56292CA8E100F0C61F /* FirebaseRepository.swift in Sources */,
 				63D9896A2901B0730018FDD6 /* AddSpeakerView.swift in Sources */,
 				63F7E0C628CC942200B2E1B7 /* iOSDevUK.xcdatamodeld in Sources */,
+				63A8509D29917D7C0000AB15 /* Reachability.swift in Sources */,
 				63E9C55728EF3FB400710C8F /* DummyData.swift in Sources */,
 				63F7E12C28CDB61F00B2E1B7 /* Networking.swift in Sources */,
 				630FEA8C28FF147600D483B2 /* Constants.swift in Sources */,

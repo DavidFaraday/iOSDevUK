@@ -78,16 +78,18 @@ struct SpeakerDetailView: View {
     @ViewBuilder
     private func sessionsView() -> some View {
 
-        Text("Session(s)")
-            .font(.title3)
-            .foregroundColor(.gray)
-            .bold()
-            .padding(.vertical, 10)
-        
-        ForEach(viewModel.sessions) { session in
+        if !viewModel.sessions.isEmpty {
+            Text("Session(s)")
+                .font(.title3)
+                .foregroundColor(.gray)
+                .bold()
+                .padding(.vertical, 10)
             
-            NavigationLink(value: Destination.session(session)) {
-                sessionsRaw(session: session)
+            ForEach(viewModel.sessions) { session in
+                
+                NavigationLink(value: Destination.session(session)) {
+                    sessionsRaw(session: session)
+                }
             }
         }
     }

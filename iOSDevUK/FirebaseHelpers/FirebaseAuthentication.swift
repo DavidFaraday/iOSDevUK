@@ -23,7 +23,8 @@ class FirebaseAuthentication {
         try await withCheckedThrowingContinuation { continuation in
 
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let error = error {                     continuation.resume(throwing: error)
+                if let error = error {
+                    continuation.resume(throwing: error)
                     return
                 }
                 continuation.resume(returning: true)

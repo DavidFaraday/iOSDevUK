@@ -69,7 +69,7 @@ struct InfoView: View {
                 case .adminSponsors:
                     AdminSponsors()
                 case .adminAddSponsor(let sponsor):
-                    AddSponsore()
+                    AddSponsor()
                 }
             }
         }

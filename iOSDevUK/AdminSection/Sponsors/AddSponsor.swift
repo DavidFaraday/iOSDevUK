@@ -1,5 +1,5 @@
 //
-//  AdminSponsors.swift
+//  AddSponsor.swift
 //  iOSDevUK
 //
 //  Created by David Kababyan on 20/10/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AdminSponsors: View {
+struct AddSponsor: View {
     @EnvironmentObject var viewModel: BaseViewModel
 
     var body: some View {
@@ -28,8 +28,8 @@ struct AdminSponsors: View {
     }
 }
 
-struct AdminSponsors_Previews: PreviewProvider {
+struct AddSponsor_Previews: PreviewProvider {
     static var previews: some View {
-        AdminSponsors()
+        AddSponsor()
     }
 }

@@ -14,7 +14,7 @@ struct AttendeeView: View {
     var categories: [String : [Location]] {
         .init(
             grouping: viewModel.locations,
-            by: {$0.locationType.rawValue }
+            by: { $0.locationType.rawValue }
         )
     }
     

@@ -11,15 +11,13 @@ import PhotosUI
 struct AddSpeakerView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: AdminSpeakerViewModel
-    
-//    @State private var selectedItem: PhotosPickerItem?
-//    @State private var selectedImageData: Data? = nil
-//
-    
+        
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         Button {
-            viewModel.save()
+            Task {
+                await viewModel.save()
+            }
             dismiss()
         } label: {
             Text("Save")
@@ -70,8 +68,8 @@ struct AddSpeakerView: View {
             }
 
 //            Section {
-//                TextField("Name", text: $webLinkName)
-//                TextField("Url", text: $url)
+//                TextField("Name", text: $viewModel.webLinkName)
+//                TextField("Url", text: $viewModel.url)
 //            } header: {
 //                Text("Web links")
 //            }

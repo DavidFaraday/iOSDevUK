@@ -36,21 +36,31 @@ final class AdminSpeakerViewModel: ObservableObject {
         bio = speaker.biography
     }
     
-    func save() {
-        //TODO: check if image was changed
-        let newSpeaker = Speaker(id: speaker?.id ?? UUID().uuidString, name: fullName, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: "", webLinks: nil)
+    func save() async {
         
-        do {
-            try FirebaseReference(.Speaker).document(newSpeaker.id).setData(from: newSpeaker)
-        }
-        catch {
-            print("Error saving speaker", error.localizedDescription)
+        Task {
+            let imageLink = await uploadAvatar()
+
+            let newSpeaker = Speaker(id: speaker?.id ?? UUID().uuidString, name: fullName, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: imageLink, webLinks: nil)
+//        do {
+//            try FirebaseReference(.Speaker).document(newSpeaker.id).setData(from: newSpeaker)
+//        }
+//        catch {
+//            print("Error saving speaker", error.localizedDescription)
+//        }
         }
     }
     
     
-    func uploadAvatar() async {
+    func uploadAvatar() async -> String {
+        guard let imageData = selectedImageData else { return "" }
         
+        do  {
+            return try await FirebaseFileManager.shared.uploadImage(imageData, directory: .Speakers)
+        } catch {
+            print(error.localizedDescription)
+            return ""
+        }
     }
 
     func deleteSpeaker(_ speaker: Speaker) {
