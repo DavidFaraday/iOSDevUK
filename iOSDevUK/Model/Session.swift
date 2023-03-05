@@ -7,8 +7,19 @@
 
 import Foundation
 
-enum SessionType: Codable {
+enum SessionType: Codable, CaseIterable {
     case talk, workshop, lightningTalk
+    
+    var name: String {
+        switch self {
+        case .talk:
+            return "Talk"
+        case .workshop:
+            return "Workshop"
+        case .lightningTalk:
+            return "Lightning Talk"
+        }
+    }
 }
 
 struct Session: Codable, Identifiable, Hashable, Comparable {

@@ -8,13 +8,26 @@
 import SwiftUI
 import MapKit
 
+enum LocationType: String, Codable, CaseIterable {
+    case au, transport, ev, pubs, sm, other
+    
+    var name: String {
+        switch self {
+        case .au:
+            return "Aberystwyth University"
+        case .transport:
+            return "Transport"
+        case .ev:
+            return "Electric Vehicle"
+        case .pubs:
+            return "Pubs"
+        case .sm:
+            return "Supermarket"
+        case .other:
+            return "Other"
+        }
+    }
 
-enum LocationType: String, Codable {
-    case au
-    case transport
-    case ev
-    case pubs
-    case sm
 }
 
 struct Location: Codable, Identifiable, Hashable, Comparable {
@@ -35,29 +48,12 @@ struct Location: Codable, Identifiable, Hashable, Comparable {
         lhs.id == rhs.id
     }
     
-    static func < (lhs: Location, rhs: Location) -> Bool {
+    static func <(lhs: Location, rhs: Location) -> Bool {
         lhs.name < rhs.name
     }
     
     var imageUrl: URL? {
         URL(string: imageLink ?? "")
-    }
-    
-    static func locationName(from: String) -> String {
-        switch from {
-        case "au":
-            return "Aberystwyth University"
-        case "transport":
-            return "Transport"
-        case "ev":
-            return "Electric Vehicle"
-        case "pubs":
-            return "Pubs"
-        case "sm":
-            return "Supermarket"
-        default:
-            return ""
-        }
     }
 }
 

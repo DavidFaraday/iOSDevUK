@@ -53,7 +53,8 @@ struct AttendeeView: View {
                     }
                 }
             } header: {
-                SectionHeaderView(title: Location.locationName(from: key))
+                let locationType: LocationType = LocationType(rawValue: key) ?? .other
+                SectionHeaderView(title: locationType.name)
                     .font(.headline)
             }
         }

@@ -19,30 +19,37 @@ struct MyScheduleView: View {
 
     @ViewBuilder
     private func main() -> some View {
-        VStack {
-            List {
-                ForEach(records) { section in
-                    
-                    Section {
-                        ForEach(section) { session in
-                            NavigationLink(value: Destination.savedSession(session)) {
-                                SessionRowForLocalSession(session: session)
+        ZStack {
+            VStack {
+                List {
+                    ForEach(records) { section in
+                        
+                        Section {
+                            ForEach(section) { session in
+                                NavigationLink(value: Destination.savedSession(session)) {
+                                    SessionRowForLocalSession(session: session)
+                                }
                             }
+                            .onDelete { indexSet in
+                                withAnimation {
+                                    viewModel.deleteItem(
+                                        for: indexSet,
+                                        section: section,
+                                        viewContext: context)
+                                }
+                            }
+                        } header: {
+                            SectionHeaderView(title: section.id)
+                                .font(.headline)
                         }
-                        .onDelete { indexSet in
-                          withAnimation {
-                            viewModel.deleteItem(
-                              for: indexSet,
-                              section: section,
-                              viewContext: context)
-                          }
-                        }
-                    } header: {
-                        SectionHeaderView(title: section.id)
-                            .font(.headline)
                     }
                 }
             }
+            
+            if records.isEmpty {
+                EmptySessionView(message: "You currently have no sessions added. \n Please bookmark sessions to see them here.")
+            }
+
         }
     }
 

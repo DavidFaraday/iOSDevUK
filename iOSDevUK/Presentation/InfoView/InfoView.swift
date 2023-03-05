@@ -61,15 +61,15 @@ struct InfoView: View {
                 case .adminSessions:
                     AdminSessions()
                 case .adminAddSession(let session):
-                    AddSession()
+                    AddSession(viewModel: AdminSessionViewModel(session: session))
                 case .adminLocations:
                     AdminLocations()
                 case .adminAddLocation(let location):
-                    AddLocation()
+                    AddLocation(viewModel: AdminLocationViewModel(location: location))
                 case .adminSponsors:
                     AdminSponsors()
                 case .adminAddSponsor(let sponsor):
-                    AddSponsor()
+                    AddSponsorView(viewModel: AdminSponsorViewModel(sponsor: sponsor))
                 }
             }
         }

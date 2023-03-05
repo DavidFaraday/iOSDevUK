@@ -9,22 +9,54 @@ import SwiftUI
 
 struct AdminSponsors: View {
     @EnvironmentObject var viewModel: BaseViewModel
+    @StateObject private var adminSponsorViewModel = AdminSponsorViewModel()
+    
+    @ViewBuilder
+    private func navigationBarTrailingItem() -> some View {
+        NavigationLink(value: InfoDestination.adminAddSponsor(nil)) {
+            Image(systemName: "plus")
+                .font(.title3)
+        }
+    }
 
-    var body: some View {
-        List {
+    
+    @ViewBuilder
+    private func main() -> some View {
+        Form {
             ForEach(viewModel.sponsors, id: \.id) { sponsor in
-                if let url = sponsor.webUrl {
-                    Link(destination: url) {
-                        SponsorRow(sponsor: sponsor)
+                NavigationLink(value: InfoDestination.adminAddSponsor(sponsor)) {
+                    
+                    HStack(spacing: 5) {
+                        ZStack {
+                            Circle()
+                                .frame(width: 20)
+                                .foregroundColor(sponsor.sponsorCategory.color)
+                            Text(sponsor.sponsorCategory.rawValue.prefix(1))
+                                .fontWeight(.bold)
+                                .foregroundColor(.black)
+                                .font(.system(size: 13))
+                        }
+                        
+                        Text(sponsor.name)
+                            .font(.subheadline)
                     }
-                } else {
-                    SponsorRow(sponsor: sponsor)
                 }
+            }
+            .onDelete { indexSet in
+                guard let index = indexSet.first else { return }
+                adminSponsorViewModel.deleteSponsor(viewModel.sponsors[index])
             }
         }
         .listStyle(.plain)
-        .navigationTitle("Sponsors")
-        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    var body: some View {
+        main()
+            .navigationTitle("Sponsors")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
+            }
     }
 }
 

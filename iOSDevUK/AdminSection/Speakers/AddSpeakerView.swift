@@ -22,6 +22,7 @@ struct AddSpeakerView: View {
         } label: {
             Text("Save")
         }
+        .disabled(viewModel.invalidForm())
     }
     
     @ViewBuilder
@@ -60,7 +61,17 @@ struct AddSpeakerView: View {
                 TextField("Full name", text: $viewModel.fullName)
                 TextField("Twitter", text: $viewModel.twitter)
                 TextField("Linkedin", text: $viewModel.linkedIn)
-                photoPickerView()
+                HStack {
+                    TextField("Image link", text: $viewModel.imageLink)
+                    Spacer()
+                    if !viewModel.imageLink.isEmpty {
+                        RemoteImageView(url: URL(string: viewModel.imageLink))
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .frame(width: 50)
+                    }
+                }
+//                photoPickerView()
                 TextEditor(text: $viewModel.bio)
                     .frame(height: 80)
             } header: {
@@ -80,10 +91,9 @@ struct AddSpeakerView: View {
     var body: some View {
         main()
             .navigationTitle(viewModel.speaker?.name ?? "Add Speaker")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
-        }
-
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
+            }
     }
 }
 

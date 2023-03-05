@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-enum SponsorCategory: String, Codable, Comparable, Hashable {
+enum SponsorCategory: String, Codable, Comparable, Hashable, CaseIterable {
     case Platinum, Gold, Silver
-    
+        
     var sortOrder: Int {
         switch self {
         case .Platinum:

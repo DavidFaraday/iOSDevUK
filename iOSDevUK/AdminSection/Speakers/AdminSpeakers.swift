@@ -33,14 +33,15 @@ struct AdminSpeakers: View {
                 adminSpeakerViewModel.deleteSpeaker(viewModel.speakers[index])
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
-        }
+        
     }
     
     var body: some View {
         main()
             .navigationTitle("Speakers")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
+            }
     }
 
 }

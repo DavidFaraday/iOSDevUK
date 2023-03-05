@@ -13,6 +13,7 @@ final class AdminSpeakerViewModel: ObservableObject {
     @Published var fullName = ""
     @Published var twitter = ""
     @Published var linkedIn = ""
+    @Published var imageLink = ""
     @Published var selectedItem: PhotosPickerItem?
     @Published var selectedImageData: Data? = nil
     @Published var bio = "Bio"
@@ -33,38 +34,52 @@ final class AdminSpeakerViewModel: ObservableObject {
         fullName = speaker.name
         twitter = speaker.twitterId
         linkedIn = speaker.linkedIn
+        imageLink = speaker.imageLink
         bio = speaker.biography
     }
     
     func save() async {
-        
-        Task {
-            let imageLink = await uploadAvatar()
+        let newSpeaker = Speaker(id: speaker?.id ?? UUID().uuidString, name: fullName, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: imageLink, webLinks: nil)
 
-            let newSpeaker = Speaker(id: speaker?.id ?? UUID().uuidString, name: fullName, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: imageLink, webLinks: nil)
+        do {
+            try FirebaseReference(.Speaker).document(newSpeaker.id).setData(from: newSpeaker)
+        }
+        catch {
+            print("Error saving speaker", error.localizedDescription)
+        }
+
+        //With image uploading func Will add in new version
+//        Task {
+//            let imageLink = await uploadAvatar()
+//
+//            let newSpeaker = Speaker(id: speaker?.id ?? UUID().uuidString, name: fullName, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: imageLink, webLinks: nil)
 //        do {
 //            try FirebaseReference(.Speaker).document(newSpeaker.id).setData(from: newSpeaker)
 //        }
 //        catch {
 //            print("Error saving speaker", error.localizedDescription)
 //        }
-        }
+//        }
     }
     
     
-    func uploadAvatar() async -> String {
-        guard let imageData = selectedImageData else { return "" }
-        
-        do  {
-            return try await FirebaseFileManager.shared.uploadImage(imageData, directory: .Speakers)
-        } catch {
-            print(error.localizedDescription)
-            return ""
-        }
-    }
+//    func uploadAvatar() async -> String {
+//        guard let imageData = selectedImageData else { return "" }
+//
+//        do  {
+//            return try await FirebaseFileManager.shared.uploadImage(imageData, directory: .Speakers)
+//        } catch {
+//            print(error.localizedDescription)
+//            return ""
+//        }
+//    }
 
     func deleteSpeaker(_ speaker: Speaker) {
         FirebaseReference(.Speaker).document(speaker.id).delete()
+    }
+    
+    func invalidForm() -> Bool {
+        fullName == "" || bio == "" || imageLink == ""
     }
 }
 
