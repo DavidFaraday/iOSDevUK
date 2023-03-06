@@ -10,9 +10,13 @@ import SwiftUI
 struct EmptySessionView: View {
     
     private let message: String
+    private let buttonTitle: String
+    private let buttonAction: () -> Void
     
-    init(message: String) {
+    init(message: String, buttonTitle: String = "", buttonAction: @escaping () -> Void) {
         self.message = message
+        self.buttonTitle = buttonTitle
+        self.buttonAction = buttonAction
     }
     
     var body: some View {
@@ -33,6 +37,10 @@ struct EmptySessionView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
                     .padding()
+                
+                Button(buttonTitle, action: buttonAction)
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color(ColorNames.secondary))
             }
             .offset(y: -50)
         }
@@ -41,6 +49,8 @@ struct EmptySessionView: View {
 
 struct EmptySessionView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptySessionView(message: "You currently have no sessions added. \n Please bookmark sessions to see them here.")
+        EmptySessionView(message: "You currently have no sessions added. \n Please bookmark sessions to see them here.") {
+            
+        }
     }
 }

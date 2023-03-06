@@ -25,6 +25,7 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSessions() async {
         guard self.sessions.isEmpty else { return }
+
         do {
             try await firebaseRepository.listen(from: .Session)
                 .sink(receiveCompletion: { completion in

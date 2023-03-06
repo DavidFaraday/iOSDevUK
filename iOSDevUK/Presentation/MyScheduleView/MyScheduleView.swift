@@ -11,6 +11,7 @@ import CoreData
 struct MyScheduleView: View {
     @Environment(\.managedObjectContext) var context
     @EnvironmentObject var router: NavigationRouter
+    @EnvironmentObject var baseViewModel: BaseViewModel
 
     @SectionedFetchRequest(sectionIdentifier: \.startDateName!, sortDescriptors: [SortDescriptor(\.startDate)], animation: .default)
     private var records: SectionedFetchResults<String, SavedSession>
@@ -47,7 +48,9 @@ struct MyScheduleView: View {
             }
             
             if records.isEmpty {
-                EmptySessionView(message: "You currently have no sessions added. \n Please bookmark sessions to see them here.")
+                EmptySessionView(message: "You currently have no sessions added. \n Please bookmark sessions to see them here.", buttonTitle: "Take me there") {
+                    router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
+                }
             }
 
         }
