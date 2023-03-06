@@ -56,7 +56,6 @@ struct HomeView: View {
 
     @ViewBuilder
     private func speakerView() -> some View {
-        
         VStack(alignment: .leading) {
             HStack {
                 Text("Speakers") .font(.title2).bold()
@@ -65,14 +64,12 @@ struct HomeView: View {
             }
             .padding(.horizontal)
 
-            
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
                     ForEach(viewModel.speakers) { speaker in
-                       
                         NavigationLink(value: Destination.speaker(speaker)) {
                             SpeakerCardView(speaker: speaker)
-                                .frame(width: 130, height: 200)
+                                .frame(width: 130)
                         }
                     }
                 }
@@ -112,7 +109,7 @@ struct HomeView: View {
     @ViewBuilder
     private func main() -> some View {
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(spacing: 20) {
                 if viewModel.eventInformation != nil {
                     headerView()
                 }
