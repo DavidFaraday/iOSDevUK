@@ -52,12 +52,10 @@ struct HomeView: View {
             .padding(.leading)
 
         }
-        .padding(.bottom)
     }
 
     @ViewBuilder
     private func speakerView() -> some View {
-        
         VStack(alignment: .leading) {
             HStack {
                 Text("Speakers") .font(.title2).bold()
@@ -66,14 +64,12 @@ struct HomeView: View {
             }
             .padding(.horizontal)
 
-            
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
                     ForEach(viewModel.speakers) { speaker in
-                       
                         NavigationLink(value: Destination.speaker(speaker)) {
                             SpeakerCardView(speaker: speaker)
-                                .frame(width: 130, height: 200)
+                                .frame(width: 130)
                         }
                     }
                 }
@@ -81,7 +77,6 @@ struct HomeView: View {
             .scrollIndicators(.hidden)
             .padding(.leading)
         }
-        .padding(.bottom)
     }
     
     @ViewBuilder
@@ -114,15 +109,16 @@ struct HomeView: View {
     @ViewBuilder
     private func main() -> some View {
         ScrollView {
-            if viewModel.eventInformation != nil {
-                headerView()
+            VStack(spacing: 20) {
+                if viewModel.eventInformation != nil {
+                    headerView()
+                }
+                sessionView()
+                speakerView()
+                footerView()
             }
-            sessionView()
-            speakerView()
-            footerView()
         }
         .scrollIndicators(.hidden)
-        .padding(.vertical)
     }
 
     var body: some View {
