@@ -22,7 +22,6 @@ struct SpeakerDetailView: View {
     
     @ViewBuilder
     private func headerView() -> some View {
-        
         HStack {
             RemoteImageView(url: viewModel.speaker.imageUrl)
                 .cornerRadius(15)
@@ -53,7 +52,8 @@ struct SpeakerDetailView: View {
             .font(.title2)
             .bold()
             .foregroundColor(.gray)
-            .padding(.vertical)
+            .padding(.top)
+            .padding(.bottom, 5)
         
         Text(viewModel.speaker.biography)
             .multilineTextAlignment(.leading)
@@ -66,6 +66,7 @@ struct SpeakerDetailView: View {
             Text("\(session.title)")
                 .font(.subheadline)
                 .lineLimit(2)
+                .multilineTextAlignment(.leading)
                 
             Text("\(session.duration)")
                 .font(.caption)
@@ -77,16 +78,17 @@ struct SpeakerDetailView: View {
     
     @ViewBuilder
     private func sessionsView() -> some View {
-
         if !viewModel.sessions.isEmpty {
+            Divider()
+            
             Text("Session(s)")
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
-                .padding(.vertical, 10)
+                .padding(.top)
+                .padding(.bottom, 5)
             
             ForEach(viewModel.sessions) { session in
-                
                 NavigationLink(value: Destination.session(session)) {
                     sessionsRaw(session: session)
                 }
@@ -96,18 +98,16 @@ struct SpeakerDetailView: View {
     
     @ViewBuilder
     private func main() -> some View {
-        
         ScrollView {
             VStack(alignment: .leading) {
                 headerView()
                 Divider()
                 descriptionView()
-                Divider()
                 sessionsView()
             }
+            .padding()
         }
         .scrollIndicators(.hidden)
-        .padding()
         .alert(isPresented: $viewModel.showError, content: {
             Alert(title: Text("Error!"), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
         })

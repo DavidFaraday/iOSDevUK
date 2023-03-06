@@ -52,7 +52,6 @@ struct HomeView: View {
             .padding(.leading)
 
         }
-        .padding(.bottom)
     }
 
     @ViewBuilder
@@ -81,7 +80,6 @@ struct HomeView: View {
             .scrollIndicators(.hidden)
             .padding(.leading)
         }
-        .padding(.bottom)
     }
     
     @ViewBuilder
@@ -114,15 +112,16 @@ struct HomeView: View {
     @ViewBuilder
     private func main() -> some View {
         ScrollView {
-            if viewModel.eventInformation != nil {
-                headerView()
+            VStack(spacing: 16) {
+                if viewModel.eventInformation != nil {
+                    headerView()
+                }
+                sessionView()
+                speakerView()
+                footerView()
             }
-            sessionView()
-            speakerView()
-            footerView()
         }
         .scrollIndicators(.hidden)
-        .padding(.vertical)
     }
 
     var body: some View {

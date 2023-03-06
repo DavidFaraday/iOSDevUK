@@ -42,7 +42,8 @@ struct SessionDetailView: View {
                 .font(.title2)
                 .foregroundColor(.gray)
                 .bold()
-                .padding(.vertical)
+                .padding(.top)
+                .padding(.bottom, 5)
             
             Text(viewModel.session?.content ?? "")
                 .multilineTextAlignment(.leading)
@@ -59,7 +60,8 @@ struct SessionDetailView: View {
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
-                .padding(.bottom)
+                .padding(.top)
+                .padding(.bottom, 5)
             
             ForEach(viewModel.speakers ?? []) { speaker in
                 
@@ -81,7 +83,8 @@ struct SessionDetailView: View {
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
-                .padding(.bottom)
+                .padding(.top)
+                .padding(.bottom, 5)
 
                 NavigationLink(value: Destination.locations([location])) {
                     Text(location.name)
