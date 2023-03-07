@@ -20,7 +20,7 @@ struct RemoteImageView: View {
             .placeholder { ProgressView() }
             .resizable()
             .loadDiskFileSynchronously()
-            .cacheMemoryOnly()
+//            .cacheMemoryOnly()
             .fade(duration: 0.25)
     }
 }
