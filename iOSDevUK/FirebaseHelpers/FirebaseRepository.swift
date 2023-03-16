@@ -24,103 +24,132 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]? {
 
-        try await withCheckedThrowingContinuation { continuation in
+        let snapshot = try await FirebaseReference(collection).getDocuments()
 
-            FirebaseReference(collection).getDocuments { querySnapshot, error in
-                if let error = error {
-                    continuation.resume(throwing: error)
-                    return
-                }
-
-                guard let documents = querySnapshot?.documents else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-
-                let result = documents.compactMap { queryDocumentSnapshot -> T? in
-                    return try? queryDocumentSnapshot.data(as: T.self)
-                }
-
-                continuation.resume(returning: result)
-            }
+        return snapshot.documents.compactMap { queryDocumentSnapshot -> T? in
+            return try? queryDocumentSnapshot.data(as: T.self)
         }
+
+        
+//        try await withCheckedThrowingContinuation { continuation in
+//
+//            FirebaseReference(collection).getDocuments { querySnapshot, error in
+//                if let error = error {
+//                    continuation.resume(throwing: error)
+//                    return
+//                }
+//
+//                guard let documents = querySnapshot?.documents else {
+//                    continuation.resume(returning: nil)
+//                    return
+//                }
+//
+//                let result = documents.compactMap { queryDocumentSnapshot -> T? in
+//                    return try? queryDocumentSnapshot.data(as: T.self)
+//                }
+//
+//                continuation.resume(returning: result)
+//            }
+//        }
     }
 
     
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? {
-        try await withCheckedThrowingContinuation { continuation in
+        
+        let snapshot = try await FirebaseReference(collection).whereField(field, isEqualTo: value).getDocuments()
 
-            FirebaseReference(collection).whereField(field, isEqualTo: value).getDocuments { querySnapshot, error in
-
-                if let error = error {
-                    continuation.resume(throwing: error)
-                    return
-                }
-
-                guard let documents = querySnapshot?.documents else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-
-                let result = documents.compactMap { queryDocumentSnapshot -> T? in
-                    return try? queryDocumentSnapshot.data(as: T.self)
-                }
-
-                continuation.resume(returning: result)
-            }
+        return snapshot.documents.compactMap { queryDocumentSnapshot -> T? in
+            return try? queryDocumentSnapshot.data(as: T.self)
         }
+
+
+//        try await withCheckedThrowingContinuation { continuation in
+//
+//            FirebaseReference(collection).whereField(field, isEqualTo: value).getDocuments { querySnapshot, error in
+//
+//                if let error = error {
+//                    continuation.resume(throwing: error)
+//                    return
+//                }
+//
+//                guard let documents = querySnapshot?.documents else {
+//                    continuation.resume(returning: nil)
+//                    return
+//                }
+//
+//                let result = documents.compactMap { queryDocumentSnapshot -> T? in
+//                    return try? queryDocumentSnapshot.data(as: T.self)
+//                }
+//
+//                continuation.resume(returning: result)
+//            }
+//        }
     }
     
     
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {
-        try await withCheckedThrowingContinuation { continuation in
+        
+        let snapshot = try await FirebaseReference(collection).whereField(field, arrayContains: value).getDocuments()
 
-            FirebaseReference(collection).whereField(field, arrayContains: value).getDocuments { querySnapshot, error in
-                if let error = error {
-                    continuation.resume(throwing: error)
-                    return
-                }
-
-                guard let documents = querySnapshot?.documents else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-
-                let result = documents.compactMap { queryDocumentSnapshot -> T? in
-                    return try? queryDocumentSnapshot.data(as: T.self)
-                }
-
-                continuation.resume(returning: result)
-            }
+        return snapshot.documents.compactMap { queryDocumentSnapshot -> T? in
+            return try? queryDocumentSnapshot.data(as: T.self)
         }
+
+        
+//        try await withCheckedThrowingContinuation { continuation in
+//
+//
+//            FirebaseReference(collection).whereField(field, arrayContains: value).getDocuments { querySnapshot, error in
+//                if let error = error {
+//                    continuation.resume(throwing: error)
+//                    return
+//                }
+//
+//                guard let documents = querySnapshot?.documents else {
+//                    continuation.resume(returning: nil)
+//                    return
+//                }
+//
+//                let result = documents.compactMap { queryDocumentSnapshot -> T? in
+//                    return try? queryDocumentSnapshot.data(as: T.self)
+//                }
+//
+//                continuation.resume(returning: result)
+//            }
+//        }
     }
     
     func getDocument<T: Codable>(from collection: FCollectionReference, with id: String) async throws -> T? {
-
-        try await withCheckedThrowingContinuation { continuation in
-
-            FirebaseReference(collection).document(id).getDocument { querySnapshot, error in
-
-                if let error = error {
-                    continuation.resume(throwing: error)
-                    return
-                }
-
-                guard let document = querySnapshot else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-
-                let result = try? document.data(as: T.self)
-
-                continuation.resume(returning: result)
-            }
-        }
+        
+        let snapshot = try await FirebaseReference(collection).document(id).getDocument()
+        return try? snapshot.data(as: T.self)
+        
+        
+//        try await withCheckedThrowingContinuation { continuation in
+//
+//            FirebaseReference(collection).document(id).getDocument { querySnapshot, error in
+//
+//                if let error = error {
+//                    continuation.resume(throwing: error)
+//                    return
+//                }
+//
+//                guard let document = querySnapshot else {
+//                    continuation.resume(returning: nil)
+//                    return
+//                }
+//
+//                let result = try? document.data(as: T.self)
+//
+//                continuation.resume(returning: result)
+//            }
+//        }
     }
 
     
     func listen<T: Codable>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error> {
-
+                
+        
         let subject = PassthroughSubject<[T], Error>()
         
         let handle = FirebaseReference(collection).addSnapshotListener { querySnapshot, error in

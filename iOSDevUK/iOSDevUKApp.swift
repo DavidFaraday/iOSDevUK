@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Firebase
-import FirebaseDatabase
 
 @main
 struct iOSDevUKApp: App {
@@ -17,7 +16,6 @@ struct iOSDevUKApp: App {
 
     init() {
         FirebaseApp.configure()
-        Database.database().isPersistenceEnabled = true
     }
     
     var body: some Scene {
