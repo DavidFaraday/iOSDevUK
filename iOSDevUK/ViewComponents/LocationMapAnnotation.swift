@@ -11,9 +11,11 @@ struct LocationMapAnnotation: View {
     private let location: Location
     
     @State private var pinTapped = false
-    
-    init(location: Location) {
+    private let buttonAction: () -> Void
+
+    init(location: Location,  navigationClicked: @escaping () -> Void) {
         self.location = location
+        self.buttonAction = navigationClicked
     }
     
     var body: some View {
@@ -29,15 +31,22 @@ struct LocationMapAnnotation: View {
                     }
                 }
             
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .background(.ultraThinMaterial)
+            VStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .background(.ultraThinMaterial)
 
-                Text(location.name)
-                    .font(.caption)
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .fixedSize()
+                    Text(location.name)
+                        .font(.caption)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .fixedSize()
+                }
+
+                Button("Navigate", action: buttonAction)
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color(ColorNames.secondary))
+
             }
             .opacity(pinTapped ? 1.0 : 0.0)
             .offset(y: pinTapped ? 5 : -10)
@@ -47,6 +56,8 @@ struct LocationMapAnnotation: View {
 
 struct MapAnnotation_Previews: PreviewProvider {
     static var previews: some View {
-        LocationMapAnnotation(location: DummyData.location)
+        LocationMapAnnotation(location: DummyData.location) {
+            
+        }
     }
 }

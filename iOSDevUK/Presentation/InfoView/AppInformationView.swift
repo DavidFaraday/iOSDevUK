@@ -18,7 +18,7 @@ struct AppInformationView: View {
                     .resizable()
                     .frame(width: 150, height: 150)
                 
-                Text("App Version: \(Bundle.main.appVersionLong)")
+                Text("App Version: \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
                 
                 Text("The app has been created with Beer & SwiftUI by David Kababyan @Dave_iOSDev \nApp data curated wrangled by Chris")
                 

@@ -73,7 +73,7 @@ struct AddSpeakerView: View {
                 }
 //                photoPickerView()
                 TextEditor(text: $viewModel.bio)
-                    .frame(height: 80)
+                    .frame(height: 200)
             } header: {
                 Text("Personal Info")
             }

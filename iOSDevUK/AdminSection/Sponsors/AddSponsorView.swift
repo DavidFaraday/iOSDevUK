@@ -38,6 +38,7 @@ struct AddSponsorView: View {
                             .tag(category)
                     }
                 }
+                
                 HStack {
                     TextField("Image link", text: $viewModel.imageLink)
                     Spacer()
@@ -50,7 +51,7 @@ struct AddSponsorView: View {
                 }
                 
                 TextEditor(text: $viewModel.tagline)
-                    .frame(height: 80)
+                    .frame(height: 200)
             } header: {
                 Text("Sponsor details")
             }
