@@ -11,17 +11,6 @@ struct AttendeeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
 
-    var categories: [String : [Location]] {
-        .init(
-            grouping: viewModel.locations,
-            by: { $0.locationType.rawValue }
-        )
-    }
-    
-    @ViewBuilder
-    private func navigationBarTrailingItem() -> some View {
-        NavigationLink("All locations", value: Destination.locations(viewModel.locations))
-    }
     
     @ViewBuilder
     private func informationView() -> some View {
@@ -37,28 +26,6 @@ struct AttendeeView: View {
         }
     }
     
-    @ViewBuilder
-    private func locationCategoryView() -> some View {
-        
-        ForEach(categories.keys.sorted(), id: \String.self) { key in
-            
-            Section {
-                ForEach(categories[key] ?? [], id: \.id) { location in
-                    
-                    NavigationLink(value: Destination.locations([location])) {
-                        Text(location.name)
-                            .font(.subheadline)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.6)
-                    }
-                }
-            } header: {
-                let locationType: LocationType = LocationType(rawValue: key) ?? .other
-                SectionHeaderView(title: locationType.name)
-                    .font(.headline)
-            }
-        }
-    }
     
     @ViewBuilder
     private func main() -> some View {
@@ -70,15 +37,6 @@ struct AttendeeView: View {
                 SectionHeaderView(title: "Information")
                     .font(.headline)
             }
-            
-            Section { } header: {
-                Text("Locations")
-                      .font(.headline)
-                      .foregroundColor(.primary)
-            }
-            .padding(.bottom, -10)
-                
-            locationCategoryView()
         }
     }
 
@@ -86,9 +44,6 @@ struct AttendeeView: View {
         NavigationStack(path: $router.attendeePath) {
             main()
                 .navigationTitle("Attendee Info")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
-                }
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
                     case .session(let session):

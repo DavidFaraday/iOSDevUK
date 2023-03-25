@@ -9,8 +9,10 @@ import SwiftUI
 
 struct InfoView: View {
     @EnvironmentObject var router: NavigationRouter
+    
     let firebaseAuth = FirebaseAuthentication.shared
     @State var showLoginView = false
+    
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
@@ -33,6 +35,7 @@ struct InfoView: View {
     var body: some View {
         NavigationStack(path: $router.infoPath) {
             Form {
+                NavigationLink("Locations", value: InfoDestination.location)
                 NavigationLink("Inclusivity", value: InfoDestination.inclusivity)
                 NavigationLink("Sponsors", value: InfoDestination.sponsors)
                 NavigationLink("About iOSDevUK", value: InfoDestination.aboutApp)
@@ -70,6 +73,10 @@ struct InfoView: View {
                     AdminSponsors()
                 case .adminAddSponsor(let sponsor):
                     AddSponsorView(viewModel: AdminSponsorViewModel(sponsor: sponsor))
+                case .location:
+                    LocationsListView()
+                case .locations(let locations):
+                    MapView(allLocations: locations)
                 }
             }
         }
