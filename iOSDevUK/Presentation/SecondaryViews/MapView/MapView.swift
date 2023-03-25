@@ -20,7 +20,9 @@ struct MapView: View {
     var body: some View {
         Map(coordinateRegion: $locationManager.region, showsUserLocation: true, annotationItems: allLocations) { location in
             MapAnnotation(coordinate: location.coordinate) {
-                LocationMapAnnotation(location: location)
+                LocationMapAnnotation(location: location) {
+                    MapViewModel.openInAppleMaps(location: location)
+                }
             }
         }
         .ignoresSafeArea(SafeAreaRegions.all, edges: .top)

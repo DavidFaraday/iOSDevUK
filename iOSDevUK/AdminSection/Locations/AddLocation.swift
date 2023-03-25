@@ -42,7 +42,7 @@ struct AddLocation: View {
                     }
                 }
                 TextEditor(text: $viewModel.note)
-                    .frame(height: 80)
+                    .frame(height: 200)
 
             } header: {
                 Text("Location Details")
