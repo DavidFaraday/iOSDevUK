@@ -30,6 +30,8 @@ enum InfoDestination: Hashable {
     case sponsors
     case aboutApp
     case appInformation
+    case location
+    case locations([Location])
     case admin
     case adminSpeakers
     case adminAddSpeaker(Speaker?)
