@@ -9,14 +9,13 @@ import Foundation
 import WeatherKit
 import CoreLocation
 
-
 final class WeatherViewModel: ObservableObject {
     
     let weatherService = WeatherService()
     let location = CLLocation(latitude: 35.166348, longitude: 33.364576)
     
-    @Published private(set) var weather: Weather?
-    @Published private(set) var hourlyWeatherData: Forecast<HourWeather>?
+    @Published private var weather: Weather?
+    @Published private var hourlyWeatherData: Forecast<HourWeather>?
     @Published private(set) var currentWeather: WeatherData?
     @Published private(set) var hourlyWeather: [WeatherData] = []
     
@@ -39,32 +38,14 @@ final class WeatherViewModel: ObservableObject {
     
     @MainActor
     private func getWeather() async {
+        print("Getting weather")
+        
         self.weather = try? await weatherService.weather(for: location)
         
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
                                              
         let query =  WeatherQuery.hourly(startDate: Date(), endDate: tomorrow)
         self.hourlyWeatherData = try? await weatherService.weather(for: location, including: query)
-    }
-}
-
-struct WeatherData: Identifiable {
-    var id = UUID().uuidString
-    let lastCheck = Date()
-    let tempDate: Date
-    let humidity: Double
-    let windSpeed: Double
-    let condition: WeatherCondition
-    let symbolName: String
-    var isCelsius = true
-    let currentTempC: Double
-    let feelsLikeC: Double
-
-    var currentTempF: Double {
-        (currentTempC * 9/5) + 32
-    }
-    var feelsLikeF: Double {
-        (currentTempC * 9/5) + 32
     }
 }
 
@@ -76,7 +57,7 @@ func convert(input: HourWeather) -> WeatherData {
         tempDate: input.date,
         humidity: input.humidity,
         windSpeed: input.wind.speed.converted(to: .kilometersPerHour).value,
-        condition: input.condition,
+        condition: input.condition.description,
         symbolName: input.symbolName,
         currentTempC: input.temperature.value,
         feelsLikeC: input.apparentTemperature.value
@@ -89,7 +70,7 @@ func convert(input: CurrentWeather?) -> WeatherData? {
         tempDate: input.date,
         humidity: input.humidity,
         windSpeed: input.wind.speed.converted(to: .kilometersPerHour).value,
-        condition: input.condition,
+        condition: input.condition.description,
         symbolName: input.symbolName,
         currentTempC: input.temperature.value,
         feelsLikeC: input.apparentTemperature.value

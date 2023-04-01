@@ -24,4 +24,10 @@ extension Double {
     func roundNearest() -> Double {
         (self * 2).rounded() / 2
     }
+    
+    func roundDown() -> String {
+        self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
+    
+    
 }
