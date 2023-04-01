@@ -19,6 +19,8 @@ class BaseViewModel: ObservableObject {
     @Published private(set) var sponsors: [Sponsor] = []
     @Published private(set) var locations: [Location] = []
     @Published private(set) var infoItems: [InformationItem] = []
+    @Published private(set) var currentWeather: WeatherData?
+    @Published private(set) var hourlyWeather: [WeatherData] = []
     
     private var cancellables: Set<AnyCancellable> = []
     

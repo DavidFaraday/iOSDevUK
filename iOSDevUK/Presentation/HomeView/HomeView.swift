@@ -11,9 +11,17 @@ import Factory
 struct HomeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
+    
+    @StateObject var weatherViewModel = WeatherViewModel()
 
     @ViewBuilder
     private func headerView() -> some View {
+        if weatherViewModel.currentWeather != nil {
+            WeatherView(currentWeather: weatherViewModel.currentWeather!, hourlyWeather: weatherViewModel.hourlyWeather) {
+                
+            }
+        }
+        
         VStack {
             Text(viewModel.eventInformation?.notification ?? "Loading...")
                 .font(.headline)
