@@ -6,23 +6,41 @@
 //
 
 import SwiftUI
+import WeatherKit
 
 struct WeatherView: View {
     @EnvironmentObject var locationManager: LocationService
-    @StateObject var viewModel = WeatherViewModel()
+    @StateObject var viewModel = WeatherViewModel(weatherService: WeatherService())
     
     @State private var showHourlyData = false
+    @State private var isCelsius = true
     
     @ViewBuilder
     func currentWeatherView(_ currentWeather: WeatherData) -> some View {
+        
         HStack(spacing: 8) {
+            
+            Button {
+                withAnimation{isCelsius.toggle()}
+            } label: {
+                ZStack {
+                    Circle()
+                        .fill(Color(ColorNames.secondary))
+                        .frame(width: 30)
+                    Text(isCelsius ? "°F" : "°C")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                }
+            }
+            
             Spacer()
             Image(systemName: currentWeather.symbolName)
                 .font(.system(size: 75))
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(Color.primary, Color.blue)
             
-            Text(currentWeather.feelsLikeC.roundNearest().toCelsius)
+            Text(isCelsius ? currentWeather.feelsLikeC.roundNearest().toCelsius : currentWeather.feelsLikeF.roundNearest().toFahrenheit)
                 .font(.system(size: 45))
         }
         .padding(.horizontal, 16)
@@ -38,17 +56,7 @@ struct WeatherView: View {
             LazyHStack(spacing: 15) {
                 
                 ForEach(viewModel.hourlyWeather) { data in
-                    
-                    VStack(spacing: 5) {
-                        Text(data.tempDate.formatted(date: .omitted, time: .shortened))
-                        HStack {
-                            Image(systemName: data.symbolName)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(Color.primary, Color.blue)
-                            
-                            Text(data.feelsLikeC.roundNearest().toCelsius)
-                        }
-                    }
+                    HourlyWeatherView(weatherData: data, isCelsius: isCelsius)
                 }
             }
         }

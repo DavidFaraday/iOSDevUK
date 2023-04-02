@@ -12,16 +12,17 @@ import Factory
 
 final class WeatherViewModel: ObservableObject {
     @Injected(Container.mappingUtils) private var mappingUtils
-
-    let weatherService = WeatherService()
-    var location: CLLocation?
     
     @Published private var weather: Weather?
     @Published private var hourlyWeatherData: Forecast<HourWeather>?
     @Published private(set) var currentWeather: WeatherData?
     @Published private(set) var hourlyWeather: [WeatherData] = []
     
-    init() {
+    let weatherService: WeatherService
+    var location: CLLocation?
+    
+    init(weatherService: WeatherService) {
+        self.weatherService = weatherService
         observerData()
     }
     
@@ -38,10 +39,11 @@ final class WeatherViewModel: ObservableObject {
     @MainActor
     @Sendable func getWeather() async {
         guard let location = location else { return }
+        guard weather == nil else { return }
         
         self.weather = try? await weatherService.weather(for: location)
                                                      
-        let query =  WeatherQuery.hourly(startDate: Date(), endDate: Date().tomorrow())
+        let query =  WeatherQuery.hourly(startDate: Date(), endDate: Date().tomorrow)
         self.hourlyWeatherData = try? await weatherService.weather(for: location, including: query)
     }
     

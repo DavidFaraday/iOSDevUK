@@ -41,6 +41,7 @@
 		63C79DA429B5032E004319C1 /* EmptySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C79DA329B5032E004319C1 /* EmptySessionView.swift */; };
 		63C79DA629B50C0D004319C1 /* AdminSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C79DA529B50C0D004319C1 /* AdminSessionViewModel.swift */; };
 		63D1D7F129D9B327001A4066 /* MappingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1D7F029D9B327001A4066 /* MappingUtils.swift */; };
+		63D1D7F329D9E3A9001A4066 /* HourlyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1D7F229D9E3A9001A4066 /* HourlyWeatherView.swift */; };
 		63D602DE290E9B8E00BC01B9 /* LocationMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */; };
 		63D660372974021300EAAFEB /* AdminSpeakerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D660362974021300EAAFEB /* AdminSpeakerViewModel.swift */; };
 		63D989652901B04B0018FDD6 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989642901B04B0018FDD6 /* AdminView.swift */; };
@@ -150,6 +151,7 @@
 		63C79DA329B5032E004319C1 /* EmptySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySessionView.swift; sourceTree = "<group>"; };
 		63C79DA529B50C0D004319C1 /* AdminSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSessionViewModel.swift; sourceTree = "<group>"; };
 		63D1D7F029D9B327001A4066 /* MappingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingUtils.swift; sourceTree = "<group>"; };
+		63D1D7F229D9E3A9001A4066 /* HourlyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherView.swift; sourceTree = "<group>"; };
 		63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapAnnotation.swift; sourceTree = "<group>"; };
 		63D660362974021300EAAFEB /* AdminSpeakerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSpeakerViewModel.swift; sourceTree = "<group>"; };
 		63D989642901B04B0018FDD6 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 				EF99912A292A8C9F00B4DB8B /* SectionHeaderView.swift */,
 				63C79DA329B5032E004319C1 /* EmptySessionView.swift */,
 				63A986A829D047260008DE95 /* WeatherView.swift */,
+				63D1D7F229D9E3A9001A4066 /* HourlyWeatherView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				63497D5128E6084300C7613B /* Date + Extensions.swift in Sources */,
 				63F7E10B28CC9F6C00B2E1B7 /* FCollectionReference.swift in Sources */,
 				EF0DADC02930A535000B74E7 /* EventInformation.swift in Sources */,
+				63D1D7F329D9E3A9001A4066 /* HourlyWeatherView.swift in Sources */,
 				63A986A929D047260008DE95 /* WeatherView.swift in Sources */,
 				63D989652901B04B0018FDD6 /* AdminView.swift in Sources */,
 				63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailView.swift in Sources */,

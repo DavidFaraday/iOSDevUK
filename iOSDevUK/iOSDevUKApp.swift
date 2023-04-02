@@ -15,9 +15,7 @@ struct iOSDevUKApp: App {
     init() {
         FirebaseApp.configure()
     }
-    
-    let weather = WeatherViewModel()
-    
+        
     var body: some Scene {
         WindowGroup {
             TabBarView()

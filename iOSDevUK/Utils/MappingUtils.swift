@@ -20,8 +20,6 @@ class MappingUtils: MappingUtilsProtocol {
         
         WeatherData(
             tempDate: input.date,
-            humidity: input.humidity,
-            windSpeed: input.wind.speed.converted(to: .kilometersPerHour).value,
             condition: input.condition.description,
             symbolName: input.symbolName,
             currentTempC: input.temperature.value,
@@ -33,8 +31,6 @@ class MappingUtils: MappingUtilsProtocol {
             
         return WeatherData(
             tempDate: input.date,
-            humidity: input.humidity,
-            windSpeed: input.wind.speed.converted(to: .kilometersPerHour).value,
             condition: input.condition.description,
             symbolName: input.symbolName,
             currentTempC: input.temperature.value,

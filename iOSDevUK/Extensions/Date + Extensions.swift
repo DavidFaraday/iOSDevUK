@@ -26,7 +26,7 @@ extension Date {
         Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()
     }
     
-    func tomorrow() -> Date {
+    var tomorrow: Date {
         Calendar.current.date(byAdding: .day, value: 1, to: Date())!
     }
     
