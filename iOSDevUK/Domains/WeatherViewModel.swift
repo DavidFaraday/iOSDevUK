@@ -8,11 +8,13 @@
 import Foundation
 import WeatherKit
 import CoreLocation
+import Factory
 
 final class WeatherViewModel: ObservableObject {
-    
+    @Injected(Container.mappingUtils) private var mappingUtils
+
     let weatherService = WeatherService()
-    let location = CLLocation(latitude: 35.166348, longitude: 33.364576)
+    var location: CLLocation?
     
     @Published private var weather: Weather?
     @Published private var hourlyWeatherData: Forecast<HourWeather>?
@@ -20,59 +22,30 @@ final class WeatherViewModel: ObservableObject {
     @Published private(set) var hourlyWeather: [WeatherData] = []
     
     init() {
-        Task {
-            await getWeather()
-        }
         observerData()
     }
     
-    func observerData() {
+    private func observerData() {
         $hourlyWeatherData
-            .map( { $0?.map(convert) ?? [] })
+            .map( { $0?.map(self.mappingUtils.convert) ?? [] })
             .assign(to: &$hourlyWeather)
         
         $weather
-            .map( { convert(input: $0?.currentWeather) })
+            .map( { self.mappingUtils.convert(input: $0?.currentWeather) })
             .assign(to: &$currentWeather)
     }
     
     @MainActor
-    private func getWeather() async {
-        print("Getting weather")
+    @Sendable func getWeather() async {
+        guard let location = location else { return }
         
         self.weather = try? await weatherService.weather(for: location)
-        
-        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-                                             
-        let query =  WeatherQuery.hourly(startDate: Date(), endDate: tomorrow)
+                                                     
+        let query =  WeatherQuery.hourly(startDate: Date(), endDate: Date().tomorrow())
         self.hourlyWeatherData = try? await weatherService.weather(for: location, including: query)
     }
-}
-
-
-//TODO: Put in utils
-func convert(input: HourWeather) -> WeatherData {
     
-    WeatherData(
-        tempDate: input.date,
-        humidity: input.humidity,
-        windSpeed: input.wind.speed.converted(to: .kilometersPerHour).value,
-        condition: input.condition.description,
-        symbolName: input.symbolName,
-        currentTempC: input.temperature.value,
-        feelsLikeC: input.apparentTemperature.value
-    )
-}
-func convert(input: CurrentWeather?) -> WeatherData? {
-    guard let input = input else { return nil }
-        
-    return WeatherData(
-        tempDate: input.date,
-        humidity: input.humidity,
-        windSpeed: input.wind.speed.converted(to: .kilometersPerHour).value,
-        condition: input.condition.description,
-        symbolName: input.symbolName,
-        currentTempC: input.temperature.value,
-        feelsLikeC: input.apparentTemperature.value
-    )
+    func setLocation(location: CLLocation?) {
+        self.location = location
+    }
 }

@@ -12,4 +12,8 @@ extension Container {
     static let firebaseRepository = Factory<FirebaseRepositoryProtocol>(scope: .shared) {
         return FirebaseRepository()
     }
+    
+    static let mappingUtils = Factory<MappingUtilsProtocol>(scope: .shared) {
+        return MappingUtils()
+    }
 }

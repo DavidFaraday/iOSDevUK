@@ -13,14 +13,14 @@ enum MapDetails {
 }
 
 
-class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+class LocationService: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation,
                                                span: MapDetails.defaultSpan)
     
     @Published var currentLocation = MapDetails.startingLocation
     
-    static let shared = LocationManager()
+    static let shared = LocationService()
     
     var locationManager: CLLocationManager?
 

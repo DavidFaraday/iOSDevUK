@@ -23,7 +23,7 @@ struct iOSDevUKApp: App {
             TabBarView()
                 .environmentObject(NavigationRouter())
                 .environmentObject(BaseViewModel())
-                .environmentObject(LocationManager.shared)
+                .environmentObject(LocationService.shared)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }

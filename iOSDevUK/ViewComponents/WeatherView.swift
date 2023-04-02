@@ -8,12 +8,32 @@
 import SwiftUI
 
 struct WeatherView: View {
+    @EnvironmentObject var locationManager: LocationService
     @StateObject var viewModel = WeatherViewModel()
-
+    
     @State private var showHourlyData = false
     
     @ViewBuilder
-    func hourlyView() -> some View {
+    func currentWeatherView(_ currentWeather: WeatherData) -> some View {
+        HStack(spacing: 8) {
+            Spacer()
+            Image(systemName: currentWeather.symbolName)
+                .font(.system(size: 75))
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(Color.primary, Color.blue)
+            
+            Text(currentWeather.feelsLikeC.roundNearest().toCelsius)
+                .font(.system(size: 45))
+        }
+        .padding(.horizontal, 16)
+        
+        Text(currentWeather.condition)
+            .font(.subheadline)
+            .padding(.horizontal, 16)
+    }
+    
+    @ViewBuilder
+    func hourlyWeatherView() -> some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 15) {
                 
@@ -25,7 +45,7 @@ struct WeatherView: View {
                             Image(systemName: data.symbolName)
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(Color.primary, Color.blue)
-
+                            
                             Text(data.feelsLikeC.roundNearest().toCelsius)
                         }
                     }
@@ -36,36 +56,31 @@ struct WeatherView: View {
         .padding([.leading, .top])
     }
     
-    var body: some View {
-        if let currentWeather = viewModel.currentWeather {
+    func main() -> some View {
+        VStack {
             
-            VStack(alignment: .trailing) {
-                HStack(spacing: 8) {
-                    Spacer()
-                    Image(systemName: currentWeather.symbolName)
-                        .font(.system(size: 75))
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(Color.primary, Color.blue)
-
-                    Text(currentWeather.isCelsius ? currentWeather.feelsLikeC.roundNearest().toCelsius : currentWeather.feelsLikeF.roundNearest().toFahrenheit)
-                        .font(.system(size: 45))
-                }
-                .padding(.horizontal, 16)
-
-                Text(currentWeather.condition)
-                    .font(.subheadline)
-                    .padding(.horizontal, 16)
+            if let currentWeather = viewModel.currentWeather {
                 
-                if showHourlyData {
-                    hourlyView()
+                VStack(alignment: .trailing) {
+                    currentWeatherView(currentWeather)
+                    
+                    if showHourlyData {
+                        hourlyWeatherView()
+                    }
                 }
-            }
-            .onTapGesture {
-                withAnimation {
-                    showHourlyData.toggle()
+                .onTapGesture {
+                    withAnimation {
+                        showHourlyData.toggle()
+                    }
                 }
             }
         }
+    }
+    
+    var body: some View {
+        main()
+            .task { viewModel.setLocation(location: locationManager.locationManager?.location) }
+            .task(viewModel.getWeather)
     }
 }
 
