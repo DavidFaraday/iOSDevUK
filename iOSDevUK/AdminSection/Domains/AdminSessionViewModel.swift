@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Factory
 
 final class AdminSessionViewModel: ObservableObject {
-    
+    @Injected(Container.firebaseRepository) private var firebaseRepository
+
     @Published var title = ""
     @Published var content = "Session content"
     @Published var type = SessionType.talk
@@ -40,7 +42,7 @@ final class AdminSessionViewModel: ObservableObject {
         //TODO: Fix location and speakers
         let newSession = Session(id: session?.id ?? UUID().uuidString, title: title, content: content, startDate: startDate, endDate: endDate, locationId: locationId, speakerIds: [], type: type)
         do {
-            try FirebaseReference(.Session).document(newSession.id).setData(from: newSession)
+            try firebaseRepository.saveData(data: newSession, to: .Session)
         }
         catch {
             print("Error saving session", error.localizedDescription)
@@ -48,7 +50,7 @@ final class AdminSessionViewModel: ObservableObject {
     }
     
     func deleteSession(_ session: Session) {
-        FirebaseReference(.Session).document(session.id).delete()
+        firebaseRepository.deleteDocument(with: session.id, from: .Session)
     }
     
     func invalidForm() -> Bool {

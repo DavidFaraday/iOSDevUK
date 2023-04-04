@@ -6,24 +6,27 @@
 //
 
 import SwiftUI
+import Factory
 
 struct InfoView: View {
+    //TODO: Crete VM for this view
+    @Injected(Container.firebaseAuthRepository) private var firebaseAuth
+
     @EnvironmentObject var router: NavigationRouter
-    
-    let firebaseAuth = FirebaseAuthentication.shared
+
     @State var showLoginView = false
     
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        if firebaseAuth.hasCurrentUser {
+        if firebaseAuth.hasCurrentUser() {
             NavigationLink("Admin", value: InfoDestination.admin)
         } else {
             Button("Admin") {
                 showLoginView = true
             }
             .sheet(isPresented: $showLoginView, onDismiss: {
-                if firebaseAuth.hasCurrentUser {
+                if firebaseAuth.hasCurrentUser() {
                     router.infoPath.append(InfoDestination.admin)
                 }
             }, content: {

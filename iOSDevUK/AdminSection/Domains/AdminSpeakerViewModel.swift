@@ -7,9 +7,11 @@
 
 import SwiftUI
 import PhotosUI
+import Factory
 
 final class AdminSpeakerViewModel: ObservableObject {
-    
+    @Injected(Container.firebaseRepository) private var firebaseRepository
+
     @Published var fullName = ""
     @Published var twitter = ""
     @Published var linkedIn = ""
@@ -42,7 +44,7 @@ final class AdminSpeakerViewModel: ObservableObject {
         let newSpeaker = Speaker(id: speaker?.id ?? UUID().uuidString, name: fullName, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: imageLink, webLinks: nil)
 
         do {
-            try FirebaseReference(.Speaker).document(newSpeaker.id).setData(from: newSpeaker)
+            try firebaseRepository.saveData(data: newSpeaker, to: .Speaker)
         }
         catch {
             print("Error saving speaker", error.localizedDescription)
@@ -75,7 +77,7 @@ final class AdminSpeakerViewModel: ObservableObject {
 //    }
 
     func deleteSpeaker(_ speaker: Speaker) {
-        FirebaseReference(.Speaker).document(speaker.id).delete()
+        firebaseRepository.deleteDocument(with: speaker.id, from: .Speaker)
     }
     
     func invalidForm() -> Bool {

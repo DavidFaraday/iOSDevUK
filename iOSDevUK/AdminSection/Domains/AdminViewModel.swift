@@ -6,17 +6,22 @@
 //
 
 import Foundation
+import Factory
 
 final class AdminViewModel: ObservableObject {
-    
-    let firebaseAuth = FirebaseAuthentication.shared
+    @Injected(Container.firebaseAuthRepository) private var firebaseAuth
     
     @Published var logoutError: Error?
     @Published var showError = false
 
     @MainActor
     func logOutUser() async {
-        logoutError = await firebaseAuth.logOutUser()
+        do {
+            try await firebaseAuth.logOutUser()
+        } catch (let error) {
+            logoutError = error
+        }
+        
         showError = logoutError != nil
     }
 }
