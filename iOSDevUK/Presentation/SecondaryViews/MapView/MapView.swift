@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var locationManager: LocationService
 
     private var allLocations: [Location]
 

@@ -101,4 +101,6 @@ struct DummyData {
     static let aboutString = "iOSDevUK is a conference."
     
     static let eventNotification = "iOSDevUK 10 has finished."
+    
+    static let weatherData = WeatherData(tempDate: .now, condition: "Blowing Dust", symbolName: "sun.max", currentTempC: 22.1, feelsLikeC: 22.5)
 }

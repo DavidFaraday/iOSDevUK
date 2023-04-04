@@ -11,9 +11,12 @@ import Factory
 struct HomeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
+    
 
     @ViewBuilder
     private func headerView() -> some View {
+
+        
         VStack {
             Text(viewModel.eventInformation?.notification ?? "Loading...")
                 .font(.headline)
@@ -110,6 +113,8 @@ struct HomeView: View {
     private func main() -> some View {
         ScrollView {
             VStack(spacing: 20) {
+                WeatherView()
+
                 if viewModel.eventInformation != nil {
                     headerView()
                 }

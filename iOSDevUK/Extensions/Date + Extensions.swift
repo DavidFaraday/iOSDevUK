@@ -26,6 +26,10 @@ extension Date {
         Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) ?? Date()
     }
     
+    var tomorrow: Date {
+        Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    }
+    
     var longDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
