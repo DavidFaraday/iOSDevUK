@@ -14,16 +14,34 @@ final class AdminSessionViewModel: ObservableObject {
     @Published var title = ""
     @Published var content = "Session content"
     @Published var type = SessionType.talk
-    @Published var locationId = ""
+    @Published var location: Location?
+    @Published var speakers: [Speaker] = []
+    @Published var speaker: Speaker?
     @Published var startDate = Date()
     @Published var endDate = Date()
-    @Published var speakerIds = ""
     
+    @Published private var speakerIds = ""
+    @Published private var locationId = ""
+
     var session: Session?
     
     init(session: Session? = nil) {
         self.session = session
         setupUI()
+        observerData()
+    }
+    
+    private func observerData() {
+        $location
+            .map({ $0?.id ?? "" })
+            .assign(to: &$locationId)
+        $speaker
+            .map({ $0?.id ?? "" })
+            .assign(to: &$speakerIds)
+        
+//        $speakers
+//            .map({ $0.map({ $0.id }).joined(separator: ", ") })
+//            .assign(to: &$speakerIds)
     }
     
     private func setupUI() {
@@ -39,8 +57,8 @@ final class AdminSessionViewModel: ObservableObject {
     }
     
     func save() async {
-        //TODO: Fix location and speakers
-        let newSession = Session(id: session?.id ?? UUID().uuidString, title: title, content: content, startDate: startDate, endDate: endDate, locationId: locationId, speakerIds: [], type: type)
+
+        let newSession = Session(id: session?.id ?? UUID().uuidString, title: title, content: content, startDate: startDate, endDate: endDate, locationId: locationId, speakerIds: speakers.map({ $0.id }), type: type)
         do {
             try firebaseRepository.saveData(data: newSession, to: .Session)
         }

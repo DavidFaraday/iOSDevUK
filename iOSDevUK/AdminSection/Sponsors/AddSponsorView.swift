@@ -51,7 +51,7 @@ struct AddSponsorView: View {
                 }
                 
                 TextEditor(text: $viewModel.tagline)
-                    .frame(height: 200)
+                    .frame(height: AppConstants.textViewHeight)
             } header: {
                 Text("Sponsor details")
             }
