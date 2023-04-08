@@ -9,6 +9,17 @@ import Foundation
 import Combine
 
 final class MocFirebaseRepository: FirebaseRepositoryProtocol {
+    
+    func deleteData<T>(data: T, from collection: FCollectionReference) async throws where T : Identifiable {
+        //TODO: unit tests
+    }
+    
+    
+    func saveData<T>(data: T, to collection: FCollectionReference) throws where T : Encodable, T : Identifiable {
+        //TODO: unit tests
+    }
+    
+    
 
     let objectsToReturn: [Codable]
     let shouldReturnError: Bool

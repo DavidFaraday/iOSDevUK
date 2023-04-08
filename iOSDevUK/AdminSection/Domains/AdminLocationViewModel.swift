@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import Factory
+
 final class AdminLocationViewModel: ObservableObject {
-    
+    @Injected(Container.firebaseRepository) private var firebaseRepository
+
     @Published var name = ""
     @Published var note = "Notes"
     @Published var locationType = LocationType.au
@@ -37,15 +40,14 @@ final class AdminLocationViewModel: ObservableObject {
         let newLocation = Location(id: location?.id ?? UUID().uuidString, name: name, note: note, imageLink: imageLink, latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0, webLink: nil, locationType: locationType)
     
         do {
-            try FirebaseReference(.Location).document(newLocation.id).setData(from: newLocation)
-        }
-        catch {
+            try firebaseRepository.saveData(data: newLocation, to: .Location)
+        } catch {
             print("Error saving location", error.localizedDescription)
         }
     }
     
     func deleteLocation(_ location: Location) {
-        FirebaseReference(.Location).document(location.id).delete()
+        firebaseRepository.deleteDocument(with: location.id, from: .Location)
     }
     
     func invalidForm() -> Bool {

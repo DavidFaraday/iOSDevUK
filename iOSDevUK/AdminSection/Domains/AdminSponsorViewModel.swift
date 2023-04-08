@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Factory
 
 final class AdminSponsorViewModel: ObservableObject {
-    
+    @Injected(Container.firebaseRepository) private var firebaseRepository
+
     @Published var name = ""
     @Published var url = ""
     @Published var urlText = ""
@@ -38,7 +40,7 @@ final class AdminSponsorViewModel: ObservableObject {
         let newSponsor = Sponsor(id: sponsor?.id ?? UUID().uuidString, name: name, tagline: tagline, url: url, urlText: urlText, sponsorCategory: category, imageLink: imageLink)
     
         do {
-            try FirebaseReference(.Sponsor).document(newSponsor.id).setData(from: newSponsor)
+            try firebaseRepository.saveData(data: newSponsor, to: .Sponsor)
         }
         catch {
             print("Error saving sponsor", error.localizedDescription)
@@ -46,7 +48,7 @@ final class AdminSponsorViewModel: ObservableObject {
     }
     
     func deleteSponsor(_ sponsor: Sponsor) {
-        FirebaseReference(.Sponsor).document(sponsor.id).delete()
+        firebaseRepository.deleteDocument(with: sponsor.id, from: .Sponsor)
     }
     
     func invalidForm() -> Bool {

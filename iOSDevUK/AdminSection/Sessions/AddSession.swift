@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddSession: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var baseViewModel: BaseViewModel
     @ObservedObject var viewModel: AdminSessionViewModel
 
     @ViewBuilder
@@ -32,6 +33,20 @@ struct AddSession: View {
                 DatePicker("Start date", selection: $viewModel.startDate)
                 DatePicker("End date", selection: $viewModel.endDate, in: viewModel.startDate...)
 
+                Picker("Location", selection: $viewModel.location) {
+                    ForEach(baseViewModel.locations.filter({ $0.locationType == .au })) { location in
+                        Text(location.name)
+                            .tag(location as Location?)
+                    }
+                }
+                //TODO: Need work with pickers
+                Picker("Speakers", selection: $viewModel.speaker) {
+                    ForEach(baseViewModel.speakers) { speaker in
+                        Text(speaker.name)
+                            .tag(speaker as Speaker?)
+                    }
+                }
+
                 Picker("Type", selection: $viewModel.type) {
                     ForEach(SessionType.allCases, id: \.self) { type in
                         Text(type.name)
@@ -40,7 +55,7 @@ struct AddSession: View {
                 }
                 
                 TextEditor(text: $viewModel.content)
-                    .frame(height: 200)
+                    .frame(height: AppConstants.textViewHeight)
             } header: {
                 Text("Session details")
             }

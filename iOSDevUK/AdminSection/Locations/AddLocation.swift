@@ -42,7 +42,7 @@ struct AddLocation: View {
                     }
                 }
                 TextEditor(text: $viewModel.note)
-                    .frame(height: 200)
+                    .frame(height: AppConstants.textViewHeight)
 
             } header: {
                 Text("Location Details")

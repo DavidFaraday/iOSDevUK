@@ -13,6 +13,10 @@ extension Container {
         return FirebaseRepository()
     }
     
+    static let firebaseAuthRepository = Factory<FirebaseAuthenticationServiceProtocol>(scope: .shared) {
+        return FirebaseAuthenticationService()
+    }
+    
     static let mappingUtils = Factory<MappingUtilsProtocol>(scope: .shared) {
         return MappingUtils()
     }

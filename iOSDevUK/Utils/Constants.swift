@@ -47,3 +47,7 @@ struct BaseUrl {
 struct FirebaseKeys {
     static let speakerIds = "speakerIds"
 }
+
+struct AppConstants {
+    static let textViewHeight = 300.0
+}

@@ -6,22 +6,42 @@
 //
 
 import Foundation
+import Factory
 
 final class AdminSessionViewModel: ObservableObject {
-    
+    @Injected(Container.firebaseRepository) private var firebaseRepository
+
     @Published var title = ""
     @Published var content = "Session content"
     @Published var type = SessionType.talk
-    @Published var locationId = ""
+    @Published var location: Location?
+    @Published var speakers: [Speaker] = []
+    @Published var speaker: Speaker?
     @Published var startDate = Date()
     @Published var endDate = Date()
-    @Published var speakerIds = ""
     
+    @Published private var speakerIds = ""
+    @Published private var locationId = ""
+
     var session: Session?
     
     init(session: Session? = nil) {
         self.session = session
         setupUI()
+        observerData()
+    }
+    
+    private func observerData() {
+        $location
+            .map({ $0?.id ?? "" })
+            .assign(to: &$locationId)
+        $speaker
+            .map({ $0?.id ?? "" })
+            .assign(to: &$speakerIds)
+        
+//        $speakers
+//            .map({ $0.map({ $0.id }).joined(separator: ", ") })
+//            .assign(to: &$speakerIds)
     }
     
     private func setupUI() {
@@ -37,10 +57,10 @@ final class AdminSessionViewModel: ObservableObject {
     }
     
     func save() async {
-        //TODO: Fix location and speakers
-        let newSession = Session(id: session?.id ?? UUID().uuidString, title: title, content: content, startDate: startDate, endDate: endDate, locationId: locationId, speakerIds: [], type: type)
+
+        let newSession = Session(id: session?.id ?? UUID().uuidString, title: title, content: content, startDate: startDate, endDate: endDate, locationId: locationId, speakerIds: speakers.map({ $0.id }), type: type)
         do {
-            try FirebaseReference(.Session).document(newSession.id).setData(from: newSession)
+            try firebaseRepository.saveData(data: newSession, to: .Session)
         }
         catch {
             print("Error saving session", error.localizedDescription)
@@ -48,7 +68,7 @@ final class AdminSessionViewModel: ObservableObject {
     }
     
     func deleteSession(_ session: Session) {
-        FirebaseReference(.Session).document(session.id).delete()
+        firebaseRepository.deleteDocument(with: session.id, from: .Session)
     }
     
     func invalidForm() -> Bool {

@@ -55,7 +55,7 @@
 		63D9897A2901B1A90018FDD6 /* AdminSponsors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989792901B1A90018FDD6 /* AdminSponsors.swift */; };
 		63E2956429DC953D007F465D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E2956329DC953D007F465D /* GoogleService-Info.plist */; };
 		63E394E42971DCCB0035C1E0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E394E32971DCCB0035C1E0 /* LoginView.swift */; };
-		63E394E82972B1ED0035C1E0 /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E394E72972B1ED0035C1E0 /* FirebaseAuthentication.swift */; };
+		63E394E82972B1ED0035C1E0 /* FirebaseAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E394E72972B1ED0035C1E0 /* FirebaseAuthenticationService.swift */; };
 		63E8E85F290E541C002419A7 /* AllSessionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E85E290E541C002419A7 /* AllSessionsViewModel.swift */; };
 		63E8E861290E5898002419A7 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E860290E5898002419A7 /* String + Extensions.swift */; };
 		63E949592916DEB500D6B9B1 /* SessionRowForLocalSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E949582916DEB500D6B9B1 /* SessionRowForLocalSession.swift */; };
@@ -165,7 +165,7 @@
 		63D989792901B1A90018FDD6 /* AdminSponsors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSponsors.swift; sourceTree = "<group>"; };
 		63E2956329DC953D007F465D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63E394E32971DCCB0035C1E0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		63E394E72972B1ED0035C1E0 /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
+		63E394E72972B1ED0035C1E0 /* FirebaseAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationService.swift; sourceTree = "<group>"; };
 		63E8E85E290E541C002419A7 /* AllSessionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsViewModel.swift; sourceTree = "<group>"; };
 		63E8E860290E5898002419A7 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
 		63E949582916DEB500D6B9B1 /* SessionRowForLocalSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowForLocalSession.swift; sourceTree = "<group>"; };
@@ -542,7 +542,7 @@
 			children = (
 				63F7E10A28CC9F6C00B2E1B7 /* FCollectionReference.swift */,
 				EFDE6B55292CA8E100F0C61F /* FirebaseRepository.swift */,
-				63E394E72972B1ED0035C1E0 /* FirebaseAuthentication.swift */,
+				63E394E72972B1ED0035C1E0 /* FirebaseAuthenticationService.swift */,
 				63A8509A29917C1D0000AB15 /* FirebaseFileManager.swift */,
 			);
 			path = FirebaseHelpers;
@@ -778,7 +778,7 @@
 				63D1D7F129D9B327001A4066 /* MappingUtils.swift in Sources */,
 				63E9C55928EF419A00710C8F /* InformationItem.swift in Sources */,
 				63D989742901B14C0018FDD6 /* AdminSpeakers.swift in Sources */,
-				63E394E82972B1ED0035C1E0 /* FirebaseAuthentication.swift in Sources */,
+				63E394E82972B1ED0035C1E0 /* FirebaseAuthenticationService.swift in Sources */,
 				63F7E10728CC9E7300B2E1B7 /* RemoteImage.swift in Sources */,
 				63C79DA429B5032E004319C1 /* EmptySessionView.swift in Sources */,
 				63B80EDD28F01EC400445E63 /* SessionCardViewModel.swift in Sources */,

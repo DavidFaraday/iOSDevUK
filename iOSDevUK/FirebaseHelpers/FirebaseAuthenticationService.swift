@@ -8,13 +8,15 @@
 import Foundation
 import Firebase
 
-class FirebaseAuthentication {
+protocol FirebaseAuthenticationServiceProtocol {
+    func hasCurrentUser() -> Bool
+    func loginUserWith(email: String, password: String) async throws -> Bool
+    func logOutUser() async throws
+}
 
-    static let shared = FirebaseAuthentication()
+class FirebaseAuthenticationService: FirebaseAuthenticationServiceProtocol {
     
-    private init() { }
-    
-    var hasCurrentUser: Bool {
+    func hasCurrentUser() -> Bool {
         Auth.auth().currentUser != nil
     }
     
@@ -32,12 +34,11 @@ class FirebaseAuthentication {
         }
     }
 
-    func logOutUser() async -> Error? {
+    func logOutUser() async throws {
         do {
             try Auth.auth().signOut()
-            return nil
-        } catch let error {
-            return error
+        } catch  {
+            throw error
         }
     }
 }
