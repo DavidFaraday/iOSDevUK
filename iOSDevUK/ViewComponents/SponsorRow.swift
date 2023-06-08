@@ -29,14 +29,13 @@ struct SponsorRow: View {
                 Text(sponsor.name)
                     .font(.title2)
             }
+            
             Text(sponsor.tagline)
                 .multilineTextAlignment(.leading)
             
-            if let urlText = sponsor.urlText {
-                Text(urlText)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
+            Text(sponsor.urlText)
+                .font(.caption)
+                .foregroundColor(.secondary)
         }
     }
 }

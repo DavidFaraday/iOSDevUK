@@ -22,6 +22,7 @@ struct ImageNames {
     static let info = "info"
     static let mapPin = "mappin.circle.fill"
     static let chevronRight = "chevron.right"
+    static let checkmark = "checkmark"
 }
 
 struct ColorNames {
