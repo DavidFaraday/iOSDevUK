@@ -38,11 +38,15 @@ struct InfoView: View {
     var body: some View {
         NavigationStack(path: $router.infoPath) {
             Form {
-                NavigationLink("Locations", value: InfoDestination.location)
-                NavigationLink("Inclusivity", value: InfoDestination.inclusivity)
-                NavigationLink("Sponsors", value: InfoDestination.sponsors)
-                NavigationLink("About iOSDevUK", value: InfoDestination.aboutApp)
-                NavigationLink("App Information", value: InfoDestination.appInformation)
+                Section {
+                    NavigationLink("Locations", value: InfoDestination.location)
+                    NavigationLink("Inclusivity", value: InfoDestination.inclusivity)
+                    NavigationLink("Sponsors", value: InfoDestination.sponsors)
+                    NavigationLink("About iOSDevUK", value: InfoDestination.aboutApp)
+                    NavigationLink("App Information", value: InfoDestination.appInformation)
+                } footer: {
+                    Text("Version: \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
+                }
             }
             .navigationTitle("Info")
             .toolbar {

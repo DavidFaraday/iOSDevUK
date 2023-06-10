@@ -7,6 +7,8 @@
 
 import Foundation
 import Factory
+import Combine
+
 
 final class AdminSessionViewModel: ObservableObject {
     @Injected(Container.firebaseRepository) private var firebaseRepository
@@ -14,14 +16,18 @@ final class AdminSessionViewModel: ObservableObject {
     @Published var title = ""
     @Published var content = "Session content"
     @Published var type = SessionType.talk
+    
     @Published var location: Location?
-    @Published var speakers: [Speaker] = []
-    @Published var speaker: Speaker?
+    @Published private var locationId = ""
+    
+    @Published var selectedSpeakers = Set<Speaker>()
+
+    @Published private var speakerIds: [String] = []
+
     @Published var startDate = Date()
     @Published var endDate = Date()
     
-    @Published private var speakerIds = ""
-    @Published private var locationId = ""
+    var subscriptions = Set<AnyCancellable>()
 
     var session: Session?
     
@@ -31,19 +37,18 @@ final class AdminSessionViewModel: ObservableObject {
         observerData()
     }
     
+    
     private func observerData() {
         $location
             .map({ $0?.id ?? "" })
             .assign(to: &$locationId)
-        $speaker
-            .map({ $0?.id ?? "" })
-            .assign(to: &$speakerIds)
         
-//        $speakers
-//            .map({ $0.map({ $0.id }).joined(separator: ", ") })
-//            .assign(to: &$speakerIds)
+        $selectedSpeakers
+            .map({ $0.map({ $0.id }) })
+            .assign(to: &$speakerIds)
     }
     
+        
     private func setupUI() {
         guard let session = session else { return }
         
@@ -51,27 +56,36 @@ final class AdminSessionViewModel: ObservableObject {
         content = session.content
         type = session.type
         locationId = session.locationId
-        speakerIds = session.speakerIds.joined(separator: ", ")
+        speakerIds = session.speakerIds
         startDate = session.startDate
         endDate = session.endDate
     }
     
-    func save() async {
+    @MainActor
+    func save(speakers: Set<Speaker>) async {
+        selectedSpeakers = speakers
 
-        let newSession = Session(id: session?.id ?? UUID().uuidString, title: title, content: content, startDate: startDate, endDate: endDate, locationId: locationId, speakerIds: speakers.map({ $0.id }), type: type)
-        do {
-            try firebaseRepository.saveData(data: newSession, to: .Session)
-        }
-        catch {
-            print("Error saving session", error.localizedDescription)
-        }
+        
+        guard !speakerIds.isEmpty else { return }
+        
+        let newSession = Session(id: session?.id ?? UUID().uuidString, title: title, content: content, startDate: startDate, endDate: endDate, locationId: locationId, speakerIds: speakerIds, type: type)
+        
+        print(newSession)
+        
+//        do {
+//            try firebaseRepository.saveData(data: newSession, to: .Session)
+//        }
+//        catch {
+//            print("Error saving session", error.localizedDescription)
+//        }
     }
     
+
     func deleteSession(_ session: Session) {
         firebaseRepository.deleteDocument(with: session.id, from: .Session)
     }
     
     func invalidForm() -> Bool {
-        title == "" || content == "" || locationId == "" || speakerIds == ""
+        title == "" || content == "" || locationId == ""
     }
 }
