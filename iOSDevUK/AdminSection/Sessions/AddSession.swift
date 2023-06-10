@@ -22,7 +22,7 @@ struct AddSession: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var baseViewModel: BaseViewModel
     @ObservedObject var viewModel: AdminSessionViewModel
-
+    
     @State private var showSpeakersView = false
     @State private var selectedSpeakers = Set<Speaker>()
     
@@ -38,52 +38,55 @@ struct AddSession: View {
         }
         .disabled(viewModel.invalidForm())
     }
-
+    
     @ViewBuilder
     private func main() -> some View {
         Form {
-            Section {
-                TextField("Title", text: $viewModel.title)
-                DatePicker("Start date", selection: $viewModel.startDate)
-                DatePicker("End date", selection: $viewModel.endDate, in: viewModel.startDate...)
-
-                
-                Picker("Location", selection: $viewModel.location) {
-                    ForEach(baseViewModel.locations.filter({ $0.locationType == .au })) { location in
-                        Text(location.name)
-                            .tag(location as Location?)
-                    }
+            TextField("Title", text: $viewModel.title)
+            DatePicker("Start date", selection: $viewModel.startDate)
+            DatePicker("End date", selection: $viewModel.endDate, in: viewModel.startDate...)
+            
+            
+            Picker("Location", selection: $viewModel.location) {
+                ForEach(baseViewModel.locations.filter({ $0.locationType == .au })) { location in
+                    Text(location.name)
+                        .tag(location as Location?)
                 }
-
-                VStack(alignment: .leading, spacing: 4.0) {
-                    Text("Speakers")
-                    if !selectedSpeakers.isEmpty {
-                        Text( selectedSpeakers.map { $0.name }, format: .list(type: .and))
-                            .foregroundColor(.red)
-                            .multilineTextAlignment(.leading)
-                    }
-                }
-                .onTapGesture {
-                    showSpeakersView = true
-                }
-                                
-
-
-//                Picker("Type", selection: $viewModel.type) {
-//                    ForEach(SessionType.allCases, id: \.self) { type in
-//                        Text(type.name)
-//                            .tag(type)
-//                    }
-//                }
-                
-                TextEditor(text: $viewModel.content)
-                    .frame(height: AppConstants.textViewHeight)
-            } header: {
-                Text("Session details")
             }
+            
+            //TODO: Need work with pickers
+            //                Picker("Speakers", selection: $viewModel.speaker) {
+            //                    ForEach(baseViewModel.speakers) { speaker in
+            //                        Text(speaker.name)
+            //                            .tag(speaker as Speaker?)
+            //                    }
+            //                }
+            
+            Picker("Type", selection: $viewModel.type) {
+                ForEach(SessionType.allCases, id: \.self) { type in
+                    Text(type.name)
+                        .tag(type)
+                }
+            }
+            
+            VStack(alignment: .leading, spacing: 4.0) {
+                Text("Speakers")
+                if !selectedSpeakers.isEmpty {
+                    Text( selectedSpeakers.map { $0.name }, format: .list(type: .and))
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.leading)
+                }
+            }
+            .onTapGesture {
+                showSpeakersView = true
+            }
+            
+            
+            TextEditor(text: $viewModel.content)
+                .frame(height: AppConstants.textViewHeight)
         }
     }
-
+    
     var body: some View {
         main()
             .navigationTitle(viewModel.session?.title ?? "Add Session")

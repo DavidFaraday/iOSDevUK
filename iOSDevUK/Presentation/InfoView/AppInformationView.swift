@@ -14,12 +14,7 @@ struct AppInformationView: View {
         
         ScrollView {
             VStack(spacing: 20) {
-                Image(ImageNames.appIcon)
-                    .resizable()
-                    .frame(width: 150, height: 150)
-                
-                Text("App Version: \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
-                
+                                
                 Text("The app has been created with Beer & SwiftUI by David Kababyan @Dave_iOSDev \nApp data curated wrangled by Chris")
                 
                 Text("Thanks to @John_Gilbey for his picture of conference attendees that is used in this app.")
@@ -36,7 +31,8 @@ struct AppInformationView: View {
                 Spacer()
             }
             .multilineTextAlignment(.center)
-            .padding(10)
+            .padding(.top, 25)
+            .padding()
             .navigationTitle("App Info")
             .navigationBarTitleDisplayMode(.inline)
         }

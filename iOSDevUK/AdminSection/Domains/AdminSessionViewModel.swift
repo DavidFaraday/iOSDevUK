@@ -37,6 +37,7 @@ final class AdminSessionViewModel: ObservableObject {
         observerData()
     }
     
+    
     private func observerData() {
         $location
             .map({ $0?.id ?? "" })
@@ -79,6 +80,7 @@ final class AdminSessionViewModel: ObservableObject {
 //        }
     }
     
+
     func deleteSession(_ session: Session) {
         firebaseRepository.deleteDocument(with: session.id, from: .Session)
     }

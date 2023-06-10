@@ -10,56 +10,43 @@ import SwiftUI
 struct AttendeeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
-
-    
-    @ViewBuilder
-    private func informationView() -> some View {
-        ForEach(viewModel.infoItems) { item in
-            if let url = item.url {
-                Link(destination: url) {
-                    Text(item.name)
-                        .fontWeight(.semibold)
-                }
-            } else {
-                Text(item.name)
-            }
-        }
-    }
-    
     
     @ViewBuilder
     private func main() -> some View {
-        
         Form {
-            Section {
-                informationView()
-            } header: {
-                SectionHeaderView(title: "Information")
-                    .font(.headline)
+            ForEach(viewModel.infoItems) { item in
+                if let url = item.url {
+                    Link(destination: url) {
+                        Text(item.name)
+                            .fontWeight(.semibold)
+                    }
+                } else {
+                    Text(item.name)
+                }
             }
         }
     }
-
+    
     var body: some View {
         NavigationStack(path: $router.attendeePath) {
             main()
                 .navigationTitle("Attendee Info")
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
-                    case .session(let session):
-                        SessionDetailView(sessionId: session.id)
-                    case .sessions(let sessions):
-                        AllSessionsView(sessions: sessions)
-                    case .speaker(let speaker):
-                        SpeakerDetailView(speaker: speaker)
-                    case .speakers(let speakers):
-                        AllSpeakersView(speakers: speakers)
-                    case .sponsor:
-                        SponsorsView()
-                    case .locations(let locations):
-                        MapView(allLocations: locations)
-                    case .savedSession(let savedSession):
-                        SessionDetailView(sessionId: savedSession.id ?? "")
+                        case .session(let session):
+                            SessionDetailView(sessionId: session.id)
+                        case .sessions(let sessions):
+                            AllSessionsView(sessions: sessions)
+                        case .speaker(let speaker):
+                            SpeakerDetailView(speaker: speaker)
+                        case .speakers(let speakers):
+                            AllSpeakersView(speakers: speakers)
+                        case .sponsor:
+                            SponsorsView()
+                        case .locations(let locations):
+                            MapView(allLocations: locations)
+                        case .savedSession(let savedSession):
+                            SessionDetailView(sessionId: savedSession.id ?? "")
                     }
                 }
         }
