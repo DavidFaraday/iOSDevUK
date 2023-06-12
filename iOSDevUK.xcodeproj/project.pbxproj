@@ -432,7 +432,7 @@
 				63D989662901B0570018FDD6 /* AdminSection */,
 				6366D5CD28D0B74A0051542E /* Extensions */,
 				63E584102917A9080034F0D7 /* Utils */,
-				EF34709A2944FAA400B24854 /* MOC */,
+				EF34709A2944FAA400B24854 /* MOCK */,
 				63E584112917A9240034F0D7 /* Unused */,
 				63F7E0BD28CC942200B2E1B7 /* Assets.xcassets */,
 				63F7E0C728CC942200B2E1B7 /* Info.plist */,
@@ -570,12 +570,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EF34709A2944FAA400B24854 /* MOC */ = {
+		EF34709A2944FAA400B24854 /* MOCK */ = {
 			isa = PBXGroup;
 			children = (
 				63E9C55628EF3FB400710C8F /* DummyData.swift */,
 			);
-			path = MOC;
+			path = MOCK;
 			sourceTree = "<group>";
 		};
 		EF8AC5082931F7CF00E19859 /* Domains */ = {

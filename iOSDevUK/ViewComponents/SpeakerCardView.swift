@@ -25,35 +25,33 @@ struct SpeakerCardView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            RemoteImageView(url: speaker.imageUrl)
-                .frame(height: height)
-                .scaledToFit()
-                .cornerRadius(15)
-
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .background(
-                        LinearGradient(gradient: gradient,
-                                       startPoint: .bottom,
-                                       endPoint: .top)
-                    )
-                    .frame(height: 65)
-                    .cornerRadius(15)
-                    .foregroundColor(.clear)
-                
-                Text(speaker.name)
-                    .multilineTextAlignment(.leading)
-                    .minimumScaleFactor(0.6)
-                    .foregroundColor(.white)
-                    .lineLimit(2)
-                    .font(.subheadline)
-                    .bold()
-                    .padding(.horizontal, 10)
-                    .padding(.top, 15)
+        RemoteImageView(url: speaker.imageUrl)
+            .frame(height: height)
+            .scaledToFit()
+            .cornerRadius(15)
+            .overlay(alignment: .bottom) {
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .background(
+                            LinearGradient(gradient: gradient,
+                                           startPoint: .bottom,
+                                           endPoint: .top)
+                        )
+                        .frame(height: 65)
+                        .cornerRadius(15)
+                        .foregroundColor(.clear)
+                    
+                    Text(speaker.name)
+                        .multilineTextAlignment(.leading)
+                        .minimumScaleFactor(0.6)
+                        .foregroundColor(.white)
+                        .lineLimit(2)
+                        .font(.subheadline)
+                        .bold()
+                        .padding(.horizontal, 10)
+                        .padding(.top, 15)
+                }
             }
-        }
-        .frame(height: height)
     }
 }
 
