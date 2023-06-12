@@ -15,12 +15,7 @@ final class SessionDetailViewModelTest: XCTestCase {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    override func setUpWithError() throws {
-        Container.Registrations.push()
-    }
-
     override func tearDownWithError() throws {
-        Container.Registrations.pop()
         cancellables = []
     }
 
@@ -40,7 +35,7 @@ final class SessionDetailViewModelTest: XCTestCase {
         
         let expectation = expectation(description: "Waiting for session")
         let sut = SessionDetailViewModel(sessionId: "Session123")
-        
+
         sut.$fetchError
             .dropFirst()
             .sink { newValue in

@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 class BaseViewModel: ObservableObject {
-    @Injected(Container.firebaseRepository) private var firebaseRepository
+    @Injected(\.firebaseRepository) private var firebaseRepository
     @Published private(set) var fetchError: Error?
 
     @Published private(set) var eventInformation: EventInformation?

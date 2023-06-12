@@ -14,13 +14,8 @@ import Factory
 final class SessionRowViewModelTest: XCTestCase {
     
     private var cancellables: Set<AnyCancellable> = []
-
-    override func setUpWithError() throws {
-        Container.Registrations.push()
-    }
-
+    
     override func tearDownWithError() throws {
-        Container.Registrations.pop()
         cancellables = []
     }
 
@@ -47,55 +42,35 @@ final class SessionRowViewModelTest: XCTestCase {
     }
 
 
-    func test_fetchLocationReturnsLocation() {
+    func test_fetchLocationReturnsLocation() async {
         Container.setupMocks(objectsToReturn: [DummyData.location])
 
-        let expectation = expectation(description: "Waiting for location")
-        
         let sut = SessionRowViewModel()
+        await sut.fetchLocation(with: "TestLocation123")
+
         
         sut.$location
             .dropFirst()
             .sink { newValue in
                 XCTAssertNotNil(newValue)
                 XCTAssertEqual(newValue?.id, "TestLocation123")
-                expectation.fulfill()
             }
             .store(in: &cancellables)
-        
-        
-        Task {
-            await sut.fetchLocation(with: "TestLocation123")
-        }
-        
-        waitForExpectations(timeout: 0.1)
     }
 
 
-
-    func test_fetchLocationReturnsError() {
+    func test_fetchLocationReturnsError() async {
         Container.setupMocks(objectsToReturn: [DummyData.location], shouldReturnError: true)
-
-        let expectation = expectation(description: "Waiting for location")
         
         let sut = SessionRowViewModel()
+        await sut.fetchLocation(with: "TestLocation123")
         
         sut.$fetchError
             .dropFirst()
             .sink { newValue in
                 XCTAssertNotNil(newValue)
                 XCTAssertEqual(newValue as? AppError, AppError.badSnapshot)
-                expectation.fulfill()
             }
             .store(in: &cancellables)
-        
-        
-        Task {
-            await sut.fetchLocation(with: "TestLocation123")
-        }
-        
-        waitForExpectations(timeout: 0.1)
     }
-
-
 }

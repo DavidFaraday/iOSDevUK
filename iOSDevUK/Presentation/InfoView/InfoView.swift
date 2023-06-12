@@ -10,7 +10,7 @@ import Factory
 
 struct InfoView: View {
     //TODO: Crete VM for this view
-    @Injected(Container.firebaseAuthRepository) private var firebaseAuth
+    @Injected(\.firebaseAuthRepository) private var firebaseAuth
 
     @EnvironmentObject var router: NavigationRouter
 

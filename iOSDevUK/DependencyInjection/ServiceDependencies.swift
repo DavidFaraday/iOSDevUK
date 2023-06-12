@@ -9,15 +9,19 @@ import Foundation
 import Factory
 
 extension Container {
-    static let firebaseRepository = Factory<FirebaseRepositoryProtocol>(scope: .shared) {
-        return FirebaseRepository()
+    
+    var firebaseRepository: Factory<FirebaseRepositoryProtocol> {
+        self { FirebaseRepository() }
+            .shared
+    }
+
+    var firebaseAuthRepository: Factory<FirebaseAuthenticationServiceProtocol> {
+        self { FirebaseAuthenticationService() }
+            .shared
     }
     
-    static let firebaseAuthRepository = Factory<FirebaseAuthenticationServiceProtocol>(scope: .shared) {
-        return FirebaseAuthenticationService()
-    }
-    
-    static let mappingUtils = Factory<MappingUtilsProtocol>(scope: .shared) {
-        return MappingUtils()
+    var mappingUtils: Factory<MappingUtilsProtocol> {
+        self { MappingUtils() }
+            .shared
     }
 }

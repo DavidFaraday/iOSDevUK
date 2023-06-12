@@ -11,6 +11,6 @@ import Factory
 
 extension Container {
     static func setupMocks(objectsToReturn: [Codable], shouldReturnError: Bool = false) {
-        firebaseRepository.register(factory: { MocFirebaseRepository(objectsToReturn: objectsToReturn, shouldReturnError: shouldReturnError) })
+        Container.shared.firebaseRepository.register { MocFirebaseRepository(objectsToReturn: objectsToReturn, shouldReturnError: shouldReturnError) }
     }
 }

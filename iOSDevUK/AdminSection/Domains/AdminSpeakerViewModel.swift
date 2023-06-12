@@ -10,7 +10,7 @@ import PhotosUI
 import Factory
 
 final class AdminSpeakerViewModel: ObservableObject {
-    @Injected(Container.firebaseRepository) private var firebaseRepository
+    @Injected(\.firebaseRepository) private var firebaseRepository
 
     @Published var fullName = ""
     @Published var twitter = ""
