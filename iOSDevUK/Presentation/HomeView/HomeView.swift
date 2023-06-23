@@ -91,14 +91,16 @@ struct HomeView: View {
                     .font(.body)
                     .padding(10)
             }
-
+            
+            if let slackUrl = URL(string: Slack.channelLink) {
+                Link("iOSDevUK Slack Channel", destination: slackUrl)
+            }
             if let twitterUrl = URL(string: TwitterAccounts.iOSDevUK) {
                 Link("@iOSDevUK on Twitter", destination: twitterUrl)
             }
             if let twitterUrl = URL(string: TwitterAccounts.aberCompSci) {
                 Link("@AberCompSci on Twitter", destination: twitterUrl)
             }
-
         }
         .frame(maxWidth: .infinity)
         .padding(10)
