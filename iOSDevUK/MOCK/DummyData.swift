@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class MocFirebaseRepository: FirebaseRepositoryProtocol {
+final class MockFirebaseRepository: FirebaseRepositoryProtocol {
     
     func deleteData<T>(data: T, from collection: FCollectionReference) async throws where T : Identifiable {
         //TODO: unit tests

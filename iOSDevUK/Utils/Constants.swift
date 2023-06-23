@@ -44,6 +44,9 @@ struct BaseUrl {
     static let twitter = "https://twitter.com/"
     static let linkedIn = "https://linkedIn.com/in/"
 }
+struct Slack {
+    static let channelLink = "https://iosdevuk.slack.com"
+}
 
 struct FirebaseKeys {
     static let speakerIds = "speakerIds"
