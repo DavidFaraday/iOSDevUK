@@ -16,12 +16,11 @@ final class SpeakerDetailViewModelTests: XCTestCase {
     private var cancellables: Set<AnyCancellable> = []
 
     override func setUpWithError() throws {
-        Container.Registrations.push()
         Container.setupMocks(objectsToReturn: DummyData.sessions)
     }
 
     override func tearDownWithError() throws {
-        Container.Registrations.pop()
+        cancellables = []
     }
 
     func test_FetchSpeakerSessions_ReturnTwo() {

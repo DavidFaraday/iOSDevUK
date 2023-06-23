@@ -9,7 +9,7 @@ import Foundation
 import Factory
 
 final class AdminViewModel: ObservableObject {
-    @Injected(Container.firebaseAuthRepository) private var firebaseAuth
+    @Injected(\.firebaseAuthRepository) private var firebaseAuth
     
     @Published var logoutError: Error?
     @Published var showError = false

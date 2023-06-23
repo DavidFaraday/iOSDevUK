@@ -11,7 +11,7 @@ import Combine
 
 
 final class AdminSessionViewModel: ObservableObject {
-    @Injected(Container.firebaseRepository) private var firebaseRepository
+    @Injected(\.firebaseRepository) private var firebaseRepository
 
     @Published var title = ""
     @Published var content = "Session content"

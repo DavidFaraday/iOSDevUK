@@ -11,7 +11,7 @@ import CoreLocation
 import Factory
 
 final class WeatherViewModel: ObservableObject {
-    @Injected(Container.mappingUtils) private var mappingUtils
+    @Injected(\.mappingUtils) private var mappingUtils
     
     @Published private var weather: Weather?
     @Published private var hourlyWeatherData: Forecast<HourWeather>?

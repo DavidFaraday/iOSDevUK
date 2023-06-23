@@ -9,7 +9,7 @@ import Foundation
 import Factory
 
 final class AdminLocationViewModel: ObservableObject {
-    @Injected(Container.firebaseRepository) private var firebaseRepository
+    @Injected(\.firebaseRepository) private var firebaseRepository
 
     @Published var name = ""
     @Published var note = "Notes"

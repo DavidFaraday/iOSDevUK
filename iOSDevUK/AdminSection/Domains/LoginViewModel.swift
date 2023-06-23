@@ -9,7 +9,7 @@ import SwiftUI
 import Factory
 
 final class LoginViewModel: ObservableObject {
-    @Injected(Container.firebaseAuthRepository) private var firebaseAuth
+    @Injected(\.firebaseAuthRepository) private var firebaseAuth
 
     @Published var loginSuccessful = false
     @Published var loginError: Error?

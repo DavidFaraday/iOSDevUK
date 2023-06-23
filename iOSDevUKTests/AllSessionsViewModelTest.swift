@@ -14,12 +14,6 @@ final class AllSessionsViewModelTest: XCTestCase {
     
     private var cancellables: Set<AnyCancellable> = []
 
-    override func setUpWithError() throws {
-    }
-
-    override func tearDownWithError() throws {
-    }
-
     func test_InitSetsSessions_ToTwo() {
         let sut = AllSessionsViewModel(sessions: DummyData.sessions)
         
