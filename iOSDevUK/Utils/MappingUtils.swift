@@ -11,6 +11,7 @@ import WeatherKit
 protocol MappingUtilsProtocol {
     func convert(input: HourWeather) -> WeatherData
     func convert(input: CurrentWeather?) -> WeatherData?
+    static func pinForLocationFetcher(_ locationType: LocationType) -> String
 }
 
 
@@ -37,4 +38,15 @@ class MappingUtils: MappingUtilsProtocol {
             feelsLikeC: input.apparentTemperature.value
         )
     }
+    
+    static func pinForLocationFetcher(_ locationType: LocationType) -> String {
+            switch locationType {
+            case .au: return ImageNames.MapIcons.book
+            case .ev: return ImageNames.MapIcons.plug
+            case .other: return ImageNames.MapIcons.mapPin
+            case .pubs: return ImageNames.MapIcons.mug
+            case .sm: return ImageNames.MapIcons.basket
+            case .transport: return ImageNames.MapIcons.car
+            }
+        }
 }

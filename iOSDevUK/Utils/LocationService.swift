@@ -25,7 +25,7 @@ class LocationService: NSObject, CLLocationManagerDelegate, ObservableObject {
     var locationManager: CLLocationManager?
 
     
-    private override init() {
+    override init() {
         super.init()
         requestLocationAccess()
     }

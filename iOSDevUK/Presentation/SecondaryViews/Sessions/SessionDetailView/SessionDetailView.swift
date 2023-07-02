@@ -22,17 +22,10 @@ struct SessionDetailView: View {
     
     @ViewBuilder
     private func headerView() -> some View {
-        ZStack(alignment: .bottomLeading) {
-            Image(ImageNames.img1)
-                .resizable()
-                .frame(height: 250)
-                .aspectRatio(contentMode: .fit)
-            
-            Text(viewModel.session?.title ?? "")
-                .font(.largeTitle)
-                .foregroundColor(.white)
-                .padding([.horizontal, .bottom])
-        }
+        Text(viewModel.session?.title ?? "")
+            .font(.largeTitle)
+            .foregroundColor(.accentColor)
+            .padding([.horizontal, .bottom])
     }
     
     @ViewBuilder
@@ -86,7 +79,7 @@ struct SessionDetailView: View {
                 .padding(.top)
                 .padding(.bottom, 5)
 
-                NavigationLink(value: Destination.locations([location])) {
+                NavigationLink(value: Destination.location(location)) {
                     Text(location.name)
                         .font(.subheadline)
                         .lineLimit(1)
@@ -133,7 +126,6 @@ struct SessionDetailView: View {
     
     var body: some View {
         main()
-            .edgesIgnoringSafeArea(.top)
             .task {
                 await viewModel.fetchSession()
                 await viewModel.fetchSpeakers()

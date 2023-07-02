@@ -32,7 +32,7 @@ struct LocationsListView: View {
                 Section {
                     ForEach(categories[key] ?? [], id: \.id) { location in
                         
-                        NavigationLink(value: InfoDestination.locations([location])) {
+                        NavigationLink(value: InfoDestination.location(location)) {
                             Text(location.name)
                                 .font(.subheadline)
                                 .lineLimit(1)
@@ -51,7 +51,7 @@ struct LocationsListView: View {
 
     var body: some View {
         main()
-            .navigationTitle("Locations")
+            .navigationBarTitle("Locations", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

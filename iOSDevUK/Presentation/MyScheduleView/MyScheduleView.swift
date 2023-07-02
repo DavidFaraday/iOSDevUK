@@ -72,6 +72,8 @@ struct MyScheduleView: View {
                         AllSpeakersView(speakers: speakers)
                     case .sponsor:
                         SponsorsView()
+                    case .location(let location):
+                        MapSingleObjectView(location: location)
                     case .locations(let locations):
                         MapView(allLocations: locations)
                     case .savedSession(let savedSession):

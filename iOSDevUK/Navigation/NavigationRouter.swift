@@ -21,6 +21,7 @@ enum Destination: Hashable {
     case session(Session)
     case sessions([Session])
     case sponsor
+    case location(Location)
     case locations([Location])
     case savedSession(SavedSession)
 }
@@ -30,7 +31,8 @@ enum InfoDestination: Hashable {
     case sponsors
     case aboutApp
     case appInformation
-    case location
+    case location(Location)
+    case locationList
     case locations([Location])
     case admin
     case adminSpeakers
