@@ -41,6 +41,6 @@ struct MapSingleObjectView_Previews: PreviewProvider {
     @State private var region: MKCoordinateRegion = MKCoordinateRegion(center: MapDetails.startingLocation , span: MapDetails.defaultSpan)
     
     static var previews: some View {
-        MapSingleObjectView(location: DummyData.location).environmentObject(LocationService())
+        MapSingleObjectView(location: DummyData.location).environmentObject(LocationService.shared)
     }
 }

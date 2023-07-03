@@ -22,12 +22,12 @@ struct MapView: View {
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         HStack{
-            Image(systemName: MappingUtils.pinForLocationFetcher(locationCategory))
+            Image(systemName: pinForLocationFetcher(locationCategory))
             Menu {
                 Picker("Location category", selection: $locationCategory) {
                     ForEach(LocationType.allCases, id: \.self) { location in
                         HStack {
-                            Image(systemName: MappingUtils.pinForLocationFetcher(location))
+                            Image(systemName: pinForLocationFetcher(location))
                             Text(location.name)
                         }
                         .tag(location.name)
@@ -74,13 +74,25 @@ struct MapView: View {
         return allLocations.filter { $0.locationType == $locationCategory.wrappedValue }
     }
     
+    private func pinForLocationFetcher(_ locationType: LocationType) -> String {
+        switch locationType {
+        case .au: return MapIcons.book
+        case .ev: return MapIcons.plug
+        case .other: return MapIcons.mapPin
+        case .pubs: return MapIcons.mug
+        case .sm: return MapIcons.basket
+        case .transport: return MapIcons.car
+        }
+    }
 }
 
 struct MapView_Previews: PreviewProvider {
+    @EnvironmentObject var locationManager: LocationService
+
     @State private var region: MKCoordinateRegion = MKCoordinateRegion(center: MapDetails.startingLocation , span: MapDetails.defaultSpan)
     @State private var locationCategory: LocationType = .pubs
 
     static var previews: some View {
-        MapView(allLocations: [DummyData.location]).environmentObject(LocationService())
+        MapView(allLocations: [DummyData.location]).environmentObject(LocationService.shared)
     }
 }

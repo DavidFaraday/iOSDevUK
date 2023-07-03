@@ -22,15 +22,15 @@ struct ImageNames {
     static let info = "info"
     static let chevronRight = "chevron.right"
     static let checkmark = "checkmark"
-    
-    struct MapIcons {
-        static let mapPin = "mappin.circle.fill" //generic
-        static let mug = "mug" //pubs
-        static let book = "book" // uni
-        static let plug = "powerplug" // electric vehicles
-        static let basket = "basket" // supermarket
-        static let car = "car" // transport
-    }
+}
+
+struct MapIcons {
+    static let mapPin = "mappin.circle.fill" //generic
+    static let mug = "mug" //pubs
+    static let book = "book" // uni
+    static let plug = "powerplug" // electric vehicles
+    static let basket = "basket" // supermarket
+    static let car = "car" // transport
 }
 
 struct ColorNames {

@@ -22,12 +22,19 @@ struct SessionDetailView: View {
     
     @ViewBuilder
     private func headerView() -> some View {
-        Text(viewModel.session?.title ?? "")
-            .font(.largeTitle)
-            .foregroundColor(.accentColor)
-            .padding([.horizontal, .bottom])
+        ZStack(alignment: .bottomLeading) {
+            Image(ImageNames.img1)
+                .resizable()
+                .frame(height: 250)
+                .aspectRatio(contentMode: .fit)
+            
+            Text(viewModel.session?.title ?? "")
+                .font(.largeTitle)
+                .foregroundColor(.white)
+                .padding([.horizontal, .bottom])
+        }
     }
-    
+
     @ViewBuilder
     private func descriptionView() -> some View {
         VStack(alignment: .leading) {
@@ -126,6 +133,7 @@ struct SessionDetailView: View {
     
     var body: some View {
         main()
+            .edgesIgnoringSafeArea(.top)
             .task {
                 await viewModel.fetchSession()
                 await viewModel.fetchSpeakers()
