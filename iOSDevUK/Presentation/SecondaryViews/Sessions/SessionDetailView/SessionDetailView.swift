@@ -86,7 +86,7 @@ struct SessionDetailView: View {
                 .padding(.top)
                 .padding(.bottom, 5)
 
-                NavigationLink(value: Destination.location(location)) {
+            NavigationLink(value: Destination.locations(locations: [location], singleItemMap: true)) {
                     Text(location.name)
                         .font(.subheadline)
                         .lineLimit(1)

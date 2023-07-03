@@ -14,75 +14,73 @@ struct MapView: View {
     @State private var locationCategory: LocationType = .au
     
     private var allLocations: [Location]
+    private var singleItemMap: Bool
     
-    init(allLocations: [Location]) {
+    init(allLocations: [Location], singleItemMap: Bool = false) {
         self.allLocations = allLocations
+        self.singleItemMap = singleItemMap
     }
     
     @ViewBuilder
-    private func navigationBarTrailingItem() -> some View {
-        HStack{
-            Image(systemName: pinForLocationFetcher(locationCategory))
-            Menu {
-                Picker("Location category", selection: $locationCategory) {
-                    ForEach(LocationType.allCases, id: \.self) { location in
-                        HStack {
-                            Image(systemName: pinForLocationFetcher(location))
-                            Text(location.name)
-                        }
-                        .tag(location.name)
-                    }
-                }
-                .onChange(of: locationCategory) {_ in
-                    updateRegion()
-                }
-            } label: {
-                Text(Image(systemName: "line.3.horizontal.decrease.circle"))
+     private func locationDeniedLabel() -> some View {
+       Text("Location access denied.\n You can enable it in Setting->Privacy & Security.")
+         .font(.caption)
+         .foregroundColor(.pink)
+         .frame(maxWidth: .infinity)
+         .multilineTextAlignment(.center)
+         .padding(.horizontal)
+     }
+
+    @ViewBuilder
+    private func categoryPicker() -> some View {
+        Picker("Location category", selection: $locationCategory) {
+            ForEach(LocationType.allCases, id: \.self) { location in
+                Text(location.shortName)
             }
+        }
+        .pickerStyle(.segmented)
+        .padding()
+        .onChange(of: locationCategory) {_ in
+            updateRegion()
         }
     }
     
     var body: some View {
         Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: filteredAnnotations()) { location in
             MapAnnotation(coordinate: location.coordinate) {
-                LocationMapAnnotation(location: location, showAnnotation: false) {
+                LocationMapAnnotation(location: location, showAnnotation: singleItemMap) {
                     MapViewModel.openInAppleMaps(location: location)
                 }
             }
         }
         .accentColor(Color(.systemPink))
         .navigationBarTitle("Map", displayMode: .inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
-        }
         .safeAreaInset(edge: .bottom) {
             if locationManager.locationManager?.authorizationStatus == .denied {
-                LocationDeniedLabel()
+                locationDeniedLabel()
+            }
+        }
+        .safeAreaInset(edge: .top) {
+            if !self.singleItemMap {
+                categoryPicker()
             }
         }
         .onAppear() {
             updateRegion()
         }
     }
-    
+
     private func updateRegion() {
         let regionCenter = filteredAnnotations().last?.coordinate ?? MapDetails.startingLocation
         region = MKCoordinateRegion(center: regionCenter , span: MapDetails.defaultSpan)
     }
     
     private func filteredAnnotations() -> [Location] {
-        return allLocations.filter { $0.locationType == $locationCategory.wrappedValue }
-    }
-    
-    private func pinForLocationFetcher(_ locationType: LocationType) -> String {
-        switch locationType {
-        case .au: return MapIcons.book
-        case .ev: return MapIcons.plug
-        case .other: return MapIcons.mapPin
-        case .pubs: return MapIcons.mug
-        case .sm: return MapIcons.basket
-        case .transport: return MapIcons.car
+        var filteredLocations = allLocations
+        if !self.singleItemMap {
+            filteredLocations = filteredLocations.filter { $0.locationType == $locationCategory.wrappedValue }
         }
+        return filteredLocations
     }
 }
 

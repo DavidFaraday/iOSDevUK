@@ -150,10 +150,8 @@ struct HomeView: View {
                         AllSpeakersView(speakers: speakers)
                     case .sponsor:
                         SponsorsView()
-                    case .location(let location):
-                        MapSingleObjectView(location: location)
-                    case .locations(let locations):
-                        MapView(allLocations: locations)
+                    case .locations(let locations, let singleItemMap):
+                        MapView(allLocations: locations, singleItemMap: singleItemMap)
                     case .savedSession(let savedSession):
                         SessionDetailView(sessionId: savedSession.id ?? "")
                     }

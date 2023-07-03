@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 enum LocationType: String, Codable, CaseIterable {
-    case au, transport, ev, pubs, sm, other
+    case au, transport, ev, pubs, sm
     
     var name: String {
         switch self {
@@ -23,11 +23,23 @@ enum LocationType: String, Codable, CaseIterable {
             return "Pubs"
         case .sm:
             return "Supermarket"
-        case .other:
-            return "Other"
         }
     }
 
+    var shortName: String {
+        switch self {
+        case .au:
+          return "University"
+        case .transport:
+          return "Transport"
+        case .ev:
+          return "EV"
+        case .pubs:
+          return "Pubs"
+        case .sm:
+          return "Shops"
+        }
+      }
 }
 
 struct Location: Codable, Identifiable, Hashable, Comparable {

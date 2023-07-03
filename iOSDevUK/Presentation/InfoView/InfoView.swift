@@ -80,12 +80,10 @@ struct InfoView: View {
                     AdminSponsors()
                 case .adminAddSponsor(let sponsor):
                     AddSponsorView(viewModel: AdminSponsorViewModel(sponsor: sponsor))
-                case .location(let location):
-                    MapSingleObjectView(location: location)
                 case .locationList:
                     LocationsListView()
-                case .locations(let locations):
-                    MapView(allLocations: locations)
+                case .locations(let locations, let singleItemMap):
+                    MapView(allLocations: locations, singleItemMap: singleItemMap)
                 }
             }
         }

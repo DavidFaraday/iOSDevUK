@@ -47,7 +47,7 @@ struct AdminLocations: View {
                         adminLocationViewModel.deleteLocation(locations[index])
                     }
                 } header: {
-                    let locationType: LocationType = LocationType(rawValue: key) ?? .other
+                    let locationType: LocationType = LocationType(rawValue: key) ?? .au
                     SectionHeaderView(title: locationType.name)
                         .font(.headline)
                 }
