@@ -19,7 +19,7 @@ struct LocationsListView: View {
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        NavigationLink("Map", value: InfoDestination.locations(locations: viewModel.locations, singleItemMap: false))
+        NavigationLink("Map", value: InfoDestination.locations(locations: viewModel.locations))
     }
     
 
@@ -32,7 +32,7 @@ struct LocationsListView: View {
                 Section {
                     ForEach(categories[key] ?? [], id: \.id) { location in
                         
-                        NavigationLink(value: InfoDestination.locations(locations: [location], singleItemMap: true)) {
+                        NavigationLink(value: InfoDestination.locations(locations: [location])) {
                             Text(location.name)
                                 .font(.subheadline)
                                 .lineLimit(1)

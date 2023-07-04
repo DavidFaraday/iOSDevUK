@@ -82,7 +82,7 @@ struct InfoView: View {
                     AddSponsorView(viewModel: AdminSponsorViewModel(sponsor: sponsor))
                 case .locationList:
                     LocationsListView()
-                case .locations(let locations, let singleItemMap):
+                case .locations(let locations):
                     MapView(allLocations: locations)
                 }
             }

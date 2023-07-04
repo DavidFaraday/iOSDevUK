@@ -10,18 +10,16 @@ import MapKit
 
 struct MapView: View {
     @EnvironmentObject var locationManager: LocationService
-    @State private var region: MKCoordinateRegion = MKCoordinateRegion(center: MapDetails.startingLocation,
-                                                                       span: MapDetails.defaultSpan)
-    @State private var locationCategory: LocationType = .au
-    
-    private var allLocations: [Location]
-    private var singleLocation: Bool
-    
+    @StateObject var viewModel: MapViewModel
+
     init(allLocations: [Location]) {
-        self.allLocations = allLocations
-        self.singleLocation = allLocations.count == 1
+        self.init(viewModel: MapViewModel(allLocations: allLocations))
     }
-    
+
+    private init(viewModel: MapViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
     @ViewBuilder
      private func locationDeniedLabel() -> some View {
        Text("Location access denied.\n You can enable it in Setting->Privacy & Security.")
@@ -34,22 +32,22 @@ struct MapView: View {
 
     @ViewBuilder
     private func categoryPicker() -> some View {
-        Picker("Location category", selection: $locationCategory) {
+        Picker("Location category", selection: $viewModel.locationCategory) {
             ForEach(LocationType.allCases, id: \.self) { location in
                 Text(location.shortName)
             }
         }
         .pickerStyle(.segmented)
         .padding()
-        .onChange(of: locationCategory) {_ in
-            updateRegion()
+        .onChange(of: viewModel.locationCategory) {_ in
+            viewModel.updateRegion()
         }
     }
     
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: filteredAnnotations()) { location in
+        Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.filteredAnnotations()) { location in
             MapAnnotation(coordinate: location.coordinate) {
-                LocationMapAnnotation(location: location, showAnnotation: allLocations.count == 1) {
+                LocationMapAnnotation(location: location, showAnnotation: viewModel.allLocations.count == 1) {
                     MapViewModel.openInAppleMaps(location: location)
                 }
             }
@@ -62,30 +60,18 @@ struct MapView: View {
             }
         }
         .safeAreaInset(edge: .top) {
-            if allLocations.count > 1 {
+            if viewModel.allLocations.count > 1 {
                 categoryPicker()
             }
         }
         .onAppear() {
-            updateRegion()
+            viewModel.updateRegion()
         }
-    }
-
-    private func updateRegion() {
-        let regionCenter = filteredAnnotations().last?.coordinate ?? MapDetails.startingLocation
-        region = MKCoordinateRegion(center: regionCenter , span: MapDetails.defaultSpan)
-    }
-    
-    private func filteredAnnotations() -> [Location] {
-        allLocations.count > 1 ? allLocations.filter { $0.locationType == $locationCategory.wrappedValue } : allLocations
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     @EnvironmentObject var locationManager: LocationService
-
-    @State private var region: MKCoordinateRegion = MKCoordinateRegion(center: MapDetails.startingLocation , span: MapDetails.defaultSpan)
-    @State private var locationCategory: LocationType = .pubs
 
     static var previews: some View {
         MapView(allLocations: [DummyData.location]).environmentObject(LocationService.shared)

@@ -31,7 +31,7 @@ enum InfoDestination: Hashable {
     case aboutApp
     case appInformation
     case locationList
-    case locations(locations: [Location], singleItemMap: Bool)
+    case locations(locations: [Location])
     case admin
     case adminSpeakers
     case adminAddSpeaker(Speaker?)
