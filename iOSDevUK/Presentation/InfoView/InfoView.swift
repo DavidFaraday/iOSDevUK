@@ -83,7 +83,7 @@ struct InfoView: View {
                 case .locationList:
                     LocationsListView()
                 case .locations(let locations, let singleItemMap):
-                    MapView(allLocations: locations, singleItemMap: singleItemMap)
+                    MapView(allLocations: locations)
                 }
             }
         }

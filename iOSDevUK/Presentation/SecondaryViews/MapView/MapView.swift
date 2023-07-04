@@ -10,15 +10,16 @@ import MapKit
 
 struct MapView: View {
     @EnvironmentObject var locationManager: LocationService
-    @State private var region: MKCoordinateRegion = MKCoordinateRegion(center: MapDetails.startingLocation , span: MapDetails.defaultSpan)
+    @State private var region: MKCoordinateRegion = MKCoordinateRegion(center: MapDetails.startingLocation,
+                                                                       span: MapDetails.defaultSpan)
     @State private var locationCategory: LocationType = .au
     
     private var allLocations: [Location]
-    private var singleItemMap: Bool
+    private var singleLocation: Bool
     
-    init(allLocations: [Location], singleItemMap: Bool = false) {
+    init(allLocations: [Location]) {
         self.allLocations = allLocations
-        self.singleItemMap = singleItemMap
+        self.singleLocation = allLocations.count == 1
     }
     
     @ViewBuilder
@@ -48,7 +49,7 @@ struct MapView: View {
     var body: some View {
         Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: filteredAnnotations()) { location in
             MapAnnotation(coordinate: location.coordinate) {
-                LocationMapAnnotation(location: location, showAnnotation: singleItemMap) {
+                LocationMapAnnotation(location: location, showAnnotation: allLocations.count == 1) {
                     MapViewModel.openInAppleMaps(location: location)
                 }
             }
@@ -61,7 +62,7 @@ struct MapView: View {
             }
         }
         .safeAreaInset(edge: .top) {
-            if !self.singleItemMap {
+            if allLocations.count > 1 {
                 categoryPicker()
             }
         }
@@ -76,11 +77,7 @@ struct MapView: View {
     }
     
     private func filteredAnnotations() -> [Location] {
-        var filteredLocations = allLocations
-        if !self.singleItemMap {
-            filteredLocations = filteredLocations.filter { $0.locationType == $locationCategory.wrappedValue }
-        }
-        return filteredLocations
+        allLocations.count > 1 ? allLocations.filter { $0.locationType == $locationCategory.wrappedValue } : allLocations
     }
 }
 

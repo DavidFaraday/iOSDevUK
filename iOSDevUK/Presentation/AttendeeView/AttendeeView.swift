@@ -43,8 +43,8 @@ struct AttendeeView: View {
                             AllSpeakersView(speakers: speakers)
                         case .sponsor:
                             SponsorsView()
-                        case .locations(let locations, let singleItemMap):
-                            MapView(allLocations: locations, singleItemMap: singleItemMap)
+                        case .locations(let locations):
+                            MapView(allLocations: locations)
                         case .savedSession(let savedSession):
                             SessionDetailView(sessionId: savedSession.id ?? "")
                     }

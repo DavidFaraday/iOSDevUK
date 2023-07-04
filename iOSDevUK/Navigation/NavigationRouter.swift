@@ -21,7 +21,7 @@ enum Destination: Hashable {
     case session(Session)
     case sessions([Session])
     case sponsor
-    case locations(locations: [Location], singleItemMap: Bool)
+    case locations(locations: [Location])
     case savedSession(SavedSession)
 }
 
