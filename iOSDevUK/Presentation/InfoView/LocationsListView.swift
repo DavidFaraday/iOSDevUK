@@ -19,7 +19,7 @@ struct LocationsListView: View {
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        NavigationLink("Map", value: InfoDestination.locations(viewModel.locations))
+        NavigationLink("Map", value: InfoDestination.locations(locations: viewModel.locations))
     }
     
 
@@ -32,7 +32,7 @@ struct LocationsListView: View {
                 Section {
                     ForEach(categories[key] ?? [], id: \.id) { location in
                         
-                        NavigationLink(value: InfoDestination.locations([location])) {
+                        NavigationLink(value: InfoDestination.locations(locations: [location])) {
                             Text(location.name)
                                 .font(.subheadline)
                                 .lineLimit(1)
@@ -40,7 +40,7 @@ struct LocationsListView: View {
                         }
                     }
                 } header: {
-                    let locationType: LocationType = LocationType(rawValue: key) ?? .other
+                    let locationType: LocationType = LocationType(rawValue: key) ?? .au
                     SectionHeaderView(title: locationType.name)
                         .font(.headline)
                 }
@@ -51,7 +51,7 @@ struct LocationsListView: View {
 
     var body: some View {
         main()
-            .navigationTitle("Locations")
+            .navigationBarTitle("Locations", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

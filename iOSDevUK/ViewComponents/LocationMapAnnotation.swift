@@ -10,12 +10,13 @@ import SwiftUI
 struct LocationMapAnnotation: View {
     private let location: Location
     
-    @State private var pinTapped = false
+    @State private var pinTapped: Bool
     private let buttonAction: () -> Void
 
-    init(location: Location,  navigationClicked: @escaping () -> Void) {
+    init(location: Location, showAnnotation: Bool, navigationClicked: @escaping () -> Void) {
         self.location = location
         self.buttonAction = navigationClicked
+        pinTapped = showAnnotation
     }
     
     var body: some View {
@@ -56,7 +57,7 @@ struct LocationMapAnnotation: View {
 
 struct MapAnnotation_Previews: PreviewProvider {
     static var previews: some View {
-        LocationMapAnnotation(location: DummyData.location) {
+        LocationMapAnnotation(location: DummyData.location, showAnnotation: false) {
             
         }
     }

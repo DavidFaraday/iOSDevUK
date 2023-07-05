@@ -39,7 +39,7 @@ struct InfoView: View {
         NavigationStack(path: $router.infoPath) {
             Form {
                 Section {
-                    NavigationLink("Locations", value: InfoDestination.location)
+                    NavigationLink("Locations", value: InfoDestination.locationList)
                     NavigationLink("Inclusivity", value: InfoDestination.inclusivity)
                     NavigationLink("Sponsors", value: InfoDestination.sponsors)
                     NavigationLink("About iOSDevUK", value: InfoDestination.aboutApp)
@@ -80,7 +80,7 @@ struct InfoView: View {
                     AdminSponsors()
                 case .adminAddSponsor(let sponsor):
                     AddSponsorView(viewModel: AdminSponsorViewModel(sponsor: sponsor))
-                case .location:
+                case .locationList:
                     LocationsListView()
                 case .locations(let locations):
                     MapView(allLocations: locations)

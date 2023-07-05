@@ -34,7 +34,7 @@ struct SessionDetailView: View {
                 .padding([.horizontal, .bottom])
         }
     }
-    
+
     @ViewBuilder
     private func descriptionView() -> some View {
         VStack(alignment: .leading) {
@@ -86,7 +86,7 @@ struct SessionDetailView: View {
                 .padding(.top)
                 .padding(.bottom, 5)
 
-                NavigationLink(value: Destination.locations([location])) {
+            NavigationLink(value: Destination.locations(locations: [location])) {
                     Text(location.name)
                         .font(.subheadline)
                         .lineLimit(1)

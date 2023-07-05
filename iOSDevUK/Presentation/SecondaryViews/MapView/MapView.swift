@@ -10,42 +10,70 @@ import MapKit
 
 struct MapView: View {
     @EnvironmentObject var locationManager: LocationService
-
-    private var allLocations: [Location]
+    @StateObject var viewModel: MapViewModel
 
     init(allLocations: [Location]) {
-        self.allLocations = allLocations
+        self.init(viewModel: MapViewModel(allLocations: allLocations))
     }
 
+    private init(viewModel: MapViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
+    @ViewBuilder
+     private func locationDeniedLabel() -> some View {
+       Text("Location access denied.\n You can enable it in Setting->Privacy & Security.")
+         .font(.caption)
+         .foregroundColor(.pink)
+         .frame(maxWidth: .infinity)
+         .multilineTextAlignment(.center)
+         .padding(.horizontal)
+     }
+
+    @ViewBuilder
+    private func categoryPicker() -> some View {
+        Picker("Location category", selection: $viewModel.locationCategory) {
+            ForEach(LocationType.allCases, id: \.self) { location in
+                Text(location.shortName)
+            }
+        }
+        .pickerStyle(.segmented)
+        .padding()
+        .onChange(of: viewModel.locationCategory) {_ in
+            viewModel.updateRegion()
+        }
+    }
+    
     var body: some View {
-        Map(coordinateRegion: $locationManager.region, showsUserLocation: true, annotationItems: allLocations) { location in
+        Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.filteredAnnotations()) { location in
             MapAnnotation(coordinate: location.coordinate) {
-                LocationMapAnnotation(location: location) {
+                LocationMapAnnotation(location: location, showAnnotation: viewModel.allLocations.count == 1) {
                     MapViewModel.openInAppleMaps(location: location)
                 }
             }
         }
-        .ignoresSafeArea(SafeAreaRegions.all, edges: .top)
         .accentColor(Color(.systemPink))
-        .navigationTitle("Map")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle("Map", displayMode: .inline)
         .safeAreaInset(edge: .bottom) {
             if locationManager.locationManager?.authorizationStatus == .denied {
-                Text("Location access denied.\n You can enable it in Setting->Privacy & Security.")
-                    .font(.caption)
-                    .foregroundColor(.pink)
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
+                locationDeniedLabel()
             }
         }
-        
+        .safeAreaInset(edge: .top) {
+            if viewModel.allLocations.count > 1 {
+                categoryPicker()
+            }
+        }
+        .onAppear() {
+            viewModel.updateRegion()
+        }
     }
 }
 
 struct MapView_Previews: PreviewProvider {
+    @EnvironmentObject var locationManager: LocationService
+
     static var previews: some View {
-        MapView(allLocations: [DummyData.location])
+        MapView(allLocations: [DummyData.location]).environmentObject(LocationService.shared)
     }
 }
-
