@@ -14,11 +14,14 @@ struct AppInformationView: View {
         
         ScrollView {
             VStack(spacing: 20) {
-                                
-                Text("The app has been created with Beer & SwiftUI by David Kababyan @Dave_iOSDev \nApp data curated wrangled by Chris")
                 
-                Text("Thanks to @John_Gilbey for his picture of conference attendees that is used in this app.")
-                Text("Some of the artwork uses icons from @glyphish(www.glyphish.com).")
+                Image("appIcon")
+                    .cornerRadius(20)
+                                
+                Text("The app has been created with Beer & SwiftUI by David Kababyan ([@Dave_iOSDev](https://twitter.com/Dave_iOSDev)), with contributions from Neil Taylor ([@digidol](https://twitter.com/digidol).\n\nApp data wrangling by Chris Price ([@iOSDevUK](https://twitter.com/iOSDevUK)).")
+                
+                Text("Thanks to John Gilbey ([@John_Gilbey](https://twitter.com/John_Gilbey)) for his picture of conference attendees that is used in this app.")
+                
                 Text("Other images by Neil & Chris.")
                 
                 if let twitterUrl = URL(string: TwitterAccounts.developer) {
