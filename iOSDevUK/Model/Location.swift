@@ -67,5 +67,9 @@ struct Location: Codable, Identifiable, Hashable, Comparable {
     var imageUrl: URL? {
         URL(string: imageLink ?? "")
     }
+    
+    private enum CodingKeys : String, CodingKey {
+        case name, locationType = "locationTypeRecordName", note, imageLink, latitude, longitude, id, webLink
+    }
 }
 

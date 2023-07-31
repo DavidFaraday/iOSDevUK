@@ -1,0 +1,603 @@
+[
+    {
+        "longitude" : -4.06441,
+        "showImage" : true,
+        "shortName" : "A12",
+        "locationTypeRecordName" : "au",
+        "note" : "Hugh Owen A12 is the largest lecture theatre on campus, and used for the Monday and Thursday sessions.\nWhat 3 Words for entrance: ///megawatt.dabbled.travel",
+        "latitude" : 52.41719,
+        "frontListPosition" : 10,
+        "recordName" : "a12",
+        "name" : "Hugh Owen A12",
+        "webLink": {
+            "recordName": "HO-A12",
+            "url": "https://www.aber.ac.uk/en/timetable/zones/penglais/hugh-owen/a12/",
+            "name": "Room Description"
+        },
+        "imageVersion": 2022002
+        
+    },
+    {
+        "longitude" : -4.06431,
+        "showImage" : true,
+        "shortName" : "A14",
+        "locationTypeRecordName" : "au",
+        "note" : "A14 is used for one of the workshops at the end of the conference. It is just by A12, used for the Thursday morning sessions.\nWhat 3 Words for entrance: ///megawatt.dabbled.travel",
+        "latitude" : 52.41735,
+        "frontListPosition" : 70,
+        "recordName" : "a14",
+        "name" : "Hugh Owen A14",
+        "webLink": {
+            "recordName": "HO-A14",
+            "url": "https://www.aber.ac.uk/en/timetable/zones/penglais/hugh-owen/a14/",
+            "name": "Room Description"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "longitude" : -4.06411,
+        "showImage" : true,
+        "shortName" : "C22",
+        "locationTypeRecordName" : "au",
+        "note" : "Hugh Owen C22 is the second venue being used during the main part of the conference. If you are in the Arts Centre, come out of the lower entrance and turn right past the Library.\nWhat 3 Words: ///landlady.steers.reshape",
+        "latitude" : 52.41631,
+        "frontListPosition" : 30,
+        "recordName" : "c22",
+        "name" : "Hugh Owen C22",
+        "webLink": {
+            "recordName": "HO-C22",
+            "url": "https://www.aber.ac.uk/en/timetable/zones/penglais/hugh-owen/c22/",
+            "name": "Room Description"
+        },
+        "imageVersion": 2022002
+    },
+    {
+        "longitude" : -4.06656,
+        "showImage" : false,
+        "shortName" : "A6",
+        "locationTypeRecordName" : "au",
+        "note" : "Llandinam A6 will hold one of the workshops on the Thursday. Its entrance is on the part of the campus nearest Pantycelyn",
+        "latitude" : 52.41657,
+        "frontListPosition" : 70,
+        "recordName" : "a6",
+        "name" : "Llandinam A6"
+    },
+    {
+        "longitude" : -4.0692599999999999,
+        "showImage" : true,
+        "shortName" : "Pantycelyn",
+        "locationTypeRecordName" : "au",
+        "note" : "Main accommodation for the conference. The entrance is on the side of the building near the car park, not the imposing front doors next to the main road. There is also a car park to the left of the building.\nWhat 3 Words: ///herring.tastier.rear",
+        "latitude" : 52.416539999999998,
+        "frontListPosition" : 30,
+        "recordName" : "pantycelyn",
+        "name" : "Pantycelyn Hall of Residence",
+        "imageVersion": 2022002
+    },
+    {
+        "recordName": "AccommodationReception",
+        "name": "Accommodation Reception",
+        "shortName": "Accommodation Reception",
+        "showImage": true,
+        "frontListPosition": 50,
+        "latitude": 52.420920,
+        "longitude": -4.059860,
+        "locationTypeRecordName": "au",
+        "note": "Collect your university accommodation keys from here between 8:30 and 4:30pm. After 4:30pm, go to the Main Campus Reception. Tell them if you are bringing a car onto campus. See the attendee information for details about car parking.\nWhat 3 Words: ///prevented.offline.calculating",
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "MainCampusReception",
+        "name": "Main Campus Reception",
+        "shortName": "Main Campus Reception",
+        "showImage": true,
+        "frontListPosition": 55,
+        "latitude": 52.41777,
+        "longitude": -4.06528,
+        "locationTypeRecordName": "au",
+        "note": "If arriving after 4.30pm, collect your university accommodation keys from here . Tell them if you are bringing a car onto campus. See the attendee information for details about car parking.\nWhat 3 Words for entrance: ///mincing.breaches.rear",
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "Breakfast",
+        "name": "Breakfast (Ta Med Da)",
+        "shortName": "Breakfast",
+        "showImage": true,
+        "frontListPosition": 60,
+        "latitude": 52.417670,
+        "longitude": -4.064915,
+        "locationTypeRecordName": "au",
+        "note": "Breakfast is available in Ta Med Da, which is in the Penbryn Hall of Residence near to the entrance of the University.\nWhat 3 Words for entrance: ///elephant.airliners.massing",
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "medrus",
+        "name": "Medrus Mawr",
+        "shortName": "Medrus Mawr",
+        "showImage": true,
+        "frontListPosition": 70,
+        "latitude": 52.417941,
+        "longitude": -4.064823,
+        "locationTypeRecordName": "au",
+        "note": "Medrus Mawr is a large conference room that we will use for the Conference Dinner event. This is above the place where you will get your breakfast (Ta Med Da). To enter, you can either go through this door and head to the back and up stairs. Alternatively, go to the right of this picture and follow the building around to another door. Go into the buildng and then up stairs to the first floor\n\nThere is a ramp and lift access to Medrus Mawr.\nWhat 3 Words for entrance: ///fetches.circus.cookbooks",
+        "webLink": {
+            "recordName": "medrus_mawr",
+            "url": "https://www.aber.ac.uk/en/visitors/facilities/",
+            "name": "Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "rheidol",
+        "name": "Vale of Rheidol Railway Station",
+        "shortName": "Vale of Rheidol",
+        "showImage": true,
+        "frontListPosition": 100,
+        "latitude": 52.41118,
+        "longitude": -4.07901,
+        "locationTypeRecordName": "transport",
+        "note": "The Rheidol Railway station is in the centre of town. If you are driving, the location will get you to the car park. If you are walking from the University, head to the main railway station (by Wetherspoons) and continue walking past the station. You will reach a small roundabout, take a left and continue past Home Bargains.\nWhat 3 Words: ///cliff.otters.hoops, Postcode for sat nav: SY23 1PG",
+        "webLink": {
+            "recordName": "rheidol",
+            "url": "https://www.rheidolrailway.co.uk/",
+            "name": "Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "RailwayStation",
+        "name": "Aberystwyth Railway Station",
+        "shortName": "Aberystwyth Railway Station",
+        "showImage": true,
+        "frontListPosition": 100,
+        "latitude": 52.413816,
+        "longitude": -4.081811,
+        "locationTypeRecordName": "transport",
+        "note": "The Aberystwyth Railway station is in the centre of town. The main Taxi Rank is avilable outside and there is usually a lot of taxis available when trains are due.\nWhat 3 Words: ///bugs.losing.hotels",
+        "webLink": {
+            "recordName": "railway_station",
+            "url": "http://www.nationalrail.co.uk/stations_destinations/AYW.aspx",
+            "name": "Station Information"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "TaxiRank",
+        "name": "Taxi Rank",
+        "shortName": "Taxis",
+        "showImage": true,
+        "frontListPosition": 80,
+        "latitude": 52.413906,
+        "longitude": -4.082293,
+        "locationTypeRecordName": "transport",
+        "note": "The main place to get a taxi is outside the railway station. Taxis are available for most of the day.\n\nIn the nighttime, taxis may also park near to the clock tower or near to KFC.\nWhat 3 Words: ///sorry.officials.electric",
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "PetrolTexacoTown",
+        "name": "Petrol Station: Texaco (town)",
+        "shortName": "Texaco",
+        "showImage": true,
+        "frontListPosition": -1,
+        "latitude": 52.413497,
+        "longitude": -4.083538,
+        "locationTypeRecordName": "transport",
+        "note": "Petrol station in the centre of town, close to the railway station.",
+        "webLink": {
+            "recordName": "PetrolTexaco",
+            "url": "https://locations.valero.com/en-us/LocationDetails/Index/MILL-STREET/0000886918",
+            "name": "Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "PetrolTexaco",
+        "name": "Petrol Station: Texaco (edge of town)",
+        "shortName": "Texaco",
+        "showImage": true,
+        "frontListPosition": -1,
+        "latitude": 52.407469,
+        "longitude": -4.058695,
+        "locationTypeRecordName": "transport",
+        "note": "Petrol station on the edge of town as you head on the A44 to mid-Wales.",
+        "webLink": {
+            "recordName": "PetrolTexacoLlanbadarn",
+            "url": "https://locations.valero.com/en-us/LocationDetails/Index/PWLLHOBI/0000886921",
+            "name": "Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "PetrolMorrisons",
+        "name": "Petrol Station: Morrisons",
+        "shortName": "Morrisons Petrol",
+        "showImage": true,
+        "frontListPosition": -1,
+        "latitude": 52.405175,
+        "longitude": -4.066559,
+        "locationTypeRecordName": "transport",
+        "note": "Petrol station on the edge of town at the Morrisons supermarket.",
+        "webLink": {
+            "recordName": "PetrolMorrisons",
+            "url": "https://my.morrisons.com/storefinder/240",
+            "name": "Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "rummers",
+        "name": "Rummers",
+        "shortName": "Rummers",
+        "showImage": false,
+        "frontListPosition": -1,
+        "latitude": 52.411842,
+        "longitude": -4.085372,
+        "locationTypeRecordName": "pubs",
+        "note": "Close to the harbour, the pub has a beer garden. A steep-ish but flat path to access the beer garden. Steps to access the bar area. Live music on some nights.",
+        "webLink": {
+            "recordName": "rummers",
+            "url": "https://www.facebook.com/Rummers-Bar-825256554229183/",
+            "name": "Facebook page"
+        }
+    },
+    {
+        "recordName": "scholars",
+        "name": "Scholars",
+        "shortName": "Scholars",
+        "showImage": false,
+        "frontListPosition": -1,
+        "latitude": 52.416676,
+        "longitude": -4.081134,
+        "locationTypeRecordName": "pubs",
+        "note": "Close to the bottom of the hill from the University to town. It runs a pub quiz on Sunday evenings, which you may like to try if you are arriving by Sunday.",
+        "webLink": {
+            "recordName": "scholars",
+            "url": "https://www.facebook.com/ScholarsBarAberystwyth/",
+            "name": "Facebook page"
+        }
+    },
+    {
+        "recordName": "ship",
+        "name": "Ship and Castle",
+        "shortName": "Ship & Castle",
+        "showImage": false,
+        "frontListPosition": -1,
+        "latitude": 52.413280,
+        "longitude": -4.086769,
+        "locationTypeRecordName": "pubs",
+        "note": "A few minutes walk from the Clock Tower at the top of the main high-street. The pub is known for its range of real ales."
+    },
+    {
+        "recordName": "glengower",
+        "name": "Glengower Hotel",
+        "shortName": "Glengower",
+        "showImage": false,
+        "frontListPosition": -1,
+        "latitude": 52.420357,
+        "longitude": -4.084716,
+        "locationTypeRecordName": "pubs",
+        "note": "On the sea front with views of Cardigan Bay. There is space to sit outside on a good day. Serves food. Close to the Cliff Railway.",
+        "webLink": {
+            "recordName": "glengower",
+            "url": "https://glengower.co.uk/",
+            "name": "Website"
+        }
+    },
+    {
+        "recordName": "spoons",
+        "name": "Yr Hen Orsaf (Wetherspoons)",
+        "shortName": "Wetherspoons",
+        "showImage": true,
+        "frontListPosition": 90,
+        "latitude": 52.414176,
+        "longitude": -4.081810,
+        "locationTypeRecordName": "pubs",
+        "note": "This pub with food is next to the railway station, so handy for meeting when we all arrive.",
+        "webLink": {
+            "recordName": "yr_hen_orsaf",
+            "url": "https://www.jdwetherspoon.com/pubs/all-pubs/wales/ceredigion/yr-hen-orsaf-aberystwyth",
+            "name": "Pub Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "bottleandbarrel",
+        "name": "Bottle and Barrel",
+        "shortName": "Bottle & Barrel",
+        "showImage": false,
+        "frontListPosition": -1,
+        "latitude": 52.41473,
+        "longitude": -4.08277,
+        "note": "Small venue with craft beers. Near to the railway station.",
+        "locationTypeRecordName": "pubs",
+        "webLink": {
+            "recordName": "bottleandbarrel",
+            "url": "https://www.bottleandbarrel.cymru",
+            "name": "Website"
+        }
+    },
+    {
+        "recordName": "bankvault",
+        "name": "Bank Vault",
+        "shortName": "Bank Vault",
+        "showImage": false,
+        "frontListPosition": -1,
+        "latitude": 52.41466,
+        "longitude": -4.08668,
+        "locationTypeRecordName": "pubs",
+        "note": "Small venue with craft beers. Near to pier.",
+        "webLink": {
+            "recordName": "bankvault",
+            "url": "https://bankvault.cymru",
+            "name": "Website"
+        }
+    },
+    {
+        "recordName": "athro",
+        "name": "Athro Lounge",
+        "shortName": "Athro Lounge",
+        "showImage": false,
+        "frontListPosition": -1,
+        "latitude": 52.41374,
+        "longitude": -4.08228,
+        "locationTypeRecordName": "pubs",
+        "note": "Restaurant / pub, next to railway station. In old school building.",
+        "webLink": {
+            "recordName": "athro",
+            "url": "https://thelounges.co.uk/athro/",
+            "name": "Website"
+        }
+    },
+    {
+        "recordName": "CKFoodstores",
+        "name": "CK Foodstores and Subway",
+        "shortName": "CK Foodstores",
+        "frontListPosition": -1,
+        "showImage": true,
+        "latitude": 52.418474,
+        "longitude": -4.059800,
+        "locationTypeRecordName": "sm",
+        "note": "Located at the top of the hill, behind the University campus. This is the closest supermarket to the University accommodation. Open from 7am to 10pm from Monday to Saturday and 10am to 4pm on Sunday. Also has a Subway as part of the building.",
+        "webLink": {
+            "recordName": "ck",
+            "url": "http://www.cksupermarkets.co.uk",
+            "name": "Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "tesco",
+        "name": "Tesco and Marks & Spencer",
+        "shortName": "Tesco & M&S",
+        "frontListPosition": -1,
+        "showImage": true,
+        "latitude": 52.412533,
+        "longitude": -4.082721,
+        "locationTypeRecordName": "sm",
+        "note": "Located close to railway station. This is open from 6am to 10pm Monday to Saturday and 11am to 5pm on Sunday.",
+        "webLink": {
+            "recordName": "tesco",
+            "url": "https://www.tesco.com/store-locator/uk/?bid=4630",
+            "name": "Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "morrisons",
+        "name": "Morrisons",
+        "shortName": "Morrisons",
+        "frontListPosition": -1,
+        "showImage": true,
+        "latitude": 52.404435,
+        "longitude": -4.068203,
+        "locationTypeRecordName": "sm",
+        "note": "Located on the edge of town as part of a retail park. Open 6am to 11pm Monday to Saturday and 10am to 4pm on Sunday.",
+        "webLink": {
+            "recordName": "morrisons",
+            "url": "https://my.morrisons.com/storefinder/240",
+            "name": "Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "iceland",
+        "name": "Iceland",
+        "shortName": "Iceland",
+        "frontListPosition": -1,
+        "showImage": true,
+        "latitude": 52.41199,
+        "longitude": -4.08007,
+        "locationTypeRecordName": "sm",
+        "note": "Located on the edge of town, in the retail park that is near to Tesco. The store has moved since the last time the conference ran in 2019. Open until 7pm Monday to Saturday and 10am to 4pm on Sunday.",
+        "webLink": {
+            "recordName": "iceland",
+            "url": "https://www.iceland.co.uk/store-finder/store?StoreID=922&StoreName=ABERYSTWYTH",
+            "name": "Website"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "lidl",
+        "name": "Lidl",
+        "shortName": "Lidl",
+        "frontListPosition": -1,
+        "showImage": true,
+        "latitude": 52.412903,
+        "longitude": -4.079730,
+        "locationTypeRecordName": "sm",
+        "note": "Located in small retail park close to the railway station, next door to Lidl. The store has expanded since the last time the conference ran in 2019. Open from 8am to 10pm Monday to Saturday and 10am to 4pm on Sunday. Electric vehicle charging in the car park.",
+        "webLink": {
+            "recordName": "lidl",
+            "url": "https://www.lidl.co.uk/en/Store-Finder-4186.htm",
+            "name": "Website Store Locator"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "Spar24",
+        "name": "Spar 24 hour",
+        "shortName": "Spar 24 hour",
+        "frontListPosition": -1,
+        "showImage": false,
+        "latitude": 52.415622,
+        "longitude": -4.083386,
+        "locationTypeRecordName": "sm",
+        "note": "Located in the centre of town, along the road from Barclays bank. Open 24 hours every day."
+    },
+    {
+        "recordName": "SparCorner",
+        "name": "Spar",
+        "shortName": "Spar",
+        "frontListPosition": -1,
+        "showImage": false,
+        "latitude": 52.416240,
+        "longitude": -4.079813,
+        "locationTypeRecordName": "sm",
+        "note": "Located on the corner as you reach the bottom of the hill from the University. Small convenience store, open until around 11pm."
+    },
+    {
+        "recordName": "PremierExpress",
+        "name": "Premier Express",
+        "shortName": "Premier Express",
+        "showImage": false,
+        "frontListPosition": -1,
+        "latitude": 52.416023,
+        "longitude": -4.080254,
+        "locationTypeRecordName": "sm",
+        "note": "Located on the corner as you reach the bottom of the hill from the University. Small convenience store, open until around 11pm."
+    },
+    {
+        "recordName": "ev_lidl",
+        "name": "EV charging in Lidl/Argos carpark",
+        "shortName": "Lidl/Argos EV Charging",
+        "showImage": true,
+        "frontListPosition": -1,
+        "latitude": 52.41394,
+        "longitude": -4.08026,
+        "locationTypeRecordName": "ev",
+        "note": "Located in the corner of the Lidl / Argos car park.",
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "ev_tesco",
+        "name": "EV charging in Tesco/M&S carpark",
+        "shortName": "Tesco/M&S EV Charging",
+        "showImage": true,
+        "frontListPosition": -1,
+        "latitude": 52.41259,
+        "longitude": -4.08324,
+        "locationTypeRecordName": "ev",
+        "note": "Go in to the Tesco / M&S car park and then drive into the covered area. The chargers are located by the wall, close to the building.",
+        "webLink": {
+            "recordName": "ev_tesco",
+            "url": "https://charge.pod-point.com/address/tesco-superstore-aberystwyth-5qp9l",
+            "name": "Charging Details"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "ev_morrison",
+        "name": "EV charging in Morrisons carpark",
+        "shortName": "Morrisons EV Charging",
+        "showImage": true,
+        "frontListPosition": -1,
+        "latitude": 52.40528,
+        "longitude": -4.06755,
+        "locationTypeRecordName": "ev",
+        "note": "Go in to the Morrisons car park. As you drive into the car park, continue ahead and you will see the charger in the corner. This is a Genie Point charger.",
+        "webLink": {
+            "recordName": "ev_morrison",
+            "name": "Charging details",
+            "url": "https://www.geniepoint.co.uk/ds/PublicMap"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "ev_tesla",
+        "name": "Tesla charging at Llety Park ",
+        "shortName": "Tesla EV Charging",
+        "showImage": true,
+        "frontListPosition": -1,
+        "latitude": 52.40469,
+        "longitude": -4.06469,
+        "locationTypeRecordName": "ev",
+        "note": "Go to Llety Park Lodge, a hotel located off the roundabout near Morrisons and McDonalds. A bank of Tesla chargers are available.",
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "ev_au_penbryn",
+        "name": "EV charging at Penbryn",
+        "shortName": "EV Penbryn",
+        "showImage": true,
+        "frontListPosition": -1,
+        "latitude": 52.41781,
+        "longitude": -4.06453,
+        "locationTypeRecordName": "ev",
+        "note": "Ther is a BP Pulse charger in the car park next to the location we are using for breakfast.",
+        "webLink": {
+            "recordName": "ev_au_penbryn",
+            "name": "Charging Details",
+            "url": "https://network.bppulse.co.uk/live-map/"
+        },
+        "imageVersion": 2022001
+    },
+    {
+        "recordName": "ev_au_ho",
+        "name": "EV charging at Hugh Owen",
+        "shortName": "EV Hugh Owen",
+        "showImage": true,
+        "frontListPosition": -1,
+        "latitude": 52.41751,
+        "longitude": -4.06458,
+        "locationTypeRecordName": "ev",
+        "note": "There is a charging station next to the disabled parking spaces, outside the main lecture theatre that we are using for the conference.",
+        "imageVersion": 2022001
+    },
+    {
+        "longitude" : -4.06289,
+        "showImage" : true,
+        "shortName" : "Great Hall",
+        "locationTypeRecordName" : "au",
+        "note" : "The Great Hall is up the stairs on the right from the Arts Centre main entrance. Registration on Tuesday 6th will be outside the Great Hall.",
+        "latitude" : 52.41557,
+        "frontListPosition" : 170,
+        "recordName" : "greathall",
+        "name" : "Great Hall, Arts Centre",
+        "imageVersion": 2022002
+    },
+    {
+        "longitude" : -4.0662599999999998,
+        "showImage" : false,
+        "shortName" : "B23",
+        "locationTypeRecordName" : "au",
+        "note" : "Llandinam B23 will hold one of the workshops on the Thursday. Its entrance is on same level as the Computer Science Department",
+        "latitude" : 52.416370000000001,
+        "frontListPosition" : 90,
+        "recordName" : "b23",
+        "name" : "Llandinam B23"
+    },
+    {
+        "longitude" : -4.06277,
+        "showImage" : true,
+        "shortName" : "Theatre",
+        "locationTypeRecordName" : "au",
+        "note" : "The Theatre is within the Arts Centre, up a level again from the Great Hall. ",
+        "latitude" : 52.41615,
+        "frontListPosition" : 190,
+        "recordName" : "theatre",
+        "name" : "Theatre, Arts Centre",
+        "imageVersion": 2022001
+    },
+    {
+        "longitude" : -4.06267,
+        "showImage" : true,
+        "shortName" : "Theatre Foyer",
+        "locationTypeRecordName" : "au",
+        "note" : "All refreshments during the day on Tuesday and Wednesday will be in the Foyer of the Theatre. That is up one level within the Arts Centre from the Great Hall.",
+        "latitude" : 52.41588,
+        "frontListPosition" : 210,
+        "recordName" : "theatrefoyer",
+        "name" : "Theatre Foyer, Arts Centre",
+        "imageVersion": 2022001
+    }
+]
