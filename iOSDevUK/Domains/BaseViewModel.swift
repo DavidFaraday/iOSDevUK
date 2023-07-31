@@ -111,7 +111,6 @@ class BaseViewModel: ObservableObject {
         } catch (let error) {
             fetchError = error
         }
-        
     }
     
     @MainActor
@@ -119,7 +118,6 @@ class BaseViewModel: ObservableObject {
         guard self.locations.isEmpty else { return }
 
         do {
-            
             try await firebaseRepository.listen(from: .Location)
                 .sink(receiveCompletion: { completion in
                     switch completion {
@@ -135,7 +133,6 @@ class BaseViewModel: ObservableObject {
         } catch (let error) {
             fetchError = error
         }
-        
     }
     
     @MainActor
