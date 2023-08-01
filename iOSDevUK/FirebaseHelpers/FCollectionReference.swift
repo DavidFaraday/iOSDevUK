@@ -16,7 +16,7 @@ enum FCollectionReference: String {
     case Location
     case InformationItem
     case AppInformation
-    case Locations
+    case TestData //used only for testing purposes
 }
 
 

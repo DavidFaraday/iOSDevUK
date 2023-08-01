@@ -90,7 +90,6 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     }
     
 
-
     func saveData<T: EncodableIdentifiable>(data: T, to collection: FCollectionReference) throws {
 
         let id = data.id as? String ?? UUID().uuidString
@@ -101,17 +100,6 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
             throw error
         }
     }
-    
-
-//    func saveData(_ data: NewLocation, to collection: FCollectionReference) {
-//
-//        do {
-//            try FirebaseReference(collection).document(data.id).setData(from: data.self)
-//        }
-//        catch {
-//            print("Error saving session", error.localizedDescription)
-//        }
-//    }
     
     func deleteDocument(with id: String, from collection: FCollectionReference) {
         FirebaseReference(collection).document(id).delete()

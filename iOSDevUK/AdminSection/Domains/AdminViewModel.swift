@@ -24,4 +24,14 @@ final class AdminViewModel: ObservableObject {
         
         showError = logoutError != nil
     }
+    
+    @MainActor
+    @Sendable func uploadNewData() async {
+//        try? await FileUploadService.shared.uploadNewData(from: "locations.json", to: .Location)
+//        try? await FileUploadService.shared.uploadNewData(from: "speakers.json", to: .Speaker)
+//        try? await FileUploadService.shared.uploadNewData(from: "speakers.json", to: .TestData)
+        
+        print("DEBUG: Uploaded new data to firestore!")
+    }
+
 }
