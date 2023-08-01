@@ -16,8 +16,17 @@ struct HomeView: View {
     @ViewBuilder
     private func headerView() -> some View {
 
-        
         VStack {
+            ZStack {
+                Image("headerBackground")
+                    .resizable(resizingMode: .tile)
+                    .frame(height: 200.0)
+                Image("headerDevices")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 200.0)
+            }
+                
             Text(viewModel.eventInformation?.notification ?? "Loading...")
                 .font(.headline)
                 .multilineTextAlignment(.center)

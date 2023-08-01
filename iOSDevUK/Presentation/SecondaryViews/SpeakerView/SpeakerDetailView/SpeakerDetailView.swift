@@ -23,20 +23,28 @@ struct SpeakerDetailView: View {
     private func headerView() -> some View {
         HStack {
             RemoteImageView(url: viewModel.speaker.imageUrl)
-                .cornerRadius(15)
+                .cornerRadius(16)
                 .scaledToFit()
                 .frame(width: 160, height: 160)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16).stroke(Color("primary"), lineWidth: 6)
+                )
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(viewModel.speaker.name)
                     .font(.title)
                     .minimumScaleFactor(0.7)
 
-                if let twitterUrl = URL(string: "\(BaseUrl.twitter)\(viewModel.speaker.twitterId)") {
-                    Link("Twitter: @\(viewModel.speaker.twitterId)", destination: twitterUrl)
+                if !viewModel.speaker.twitterId.isEmpty {
+                    if let twitterUrl = URL(string: "\(BaseUrl.twitter)\(viewModel.speaker.twitterId)") {
+                        Link("Twitter: @\(viewModel.speaker.twitterId)", destination: twitterUrl)
+                    }
                 }
-                if let linkedInUrl = URL(string: "\(BaseUrl.linkedIn)\(viewModel.speaker.linkedIn)") {
-                    Link("LinkedIn: \(viewModel.speaker.linkedIn)", destination: linkedInUrl)
+                
+                if !viewModel.speaker.linkedIn.isEmpty {
+                    if let linkedInUrl = URL(string: "\(BaseUrl.linkedIn)\(viewModel.speaker.linkedIn)") {
+                        Link("LinkedIn: \(viewModel.speaker.linkedIn)", destination: linkedInUrl)
+                    }
                 }
                 
                 Spacer()
