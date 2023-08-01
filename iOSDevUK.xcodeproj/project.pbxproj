@@ -197,6 +197,8 @@
 		63F7E11F28CD022E00B2E1B7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		63F7E12B28CDB61F00B2E1B7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		63F7E12D28CE527700B2E1B7 /* InclusivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InclusivityView.swift; sourceTree = "<group>"; };
+		6B3AC3272A79AC5100627862 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6B3AC3282A79AC6400627862 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		EF0DADBF2930A535000B74E7 /* EventInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInformation.swift; sourceTree = "<group>"; };
 		EF17827B2941F08600EFFB2D /* iOSDevUK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSDevUK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1782802941F2D800EFFB2D /* iOSDevUKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSDevUKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,6 +411,8 @@
 		63F7E0AD28CC942100B2E1B7 = {
 			isa = PBXGroup;
 			children = (
+				6B3AC3282A79AC6400627862 /* LICENSE */,
+				6B3AC3272A79AC5100627862 /* README.md */,
 				63F7E0B828CC942100B2E1B7 /* iOSDevUK */,
 				EF17827B2941F08600EFFB2D /* iOSDevUK.app */,
 				EF1782802941F2D800EFFB2D /* iOSDevUKTests.xctest */,

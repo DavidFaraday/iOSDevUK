@@ -12,14 +12,14 @@ struct SpeakerCardView: View {
     private let speaker: Speaker
     private let height: CGFloat
     private let gradient = Gradient(colors:
-                                        [.green.opacity(1.0),
-                                         .green.opacity(0.8),
-                                         .green.opacity(0.7),
-                                         .green.opacity(0.2),
-                                         .green.opacity(0.1),
+                                        [Color("primary").opacity(1.0),
+                                         Color("primary").opacity(0.8),
+                                         Color("primary").opacity(0.7),
+                                         Color("primary").opacity(0.2),
+                                         Color("primary").opacity(0.1),
                                          .clear])
     
-    init(speaker: Speaker, height: CGFloat = 180) {
+    init(speaker: Speaker, height: CGFloat = 140) {
         self.speaker = speaker
         self.height = height
     }
