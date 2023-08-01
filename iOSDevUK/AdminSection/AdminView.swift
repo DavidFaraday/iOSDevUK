@@ -29,6 +29,7 @@ struct AdminView: View {
             NavigationLink("Locations", value: InfoDestination.adminLocations)
             NavigationLink("Sponsors", value: InfoDestination.adminSponsors)
         }
+        .task(viewModel.uploadNewData)
         .navigationTitle("Admin Area")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
