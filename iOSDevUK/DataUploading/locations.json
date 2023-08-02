@@ -8,7 +8,7 @@
     },
     "id" : "a12",
     "locationType" : "au",
-    "note" : "Hugh Owen A12 is the largest lecture theatre on campus, and used for the Monday and Thursday sessions.nWhat 3 Words for entrance: ///megawatt.dabbled.travel",
+    "note" : "Hugh Owen A12 is the largest lecture theatre on campus, and used for the Monday and Thursday sessions.\nWhat 3 Words for entrance: ///megawatt.dabbled.travel",
     "latitude" : 52.417189999999998,
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2Fa12.jpg?alt=media",
     "name" : "Hugh Owen A12"
@@ -22,7 +22,7 @@
     },
     "id" : "a14",
     "locationType" : "au",
-    "note" : "A14 is used for one of the workshops at the end of the conference. It is just by A12, used for the Thursday morning sessions.nWhat 3 Words for entrance: ///megawatt.dabbled.travel",
+    "note" : "A14 is used for one of the workshops at the end of the conference. It is just by A12, used for the Thursday morning sessions.\nWhat 3 Words for entrance: ///megawatt.dabbled.travel",
     "latitude" : 52.417349999999999,
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2Fa14.jpg?alt=media",
     "name" : "Hugh Owen A14"
@@ -36,7 +36,7 @@
     },
     "id" : "c22",
     "locationType" : "au",
-    "note" : "Hugh Owen C22 is the second venue being used during the main part of the conference. If you are in the Arts Centre, come out of the lower entrance and turn right past the Library.nWhat 3 Words: ///landlady.steers.reshape",
+    "note" : "Hugh Owen C22 is the second venue being used during the main part of the conference. If you are in the Arts Centre, come out of the lower entrance and turn right past the Library.\nWhat 3 Words: ///landlady.steers.reshape",
     "latitude" : 52.416310000000003,
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2Fc22.jpg?alt=media",
     "name" : "Hugh Owen C22"
@@ -54,7 +54,7 @@
     "longitude" : -4.0692599999999999,
     "id" : "pantycelyn",
     "locationType" : "au",
-    "note" : "Main accommodation for the conference. The entrance is on the side of the building near the car park, not the imposing front doors next to the main road. There is also a car park to the left of the building.nWhat 3 Words: ///herring.tastier.rear",
+    "note" : "Main accommodation for the conference. The entrance is on the side of the building near the car park, not the imposing front doors next to the main road. There is also a car park to the left of the building.\nWhat 3 Words: ///herring.tastier.rear",
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2Fpantycelyn.jpg?alt=media",
     "latitude" : 52.416539999999998,
     "name" : "Pantycelyn Hall of Residence"
@@ -63,7 +63,7 @@
     "longitude" : -4.0598599999999996,
     "id" : "AccommodationReception",
     "locationType" : "au",
-    "note" : "Collect your university accommodation keys from here between 8:30 and 4:30pm. After 4:30pm, go to the Main Campus Reception. Tell them if you are bringing a car onto campus. See the attendee information for details about car parking.nWhat 3 Words: ///prevented.offline.calculating",
+    "note" : "Collect your university accommodation keys from here between 8:30 and 4:30pm. After 4:30pm, go to the Main Campus Reception. Tell them if you are bringing a car onto campus. See the attendee information for details about car parking.\nWhat 3 Words: ///prevented.offline.calculating",
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2FAccommodationReception.jpg?alt=media",
     "latitude" : 52.420920000000002,
     "name" : "Accommodation Reception"
@@ -72,7 +72,7 @@
     "longitude" : -4.0652799999999996,
     "id" : "MainCampusReception",
     "locationType" : "au",
-    "note" : "If arriving after 4.30pm, collect your university accommodation keys from here . Tell them if you are bringing a car onto campus. See the attendee information for details about car parking.nWhat 3 Words for entrance: ///mincing.breaches.rear",
+    "note" : "If arriving after 4.30pm, collect your university accommodation keys from here . Tell them if you are bringing a car onto campus. See the attendee information for details about car parking.\nWhat 3 Words for entrance: ///mincing.breaches.rear",
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2FMainCampusReception.jpg?alt=media",
     "latitude" : 52.417769999999997,
     "name" : "Main Campus Reception"
@@ -81,7 +81,7 @@
     "longitude" : -4.0649150000000001,
     "id" : "Breakfast",
     "locationType" : "au",
-    "note" : "Breakfast is available in Ta Med Da, which is in the Penbryn Hall of Residence near to the entrance of the University.nWhat 3 Words for entrance: ///elephant.airliners.massing",
+    "note" : "Breakfast is available in Ta Med Da, which is in the Penbryn Hall of Residence near to the entrance of the University.\nWhat 3 Words for entrance: ///elephant.airliners.massing",
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2FBreakfast.jpg?alt=media",
     "latitude" : 52.417670000000001,
     "name" : "Breakfast (Ta Med Da)"
@@ -95,7 +95,7 @@
     },
     "id" : "medrus",
     "locationType" : "au",
-    "note" : "Medrus Mawr is a large conference room that we will use for the Conference Dinner event. This is above the place where you will get your breakfast (Ta Med Da). To enter, you can either go through this door and head to the back and up stairs. Alternatively, go to the right of this picture and follow the building around to another door. Go into the buildng and then up stairs to the first floornThere is a ramp and lift access to Medrus Mawr.nWhat 3 Words for entrance: ///fetches.circus.cookbooks",
+    "note" : "Medrus Mawr is a large conference room that we will use for the Conference Dinner event. This is above the place where you will get your breakfast (Ta Med Da). To enter, you can either go through this door and head to the back and up stairs. Alternatively, go to the right of this picture and follow the building around to another door. Go into the buildng and then up stairs to the first floor\nThere is a ramp and lift access to Medrus Mawr.\nWhat 3 Words for entrance: ///fetches.circus.cookbooks",
     "latitude" : 52.417940999999999,
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2Fmedrus.jpg?alt=media",
     "name" : "Medrus Mawr"
@@ -109,7 +109,7 @@
     },
     "id" : "rheidol",
     "locationType" : "transport",
-    "note" : "The Rheidol Railway station is in the centre of town. If you are driving, the location will get you to the car park. If you are walking from the University, head to the main railway station (by Wetherspoons) and continue walking past the station. You will reach a small roundabout, take a left and continue past Home Bargains.nWhat 3 Words: ///cliff.otters.hoops, Postcode for sat nav: SY23 1PG",
+    "note" : "The Rheidol Railway station is in the centre of town. If you are driving, the location will get you to the car park. If you are walking from the University, head to the main railway station (by Wetherspoons) and continue walking past the station. You will reach a small roundabout, take a left and continue past Home Bargains.\nWhat 3 Words: ///cliff.otters.hoops, Postcode for sat nav: SY23 1PG",
     "latitude" : 52.411180000000002,
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2Frheidol.jpg?alt=media",
     "name" : "Vale of Rheidol Railway Station"
@@ -123,7 +123,7 @@
     },
     "id" : "RailwayStation",
     "locationType" : "transport",
-    "note" : "The Aberystwyth Railway station is in the centre of town. The main Taxi Rank is avilable outside and there is usually a lot of taxis available when trains are due.nWhat 3 Words: ///bugs.losing.hotels",
+    "note" : "The Aberystwyth Railway station is in the centre of town. The main Taxi Rank is avilable outside and there is usually a lot of taxis available when trains are due.\nWhat 3 Words: ///bugs.losing.hotels",
     "latitude" : 52.413815999999997,
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2FRailwayStation.jpg?alt=media",
     "name" : "Aberystwyth Railway Station"
@@ -132,7 +132,7 @@
     "longitude" : -4.0822929999999999,
     "id" : "TaxiRank",
     "locationType" : "transport",
-    "note" : "The main place to get a taxi is outside the railway station. Taxis are available for most of the day.nIn the nighttime, taxis may also park near to the clock tower or near to KFC.nWhat 3 Words: ///sorry.officials.electric",
+    "note" : "The main place to get a taxi is outside the railway station. Taxis are available for most of the day.\nIn the nighttime, taxis may also park near to the clock tower or near to KFC.\nWhat 3 Words: ///sorry.officials.electric",
     "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Locations%2FTaxiRank.jpg?alt=media",
     "latitude" : 52.413905999999997,
     "name" : "Taxi Rank"

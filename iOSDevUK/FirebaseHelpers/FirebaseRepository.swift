@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 import Firebase
 import Combine
 
-public typealias EncodableIdentifiable = Encodable & Identifiable
+public typealias CodableIdentifiable = Codable & Identifiable
 
 protocol FirebaseRepositoryProtocol {
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]?
@@ -19,7 +19,7 @@ protocol FirebaseRepositoryProtocol {
     func getDocument<T: Codable>(from collection: FCollectionReference, with id: String) async throws -> T?
     func listen<T: Codable>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error>
     func deleteDocument(with id: String, from collection: FCollectionReference)
-    func saveData<T: EncodableIdentifiable>(data: T, to collection: FCollectionReference) throws
+    func saveData<T: CodableIdentifiable>(data: T, to collection: FCollectionReference) throws
 }
 
 final class FirebaseRepository: FirebaseRepositoryProtocol {
@@ -90,7 +90,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     }
     
 
-    func saveData<T: EncodableIdentifiable>(data: T, to collection: FCollectionReference) throws {
+    func saveData<T: CodableIdentifiable>(data: T, to collection: FCollectionReference) throws {
 
         let id = data.id as? String ?? UUID().uuidString
         

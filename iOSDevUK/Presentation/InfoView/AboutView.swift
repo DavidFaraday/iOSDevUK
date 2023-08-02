@@ -20,10 +20,9 @@ struct AboutView: View {
 
                 Text("iOSDevUK is the UK conference for iOS developers. It takes place in Aberystwyth, on the mid-Wales coast, from \(viewModel.eventInformation?.startDate.dayOfTheMonth ?? "") to the \(viewModel.eventInformation?.endDate.dayAndMonth ?? "").")
                 
-                Text("•Great talks \n•Great get-togethers \n•Optional workshops")
-                    .multilineTextAlignment(.leading)
+                Text("• Great talks\n• Great get-togethers\n• Optional workshops")                    .multilineTextAlignment(.leading)
                 
-                Text("The conference is organised by Aberystwyth University and is now in its tenth year. iOS, iPhone, iPad, Apple Watch, watchOS, Apple TV and tvOS are trademarks of Apple Inc. For the avoidance of doubt, Apple Inc. has no association with this conference.")
+                Text("The conference is organised by Aberystwyth University and is now in its eleventh year. iOS, iPhone, iPad, Apple Watch, watchOS, Apple TV and tvOS are trademarks of Apple Inc. For the avoidance of doubt, Apple Inc. has no association with this conference.")
             }
             .padding(20)
         }

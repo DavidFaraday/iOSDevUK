@@ -1,408 +1,408 @@
 [
-    {
-        "twitterId" : "AlexKudelka",
-        "id" : "AlexKudelka",
-        "biography" : "Need a speaker description",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAlexKudelka.jpg?alt=media",
-        "name" : "Alex Kudelka",
-        "linkedIn" : "alexkudelka"
-    },
-    {
-        "biography" : "Currently I'm the iOS Tech Lead at Bumble, also have worked professionally as iOS developer for around 14 years. Been working in social network apps for the last 8 years. I'm used to working with very professional and large teams of developers in companies like Tuenti (biggest social network in Spain after facebook) and now working at Bumble and Badoo. I love UI development and especially new technologies like SwiftUI.",
-        "id" : "AlexisSantos",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAlexisSantos.jpg?alt=media",
-        "name" : "Alexis Santos",
-        "linkedIn" : "asantosp"
-    },
-    {
-        "biography" : "Allison McEntire is a Staff Engineer at Urban Outfitter, INC. She develops iOS apps for the Nuuly team: Nuuly Rent, a clothing subscription service, and Nuuly Thrift, a fashion marketplace. Allison's recent conference appearances include SwiftLeeds 2022 and Women Transforming Technology 2022.",
-        "id" : "AllisonMcEntire",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAllisonMcEntire.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://www.nuuly.com/",
-                "recordName" : "AllisonMcEntireWeb",
-                "name" : "Web"
-            }
-        ],
-        "name" : "Allison McEntire",
-        "linkedIn" : "allison-mcentire-ab348076"
-    },
-    {
-        "linkedIn" : "anna-b-8b0134a9",
-        "twitterId" : "acbdev",
-        "id" : "AnnaBeltrami",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAnnaBeltrami.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "bento.me/acbdev/",
-                "recordName" : "AnnaBeltramiWeb",
-                "name" : "Web"
-            }
-        ],
-        "biography" : "I am a Software Engineer and ex clumsy scientist from Italy. I currently work at Spotify as a Mobile Infra Engineer. In my free time I co-host two podcasts for software engineers, and when I am not tinkering away with Swift and making untested apps on Playgrounds, I am a skier and a chaotic climber!",
-        "name" : "Anna Beltrami"
-    },
-    {
-        "biography" : "I have been developing native iOS apps for around 13 years now. I am currently working for The Guardian, and have previously worked for J.P.Morgan and Sky. I care about code quality and clean architecture. I have been a member of Toastmasters for over a year now and have received Best Speaker awards on 85% of the speeches I delivered.",
-        "id" : "AnumMian",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAnumMian.jpg?alt=media",
-        "name" : "Anum Mian",
-        "linkedIn" : "anum-mian-96778632"
-    },
-    {
-        "twitterId" : "AraksAvoyan",
-        "id" : "AraksAvoyan",
-        "biography" : "I am an experienced iOS engineer with over 7 years of expertise in developing iOS applications. Throughout my career, I have gained valuable experience working with both outsourcing and product companies. Currently, I am a part of Spotify as an iOS engineer based in Stockholm, where I get to work on the app that I personally use and love. Collaboration is one of my core values, and I thoroughly enjoy working alongside talented teams to create exceptional iOS experiences.",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAraksAvoyan.jpg?alt=media",
-        "name" : "Araks Avoyan",
-        "linkedIn" : "araksavoyan"
-    },
-    {
-        "twitterId" : "mvpohhhdrey",
-        "id" : "AudreySobgouZebaze",
-        "biography" : "Audrey discovered iOS when she first bought an iPhone Edge in 2008. Since then, she is working passionately on Apple platforms, enjoying SwiftUI and even CoreData at Proton. When she is not coding, watching/playing basketball and football are her favorite activities.nAs a huge movie addict,  Audrey is avoiding trailers as much as possible.",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAudreySobgouZebaze.jpg?alt=media",
-        "name" : "Audrey Sobgou Zebaze",
-        "linkedIn" : "-audrey-sobgou-zebaze-0428a768"
-    },
-    {
-        "linkedIn" : "avi-tsadok-86a75912",
-        "twitterId" : "avi_tsadok",
-        "id" : "AviTsadok",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAviTsadok.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://avitsadok.medium.com",
-                "recordName" : "AviTsadokBlog",
-                "name" : "Blog"
-            },
-            {
-                "url" : "https://meliopayments.com",
-                "recordName" : "AviTsadokWeb",
-                "name" : "Web"
-            }
-        ],
-        "biography" : "Avi Tsadok has worked in iOS development for 12 years and is currently the mobile group manager of Melio Payments. nAs part of being an iOS Developer, Avi worked on cutting-edge apps such as Any.do and wrote three books about Swift and iOS development, along with dozens of tutorials and articles. nHe resides in Tel Mond, Israel, with his wife Tammy and their two children.",
-        "name" : "Avi Tsadok"
-    },
-    {
-        "twitterId" : "MrBananas",
-        "id" : "ChrisGreening",
-        "biography" : "I'm a technology advisor based up in Edinburgh, I've been involved in tech for almost all my life and have built all sorts of interesting mobile applications, including a slightly dubious 'dating' application. More recently I've been getting back to my roots and doing a bit of embedded programming and electronics. This has led me into the exciting world of being a YouTuber which has spawned all sorts of bonkers projects.",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FChrisGreening.jpg?alt=media",
-        "name" : "Chris Greening",
-        "linkedIn" : "chrisgreening"
-    },
-    {
-        "linkedIn" : "ikenndac",
-        "twitterId" : "iKenndac",
-        "id" : "DanielKennett",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FDanielKennett.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://mastodon.social/@ikenndac",
-                "recordName" : "DanielKennettmastodon",
-                "name" : "mastodon"
-            }
-        ],
-        "biography" : "Daniel Kennett runs a small indie development company in Sweden (but don't expect an exciting accent — he grew up in the UK), and has been an indie developer on-and-off (mostly on) for nearly twenty years. ",
-        "name" : "Daniel Kennett"
-    },
-    {
-        "twitterId" : "danielctull",
-        "id" : "DanielTull",
-        "biography" : "Daniel has 15 years of experience in iOS development. He has worked on a range of high-profile projects for major brands and startups including the BBC, Tesco, John Lewis and the fashion guru Gok Wan. He has contributed to open-source projects and publishes his “experiments” on GitHub. In his free time, he enjoys board gaming, yoga and exploring new places.",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FDanielTull.jpg?alt=media",
-        "name" : "Daniel Tull",
-        "linkedIn" : "danieltull"
-    },
-    {
-        "linkedIn" : "eugenematsyuk",
-        "twitterId" : "e_matsyuk",
-        "id" : "EvgeniiMatsiuk",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FEvgeniiMatsiuk.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://github.com/matzuk",
-                "recordName" : "EvgeniiMatsiukgithub",
-                "name" : "github"
-            },
-            {
-                "url" : "https://medium.com/@eugenematsyuk",
-                "recordName" : "EvgeniiMatsiukmedium",
-                "name" : "medium"
-            }
-        ],
-        "biography" : "Co-Founder at MarathonLabs; Co-Author of Kaspresso; Android Google Developer ExpertnHello, I'm Evgenii, a seasoned software developer with a 15-year track record. For the last five years, my focus has been on advancing UI testing tools. Sharing knowledge is my passion, and I've reached over a million people through my talks and articles.nI'm also proud to be a co-author of Kaspresso, a popular Android testing framework, which has made a significant impact on mobile development.nBeyond development, I'm a co-founder of Marathon Labs, a company dedicated to making life easier for those in testing roles. We're continually pushing the envelope, aiming to change the landscape of software testing for the better.",
-        "name" : "Evgenii Matsiuk"
-    },
-    {
-        "linkedIn" : "hiddevdploeg",
-        "twitterId" : "hiddevdploeg",
-        "id" : "HiddevanderPloeg",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FHiddevanderPloeg.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://mastodon.design/@hidde",
-                "recordName" : "HiddevanderPloegmastadon",
-                "name" : "mastadon"
-            }
-        ],
-        "biography" : "I'm a Manchester-based (but Dutch) Indie App Developer that creates apps that do one thing well and delightfully. With over a decade of experience as a designer, I can help you craft beautiful experiences. ",
-        "name" : "Hidde van der Ploeg"
-    },
-    {
-        "linkedIn" : "bionik6",
-        "twitterId" : "bionik6",
-        "id" : "IbrahimaCiss",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FIbrahimaCiss.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://www.youtube.com/channel/UCnbgsq-YY0dIvGMzB4RQ-YA",
-                "recordName" : "IbrahimaCissyoutube",
-                "name" : "youtube"
-            }
-        ],
-        "biography" : "UI Designer converted to iOS Software Engineer. Ibrahima loves everything about software design, testing, app architecture, accessibility, and sharing his discoveries on his Youtube channel.",
-        "name" : "Ibrahima Ciss"
-    },
-    {
-        "linkedIn" : "kosalajayasekara",
-        "twitterId" : "kjayasekara",
-        "id" : "KosalaJayasekara",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FKosalaJayasekara.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://kosalajayasekara.com/",
-                "recordName" : "KosalaJayasekaraweb",
-                "name" : "web"
-            }
-        ],
-        "biography" : "I'm a passionate ios developer who has been strongly embedded in the apple ecosystem since the beginning. I have created over 55+ apple related Applications and counting on more in the future.",
-        "name" : "Kosala Jayasekara"
-    },
-    {
-        "twitterId" : "leah_m_vogel",
-        "id" : "LeahVogel",
-        "biography" : "Leah is a Senior Engineering Manager at Chegg with nearly a decade of iOS development experience. She is a speaker, writer, bookworm, wife, mother, and generally mostly harmless.",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FLeahVogel.jpg?alt=media",
-        "name" : "Leah Vogel",
-        "linkedIn" : "leahvogel"
-    },
-    {
-        "biography" : "My name is Lena Mattea Stöxen, but if you know me online, then you probably know me as 'Thea' or 'Tea'. I study computer science with Volkswagen Commercial Vehicles (it's complicated and I will only need one hour of your time to explain what exactly I'm doing). What I really enjoy is probably programming, which can be seen as either 'not having any hobbies' or 'not having a job'. Over the last years I was fortunate enough to win the Swift Student Challenge twice. When I'm not thinking about a programming problem, I'm probably playing golf or painting. ",
-        "id" : "LenaMatteaStöxen",
-        "twitterId" : "thea_lena_36",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FLenaMatteaStöxen.jpg?alt=media",
-        "name" : "Lena Mattea Stöxen",
-        "webLinks" : [
-            {
-                "url" : "https://cupoftea.social/@lenaTea",
-                "recordName" : "LenaMatteaStöxenmastodon",
-                "name" : "mastodon"
-            }
-        ]
-    },
-    {
-        "linkedIn" : "lukestringer90",
-        "twitterId" : "lukestringer90",
-        "id" : "LukeStringer",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FLukeStringer.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://mastodonapp.uk/@lukestringer90",
-                "recordName" : "LukeStringermastodon",
-                "name" : "mastodon"
-            },
-            {
-                "url" : "https://stringer.dev",
-                "recordName" : "LukeStringerWeb",
-                "name" : "Web"
-            }
-        ],
-        "biography" : "Luke first began creating apps for iPhone OS 3 (remember back then?!). He has been building mobile software and leading development teams since 2012. He finds writing code and working with people just as fascinating and rewarding as each other. Luke lives in Sheffield and works for AND Digital as a Tech Principal. When not at work he plays guitar, solves Rubik's cubes, and enjoys spending time with his partner and son.",
-        "name" : "Luke Stringer"
-    },
-    {
-        "linkedIn" : "maxxfrazer",
-        "twitterId" : "maxxfrazer",
-        "id" : "MaxCobb",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FMaxCobb.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://github.com/maxxfrazer/",
-                "recordName" : "MaxCobbgithub",
-                "name" : "github"
-            }
-        ],
-        "biography" : "Max is a developer advocate with a passion for augmented reality and open source, and has built a number of popular open source libraries, as well as contributing to some well-known projects. His journey began as a software engineer, where he honed his skills and gained a deep understanding of the industry. However, Max found that his true calling was in helping others and sharing knowledge, which led me to transition into a developer advocate role. I am now able to combine my love for open source and AR to educate and inspire others to make an impact in the tech industry.",
-        "name" : "Max Cobb"
-    },
-    {
-        "twitterId" : "MichaelBaldock",
-        "id" : "MichaelBaldock",
-        "biography" : "Michael has worked as an iOS developer in a broad range of tech companies with over 10 years of iOS development experience. His first senior role was for the music streaming company Omnifone where Michael worked on the music streaming app ‘Rara' for a number of years before this product was acquired by Apple. He then moved to The Telegraph Media Group as an iOS team lead working with developers from across Europe to build The Telegraph's suite of mobile applications. In his current role at Skyscanner Michael has become a mobile expert for Skyscanner's identity platform, helping to architect their password-less identity solution, and building an OAuth based approach for the secure transfer of both anonymous and authenticated traveller's identities.",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FMichaelBaldock.jpg?alt=media",
-        "name" : "Michael Baldock",
-        "linkedIn" : "michael-baldock-29aab922"
-    },
-    {
-        "twitterId" : "mikeabdullah",
-        "id" : "MikeAbdullah",
-        "biography" : "Mike specialises in working on large applications over a long lifetime (5-10 years!), currently working on the popular design tool, Sketch.",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FMikeAbdullah.jpg?alt=media",
-        "name" : "Mike Abdullah",
-        "linkedIn" : "mikeabdullah"
-    },
-    {
-        "linkedIn" : "nataliapanferova",
-        "twitterId" : "natpanferova",
-        "id" : "NataliaPanferova",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FNataliaPanferova.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://mastodon.cloud/@natpanferova",
-                "recordName" : "NataliaPanferovaMastodon",
-                "name" : "Mastodon"
-            },
-            {
-                "url" : "https://nilcoalescing.com",
-                "recordName" : "NataliaPanferovaWeb",
-                "name" : "Web"
-            },
-            {
-                "url" : "https://nilcoalescing.com/blog",
-                "recordName" : "NataliaPanferovaBlog",
-                "name" : "Blog"
-            }
-        ],
-        "biography" : "Natalia is a software engineer who is passionate about iOS and macOS app development. She started her engineering career in web development but fell in love with Swift later on. Natalia had the opportunity to work on the SwiftUI framework as a member of the core SwiftUI team at Apple and contribute directly to the development of SwiftUI APIs. Now she is working part-time for a company called Trade Me and part time on her own iOS apps. She also writes an iOS development blog.nNatalia lives in New Zealand and apart from coding and writing blog posts, she enjoys going on nature walks with her dog Phoebe.",
-        "name" : "Natalia Panferova"
-    },
-    {
-        "biography" : "Hi there, I'm an iOS developer with a love for the community that surrounds it. I've been attending conferences and events, such as iOSDevUK, for a while now and always enjoy learning new things from my peers.nMy journey in the field started with teaching myself how to create apps, which eventually landed me my first iOS role. From there, I've been on a continual learning path, and I'm still discovering new things today.nIn my spare time, I like to keep active with climbing and enjoy playing the piano when I'm looking for a more relaxing activity. And at home, I have two adorable rabbits that I enjoy looking after.nI'm excited to share my experiences with other iOS enthusiasts at the conference and hope to learn something new from them too.",
-        "id" : "OliverFoggin",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FOliverFoggin.jpg?alt=media",
-        "name" : "Oliver Foggin",
-        "linkedIn" : "oliver-foggin-4b1005216"
-    },
-    {
-        "linkedIn" : "obinns",
-        "twitterId" : "oliver_binns",
-        "id" : "OliverBinns",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FOliverBinns.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://mastodon.social/@oliver_binns",
-                "recordName" : "OliverBinnsmastodon",
-                "name" : "mastodon"
-            },
-            {
-                "url" : "https://www.oliverbinns.co.uk",
-                "recordName" : "OliverBinnsWeb",
-                "name" : "Web"
-            },
-            {
-                "url" : "https://github.com/Oliver-Binns",
-                "recordName" : "OliverBinnsgithub",
-                "name" : "github"
-            }
-        ],
-        "biography" : "Oliver is an experienced software engineer who mainly focusses on native iOS development in Swift. He has worked on a number of mobile apps, across a range of sectors including travel, healthcare and productivity, for both the general consumer and enterprise markets. Oliver was awarded a scholarship to attend Apple's Worldwide Developer Conference in both 2015 & 16. nAs well as a deep understanding of the native Apple software development, Oliver has wide-ranging knowledge of Web and wider mobile platforms. He has worked on native (Java, Kotlin) and Unity (C#) applications for Android, and has developed for a range of web-based systems (Angular, PHP, JavaScript, Python). nOliver has an IET accredited master's degree in Computer Science from the University of York. Drawing on this background, he is able to ensure his work has a strong grounding in first principles, while observing best practices from industry. Oliver draws on his deep theoretical knowledge to quickly learn new tools and frameworks.",
-        "name" : "Oliver Binns"
-    },
-    {
-        "linkedIn" : "peterfriese",
-        "twitterId" : "peterfriese",
-        "id" : "PeterFriese",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FPeterFriese.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://iosdev.space/@peterfriese",
-                "recordName" : "PeterFriesemastodon",
-                "name" : "mastodon"
-            }
-        ],
-        "biography" : "Peter is a Developer Relations Engineer on the Firebase team at Google, and is dedicated to helping developers build amazing experiences and high-quality apps using Firebase on iOS, Android, and the web.  He is also the author of Asynchronous Programming with SwiftUI and Combine. Peter has written code in BASIC, C, ObjectPascal, Java, Kotlin, Xtext, JavaScript, TypeScript, Objective-C, and a number of home-grown DSLs - but his all-time favourite is Swift.",
-        "name" : "Peter Friese"
-    },
-    {
-        "linkedIn" : "polpielladev",
-        "twitterId" : "polpielladev",
-        "id" : "PolPiellaAbadia",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FPolPiellaAbadia.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://www.polpiella.dev/newsletter",
-                "recordName" : "PolPiellaAbadianewsletter",
-                "name" : "newsletter"
-            },
-            {
-                "url" : "https://www.polpiella.dev/category/ci-cd",
-                "recordName" : "PolPiellaAbadiablog",
-                "name" : "blog"
-            }
-        ],
-        "biography" : "I am a senior iOS developer at the BBC in the UK with over 5 years of experience in the industry. My day to day work involves architecting and developing new features as well as playing an important role in ensuring our app gets delivered to millions of users as swiftly as possible through CI/CD work. Outside of work, I like creating and sharing content with the community through articles on my blog and giving talks at conferences, as well as curating the iOS CI Newsletter.nCI/CD is my main area of expertise and one that I am a big advocate for. I write about it on my blog and I run a bi-weekly newsletter on iOS CI/CD which goes out to around 400 subscribers: https://www.polpiella.dev/newsletternI have experience delivering talks at conferences. In 2022, I gave three talks at:n- Do iOS (In person in Amsterdam)n- Mobile Devops Summit (Online and organised by Bitrise)n- Remote LatAm Engineering Job Fair (Online and organised by Arc.dev. I was the keynote speaker here talking about CI/CD)nIn 2023 I will be speaking at:n- NYSwifty (In person in New York)n- plSwift (In person in Warsaw)",
-        "name" : "Pol Piella Abadia"
-    },
-    {
-        "twitterId" : "richturton",
-        "id" : "RichTurton",
-        "biography" : "Richard Turton is an iOS developer for MartianCraft and has been making iOS apps for over 10 years, specialising in high-performance custom data visualisations. He is also a member of the Kodeco tutorial team. Don't get him started talking about affine transforms, unless you have a lot of time and a bottomless expense account. ",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FRichTurton.jpg?alt=media",
-        "name" : "Rich Turton",
-        "linkedIn" : "richard-turton-25088662"
-    },
-    {
-        "biography" : "I am a Senior iOS Developer at Zoho with 7+ years of experience and a Swift enthusiast. In addition to my technical expertise, I am also a mentor and speaker, sharing my knowledge and experiences with others through technology evangelism. I am also a creator and blogger, sharing my insights and tutorials on my blog, ohmyswift.com.",
-        "id" : "RizwanAhmedA",
-        "twitterId" : "rizwanasifahmed",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FRizwanAhmedA.jpg?alt=media",
-        "name" : "Rizwan Ahmed"
-    },
-    {
-        "linkedIn" : "timjcondon",
-        "twitterId" : "0xTim",
-        "id" : "TimCondon",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FTimCondon.jpg?alt=media",
-        "webLinks" : [
-            {
-                "url" : "https://www.timc.dev/",
-                "recordName" : "TimCondonWeb",
-                "name" : "Web"
-            }
-        ],
-        "biography" : "Tim is a Swift developer from Manchester, UK and part of the Vapor Core Team. He's part of the server-side Swift team at Kodeco and has written the unofficial-official book on Vapor. He founded Broken Hands a few years ago and delivers talks and workshops on Vapor and server-side Swift around the world. He also co-organises the ServerSide.swift conference - the world's first and only conference focused on server-side Swift.",
-        "name" : "Tim Condon"
-    },
-    {
-        "twitterId" : "iosdevuk",
-        "id" : "ChrisPrice",
-        "biography" : "Chris is a Professor at Aberystwyth University, and started programming when code was all in upper case. He wrote his first iOS program within weeks of the iOS SDK being released in March 2008, and has being enjoying iOS programming ever since. Along with Neil Taylor, he has been running iOSDevUK since 2011.",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FChrisPrice.jpg?alt=media",
-        "name" : "Chris Price",
-        "linkedIn" : "chris-price-317735a"
-    },
-    {
-        "twitterId" : "digidol",
-        "id" : "NeilTaylor",
-        "biography" : "Neil is a lecturer at Aberystwyth University. He develops apps for iOS, Android and the web, with a natural preference for working with iOS and App. Along with Chris Price,he has been running iOSDevUK since 2011.",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FNeilTaylor.jpg?alt=media",
-        "name" : "Neil Taylor",
-        "linkedIn" : "neilscotttaylor"
-    },
-    {
-        "biography" : "You. With your different skills and experience. You help make iOSDevUK what it is. As well as attending the sessions, come along to the pre and post conference workshops and the socials. Some of you will also be taking part in the lightning talks session during the conference.",
-        "id" : "You",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FYou.jpg?alt=media",
-        "name" : "You"
-    },
-    {
-        "biography" : "",
-        "id" : "unknown1",
-        "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2Funknown1.jpg?alt=media",
-        "name" : "unknown 1"
-    }
+  {
+    "twitterId" : "AlexKudelka",
+    "id" : "AlexKudelka",
+    "biography" : "Alex is a cofounder of Glassfy",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAlexKudelka.jpg?alt=media",
+    "name" : "Alex Kudelka",
+    "linkedIn" : "alexkudelka"
+  },
+  {
+    "biography" : "Currently I'm the iOS Tech Lead at Bumble, also have worked professionally as iOS developer for around 14 years. Been working in social network apps for the last 8 years. I'm used to working with very professional and large teams of developers in companies like Tuenti (biggest social network in Spain after facebook) and now working at Bumble and Badoo. I love UI development and especially new technologies like SwiftUI.",
+    "id" : "AlexisSantos",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAlexisSantos.jpg?alt=media",
+    "name" : "Alexis Santos",
+    "linkedIn" : "asantosp"
+  },
+  {
+    "biography" : "Allison McEntire is a Staff Engineer at Urban Outfitter, INC. She develops iOS apps for the Nuuly team: Nuuly Rent, a clothing subscription service, and Nuuly Thrift, a fashion marketplace. Allison's recent conference appearances include SwiftLeeds 2022 and Women Transforming Technology 2022.",
+    "id" : "AllisonMcEntire",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAllisonMcEntire.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://www.nuuly.com/",
+        "recordName" : "AllisonMcEntireWeb",
+        "name" : "Web"
+      }
+    ],
+    "name" : "Allison McEntire",
+    "linkedIn" : "allison-mcentire-ab348076"
+  },
+  {
+    "linkedIn" : "anna-b-8b0134a9",
+    "twitterId" : "acbdev",
+    "id" : "AnnaBeltrami",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAnnaBeltrami.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "bento.me/acbdev/",
+        "recordName" : "AnnaBeltramiWeb",
+        "name" : "Web"
+      }
+    ],
+    "biography" : "I am a Software Engineer and ex clumsy scientist from Italy. I currently work at Spotify as a Mobile Infra Engineer. In my free time I co-host two podcasts for software engineers, and when I am not tinkering away with Swift and making untested apps on Playgrounds, I am a skier and a chaotic climber!",
+    "name" : "Anna Beltrami"
+  },
+  {
+    "biography" : "I have been developing native iOS apps for around 13 years now. I am currently working for The Guardian, and have previously worked for J.P.Morgan and Sky. I care about code quality and clean architecture. I have been a member of Toastmasters for over a year now and have received Best Speaker awards on 85% of the speeches I delivered.",
+    "id" : "AnumMian",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAnumMian.jpg?alt=media",
+    "name" : "Anum Mian",
+    "linkedIn" : "anum-mian-96778632"
+  },
+  {
+    "twitterId" : "AraksAvoyan",
+    "id" : "AraksAvoyan",
+    "biography" : "I am an experienced iOS engineer with over 7 years of expertise in developing iOS applications. Throughout my career, I have gained valuable experience working with both outsourcing and product companies. Currently, I am a part of Spotify as an iOS engineer based in Stockholm, where I get to work on the app that I personally use and love. Collaboration is one of my core values, and I thoroughly enjoy working alongside talented teams to create exceptional iOS experiences.",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAraksAvoyan.jpg?alt=media",
+    "name" : "Araks Avoyan",
+    "linkedIn" : "araksavoyan"
+  },
+  {
+    "twitterId" : "mvpohhhdrey",
+    "id" : "AudreySobgouZebaze",
+    "biography" : "Audrey discovered iOS when she first bought an iPhone Edge in 2008. Since then, she is working passionately on Apple platforms, enjoying SwiftUI and even CoreData at Proton. When she is not coding, watching/playing basketball and football are her favorite activities.\nAs a huge movie addict,  Audrey is avoiding trailers as much as possible.",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAudreySobgouZebaze.jpg?alt=media",
+    "name" : "Audrey Sobgou Zebaze",
+    "linkedIn" : "-audrey-sobgou-zebaze-0428a768"
+  },
+  {
+    "linkedIn" : "avi-tsadok-86a75912",
+    "twitterId" : "avi_tsadok",
+    "id" : "AviTsadok",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FAviTsadok.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://avitsadok.medium.com",
+        "recordName" : "AviTsadokBlog",
+        "name" : "Blog"
+      },
+      {
+        "url" : "https://meliopayments.com",
+        "recordName" : "AviTsadokWeb",
+        "name" : "Web"
+      }
+    ],
+    "biography" : "Avi Tsadok has worked in iOS development for 12 years and is currently the mobile group manager of Melio Payments. \nAs part of being an iOS Developer, Avi worked on cutting-edge apps such as Any.do and wrote three books about Swift and iOS development, along with dozens of tutorials and articles. \nHe resides in Tel Mond, Israel, with his wife Tammy and their two children.",
+    "name" : "Avi Tsadok"
+  },
+  {
+    "twitterId" : "MrBananas",
+    "id" : "ChrisGreening",
+    "biography" : "I'm a technology advisor based up in Edinburgh, I've been involved in tech for almost all my life and have built all sorts of interesting mobile applications, including a slightly dubious 'dating' application. More recently I've been getting back to my roots and doing a bit of embedded programming and electronics. This has led me into the exciting world of being a YouTuber which has spawned all sorts of bonkers projects.",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FChrisGreening.jpg?alt=media",
+    "name" : "Chris Greening",
+    "linkedIn" : "chrisgreening"
+  },
+  {
+    "linkedIn" : "ikenndac",
+    "twitterId" : "iKenndac",
+    "id" : "DanielKennett",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FDanielKennett.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://mastodon.social/@ikenndac",
+        "recordName" : "DanielKennettmastodon",
+        "name" : "mastodon"
+      }
+    ],
+    "biography" : "Daniel Kennett runs a small indie development company in Sweden (but don't expect an exciting accent — he grew up in the UK), and has been an indie developer on-and-off (mostly on) for nearly twenty years. ",
+    "name" : "Daniel Kennett"
+  },
+  {
+    "twitterId" : "danielctull",
+    "id" : "DanielTull",
+    "biography" : "Daniel has 15 years of experience in iOS development. He has worked on a range of high-profile projects for major brands and startups including the BBC, Tesco, John Lewis and the fashion guru Gok Wan. He has contributed to open-source projects and publishes his “experiments” on GitHub. In his free time, he enjoys board gaming, yoga and exploring new places.",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FDanielTull.jpg?alt=media",
+    "name" : "Daniel Tull",
+    "linkedIn" : "danieltull"
+  },
+  {
+    "linkedIn" : "eugenematsyuk",
+    "twitterId" : "e_matsyuk",
+    "id" : "EvgeniiMatsiuk",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FEvgeniiMatsiuk.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://github.com/matzuk",
+        "recordName" : "EvgeniiMatsiukgithub",
+        "name" : "github"
+      },
+      {
+        "url" : "https://medium.com/@eugenematsyuk",
+        "recordName" : "EvgeniiMatsiukmedium",
+        "name" : "medium"
+      }
+    ],
+    "biography" : "Co-Founder at MarathonLabs; Co-Author of Kaspresso; Android Google Developer Expert\nHello, I'm Evgenii, a seasoned software developer with a 15-year track record. For the last five years, my focus has been on advancing UI testing tools. Sharing knowledge is my passion, and I've reached over a million people through my talks and articles.\nI'm also proud to be a co-author of Kaspresso, a popular Android testing framework, which has made a significant impact on mobile development.\nBeyond development, I'm a co-founder of Marathon Labs, a company dedicated to making life easier for those in testing roles. We're continually pushing the envelope, aiming to change the landscape of software testing for the better.",
+    "name" : "Evgenii Matsiuk"
+  },
+  {
+    "linkedIn" : "hiddevdploeg",
+    "twitterId" : "hiddevdploeg",
+    "id" : "HiddevanderPloeg",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FHiddevanderPloeg.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://mastodon.design/@hidde",
+        "recordName" : "HiddevanderPloegmastodon",
+        "name" : "mastodon"
+      }
+    ],
+    "biography" : "I'm a Manchester-based (but Dutch) Indie App Developer that creates apps that do one thing well and delightfully. With over a decade of experience as a designer, I can help you craft beautiful experiences. ",
+    "name" : "Hidde van der Ploeg"
+  },
+  {
+    "linkedIn" : "bionik6",
+    "twitterId" : "bionik6",
+    "id" : "IbrahimaCiss",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FIbrahimaCiss.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://www.youtube.com/channel/UCnbgsq-YY0dIvGMzB4RQ-YA",
+        "recordName" : "IbrahimaCissyoutube",
+        "name" : "youtube"
+      }
+    ],
+    "biography" : "UI Designer converted to iOS Software Engineer. Ibrahima loves everything about software design, testing, app architecture, accessibility, and sharing his discoveries on his Youtube channel.",
+    "name" : "Ibrahima Ciss"
+  },
+  {
+    "linkedIn" : "kosalajayasekara",
+    "twitterId" : "kjayasekara",
+    "id" : "KosalaJayasekara",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FKosalaJayasekara.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://kosalajayasekara.com/",
+        "recordName" : "KosalaJayasekaraweb",
+        "name" : "web"
+      }
+    ],
+    "biography" : "I'm a passionate ios developer who has been strongly embedded in the apple ecosystem since the beginning. I have created over 55+ apple related Applications and counting on more in the future.",
+    "name" : "Kosala Jayasekara"
+  },
+  {
+    "twitterId" : "leah_m_vogel",
+    "id" : "LeahVogel",
+    "biography" : "Leah is a Senior Engineering Manager at Chegg with nearly a decade of iOS development experience. She is a speaker, writer, bookworm, wife, mother, and generally mostly harmless.",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FLeahVogel.jpg?alt=media",
+    "name" : "Leah Vogel",
+    "linkedIn" : "leahvogel"
+  },
+  {
+    "biography" : "My name is Lena Mattea Stöxen, but if you know me online, then you probably know me as 'Thea' or 'Tea'. I study computer science with Volkswagen Commercial Vehicles (it's complicated and I will only need one hour of your time to explain what exactly I'm doing). What I really enjoy is probably programming, which can be seen as either 'not having any hobbies' or 'not having a job'. Over the last years I was fortunate enough to win the Swift Student Challenge twice. When I'm not thinking about a programming problem, I'm probably playing golf or painting. ",
+    "id" : "LenaMatteaStöxen",
+    "twitterId" : "thea_lena_36",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FLenaMatteaStöxen.jpg?alt=media",
+    "name" : "Lena Mattea Stöxen",
+    "webLinks" : [
+      {
+        "url" : "https://cupoftea.social/@lenaTea",
+        "recordName" : "LenaMatteaStöxenmastodon",
+        "name" : "mastodon"
+      }
+    ]
+  },
+  {
+    "linkedIn" : "lukestringer90",
+    "twitterId" : "lukestringer90",
+    "id" : "LukeStringer",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FLukeStringer.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://mastodonapp.uk/@lukestringer90",
+        "recordName" : "LukeStringermastodon",
+        "name" : "mastodon"
+      },
+      {
+        "url" : "https://stringer.dev",
+        "recordName" : "LukeStringerWeb",
+        "name" : "Web"
+      }
+    ],
+    "biography" : "Luke first began creating apps for iPhone OS 3 (remember back then?!). He has been building mobile software and leading development teams since 2012. He finds writing code and working with people just as fascinating and rewarding as each other. Luke lives in Sheffield and works for AND Digital as a Tech Principal. When not at work he plays guitar, solves Rubik's cubes, and enjoys spending time with his partner and son.",
+    "name" : "Luke Stringer"
+  },
+  {
+    "linkedIn" : "maxxfrazer",
+    "twitterId" : "maxxfrazer",
+    "id" : "MaxCobb",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FMaxCobb.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://github.com/maxxfrazer/",
+        "recordName" : "MaxCobbgithub",
+        "name" : "github"
+      }
+    ],
+    "biography" : "Max is a developer advocate with a passion for augmented reality and open source, and has built a number of popular open source libraries, as well as contributing to some well-known projects. His journey began as a software engineer, where he honed his skills and gained a deep understanding of the industry. However, Max found that his true calling was in helping others and sharing knowledge, which led me to transition into a developer advocate role. I am now able to combine my love for open source and AR to educate and inspire others to make an impact in the tech industry.",
+    "name" : "Max Cobb"
+  },
+  {
+    "twitterId" : "MichaelBaldock",
+    "id" : "MichaelBaldock",
+    "biography" : "Michael has worked as an iOS developer in a broad range of tech companies with over 10 years of iOS development experience. His first senior role was for the music streaming company Omnifone where Michael worked on the music streaming app ‘Rara' for a number of years before this product was acquired by Apple. He then moved to The Telegraph Media Group as an iOS team lead working with developers from across Europe to build The Telegraph's suite of mobile applications. In his current role at Skyscanner Michael has become a mobile expert for Skyscanner's identity platform, helping to architect their password-less identity solution, and building an OAuth based approach for the secure transfer of both anonymous and authenticated traveller's identities.",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FMichaelBaldock.jpg?alt=media",
+    "name" : "Michael Baldock",
+    "linkedIn" : "michael-baldock-29aab922"
+  },
+  {
+    "twitterId" : "mikeabdullah",
+    "id" : "MikeAbdullah",
+    "biography" : "Mike specialises in working on large applications over a long lifetime (5-10 years!), currently working on the popular design tool, Sketch.",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FMikeAbdullah.jpg?alt=media",
+    "name" : "Mike Abdullah",
+    "linkedIn" : "mikeabdullah"
+  },
+  {
+    "linkedIn" : "nataliapanferova",
+    "twitterId" : "natpanferova",
+    "id" : "NataliaPanferova",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FNataliaPanferova.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://mastodon.cloud/@natpanferova",
+        "recordName" : "NataliaPanferovaMastodon",
+        "name" : "Mastodon"
+      },
+      {
+        "url" : "https://nilcoalescing.com",
+        "recordName" : "NataliaPanferovaWeb",
+        "name" : "Web"
+      },
+      {
+        "url" : "https://nilcoalescing.com/blog",
+        "recordName" : "NataliaPanferovaBlog",
+        "name" : "Blog"
+      }
+    ],
+    "biography" : "Natalia is a software engineer who is passionate about iOS and macOS app development. She started her engineering career in web development but fell in love with Swift later on. Natalia had the opportunity to work on the SwiftUI framework as a member of the core SwiftUI team at Apple and contribute directly to the development of SwiftUI APIs. Now she is working part-time for a company called Trade Me and part time on her own iOS apps. She also writes an iOS development blog.\nNatalia lives in New Zealand and apart from coding and writing blog posts, she enjoys going on nature walks with her dog Phoebe.",
+    "name" : "Natalia Panferova"
+  },
+  {
+    "biography" : "Hi there, I'm an iOS developer with a love for the community that surrounds it. I've been attending conferences and events, such as iOSDevUK, for a while now and always enjoy learning new things from my peers.\nMy journey in the field started with teaching myself how to create apps, which eventually landed me my first iOS role. From there, I've been on a continual learning path, and I'm still discovering new things today.\nIn my spare time, I like to keep active with climbing and enjoy playing the piano when I'm looking for a more relaxing activity. And at home, I have two adorable rabbits that I enjoy looking after.\nI'm excited to share my experiences with other iOS enthusiasts at the conference and hope to learn something new from them too.",
+    "id" : "OliverFoggin",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FOliverFoggin.jpg?alt=media",
+    "name" : "Oliver Foggin",
+    "linkedIn" : "oliver-foggin-4b1005216"
+  },
+  {
+    "linkedIn" : "obinns",
+    "twitterId" : "oliver_binns",
+    "id" : "OliverBinns",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FOliverBinns.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://mastodon.social/@oliver_binns",
+        "recordName" : "OliverBinnsmastodon",
+        "name" : "mastodon"
+      },
+      {
+        "url" : "https://www.oliverbinns.co.uk",
+        "recordName" : "OliverBinnsWeb",
+        "name" : "Web"
+      },
+      {
+        "url" : "https://github.com/Oliver-Binns",
+        "recordName" : "OliverBinnsgithub",
+        "name" : "github"
+      }
+    ],
+    "biography" : "Oliver is an experienced software engineer who mainly focusses on native iOS development in Swift. He has worked on a number of mobile apps, across a range of sectors including travel, healthcare and productivity, for both the general consumer and enterprise markets. Oliver was awarded a scholarship to attend Apple's Worldwide Developer Conference in both 2015 & 16. \nAs well as a deep understanding of the native Apple software development, Oliver has wide-ranging knowledge of Web and wider mobile platforms. He has worked on native (Java, Kotlin) and Unity (C#) applications for Android, and has developed for a range of web-based systems (Angular, PHP, JavaScript, Python). \nOliver has an IET accredited master's degree in Computer Science from the University of York. Drawing on this background, he is able to ensure his work has a strong grounding in first principles, while observing best practices from industry. Oliver draws on his deep theoretical knowledge to quickly learn new tools and frameworks.",
+    "name" : "Oliver Binns"
+  },
+  {
+    "linkedIn" : "peterfriese",
+    "twitterId" : "peterfriese",
+    "id" : "PeterFriese",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FPeterFriese.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://iosdev.space/@peterfriese",
+        "recordName" : "PeterFriesemastodon",
+        "name" : "mastodon"
+      }
+    ],
+    "biography" : "Peter is a Developer Relations Engineer on the Firebase team at Google, and is dedicated to helping developers build amazing experiences and high-quality apps using Firebase on iOS, Android, and the web.  He is also the author of Asynchronous Programming with SwiftUI and Combine. Peter has written code in BASIC, C, ObjectPascal, Java, Kotlin, Xtext, JavaScript, TypeScript, Objective-C, and a number of home-grown DSLs - but his all-time favourite is Swift.",
+    "name" : "Peter Friese"
+  },
+  {
+    "linkedIn" : "polpielladev",
+    "twitterId" : "polpielladev",
+    "id" : "PolPiellaAbadia",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FPolPiellaAbadia.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://www.polpiella.dev/newsletter",
+        "recordName" : "PolPiellaAbadianewsletter",
+        "name" : "newsletter"
+      },
+      {
+        "url" : "https://www.polpiella.dev/category/ci-cd",
+        "recordName" : "PolPiellaAbadiablog",
+        "name" : "blog"
+      }
+    ],
+    "biography" : "I am a senior iOS developer at the BBC in the UK with over 5 years of experience in the industry. My day to day work involves architecting and developing new features as well as playing an important role in ensuring our app gets delivered to millions of users as swiftly as possible through CI/CD work. Outside of work, I like creating and sharing content with the community through articles on my blog and giving talks at conferences, as well as curating the iOS CI Newsletter.\nCI/CD is my main area of expertise and one that I am a big advocate for. I write about it on my blog and I run a bi-weekly newsletter on iOS CI/CD which goes out to around 400 subscribers: https://www.polpiella.dev/newsletter\nI have experience delivering talks at conferences. In 2022, I gave three talks at:\n- Do iOS (In person in Amsterdam)\n- Mobile Devops Summit (Online and organised by Bitrise)\n- Remote LatAm Engineering Job Fair (Online and organised by Arc.dev. I was the keynote speaker here talking about CI/CD)\nIn 2023 I will be speaking at:\n- NYSwifty (In person in New York)\n- plSwift (In person in Warsaw)",
+    "name" : "Pol Piella Abadia"
+  },
+  {
+    "twitterId" : "richturton",
+    "id" : "RichTurton",
+    "biography" : "Richard Turton is an iOS developer for MartianCraft and has been making iOS apps for over 10 years, specialising in high-performance custom data visualisations. He is also a member of the Kodeco tutorial team. Don't get him started talking about affine transforms, unless you have a lot of time and a bottomless expense account. ",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FRichTurton.jpg?alt=media",
+    "name" : "Rich Turton",
+    "linkedIn" : "richard-turton-25088662"
+  },
+  {
+    "biography" : "I am a Senior iOS Developer at Zoho with 7+ years of experience and a Swift enthusiast. In addition to my technical expertise, I am also a mentor and speaker, sharing my knowledge and experiences with others through technology evangelism. I am also a creator and blogger, sharing my insights and tutorials on my blog, ohmyswift.com.",
+    "id" : "RizwanAhmedA",
+    "twitterId" : "rizwanasifahmed",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FRizwanAhmedA.jpg?alt=media",
+    "name" : "Rizwan Ahmed"
+  },
+  {
+    "linkedIn" : "timjcondon",
+    "twitterId" : "0xTim",
+    "id" : "TimCondon",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FTimCondon.jpg?alt=media",
+    "webLinks" : [
+      {
+        "url" : "https://www.timc.dev/",
+        "recordName" : "TimCondonWeb",
+        "name" : "Web"
+      }
+    ],
+    "biography" : "Tim is a Swift developer from Manchester, UK and part of the Vapor Core Team. He's part of the server-side Swift team at Kodeco and has written the unofficial-official book on Vapor. He founded Broken Hands a few years ago and delivers talks and workshops on Vapor and server-side Swift around the world. He also co-organises the ServerSide.swift conference - the world's first and only conference focused on server-side Swift.",
+    "name" : "Tim Condon"
+  },
+  {
+    "twitterId" : "iosdevuk",
+    "id" : "ChrisPrice",
+    "biography" : "Chris is a Professor at Aberystwyth University, and started programming when code was all in upper case. He wrote his first iOS program within weeks of the iOS SDK being released in March 2008, and has being enjoying iOS programming ever since. Along with Neil Taylor, he has been running iOSDevUK since 2011.",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FChrisPrice.jpg?alt=media",
+    "name" : "Chris Price",
+    "linkedIn" : "chris-price-317735a"
+  },
+  {
+    "twitterId" : "digidol",
+    "id" : "NeilTaylor",
+    "biography" : "Neil is a lecturer at Aberystwyth University. He develops apps for iOS, Android and the web, with a natural preference for working with iOS and App. Along with Chris Price,he has been running iOSDevUK since 2011.",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FNeilTaylor.jpg?alt=media",
+    "name" : "Neil Taylor",
+    "linkedIn" : "neilscotttaylor"
+  },
+  {
+    "biography" : "You. With your different skills and experience. You help make iOSDevUK what it is. As well as attending the sessions, come along to the pre and post conference workshops and the socials. Some of you will also be taking part in the lightning talks session during the conference.",
+    "id" : "You",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2FYou.jpg?alt=media",
+    "name" : "You"
+  },
+  {
+    "biography" : "",
+    "id" : "unknown1",
+    "imageLink" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Speakers%2Funknown1.jpg?alt=media",
+    "name" : "unknown 1"
+  }
 ]

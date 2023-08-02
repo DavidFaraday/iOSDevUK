@@ -60,32 +60,22 @@ final class FileUploadService {
     let firebaseRepo = FirebaseRepository()
     
     private init() { }
-    
-//    //to be called only 1 time!
-//    func uploadNewLocations() async throws {
-//        let locations = Bundle.main.decode([CustomLocation].self, from: "locations.json")
-//        //need to delete all from firebase before upload
-//
-//        for location in locations {
-//            do {
-//                try firebaseRepo.saveData(data: location, to: .Location)
-//            } catch {
-//                print(error.localizedDescription)
-//                throw AppError.unknownError
-//            }
-//        }
-//    }
 
-
-    func uploadNewData(from fileName: String, to collection: FCollectionReference) async throws {
-        let objects = Bundle.main.decode([Sponsor].self, from: fileName)
-        for object in objects {
-            do {
-                try firebaseRepo.saveData(data: object, to: collection)
-            } catch {
-                print(error.localizedDescription)
-                throw AppError.unknownError
+    func uploadNewData<T: CodableIdentifiable>(from fileName: String, to collection: FCollectionReference, objectType: T.Type) async throws {
+        do {
+            let objects = try Bundle.main.decode([T].self, from: fileName)
+            
+            for object in objects {
+                do {
+                    try firebaseRepo.saveData(data: object, to: collection)
+                } catch {
+                    print(error.localizedDescription)
+                    throw AppError.unknownError
+                }
             }
+        } catch {
+            print(error.localizedDescription)
+            throw AppError.unknownError
         }
     }
 }
