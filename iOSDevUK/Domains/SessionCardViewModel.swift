@@ -43,10 +43,12 @@ final class SessionCardViewModel: ObservableObject {
     @Sendable func fetchLocation() async {
         guard location == nil else { return }
         
-        do {
-            self.location = try await firebaseRepository.getDocument(from: .Location, with: session.locationId)
-        } catch (let error) {
-            fetchError = error
+        if let locationId = session.locationId {
+            do {
+                self.location = try await firebaseRepository.getDocument(from: .Location, with: locationId)
+            } catch (let error) {
+                fetchError = error
+            }
         }
     }
     

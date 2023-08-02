@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SponsorRow: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     private let sponsor: Sponsor
     
     init(sponsor: Sponsor) {
@@ -16,7 +18,7 @@ struct SponsorRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            RemoteImageView(url: sponsor.imageUrl)
+            RemoteImageView(url: colorScheme == .dark ? sponsor.imageUrlDark : sponsor.imageUrlLight)
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
                 .aspectRatio(contentMode: .fit)

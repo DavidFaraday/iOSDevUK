@@ -34,8 +34,8 @@ final class AdminSpeakerViewModel: ObservableObject {
         guard let speaker = speaker else { return }
         
         fullName = speaker.name
-        twitter = speaker.twitterId
-        linkedIn = speaker.linkedIn
+        twitter = speaker.twitterId ?? ""
+        linkedIn = speaker.linkedIn ?? ""
         imageLink = speaker.imageLink
         bio = speaker.biography
     }

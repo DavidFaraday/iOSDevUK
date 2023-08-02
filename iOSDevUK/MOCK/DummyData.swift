@@ -93,8 +93,8 @@ struct DummyData {
     static let link = Weblink(name: "google", recordName: "google", url: "https://google.com")
     
     static let sponsors = [
-        Sponsor(id: UUID().uuidString, name: "Aberystwyth University", tagline: "Aberystwyth University.", url: "https://www.aber.ac.uk/en/cs/", urlText: "Aber Comp Sci Website", sponsorCategory: .Gold, imageLink: "https://picsum.photos/200/300"),
-        Sponsor(id: UUID().uuidString, name: "Cookpad", tagline: "Cookpad is a tech company.", url: "https://careers.cookpad.com/", urlText: "Careers at Cookpad", sponsorCategory: .Gold, imageLink: "https://picsum.photos/200/300")
+        Sponsor(id: UUID().uuidString, name: "Aberystwyth University", tagline: "Aberystwyth University.", url: "https://www.aber.ac.uk/en/cs/", urlText: "Aber Comp Sci Website", sponsorCategory: .Gold, imageLinkDark: "https://picsum.photos/200/300", imageLinkLight: "https://picsum.photos/200/300"),
+        Sponsor(id: UUID().uuidString, name: "Cookpad", tagline: "Cookpad is a tech company.", url: "https://careers.cookpad.com/", urlText: "Careers at Cookpad", sponsorCategory: .Gold, imageLinkDark: "https://picsum.photos/200/300", imageLinkLight: "https://picsum.photos/200/300")
     ]
     
     static let sessions = [

@@ -29,7 +29,7 @@ final class AdminViewModel: ObservableObject {
     @Sendable func uploadNewData() async {
 //        try? await FileUploadService.shared.uploadNewData(from: "locations.json", to: .Location)
 //        try? await FileUploadService.shared.uploadNewData(from: "speakers.json", to: .Speaker)
-//        try? await FileUploadService.shared.uploadNewData(from: "speakers.json", to: .TestData)
+//        try? await FileUploadService.shared.uploadNewData(from: "sponsors.json", to: .Sponsor)
         
         print("DEBUG: Uploaded new data to firestore!")
     }

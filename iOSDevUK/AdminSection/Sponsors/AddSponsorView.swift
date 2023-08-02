@@ -40,10 +40,21 @@ struct AddSponsorView: View {
                 }
                 
                 HStack {
-                    TextField("Image link", text: $viewModel.imageLink)
+                    TextField("Image link dark", text: $viewModel.imageLinkDark)
                     Spacer()
-                    if !viewModel.imageLink.isEmpty {
-                        RemoteImageView(url: URL(string: viewModel.imageLink))
+                    if !viewModel.imageLinkDark.isEmpty {
+                        RemoteImageView(url: URL(string: viewModel.imageLinkDark))
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .frame(width: 50)
+                    }
+                }
+
+                HStack {
+                    TextField("Image link light", text: $viewModel.imageLinkLight)
+                    Spacer()
+                    if !viewModel.imageLinkLight.isEmpty {
+                        RemoteImageView(url: URL(string: viewModel.imageLinkLight))
                             .scaledToFit()
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .frame(width: 50)

@@ -1,0 +1,32 @@
+[
+  {
+    "urlText" : "Bumble website",
+    "id" : "bumble",
+    "sponsorCategory" : "Platinum",
+    "tagline" : "Bumble Inc. is the parent company of Bumble, Badoo, Fruitz and Official. Our mission is to create a world where all relationships are healthy and equitable, through Kind Connections.",
+    "imageLinkDark" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Sponsors%2Fbumble-logo.png?alt=media",
+    "imageLinkLight" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Sponsors%2Fbumble-logo.png?alt=media",
+    "name" : "Bumble",
+    "url" : "https://bumble.com/"
+  },
+  {
+    "urlText" : "Glassfy website",
+    "id" : "glassfy",
+    "sponsorCategory" : "Gold",
+    "tagline" : "Scale your in-app subscriptions: Glassfy SDK provides you with in-app subscription infrastructure, real-time user subscription events and out-of-the-box revenue growth tools on iOS, Android and web.",
+    "imageLinkDark" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Sponsors%2Fglassfy-logo.png?alt=media",
+    "imageLinkLight" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Sponsors%2Fglassfy-logo.png?alt=media",
+    "name" : "Glassfy",
+    "url" : "https://glassfy.io/"
+  },
+  {
+    "urlText" : "Marathon Labs website",
+    "id" : "marathonlabs",
+    "sponsorCategory" : "Gold",
+    "tagline" : "Revolutionize your app testing experience: run any number of tests in less than 15 minutes with ZERO flakiness.",
+    "imageLinkDark" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Sponsors%2Fmarathon-logo-dark-mode.png?alt=media",
+    "imageLinkLight" : "https://firebasestorage.googleapis.com/v0/b/iosdevuk-data.appspot.com/o/Sponsors%2Fmarathon-logo-light-mode.png?alt=media",
+    "name" : "Marathan Labs",
+    "url" : "https://marathonlabs.io/"
+  }
+]

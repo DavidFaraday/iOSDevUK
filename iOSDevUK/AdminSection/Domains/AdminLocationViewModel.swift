@@ -29,7 +29,7 @@ final class AdminLocationViewModel: ObservableObject {
         guard let location = location else { return }
         
         name = location.name
-        note = location.note
+        note = location.note ?? ""
         imageLink = location.imageLink ?? ""
         latitude = "\(location.latitude)"
         longitude = "\(location.longitude)"

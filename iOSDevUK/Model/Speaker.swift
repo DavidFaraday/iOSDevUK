@@ -18,8 +18,8 @@ struct Speaker: Codable, Identifiable, Hashable, Comparable {
     let id: String
     let name: String
     let biography: String
-    let linkedIn: String
-    let twitterId: String
+    let linkedIn: String?
+    let twitterId: String?
     let imageLink: String
     let webLinks: [Weblink]?
     
