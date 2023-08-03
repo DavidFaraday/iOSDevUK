@@ -18,10 +18,10 @@ struct HomeView: View {
         
         VStack {
             ZStack {
-                Image("background")
+                Image(ImageNames.infoBackground)
                     .resizable(resizingMode: .tile)
                     .frame(height: 200.0)
-                Image("devices")
+                Image(ImageNames.infoDevices)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200.0)

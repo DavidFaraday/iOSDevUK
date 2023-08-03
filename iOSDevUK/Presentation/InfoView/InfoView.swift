@@ -14,6 +14,7 @@ struct InfoView: View {
     @EnvironmentObject var router: NavigationRouter
 
     @State var showLoginView = false
+    @State var clickCount = 0
     
     
     @ViewBuilder
@@ -21,9 +22,14 @@ struct InfoView: View {
         if firebaseAuth.hasCurrentUser() {
             NavigationLink(AppStrings.admin, value: InfoDestination.admin)
         } else {
-            Button(AppStrings.admin) {
-                showLoginView = true
+            Button("") {
+                clickCount += 1
+                if clickCount == 3 {
+                    showLoginView = true
+                    clickCount = 0
+                }
             }
+            .frame(width: 44)
             .sheet(isPresented: $showLoginView, onDismiss: {
                 if firebaseAuth.hasCurrentUser() {
                     router.infoPath.append(InfoDestination.admin)
