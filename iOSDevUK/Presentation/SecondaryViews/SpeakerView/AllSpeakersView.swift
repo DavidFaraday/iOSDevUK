@@ -11,11 +11,19 @@ struct AllSpeakersView: View {
     
     let speakers: [Speaker]
     
-    let columns = [
+    let columns = UIDevice.current.userInterfaceIdiom == .pad ? [
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120))
+    ] : [
         GridItem(.adaptive(minimum: 120)),
         GridItem(.adaptive(minimum: 120)),
         GridItem(.adaptive(minimum: 120))
     ]
+    
+    let scaleSize: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 6 : 4
     
     var body: some View {
         GeometryReader { geometry in
@@ -25,7 +33,7 @@ struct AllSpeakersView: View {
                         
                         NavigationLink(value: Destination.speaker(speaker)) {
                             SpeakerCardView(speaker: speaker,
-                                            height: geometry.size.height > geometry.size.width ? geometry.size.height / 4 : geometry.size.width / 4)
+                                            height: geometry.size.height > geometry.size.width ? geometry.size.height / scaleSize : geometry.size.width / scaleSize)
                         }
                     }
                 }
@@ -41,5 +49,16 @@ struct SpeakersView_Previews: PreviewProvider {
         NavigationView {
             AllSpeakersView(speakers: DummyData.speakers)
         }
+        .previewDevice(PreviewDevice(rawValue: "iPhone 14 pro"))
+        .previewDisplayName("iPhone 14")
+
+        AllSpeakersView(speakers: DummyData.speakers)
+        .previewDevice(PreviewDevice(rawValue: "iPad mini (6th generation)"))
+        .previewDisplayName("iPad mini")
+        
+        AllSpeakersView(speakers: DummyData.speakers)
+        .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
+        .previewDisplayName("iPad pro 11")
+
     }
 }

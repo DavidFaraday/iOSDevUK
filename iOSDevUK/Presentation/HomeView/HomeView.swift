@@ -15,7 +15,6 @@ struct HomeView: View {
     @ViewBuilder
     private func headerView() -> some View {
 
-        
         VStack {
             ZStack {
                 Image(ImageNames.infoBackground)
@@ -81,7 +80,7 @@ struct HomeView: View {
                     ForEach(viewModel.speakers) { speaker in
                         NavigationLink(value: Destination.speaker(speaker)) {
                             SpeakerCardView(speaker: speaker)
-                                .frame(width: 130)
+                                .frame(width: 120)
                         }
                     }
                 }
@@ -171,6 +170,17 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
+        
         HomeView()
+        .previewDevice(PreviewDevice(rawValue: "iPhone 14 pro"))
+        .previewDisplayName("iPhone 14")
+
+        HomeView()
+        .previewDevice(PreviewDevice(rawValue: "iPad mini (6th generation)"))
+        .previewDisplayName("iPad mini")
+
+        HomeView()
+        .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
+        .previewDisplayName("iPad pro 11")
     }
 }
