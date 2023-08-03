@@ -7,30 +7,50 @@
 
 import SwiftUI
 
-//custom object used only to get locations from the JSON to upload to firebase
-struct CustomLocation: Codable, Identifiable {
-    let id: String = UUID().uuidString
-    let name: String
-    let note: String
-    let imageLink: String?
-    let latitude: Double
-    let longitude: Double
-    let webLink: Weblink?
-    let locationType: LocationType
+//used only for uploading sessions because of the date/time format
+struct CustomSession: Codable, Identifiable {
+    let id: String
+    let title: String
+    let content: String
+    let startDate: Date?
+    let endDate: Date?
+    let locationId: String?
+    let speakerIds: [String]
+    let type: SessionType
+    
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
 
-    private enum CodingKeys : String, CodingKey {
-        case name, locationType = "locationTypeRecordName", note, imageLink, latitude, longitude, id, webLink
+        self.id = try container.decode(String.self, forKey: .id)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.content = try container.decode(String.self, forKey: .content)
+        self.locationId = try? container.decode(String.self, forKey: .locationId)
+        self.speakerIds = try container.decode([String].self, forKey: .speakerIds)
+        self.type = try container.decode(SessionType.self, forKey: .type)
+
+        let startDateString = try container.decode(String.self, forKey: .startDate)
+        let endDateString = try container.decode(String.self, forKey: .endDate)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+
+        if let startDate = dateFormatter.date(from: startDateString) {
+            self.startDate = startDate
+        } else {
+            throw DecodingError.dataCorruptedError(forKey: .startDate,
+                                                   in: container,
+                                                   debugDescription: "Invalid date format start")
+        }
+
+        if let endDate = dateFormatter.date(from: endDateString) {
+            self.endDate = endDate
+        } else {
+            throw DecodingError.dataCorruptedError(forKey: .endDate,
+                                                   in: container,
+                                                   debugDescription: "Invalid date format end")
+        }
     }
-}
-
-struct CustomSpeaker: Codable, Identifiable {
-    let id: String = UUID().uuidString
-    let name: String
-    let biography: String
-    let linkedIn: String?
-    let twitterId: String?
-    let imageLink: String = "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-    let webLinks: [Weblink]?
 }
 
 
@@ -40,25 +60,11 @@ final class FileUploadService {
     let firebaseRepo = FirebaseRepository()
     
     private init() { }
-    
-//    //to be called only 1 time!
-//    func uploadNewLocations() async throws {
-//        let locations = Bundle.main.decode([CustomLocation].self, from: "locations.json")
-//        //need to delete all from firebase before upload
-//
-//        for location in locations {
-//            do {
-//                try firebaseRepo.saveData(data: location, to: .Location)
-//            } catch {
-//                print(error.localizedDescription)
-//                throw AppError.unknownError
-//            }
-//        }
-//    }
 
-
-    func uploadNewData(from fileName: String, to collection: FCollectionReference) async throws {
-        let objects = Bundle.main.decode([CustomSpeaker].self, from: fileName)
+    func uploadNewData<T: CodableIdentifiable>(from fileName: String, to collection: FCollectionReference, objectType: T.Type) async throws {
+        
+        let objects = Bundle.main.decode([T].self, from: fileName)
+        
         for object in objects {
             do {
                 try firebaseRepo.saveData(data: object, to: collection)

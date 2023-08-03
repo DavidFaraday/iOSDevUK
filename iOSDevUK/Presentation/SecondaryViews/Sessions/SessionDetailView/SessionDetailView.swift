@@ -28,17 +28,23 @@ struct SessionDetailView: View {
                 .frame(height: 250)
                 .aspectRatio(contentMode: .fit)
             
-            Text(viewModel.session?.title ?? "")
-                .font(.largeTitle)
-                .foregroundColor(.white)
-                .padding([.horizontal, .bottom])
+            HStack(alignment: .center) {
+                Text(viewModel.session?.title ?? "")
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .padding()
+                
+                Spacer()
+            }
+            .background(.ultraThinMaterial.opacity(0.6))
+            
         }
     }
-
+    
     @ViewBuilder
     private func descriptionView() -> some View {
         VStack(alignment: .leading) {
-            Text("Description")
+            Text(AppStrings.description)
                 .font(.title2)
                 .foregroundColor(.gray)
                 .bold()
@@ -56,7 +62,7 @@ struct SessionDetailView: View {
     private func speakersView() -> some View {
         
         VStack(alignment: .leading) {
-            Text("Speaker(s)")
+            Text(AppStrings.speaker)
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
@@ -79,19 +85,19 @@ struct SessionDetailView: View {
     private func locationView(_ location: Location) -> some View {
         
         VStack(alignment: .leading) {
-            Text("Location")
+            Text(AppStrings.location)
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
                 .padding(.top)
                 .padding(.bottom, 5)
-
+            
             NavigationLink(value: Destination.locations(locations: [location])) {
-                    Text(location.name)
-                        .font(.subheadline)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.6)
-                }
+                Text(location.name)
+                    .font(.subheadline)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
+            }
         }
         .padding()
     }
@@ -108,11 +114,11 @@ struct SessionDetailView: View {
             Image(systemName: savedSession.isEmpty ? ImageNames.bookmark : ImageNames.bookmarkFill)
         }
     }
-
+    
     
     @ViewBuilder
     private func main() -> some View {
-
+        
         ScrollView {
             VStack(alignment: .leading) {
                 headerView()
@@ -127,7 +133,7 @@ struct SessionDetailView: View {
         }
         .scrollIndicators(.hidden)
         .alert(isPresented: $viewModel.showError, content: {
-            Alert(title: Text("Error!"), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+            Alert(title: Text(AppStrings.error), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text(AppStrings.ok)))
         })
     }
     

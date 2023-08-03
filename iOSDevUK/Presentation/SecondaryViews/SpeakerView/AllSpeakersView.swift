@@ -31,7 +31,7 @@ struct AllSpeakersView: View {
                 }
                 .padding(.horizontal)
             }
-            .navigationTitle("Speakers")
+            .navigationTitle(AppStrings.speakers)
         }
     }
 }

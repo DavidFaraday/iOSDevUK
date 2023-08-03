@@ -21,7 +21,7 @@ struct AdminLocations: View {
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         NavigationLink(value: InfoDestination.adminAddLocation(nil)) {
-            Image(systemName: "plus")
+            Image(systemName: ImageNames.plus)
                 .font(.title3)
         }
     }
@@ -57,7 +57,7 @@ struct AdminLocations: View {
     
     var body: some View {
         main()
-            .navigationTitle("Locations")
+            .navigationTitle(AppStrings.locations)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)

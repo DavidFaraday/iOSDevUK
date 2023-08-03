@@ -14,7 +14,7 @@ struct AdminSponsors: View {
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         NavigationLink(value: InfoDestination.adminAddSponsor(nil)) {
-            Image(systemName: "plus")
+            Image(systemName: ImageNames.plus)
                 .font(.title3)
         }
     }
@@ -52,7 +52,7 @@ struct AdminSponsors: View {
     
     var body: some View {
         main()
-            .navigationTitle("Sponsors")
+            .navigationTitle(AppStrings.sponsors)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)

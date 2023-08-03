@@ -44,7 +44,7 @@ struct LocationMapAnnotation: View {
                         .fixedSize()
                 }
 
-                Button("Navigate", action: buttonAction)
+                Button(AppStrings.navigate, action: buttonAction)
                     .buttonStyle(.borderedProminent)
                     .tint(Color(ColorNames.secondary))
 

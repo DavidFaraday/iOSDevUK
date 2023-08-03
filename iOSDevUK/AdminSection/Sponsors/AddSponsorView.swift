@@ -19,7 +19,7 @@ struct AddSponsorView: View {
             }
             dismiss()
         } label: {
-            Text("Save")
+            Text(AppStrings.save)
         }
         .disabled(viewModel.invalidForm())
     }
@@ -40,10 +40,21 @@ struct AddSponsorView: View {
                 }
                 
                 HStack {
-                    TextField("Image link", text: $viewModel.imageLink)
+                    TextField("Image link dark", text: $viewModel.imageLinkDark)
                     Spacer()
-                    if !viewModel.imageLink.isEmpty {
-                        RemoteImageView(url: URL(string: viewModel.imageLink))
+                    if !viewModel.imageLinkDark.isEmpty {
+                        RemoteImageView(url: URL(string: viewModel.imageLinkDark))
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .frame(width: 50)
+                    }
+                }
+
+                HStack {
+                    TextField("Image link light", text: $viewModel.imageLinkLight)
+                    Spacer()
+                    if !viewModel.imageLinkLight.isEmpty {
+                        RemoteImageView(url: URL(string: viewModel.imageLinkLight))
                             .scaledToFit()
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .frame(width: 50)
@@ -53,7 +64,7 @@ struct AddSponsorView: View {
                 TextEditor(text: $viewModel.tagline)
                     .frame(height: AppConstants.textViewHeight)
             } header: {
-                Text("Sponsor details")
+                Text(AppStrings.sponsorDetails)
             }
         }
     }
@@ -61,7 +72,7 @@ struct AddSponsorView: View {
     
     var body: some View {
         main()
-            .navigationTitle(viewModel.sponsor?.name ?? "Add Sponsor")
+            .navigationTitle(viewModel.sponsor?.name ?? AppStrings.addSponsor)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

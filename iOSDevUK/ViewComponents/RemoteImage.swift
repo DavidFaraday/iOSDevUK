@@ -17,7 +17,10 @@ struct RemoteImageView: View {
     
     var body: some View {
         KFImage.url(url)
-            .placeholder { ProgressView() }
+            .placeholder {
+                Image(ImageNames.placeholder)
+                    .resizable()
+            }
             .resizable()
             .loadDiskFileSynchronously()
 //            .cacheMemoryOnly()

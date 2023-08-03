@@ -23,7 +23,7 @@ struct LoginView: View {
                 Spacer()
                 Button { dismiss() }
                 label: {
-                    Image(systemName: "xmark.circle")
+                    Image(systemName: ImageNames.xmark)
                         .font(.title3)
                         .fontWeight(.semibold)
                         .foregroundColor(.accentColor)
@@ -41,7 +41,7 @@ struct LoginView: View {
             }
             
         } label: {
-            Text("Login")
+            Text(AppStrings.login)
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity)
         }
@@ -57,24 +57,24 @@ struct LoginView: View {
     @ViewBuilder
     private func loginComponent() -> some View {
         VStack(spacing: 10) {
-            Text("Login")
+            Text(AppStrings.login)
                 .font(.title)
                 .fontWeight(.semibold)
             
             HStack {
-                Image(systemName: "envelope")
+                Image(systemName: ImageNames.envelope)
                     .foregroundColor(.accentColor)
                     .frame(width: 30)
-                TextField("Email", text: $email)
+                TextField(AppStrings.email, text: $email)
                     .keyboardType(.emailAddress)
                     .textFieldStyle(.roundedBorder)
             }
             
             HStack {
-                Image(systemName: "lock")
+                Image(systemName: ImageNames.lock)
                     .foregroundColor(.accentColor)
                     .frame(width: 30)
-                SecureField("Password", text: $password)
+                SecureField(AppStrings.password, text: $password)
                     .textFieldStyle(.roundedBorder)
             }
             
@@ -97,7 +97,7 @@ struct LoginView: View {
             Spacer()
         }
         .alert(isPresented: $viewModel.showError, content: {
-            Alert(title: Text("Error!"), message: Text(viewModel.loginError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+            Alert(title: Text(AppStrings.error), message: Text(viewModel.loginError?.localizedDescription ?? ""), dismissButton: .default(Text(AppStrings.ok)))
         })
     }
 }

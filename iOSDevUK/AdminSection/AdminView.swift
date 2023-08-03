@@ -14,7 +14,7 @@ struct AdminView: View {
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        Button("Log Out") {
+        Button(AppStrings.logOut) {
             Task {
                 await viewModel.logOutUser()
                 router.infoPath.removeLast()
@@ -24,18 +24,18 @@ struct AdminView: View {
 
     var body: some View {
         Form {
-            NavigationLink("Speakers", value: InfoDestination.adminSpeakers)
-            NavigationLink("Sessions", value: InfoDestination.adminSessions)
-            NavigationLink("Locations", value: InfoDestination.adminLocations)
-            NavigationLink("Sponsors", value: InfoDestination.adminSponsors)
+            NavigationLink(AppStrings.speakers, value: InfoDestination.adminSpeakers)
+            NavigationLink(AppStrings.sessions, value: InfoDestination.adminSessions)
+            NavigationLink(AppStrings.locations, value: InfoDestination.adminLocations)
+            NavigationLink(AppStrings.sponsors, value: InfoDestination.adminSponsors)
         }
         .task(viewModel.uploadNewData)
-        .navigationTitle("Admin Area")
+        .navigationTitle(AppStrings.adminArea)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
         }
         .alert(isPresented: $viewModel.showError, content: {
-            Alert(title: Text("Error!"), message: Text(viewModel.logoutError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+            Alert(title: Text(AppStrings.error), message: Text(viewModel.logoutError?.localizedDescription ?? ""), dismissButton: .default(Text(AppStrings.ok)))
         })
     }
 }

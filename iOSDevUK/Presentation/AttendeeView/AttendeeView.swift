@@ -30,7 +30,7 @@ struct AttendeeView: View {
     var body: some View {
         NavigationStack(path: $router.attendeePath) {
             main()
-                .navigationTitle("Attendee Info")
+                .navigationTitle(AppStrings.attendeeInfo)
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
                         case .session(let session):

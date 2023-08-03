@@ -14,7 +14,7 @@ struct AdminSpeakers: View {
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         NavigationLink(value: InfoDestination.adminAddSpeaker(nil)) {
-            Image(systemName: "plus")
+            Image(systemName: ImageNames.plus)
                 .font(.title3)
         }
     }
@@ -38,7 +38,7 @@ struct AdminSpeakers: View {
     
     var body: some View {
         main()
-            .navigationTitle("Speakers")
+            .navigationTitle(AppStrings.speakers)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

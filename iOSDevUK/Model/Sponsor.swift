@@ -47,10 +47,14 @@ struct Sponsor: Codable, Identifiable, Equatable, Hashable, Comparable {
     let url: String
     let urlText: String
     let sponsorCategory: SponsorCategory
-    let imageLink: String?
+    let imageLinkDark: String?
+    let imageLinkLight: String?
     
-    var imageUrl: URL? {
-        URL(string: imageLink ?? "")
+    var imageUrlDark: URL? {
+        URL(string: imageLinkDark ?? "")
+    }
+    var imageUrlLight: URL? {
+        URL(string: imageLinkLight ?? "")
     }
     
     var webUrl: URL? {

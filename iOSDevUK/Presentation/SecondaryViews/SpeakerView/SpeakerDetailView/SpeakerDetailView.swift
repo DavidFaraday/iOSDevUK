@@ -24,20 +24,24 @@ struct SpeakerDetailView: View {
     private func headerView() -> some View {
         HStack {
             RemoteImageView(url: viewModel.speaker.imageUrl)
-                .cornerRadius(15)
-                .scaledToFit()
-                .frame(width: 100, height: 120)
+                .cornerRadius(16)
+                .scaledToFill()
+                .frame(width: 130, height: 150)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16).stroke(Color(ColorNames.primary), lineWidth: 4)
+                )
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(viewModel.speaker.name)
                     .font(.title)
                     .minimumScaleFactor(0.7)
 
-                if let twitterUrl = URL(string: "\(BaseUrl.twitter)\(viewModel.speaker.twitterId)") {
-                    Link("Twitter: @\(viewModel.speaker.twitterId)", destination: twitterUrl)
+                if let twitterId = viewModel.speaker.twitterId, let twitterUrl = URL(string: "\(BaseUrl.twitter)\(twitterId)") {
+                    Link("Twitter: @\(twitterId)", destination: twitterUrl)
                 }
-                if let linkedInUrl = URL(string: "\(BaseUrl.linkedIn)\(viewModel.speaker.linkedIn)") {
-                    Link("LinkedIn: \(viewModel.speaker.linkedIn)", destination: linkedInUrl)
+                if let linkedIn = viewModel.speaker.linkedIn, let linkedInUrl = URL(string: "\(BaseUrl.linkedIn)\(linkedIn)") {
+                    Link("LinkedIn: \(linkedIn)", destination: linkedInUrl)
                 }
                 
                 Spacer()
@@ -48,10 +52,10 @@ struct SpeakerDetailView: View {
     
     @ViewBuilder
     private func descriptionView() -> some View {
-        Text("Biography")
+        Text(AppStrings.biography)
             .font(.title2)
             .bold()
-            .foregroundColor(.gray)
+            .foregroundColor(Color(ColorNames.secondary))
             .padding(.top)
             .padding(.bottom, 5)
         
@@ -81,7 +85,7 @@ struct SpeakerDetailView: View {
         if !viewModel.sessions.isEmpty {
             Divider()
             
-            Text("Session(s)")
+            Text(AppStrings.session)
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
@@ -109,7 +113,7 @@ struct SpeakerDetailView: View {
         }
         .scrollIndicators(.hidden)
         .alert(isPresented: $viewModel.showError, content: {
-            Alert(title: Text("Error!"), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+            Alert(title: Text(AppStrings.error), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text(AppStrings.ok)))
         })
     }
     

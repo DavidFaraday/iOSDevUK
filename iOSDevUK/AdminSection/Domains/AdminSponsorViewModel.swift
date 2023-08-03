@@ -15,7 +15,8 @@ final class AdminSponsorViewModel: ObservableObject {
     @Published var url = ""
     @Published var urlText = ""
     @Published var category = SponsorCategory.Silver
-    @Published var imageLink = ""
+    @Published var imageLinkDark = ""
+    @Published var imageLinkLight = ""
     @Published var tagline = "About the sponsor"
     
     var sponsor: Sponsor?
@@ -31,13 +32,14 @@ final class AdminSponsorViewModel: ObservableObject {
         name = sponsor.name
         url = sponsor.url
         urlText = sponsor.urlText
-        imageLink = sponsor.imageLink ?? ""
+        imageLinkDark = sponsor.imageLinkDark ?? ""
+        imageLinkLight = sponsor.imageLinkLight ?? ""
         tagline = sponsor.tagline
         category = sponsor.sponsorCategory
     }
     
     func save() async {
-        let newSponsor = Sponsor(id: sponsor?.id ?? UUID().uuidString, name: name, tagline: tagline, url: url, urlText: urlText, sponsorCategory: category, imageLink: imageLink)
+        let newSponsor = Sponsor(id: sponsor?.id ?? name.removeSpaces, name: name, tagline: tagline, url: url, urlText: urlText, sponsorCategory: category, imageLinkDark: imageLinkDark, imageLinkLight: imageLinkLight)
     
         do {
             try firebaseRepository.saveData(data: newSponsor, to: .Sponsor)
@@ -52,6 +54,6 @@ final class AdminSponsorViewModel: ObservableObject {
     }
     
     func invalidForm() -> Bool {
-        name == "" || url == "" || urlText == "" || imageLink == "" || tagline == ""
+        name == "" || url == "" || urlText == "" || imageLinkDark == "" || imageLinkLight == "" || tagline == ""
     }
 }

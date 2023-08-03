@@ -9,22 +9,27 @@ import SwiftUI
 import Factory
 
 struct InfoView: View {
-    //TODO: Crete VM for this view
     @Injected(\.firebaseAuthRepository) private var firebaseAuth
 
     @EnvironmentObject var router: NavigationRouter
 
     @State var showLoginView = false
+    @State var clickCount = 0
     
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         if firebaseAuth.hasCurrentUser() {
-            NavigationLink("Admin", value: InfoDestination.admin)
+            NavigationLink(AppStrings.admin, value: InfoDestination.admin)
         } else {
-            Button("Admin") {
-                showLoginView = true
+            Button("") {
+                clickCount += 1
+                if clickCount == 3 {
+                    showLoginView = true
+                    clickCount = 0
+                }
             }
+            .frame(width: 44)
             .sheet(isPresented: $showLoginView, onDismiss: {
                 if firebaseAuth.hasCurrentUser() {
                     router.infoPath.append(InfoDestination.admin)
@@ -39,16 +44,16 @@ struct InfoView: View {
         NavigationStack(path: $router.infoPath) {
             Form {
                 Section {
-                    NavigationLink("Locations", value: InfoDestination.locationList)
-                    NavigationLink("Inclusivity", value: InfoDestination.inclusivity)
-                    NavigationLink("Sponsors", value: InfoDestination.sponsors)
-                    NavigationLink("About iOSDevUK", value: InfoDestination.aboutApp)
-                    NavigationLink("App Information", value: InfoDestination.appInformation)
+                    NavigationLink(AppStrings.locations, value: InfoDestination.locationList)
+                    NavigationLink(AppStrings.inclusivity, value: InfoDestination.inclusivity)
+                    NavigationLink(AppStrings.sponsors, value: InfoDestination.sponsors)
+                    NavigationLink(AppStrings.aboutIOsDev, value: InfoDestination.aboutApp)
+                    NavigationLink(AppStrings.appInfo, value: InfoDestination.appInformation)
                 } footer: {
                     Text("Version: \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
                 }
             }
-            .navigationTitle("Info")
+            .navigationTitle(AppStrings.info)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

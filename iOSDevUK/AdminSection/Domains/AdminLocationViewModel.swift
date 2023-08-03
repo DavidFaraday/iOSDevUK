@@ -29,7 +29,7 @@ final class AdminLocationViewModel: ObservableObject {
         guard let location = location else { return }
         
         name = location.name
-        note = location.note
+        note = location.note ?? ""
         imageLink = location.imageLink ?? ""
         latitude = "\(location.latitude)"
         longitude = "\(location.longitude)"
@@ -37,7 +37,7 @@ final class AdminLocationViewModel: ObservableObject {
     }
     
     func save() async {
-        let newLocation = Location(id: location?.id ?? UUID().uuidString, name: name, note: note, imageLink: imageLink, latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0, webLink: nil, locationType: locationType)
+        let newLocation = Location(id: location?.id ?? name.removeSpaces, name: name, note: note, imageLink: imageLink, latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0, webLink: nil, locationType: locationType)
     
         do {
             try firebaseRepository.saveData(data: newLocation, to: .Location)

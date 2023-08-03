@@ -14,14 +14,14 @@ struct SessionRowForLocalSession: View {
     var body: some View {
         HStack {
             VStack {
-                Text("\(session.startDate?.time ?? "Loading...")")
-                Text("\(session.endDate?.time ?? "Loading...")")
+                Text("\(session.startDate?.time ?? AppStrings.loading)")
+                Text("\(session.endDate?.time ?? AppStrings.loading)")
             }
             .font(.caption)
             .foregroundColor(.gray)
 
             VStack(alignment: .leading, spacing: 10) {
-                Text(session.title ?? "Loading...")
+                Text(session.title ?? AppStrings.loading)
                     .font(.title3)
                 
                 if let name = viewModel.location?.name {

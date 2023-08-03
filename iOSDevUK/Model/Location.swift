@@ -45,7 +45,7 @@ enum LocationType: String, Codable, CaseIterable {
 struct Location: Codable, Identifiable, Hashable, Comparable {
     let id: String
     let name: String
-    let note: String
+    let note: String?
     let imageLink: String?
     let latitude: Double
     let longitude: Double
@@ -66,10 +66,6 @@ struct Location: Codable, Identifiable, Hashable, Comparable {
     
     var imageUrl: URL? {
         URL(string: imageLink ?? "")
-    }
-    
-    private enum CodingKeys : String, CodingKey {
-        case name, locationType = "locationTypeRecordName", note, imageLink, latitude, longitude, id, webLink
     }
 }
 

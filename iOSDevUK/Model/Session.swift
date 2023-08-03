@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum SessionType: Codable, CaseIterable {
-    case talk, workshop, lightningTalk
+enum SessionType: String, Codable, CaseIterable {
+    case talk, workshop, lightningTalk, social, lunch, coffeeBiscuits, dinner, registration
     
     var name: String {
         switch self {
@@ -18,6 +18,16 @@ enum SessionType: Codable, CaseIterable {
             return "Workshop"
         case .lightningTalk:
             return "Lightning Talk"
+        case .social:
+            return "Social"
+        case .lunch:
+            return "Lunch"
+        case .coffeeBiscuits:
+            return "Coffee Biscuits"
+        case .dinner:
+            return "Dinner"
+        case .registration:
+            return "Registration"
         }
     }
 }
@@ -29,7 +39,7 @@ struct Session: Codable, Identifiable, Hashable, Comparable {
     let content: String
     let startDate: Date
     let endDate: Date
-    let locationId: String
+    let locationId: String?
     let speakerIds: [String]
     let type: SessionType
     

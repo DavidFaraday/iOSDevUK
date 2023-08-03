@@ -23,7 +23,7 @@ struct SponsorsView: View {
             }
         }
         .listStyle(.plain)
-        .navigationTitle("Sponsors")
+        .navigationTitle(AppStrings.sponsors)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

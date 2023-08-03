@@ -32,13 +32,13 @@ struct MapView: View {
 
     @ViewBuilder
     private func categoryPicker() -> some View {
-        Picker("Location category", selection: $viewModel.locationCategory) {
+        Picker("", selection: $viewModel.locationCategory) {
             ForEach(LocationType.allCases, id: \.self) { location in
                 Text(location.shortName)
             }
         }
         .pickerStyle(.segmented)
-        .padding()
+        .padding(.vertical, 5)
         .onChange(of: viewModel.locationCategory) {_ in
             viewModel.updateRegion()
         }
@@ -53,7 +53,7 @@ struct MapView: View {
             }
         }
         .accentColor(Color(.systemPink))
-        .navigationBarTitle("Map", displayMode: .inline)
+        .navigationBarTitle(AppStrings.map, displayMode: .inline)
         .safeAreaInset(edge: .bottom) {
             if locationManager.locationManager?.authorizationStatus == .denied {
                 locationDeniedLabel()

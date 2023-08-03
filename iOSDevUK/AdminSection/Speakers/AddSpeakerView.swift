@@ -20,7 +20,7 @@ struct AddSpeakerView: View {
             }
             dismiss()
         } label: {
-            Text("Save")
+            Text(AppStrings.save)
         }
         .disabled(viewModel.invalidForm())
     }
@@ -29,7 +29,7 @@ struct AddSpeakerView: View {
     private func photoPickerView() -> some View {
         PhotosPicker(selection: $viewModel.selectedItem, matching: .images, photoLibrary: .shared()) {
             HStack {
-                Text("Select image")
+                Text(AppStrings.selectImage)
                 Spacer()
                 if let imageData = viewModel.selectedImageData,
                    let uiImage = UIImage(data: imageData) {
@@ -39,7 +39,7 @@ struct AddSpeakerView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .frame(width: 50)
                 } else {
-                    Image(systemName: "photo")
+                    Image(systemName: ImageNames.photo)
                         .font(.title)
                 }
             }
@@ -58,11 +58,11 @@ struct AddSpeakerView: View {
     private func main() -> some View {
         Form {
             Section {
-                TextField("Full name", text: $viewModel.fullName)
-                TextField("Twitter", text: $viewModel.twitter)
-                TextField("Linkedin", text: $viewModel.linkedIn)
+                TextField(AppStrings.fullName, text: $viewModel.fullName)
+                TextField(AppStrings.twitter, text: $viewModel.twitter)
+                TextField(AppStrings.linkedIn, text: $viewModel.linkedIn)
                 HStack {
-                    TextField("Image link", text: $viewModel.imageLink)
+                    TextField(AppStrings.imageLink, text: $viewModel.imageLink)
                     Spacer()
                     if !viewModel.imageLink.isEmpty {
                         RemoteImageView(url: URL(string: viewModel.imageLink))
@@ -75,7 +75,7 @@ struct AddSpeakerView: View {
                 TextEditor(text: $viewModel.bio)
                     .frame(height: AppConstants.textViewHeight)
             } header: {
-                Text("Personal Info")
+                Text(AppStrings.personalInfo)
             }
 
 //            Section {
@@ -90,7 +90,7 @@ struct AddSpeakerView: View {
     
     var body: some View {
         main()
-            .navigationTitle(viewModel.speaker?.name ?? "Add Speaker")
+            .navigationTitle(viewModel.speaker?.name ?? AppStrings.addSpeaker)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

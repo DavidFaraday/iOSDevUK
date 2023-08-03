@@ -7,6 +7,63 @@
 
 import Foundation
 
+struct AppStrings {
+    static let sessions = "Sessions"
+    static let loading = "Loading..."
+    static let allSessions = "All Sessions"
+    static let speakers = "Speakers"
+    static let allSpeakers = "All Speakers"
+    static let slackChannel = "iOSDevUK Slack Channel"
+    static let iOSDevTwitter = "@iOSDevUK on Twitter"
+    static let aberCompTwitter = "@AberCompSci on Twitter"
+    static let iOSDevUK = "iOSDev UK"
+    static let mySessions = "My Sessions"
+    static let emptySessionMessage = "You currently have no sessions added. \n Please bookmark sessions to see them here."
+    static let takeMeThere = "Take me there"
+    static let attendeeInfo = "Attendee Info"
+    static let admin = "Admin"
+    static let locations = "Locations"
+    static let inclusivity = "Inclusivity"
+    static let sponsors = "Sponsors"
+    static let aboutIOsDev = "About iOSDevUK"
+    static let appInfo = "App Information"
+    static let info = "Info"
+    static let inclusivityPolicy = "Inclusivity Policy"
+    static let map = "Map"
+    static let description = "Description"
+    static let speaker = "Speaker(s)"
+    static let location = "Location"
+    static let error = "Error!"
+    static let ok = "OK"
+    static let biography = "Biography"
+    static let session = "Session(s)"
+    static let home = "Home"
+    static let schedule = "Schedule"
+    static let attendee = "Attendee"
+    static let navigate = "Navigate"
+    static let adminArea = "Admin Area"
+    static let logOut = "Log Out"
+    static let login = "Login"
+    static let email = "Email"
+    static let password = "Password"
+    static let selectImage = "Select image"
+    static let save = "Save"
+    static let fullName = "Full name"
+    static let twitter = "Twitter"
+    static let linkedIn = "Linkedin"
+    static let imageLink = "Image link"
+    static let personalInfo = "Personal Info"
+    static let addSpeaker = "Add Speaker"
+    static let addSession = "Add Session"
+    static let selectSpeakers = "Select Speakers"
+    static let addLocation = "Add Location"
+    static let locationDetails = "Location Details"
+    static let sponsorDetails = "Sponsor details"
+    static let addSponsor = "Add Sponsor"
+
+
+}
+
 struct ImageNames {
     static let img1 = "img1"
     static let img2 = "img2"
@@ -23,6 +80,16 @@ struct ImageNames {
     static let mapPin = "mappin.circle.fill"
     static let chevronRight = "chevron.right"
     static let checkmark = "checkmark"
+    static let placeholder = "placeholder"
+    static let bulletPoint = "list.bullet.rectangle.portrait"
+    static let xmark = "xmark.circle"
+    static let envelope = "envelope"
+    static let lock = "lock"
+    static let plus = "plus"
+    static let photo = "photo"
+    static let infoBackground = "background"
+    static let infoDevices = "devices"
+
 }
 
 struct ColorNames {
@@ -31,6 +98,7 @@ struct ColorNames {
     static let silverColor = "silverColor"
     static let primary = "primary"
     static let secondary = "secondary"
+    static let backgroundColor = "backgroundColor"
 }
 
 struct TwitterAccounts {
@@ -44,6 +112,7 @@ struct BaseUrl {
     static let twitter = "https://twitter.com/"
     static let linkedIn = "https://linkedIn.com/in/"
 }
+
 struct Slack {
     static let channelLink = "https://iosdevuk.slack.com"
 }
@@ -54,4 +123,8 @@ struct FirebaseKeys {
 
 struct AppConstants {
     static let textViewHeight = 300.0
+}
+
+struct FirebaseLinks {
+    static let fileReference = "gs://iosdevuk-684dd.appspot.com"
 }

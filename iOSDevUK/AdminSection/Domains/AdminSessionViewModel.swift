@@ -55,7 +55,7 @@ final class AdminSessionViewModel: ObservableObject {
         title = session.title
         content = session.content
         type = session.type
-        locationId = session.locationId
+        locationId = session.locationId ?? ""
         speakerIds = session.speakerIds
         startDate = session.startDate
         endDate = session.endDate
@@ -63,21 +63,21 @@ final class AdminSessionViewModel: ObservableObject {
     
     @MainActor
     func save(speakers: Set<Speaker>) async {
-        selectedSpeakers = speakers
-
-        
-        guard !speakerIds.isEmpty else { return }
+//        selectedSpeakers = speakers
+//
+//
+//        guard !speakerIds.isEmpty else { return }
         
         let newSession = Session(id: session?.id ?? UUID().uuidString, title: title, content: content, startDate: startDate, endDate: endDate, locationId: locationId, speakerIds: speakerIds, type: type)
         
-        print(newSession)
+//        print(newSession)
         
-//        do {
-//            try firebaseRepository.saveData(data: newSession, to: .Session)
-//        }
-//        catch {
-//            print("Error saving session", error.localizedDescription)
-//        }
+        do {
+            try firebaseRepository.saveData(data: newSession, to: .Session)
+        }
+        catch {
+            print("Error saving session", error.localizedDescription)
+        }
     }
     
 
