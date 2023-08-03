@@ -12,11 +12,11 @@ struct SpeakerCardView: View {
     private let speaker: Speaker
     private let height: CGFloat
     private let gradient = Gradient(colors:
-                                        [.green.opacity(1.0),
-                                         .green.opacity(0.8),
-                                         .green.opacity(0.7),
-                                         .green.opacity(0.2),
-                                         .green.opacity(0.1),
+                                        [Color(ColorNames.primary).opacity(1.0),
+                                         Color(ColorNames.primary).opacity(0.8),
+                                         Color(ColorNames.primary).opacity(0.7),
+                                         Color(ColorNames.primary).opacity(0.2),
+                                         Color(ColorNames.primary).opacity(0.1),
                                          .clear])
     
     init(speaker: Speaker, height: CGFloat = 140) {
@@ -28,7 +28,7 @@ struct SpeakerCardView: View {
         RemoteImageView(url: speaker.imageUrl)
             .frame(height: height)
             .scaledToFit()
-            .cornerRadius(15)
+            .cornerRadius(16)
             .overlay(alignment: .bottom) {
                 ZStack(alignment: .leading) {
                     Rectangle()

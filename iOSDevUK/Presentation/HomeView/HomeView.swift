@@ -17,6 +17,16 @@ struct HomeView: View {
 
         
         VStack {
+            ZStack {
+                Image("background")
+                    .resizable(resizingMode: .tile)
+                    .frame(height: 200.0)
+                Image("devices")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 200.0)
+            }
+
             Text(viewModel.eventInformation?.notification ?? AppStrings.loading)
                 .font(.headline)
                 .multilineTextAlignment(.center)

@@ -24,9 +24,13 @@ struct SpeakerDetailView: View {
     private func headerView() -> some View {
         HStack {
             RemoteImageView(url: viewModel.speaker.imageUrl)
-                .cornerRadius(15)
-                .scaledToFit()
-                .frame(width: 100, height: 120)
+                .cornerRadius(16)
+                .scaledToFill()
+                .frame(width: 130, height: 150)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16).stroke(Color(ColorNames.primary), lineWidth: 4)
+                )
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(viewModel.speaker.name)
@@ -51,7 +55,7 @@ struct SpeakerDetailView: View {
         Text(AppStrings.biography)
             .font(.title2)
             .bold()
-            .foregroundColor(.gray)
+            .foregroundColor(Color(ColorNames.secondary))
             .padding(.top)
             .padding(.bottom, 5)
         
