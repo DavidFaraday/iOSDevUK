@@ -44,7 +44,7 @@ struct SessionDetailView: View {
     @ViewBuilder
     private func descriptionView() -> some View {
         VStack(alignment: .leading) {
-            Text("Description")
+            Text(AppStrings.description)
                 .font(.title2)
                 .foregroundColor(.gray)
                 .bold()
@@ -62,7 +62,7 @@ struct SessionDetailView: View {
     private func speakersView() -> some View {
         
         VStack(alignment: .leading) {
-            Text("Speaker(s)")
+            Text(AppStrings.speaker)
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
@@ -85,7 +85,7 @@ struct SessionDetailView: View {
     private func locationView(_ location: Location) -> some View {
         
         VStack(alignment: .leading) {
-            Text("Location")
+            Text(AppStrings.location)
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
@@ -133,7 +133,7 @@ struct SessionDetailView: View {
         }
         .scrollIndicators(.hidden)
         .alert(isPresented: $viewModel.showError, content: {
-            Alert(title: Text("Error!"), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+            Alert(title: Text(AppStrings.error), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text(AppStrings.ok)))
         })
     }
     

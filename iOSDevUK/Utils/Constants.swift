@@ -7,6 +7,44 @@
 
 import Foundation
 
+struct AppStrings {
+    static let sessions = "Sessions"
+    static let loading = "Loading..."
+    static let allSessions = "All Sessions"
+    static let speakers = "Speakers"
+    static let allSpeakers = "All Speakers"
+    static let slackChannel = "iOSDevUK Slack Channel"
+    static let iOSDevTwitter = "@iOSDevUK on Twitter"
+    static let aberCompTwitter = "@AberCompSci on Twitter"
+    static let iOSDevUK = "iOSDev UK"
+    static let mySessions = "My Sessions"
+    static let emptySessionMessage = "You currently have no sessions added. \n Please bookmark sessions to see them here."
+    static let takeMeThere = "Take me there"
+    static let attendeeInfo = "Attendee Info"
+    static let admin = "Admin"
+    static let locations = "Locations"
+    static let inclusivity = "Inclusivity"
+    static let sponsors = "Sponsors"
+    static let aboutIOsDev = "About iOSDevUK"
+    static let appInfo = "App Information"
+    static let info = "Info"
+    static let inclusivityPolicy = "Inclusivity Policy"
+    static let map = "Map"
+    static let description = "Description"
+    static let speaker = "Speaker(s)"
+    static let location = "Location"
+    static let error = "Error!"
+    static let ok = "OK"
+    static let biography = "Biography"
+    static let session = "Session(s)"
+    static let home = "Home"
+    static let schedule = "Schedule"
+    static let attendee = "Attendee"
+    static let navigate = "Navigate"
+
+
+}
+
 struct ImageNames {
     static let img1 = "img1"
     static let img2 = "img2"
@@ -23,6 +61,8 @@ struct ImageNames {
     static let mapPin = "mappin.circle.fill"
     static let chevronRight = "chevron.right"
     static let checkmark = "checkmark"
+    static let placeholder = "placeholder"
+    static let bulletPoint = "list.bullet.rectangle.portrait"
 }
 
 struct ColorNames {
@@ -31,6 +71,7 @@ struct ColorNames {
     static let silverColor = "silverColor"
     static let primary = "primary"
     static let secondary = "secondary"
+    static let backgroundColor = "backgroundColor"
 }
 
 struct TwitterAccounts {

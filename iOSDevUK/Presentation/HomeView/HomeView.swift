@@ -12,13 +12,12 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
     
-
     @ViewBuilder
     private func headerView() -> some View {
 
         
         VStack {
-            Text(viewModel.eventInformation?.notification ?? "Loading...")
+            Text(viewModel.eventInformation?.notification ?? AppStrings.loading)
                 .font(.headline)
                 .multilineTextAlignment(.center)
         }
@@ -35,9 +34,9 @@ struct HomeView: View {
         
         VStack(alignment: .leading) {
             HStack {
-                Text("Sessions").font(.title2).bold()
+                Text(AppStrings.sessions).font(.title2).bold()
                 Spacer()
-                NavigationLink("All Sessions", value: Destination.sessions(viewModel.sessions))
+                NavigationLink(AppStrings.allSessions, value: Destination.sessions(viewModel.sessions))
             }
             .padding(.horizontal)
             
@@ -61,9 +60,9 @@ struct HomeView: View {
     private func speakerView() -> some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("Speakers") .font(.title2).bold()
+                Text(AppStrings.speakers) .font(.title2).bold()
                 Spacer()
-                NavigationLink("All Speakers", value: Destination.speakers(viewModel.speakers))
+                NavigationLink(AppStrings.allSpeakers, value: Destination.speakers(viewModel.speakers))
             }
             .padding(.horizontal)
 
@@ -86,20 +85,20 @@ struct HomeView: View {
     private func footerView() -> some View {
         VStack(alignment: .center, spacing: 10) {
             if viewModel.eventInformation != nil {
-                Text(viewModel.eventInformation?.about ?? "Loading...")
+                Text(viewModel.eventInformation?.about ?? AppStrings.loading)
                     .multilineTextAlignment(.center)
                     .font(.body)
                     .padding(10)
             }
             
             if let slackUrl = URL(string: Slack.channelLink) {
-                Link("iOSDevUK Slack Channel", destination: slackUrl)
+                Link(AppStrings.slackChannel, destination: slackUrl)
             }
             if let twitterUrl = URL(string: TwitterAccounts.iOSDevUK) {
-                Link("@iOSDevUK on Twitter", destination: twitterUrl)
+                Link(AppStrings.iOSDevTwitter, destination: twitterUrl)
             }
             if let twitterUrl = URL(string: TwitterAccounts.aberCompSci) {
-                Link("@AberCompSci on Twitter", destination: twitterUrl)
+                Link(AppStrings.aberCompTwitter, destination: twitterUrl)
             }
         }
         .frame(maxWidth: .infinity)
@@ -131,7 +130,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack(path: $router.homePath) {
             main()
-                .navigationTitle("iOSDev UK")
+                .navigationTitle(AppStrings.iOSDevUK)
                 .task(viewModel.listenForEventNotification)
                 .task(viewModel.listenForSessions)
                 .task(viewModel.listenForSpeakers)

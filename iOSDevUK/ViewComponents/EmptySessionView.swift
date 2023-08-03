@@ -25,7 +25,7 @@ struct EmptySessionView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack {
-                Image(systemName: "list.bullet.rectangle.portrait")
+                Image(systemName: ImageNames.bulletPoint)
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(Color(ColorNames.secondary), Color(ColorNames.primary))
                     .font(.system(size: 120))

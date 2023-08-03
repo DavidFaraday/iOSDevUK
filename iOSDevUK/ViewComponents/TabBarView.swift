@@ -51,13 +51,13 @@ extension TabBarView {
         var name: String {
             switch self {
             case .home:
-                return "Home"
+                return AppStrings.home
             case .mySchedule:
-                return "Schedule"
+                return AppStrings.schedule
             case .attendee:
-                return "Attendee"
+                return AppStrings.attendee
             case .info:
-                return "Info"
+                return AppStrings.info
             }
         }
         

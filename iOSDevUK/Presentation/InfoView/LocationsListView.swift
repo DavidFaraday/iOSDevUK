@@ -19,7 +19,7 @@ struct LocationsListView: View {
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        NavigationLink("Map", value: InfoDestination.locations(locations: viewModel.locations))
+        NavigationLink(AppStrings.map, value: InfoDestination.locations(locations: viewModel.locations))
     }
     
 
@@ -51,7 +51,7 @@ struct LocationsListView: View {
 
     var body: some View {
         main()
-            .navigationBarTitle("Locations", displayMode: .inline)
+            .navigationBarTitle(AppStrings.locations, displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

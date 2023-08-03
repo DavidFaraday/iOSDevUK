@@ -48,7 +48,7 @@ struct SpeakerDetailView: View {
     
     @ViewBuilder
     private func descriptionView() -> some View {
-        Text("Biography")
+        Text(AppStrings.biography)
             .font(.title2)
             .bold()
             .foregroundColor(.gray)
@@ -81,7 +81,7 @@ struct SpeakerDetailView: View {
         if !viewModel.sessions.isEmpty {
             Divider()
             
-            Text("Session(s)")
+            Text(AppStrings.session)
                 .font(.title3)
                 .foregroundColor(.gray)
                 .bold()
@@ -109,7 +109,7 @@ struct SpeakerDetailView: View {
         }
         .scrollIndicators(.hidden)
         .alert(isPresented: $viewModel.showError, content: {
-            Alert(title: Text("Error!"), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+            Alert(title: Text(AppStrings.error), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text(AppStrings.ok)))
         })
     }
     

@@ -18,7 +18,7 @@ struct RemoteImageView: View {
     var body: some View {
         KFImage.url(url)
             .placeholder {
-                Image("you")
+                Image(ImageNames.placeholder)
                     .resizable()
             }
             .resizable()

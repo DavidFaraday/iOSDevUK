@@ -48,7 +48,7 @@ struct MyScheduleView: View {
             }
             
             if records.isEmpty {
-                EmptySessionView(message: "You currently have no sessions added. \n Please bookmark sessions to see them here.", buttonTitle: "Take me there") {
+                EmptySessionView(message: AppStrings.emptySessionMessage, buttonTitle: AppStrings.takeMeThere) {
                     router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
                 }
             }
@@ -59,7 +59,7 @@ struct MyScheduleView: View {
     var body: some View {
         NavigationStack(path: $router.schedulePath) {
             main()
-                .navigationTitle("My Sessions")
+                .navigationTitle(AppStrings.mySessions)
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
                     case .session(let session):

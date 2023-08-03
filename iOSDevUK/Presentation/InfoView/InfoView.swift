@@ -20,9 +20,9 @@ struct InfoView: View {
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         if firebaseAuth.hasCurrentUser() {
-            NavigationLink("Admin", value: InfoDestination.admin)
+            NavigationLink(AppStrings.admin, value: InfoDestination.admin)
         } else {
-            Button("Admin") {
+            Button(AppStrings.admin) {
                 showLoginView = true
             }
             .sheet(isPresented: $showLoginView, onDismiss: {
@@ -39,16 +39,16 @@ struct InfoView: View {
         NavigationStack(path: $router.infoPath) {
             Form {
                 Section {
-                    NavigationLink("Locations", value: InfoDestination.locationList)
-                    NavigationLink("Inclusivity", value: InfoDestination.inclusivity)
-                    NavigationLink("Sponsors", value: InfoDestination.sponsors)
-                    NavigationLink("About iOSDevUK", value: InfoDestination.aboutApp)
-                    NavigationLink("App Information", value: InfoDestination.appInformation)
+                    NavigationLink(AppStrings.locations, value: InfoDestination.locationList)
+                    NavigationLink(AppStrings.inclusivity, value: InfoDestination.inclusivity)
+                    NavigationLink(AppStrings.sponsors, value: InfoDestination.sponsors)
+                    NavigationLink(AppStrings.aboutIOsDev, value: InfoDestination.aboutApp)
+                    NavigationLink(AppStrings.appInfo, value: InfoDestination.appInformation)
                 } footer: {
                     Text("Version: \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
                 }
             }
-            .navigationTitle("Info")
+            .navigationTitle(AppStrings.info)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

@@ -16,7 +16,7 @@ struct InclusivityView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
 
-            Text("Inclusivity Policy")
+            Text(AppStrings.inclusivityPolicy)
                 .font(.largeTitle)
                 .minimumScaleFactor(0.7)
             

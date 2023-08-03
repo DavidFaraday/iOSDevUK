@@ -39,7 +39,7 @@ final class AdminSponsorViewModel: ObservableObject {
     }
     
     func save() async {
-        let newSponsor = Sponsor(id: sponsor?.id ?? UUID().uuidString, name: name, tagline: tagline, url: url, urlText: urlText, sponsorCategory: category, imageLinkDark: imageLinkDark, imageLinkLight: imageLinkLight)
+        let newSponsor = Sponsor(id: sponsor?.id ?? name.removeSpaces, name: name, tagline: tagline, url: url, urlText: urlText, sponsorCategory: category, imageLinkDark: imageLinkDark, imageLinkLight: imageLinkLight)
     
         do {
             try firebaseRepository.saveData(data: newSponsor, to: .Sponsor)

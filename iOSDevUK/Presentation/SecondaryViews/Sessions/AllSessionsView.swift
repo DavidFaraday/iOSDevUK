@@ -24,28 +24,26 @@ struct AllSessionsView: View {
     
     
     var body: some View {
-        VStack {
-            
+        Form {
+            ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
+                
+                NavigationLink(value: Destination.session(session)) {
+                    SessionRowView(session: session)
+                }
+            }
+        }
+        .navigationTitle(AppStrings.sessions)
+        .task{ viewModel.setCurrentDate() }
+        .safeAreaInset(edge: .top) {
             Picker("", selection: $viewModel.selectedDate.animation()) {
                 ForEach(groupedSessions.keys.sorted(), id: \String.self) { weekDay in
                     Text(weekDay.removeDigits)
                 }
             }
             .pickerStyle(.segmented)
-            .padding(.horizontal)
-            
-            
-            Form {
-                ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
-                    
-                    NavigationLink(value: Destination.session(session)) {
-                        SessionRowView(session: session)
-                    }
-                }
-            }
+            .padding(10)
+            .background(Color(ColorNames.backgroundColor))
         }
-        .navigationTitle("Sessions")
-        .task{ viewModel.setCurrentDate() }
     }
 }
 

@@ -33,7 +33,7 @@ struct AppInformationView: View {
             .multilineTextAlignment(.center)
             .padding(.top, 25)
             .padding()
-            .navigationTitle("App Info")
+            .navigationTitle(AppStrings.appInfo)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
