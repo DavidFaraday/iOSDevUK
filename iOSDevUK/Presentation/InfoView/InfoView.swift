@@ -9,7 +9,6 @@ import SwiftUI
 import Factory
 
 struct InfoView: View {
-    //TODO: Crete VM for this view
     @Injected(\.firebaseAuthRepository) private var firebaseAuth
 
     @EnvironmentObject var router: NavigationRouter

@@ -19,7 +19,7 @@ struct AddLocation: View {
             }
             dismiss()
         } label: {
-            Text("Save")
+            Text(AppStrings.save)
         }
         .disabled(viewModel.invalidForm())
     }
@@ -45,14 +45,14 @@ struct AddLocation: View {
                     .frame(height: AppConstants.textViewHeight)
 
             } header: {
-                Text("Location Details")
+                Text(AppStrings.locationDetails)
             }
         }
     }
 
     var body: some View {
         main()
-            .navigationTitle(viewModel.location?.name ?? "Add Location")
+            .navigationTitle(viewModel.location?.name ?? AppStrings.addLocation)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

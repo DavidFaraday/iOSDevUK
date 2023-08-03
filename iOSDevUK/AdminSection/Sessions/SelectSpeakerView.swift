@@ -20,7 +20,7 @@ struct SelectSpeakerView: View {
         Button {
             dismiss()
         } label: {
-            Text("Save")
+            Text(AppStrings.save)
         }
     }
 
@@ -49,7 +49,7 @@ struct SelectSpeakerView: View {
     var body: some View {
         NavigationStack {
             main()
-                .navigationTitle("Select Speakers")
+                .navigationTitle(AppStrings.selectSpeakers)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
                 }

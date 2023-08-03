@@ -34,7 +34,7 @@ struct AddSession: View {
             }
             dismiss()
         } label: {
-            Text("Save")
+            Text(AppStrings.save)
         }
         .disabled(viewModel.invalidForm())
     }
@@ -70,7 +70,7 @@ struct AddSession: View {
             }
             
             VStack(alignment: .leading, spacing: 4.0) {
-                Text("Speakers")
+                Text(AppStrings.speakers)
                 if !selectedSpeakers.isEmpty {
                     Text( selectedSpeakers.map { $0.name }, format: .list(type: .and))
                         .foregroundColor(.red)
@@ -89,7 +89,7 @@ struct AddSession: View {
     
     var body: some View {
         main()
-            .navigationTitle(viewModel.session?.title ?? "Add Session")
+            .navigationTitle(viewModel.session?.title ?? AppStrings.addSession)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

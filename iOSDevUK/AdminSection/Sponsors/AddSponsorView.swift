@@ -19,7 +19,7 @@ struct AddSponsorView: View {
             }
             dismiss()
         } label: {
-            Text("Save")
+            Text(AppStrings.save)
         }
         .disabled(viewModel.invalidForm())
     }
@@ -64,7 +64,7 @@ struct AddSponsorView: View {
                 TextEditor(text: $viewModel.tagline)
                     .frame(height: AppConstants.textViewHeight)
             } header: {
-                Text("Sponsor details")
+                Text(AppStrings.sponsorDetails)
             }
         }
     }
@@ -72,7 +72,7 @@ struct AddSponsorView: View {
     
     var body: some View {
         main()
-            .navigationTitle(viewModel.sponsor?.name ?? "Add Sponsor")
+            .navigationTitle(viewModel.sponsor?.name ?? AppStrings.addSponsor)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

@@ -41,6 +41,25 @@ struct AppStrings {
     static let schedule = "Schedule"
     static let attendee = "Attendee"
     static let navigate = "Navigate"
+    static let adminArea = "Admin Area"
+    static let logOut = "Log Out"
+    static let login = "Login"
+    static let email = "Email"
+    static let password = "Password"
+    static let selectImage = "Select image"
+    static let save = "Save"
+    static let fullName = "Full name"
+    static let twitter = "Twitter"
+    static let linkedIn = "Linkedin"
+    static let imageLink = "Image link"
+    static let personalInfo = "Personal Info"
+    static let addSpeaker = "Add Speaker"
+    static let addSession = "Add Session"
+    static let selectSpeakers = "Select Speakers"
+    static let addLocation = "Add Location"
+    static let locationDetails = "Location Details"
+    static let sponsorDetails = "Sponsor details"
+    static let addSponsor = "Add Sponsor"
 
 
 }
@@ -63,6 +82,12 @@ struct ImageNames {
     static let checkmark = "checkmark"
     static let placeholder = "placeholder"
     static let bulletPoint = "list.bullet.rectangle.portrait"
+    static let xmark = "xmark.circle"
+    static let envelope = "envelope"
+    static let lock = "lock"
+    static let plus = "plus"
+    static let photo = "photo"
+
 }
 
 struct ColorNames {
@@ -85,6 +110,7 @@ struct BaseUrl {
     static let twitter = "https://twitter.com/"
     static let linkedIn = "https://linkedIn.com/in/"
 }
+
 struct Slack {
     static let channelLink = "https://iosdevuk.slack.com"
 }
@@ -95,4 +121,8 @@ struct FirebaseKeys {
 
 struct AppConstants {
     static let textViewHeight = 300.0
+}
+
+struct FirebaseLinks {
+    static let fileReference = "gs://iosdevuk-684dd.appspot.com"
 }

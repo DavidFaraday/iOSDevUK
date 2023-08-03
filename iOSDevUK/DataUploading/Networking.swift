@@ -62,20 +62,16 @@ final class FileUploadService {
     private init() { }
 
     func uploadNewData<T: CodableIdentifiable>(from fileName: String, to collection: FCollectionReference, objectType: T.Type) async throws {
-        do {
-            let objects = try Bundle.main.decode([T].self, from: fileName)
-            
-            for object in objects {
-                do {
-                    try firebaseRepo.saveData(data: object, to: collection)
-                } catch {
-                    print(error.localizedDescription)
-                    throw AppError.unknownError
-                }
+        
+        let objects = Bundle.main.decode([T].self, from: fileName)
+        
+        for object in objects {
+            do {
+                try firebaseRepo.saveData(data: object, to: collection)
+            } catch {
+                print(error.localizedDescription)
+                throw AppError.unknownError
             }
-        } catch {
-            print(error.localizedDescription)
-            throw AppError.unknownError
         }
     }
 }

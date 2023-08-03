@@ -16,7 +16,7 @@ class FirebaseFileManager {
     
     static let shared = FirebaseFileManager()
     
-    private let FILE_REFERENCE = "gs://iosdevuk-684dd.appspot.com"
+    private let FILE_REFERENCE = FirebaseLinks.fileReference
     private let storage = Storage.storage()
     
     private init() {  }
