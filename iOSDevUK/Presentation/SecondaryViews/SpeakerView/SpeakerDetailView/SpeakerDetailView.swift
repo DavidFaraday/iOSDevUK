@@ -21,6 +21,19 @@ struct SpeakerDetailView: View {
     
     
     @ViewBuilder
+    private func socialMediaRow(imageName: String, label: String) -> some View {
+        HStack(spacing: 5) {
+            Image(imageName)
+                .resizable()
+                .frame(width: 30, height: 30)
+            Text(label)
+                .minimumScaleFactor(0.7)
+                .multilineTextAlignment(.leading)
+        }
+    }
+    
+    
+    @ViewBuilder
     private func headerView() -> some View {
         HStack {
             RemoteImageView(url: viewModel.speaker.imageUrl)
@@ -38,10 +51,16 @@ struct SpeakerDetailView: View {
                     .minimumScaleFactor(0.7)
 
                 if let twitterId = viewModel.speaker.twitterId, let twitterUrl = URL(string: "\(BaseUrl.twitter)\(twitterId)") {
-                    Link("Twitter: @\(twitterId)", destination: twitterUrl)
+                    Link(destination: twitterUrl) {
+                        socialMediaRow(imageName: ImageNames.twitter, label: twitterId)
+                    }
                 }
+
                 if let linkedIn = viewModel.speaker.linkedIn, let linkedInUrl = URL(string: "\(BaseUrl.linkedIn)\(linkedIn)") {
-                    Link("LinkedIn: \(linkedIn)", destination: linkedInUrl)
+                    
+                    Link(destination: linkedInUrl) {
+                        socialMediaRow(imageName: ImageNames.linkedIn, label: linkedIn)
+                    }
                 }
                 
                 Spacer()

@@ -88,6 +88,8 @@ struct ImageNames {
     static let infoBackground = "background"
     static let infoDevices = "devices"
     static let questionmark = "questionmark.circle"
+    static let linkedIn = "linkedin"
+    static let twitter = "twitter"
 
 }
 
