@@ -25,7 +25,6 @@ struct RemoteImageView: View {
             .loadDiskFileSynchronously()
 //            .cacheMemoryOnly()
             .fade(duration: 0.25)
-            .aspectRatio(contentMode: .fit)
     }
 }
 
