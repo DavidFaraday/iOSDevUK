@@ -12,7 +12,7 @@ struct AboutView: View {
 
     var body: some View {
         ScrollView {
-            Image(ImageNames.img4)
+            Image(ImageNames.aboutImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
 

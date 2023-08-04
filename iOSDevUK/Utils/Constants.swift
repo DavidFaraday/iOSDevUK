@@ -65,10 +65,8 @@ struct AppStrings {
 }
 
 struct ImageNames {
-    static let img1 = "img1"
-    static let img2 = "img2"
-    static let img3 = "img3"
-    static let img4 = "img4"
+    static let sessionImage = "sessionImage"
+    static let aboutImage = "aboutImage"
     static let appIcon = "appIcon"
     static let conferenceImage = "conferenceImage"
     static let bookmark = "bookmark"
