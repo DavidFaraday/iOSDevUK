@@ -25,5 +25,13 @@ struct RemoteImageView: View {
             .loadDiskFileSynchronously()
 //            .cacheMemoryOnly()
             .fade(duration: 0.25)
+            .aspectRatio(contentMode: .fit)
+    }
+}
+
+
+struct RemoteImageView_Previews: PreviewProvider {
+    static var previews: some View {
+        RemoteImageView(url: URL(string: "https://xsgames.co/randomusers/avatar.php?g=male") )
     }
 }
