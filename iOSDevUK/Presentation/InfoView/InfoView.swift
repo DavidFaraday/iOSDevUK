@@ -44,11 +44,40 @@ struct InfoView: View {
         NavigationStack(path: $router.infoPath) {
             Form {
                 Section {
-                    NavigationLink(AppStrings.locations, value: InfoDestination.locationList)
-                    NavigationLink(AppStrings.inclusivity, value: InfoDestination.inclusivity)
-                    NavigationLink(AppStrings.sponsors, value: InfoDestination.sponsors)
-                    NavigationLink(AppStrings.aboutIOsDev, value: InfoDestination.aboutApp)
-                    NavigationLink(AppStrings.appInfo, value: InfoDestination.appInformation)
+                    NavigationLink(value: InfoDestination.locationList) {
+                        HStack {
+                            Image(systemName: "mappin.circle")
+                            Text(AppStrings.locations)
+                        }
+                    }
+                    NavigationLink(value: InfoDestination.inclusivity) {
+                        HStack {
+                            Image(systemName: "person.3")
+                            Text(AppStrings.inclusivity)
+                        }
+                    }
+
+                    NavigationLink(value: InfoDestination.sponsors) {
+                        HStack {
+                            Image(systemName: "heart")
+                            Text(AppStrings.sponsors)
+                        }
+                    }
+                    
+                    NavigationLink(value: InfoDestination.aboutApp) {
+                        HStack {
+                            Image(systemName: "info.circle")
+                            Text(AppStrings.aboutIOsDev)
+                        }
+                    }
+
+                    NavigationLink(value: InfoDestination.appInformation) {
+                        HStack {
+                            Image(systemName: "iphone.gen3")
+                            Text(AppStrings.appInfo)
+                        }
+                    }
+
                 } footer: {
                     Text("Version: \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
                 }

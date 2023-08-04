@@ -140,6 +140,7 @@ struct HomeView: View {
         NavigationStack(path: $router.homePath) {
             main()
                 .navigationTitle(AppStrings.iOSDevUK)
+                .navigationBarTitleDisplayMode(.inline)
                 .task(viewModel.listenForEventNotification)
                 .task(viewModel.listenForSessions)
                 .task(viewModel.listenForSpeakers)

@@ -87,6 +87,7 @@ struct ImageNames {
     static let photo = "photo"
     static let infoBackground = "background"
     static let infoDevices = "devices"
+    static let questionmark = "questionmark.circle"
 
 }
 

@@ -17,8 +17,11 @@ struct AttendeeView: View {
             ForEach(viewModel.infoItems) { item in
                 if let url = item.url {
                     Link(destination: url) {
-                        Text(item.name)
-                            .fontWeight(.semibold)
+                        HStack(spacing: 5) {
+                            Image(systemName: item.imageName ?? ImageNames.questionmark)
+                            Text(item.name)
+                                .fontWeight(.semibold)
+                        }
                     }
                 } else {
                     Text(item.name)
