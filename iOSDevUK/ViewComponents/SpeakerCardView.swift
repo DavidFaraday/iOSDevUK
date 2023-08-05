@@ -10,7 +10,6 @@ import SwiftUI
 struct SpeakerCardView: View {
     
     private let speaker: Speaker
-    private let height: CGFloat
     private let gradient = Gradient(colors:
                                         [Color(ColorNames.primary).opacity(1.0),
                                          Color(ColorNames.primary).opacity(0.8),
@@ -19,14 +18,12 @@ struct SpeakerCardView: View {
                                          Color(ColorNames.primary).opacity(0.1),
                                          .clear])
     
-    init(speaker: Speaker, height: CGFloat = 150) {
+    init(speaker: Speaker) {
         self.speaker = speaker
-        self.height = height
     }
     
     var body: some View {
         RemoteImageView(url: speaker.imageUrl)
-            .frame(height: height)
             .scaledToFit()
             .cornerRadius(16)
             .overlay(alignment: .bottom) {

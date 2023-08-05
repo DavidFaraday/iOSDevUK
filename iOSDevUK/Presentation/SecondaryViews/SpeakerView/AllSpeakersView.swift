@@ -26,21 +26,17 @@ struct AllSpeakersView: View {
     let scaleSize: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 6 : 4
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(speakers) { speaker in
-                        
-                        NavigationLink(value: Destination.speaker(speaker)) {
-                            SpeakerCardView(speaker: speaker,
-                                            height: geometry.size.height > geometry.size.width ? geometry.size.height / scaleSize : geometry.size.width / scaleSize)
-                        }
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(speakers) { speaker in
+                    NavigationLink(value: Destination.speaker(speaker)) {
+                        SpeakerCardView(speaker: speaker)
                     }
                 }
-                .padding(.horizontal)
             }
-            .navigationTitle(AppStrings.speakers)
+            .padding(.horizontal)
         }
+        .navigationTitle(AppStrings.speakers)
     }
 }
 

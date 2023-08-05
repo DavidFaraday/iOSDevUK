@@ -27,3 +27,10 @@ struct RemoteImageView: View {
             .fade(duration: 0.25)
     }
 }
+
+
+struct RemoteImageView_Previews: PreviewProvider {
+    static var previews: some View {
+        RemoteImageView(url: URL(string: "https://xsgames.co/randomusers/avatar.php?g=male") )
+    }
+}
