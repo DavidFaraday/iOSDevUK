@@ -15,6 +15,7 @@ struct SessionRowView: View {
         HStack {
             VStack {
                 Text(session.startDate.time)
+                    .foregroundColor(.red)
                 Text(session.endDate.time)
             }
             .font(.caption)

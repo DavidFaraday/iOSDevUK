@@ -72,9 +72,16 @@ struct SessionDetailView: View {
             ForEach(viewModel.speakers ?? []) { speaker in
                 
                 NavigationLink(value: Destination.speaker(speaker)) {
-                    Text(speaker.name)
-                        .font(.title3)
-                        .padding(.bottom, 5)
+                    HStack(spacing: 5) {
+                        RemoteImageView(url: speaker.imageUrl)
+                            .scaledToFill()
+                            .frame(width: 40, height: 40)
+                            .clipShape(Circle())
+
+                        Text(speaker.name)
+                            .font(.title3)
+                            .padding(.bottom, 5)
+                    }
                 }
             }
         }

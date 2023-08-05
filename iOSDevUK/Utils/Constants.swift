@@ -61,7 +61,6 @@ struct AppStrings {
     static let sponsorDetails = "Sponsor details"
     static let addSponsor = "Add Sponsor"
 
-
 }
 
 struct ImageNames {
@@ -90,6 +89,11 @@ struct ImageNames {
     static let questionmark = "questionmark.circle"
     static let linkedIn = "linkedin"
     static let twitter = "twitter"
+    static let mapPinEmpty = "mappin.circle"
+    static let persons3 = "person.3"
+    static let heart = "heart"
+    static let iphone = "iphone.gen3"
+    static let infoCircle = "info.circle"
 
 }
 

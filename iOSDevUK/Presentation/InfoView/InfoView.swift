@@ -17,6 +17,7 @@ struct InfoView: View {
     @State var clickCount = 0
     
     
+    
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         if firebaseAuth.hasCurrentUser() {
@@ -45,37 +46,22 @@ struct InfoView: View {
             Form {
                 Section {
                     NavigationLink(value: InfoDestination.locationList) {
-                        HStack {
-                            Image(systemName: "mappin.circle")
-                            Text(AppStrings.locations)
-                        }
+                        NavigationRowView(systemImageName: ImageNames.mapPinEmpty, title: AppStrings.locations)
                     }
                     NavigationLink(value: InfoDestination.inclusivity) {
-                        HStack {
-                            Image(systemName: "person.3")
-                            Text(AppStrings.inclusivity)
-                        }
+                        NavigationRowView(systemImageName: ImageNames.persons3, title: AppStrings.inclusivity)
                     }
 
                     NavigationLink(value: InfoDestination.sponsors) {
-                        HStack {
-                            Image(systemName: "heart")
-                            Text(AppStrings.sponsors)
-                        }
+                        NavigationRowView(systemImageName: ImageNames.heart, title: AppStrings.sponsors)
                     }
                     
                     NavigationLink(value: InfoDestination.aboutApp) {
-                        HStack {
-                            Image(systemName: "info.circle")
-                            Text(AppStrings.aboutIOsDev)
-                        }
+                        NavigationRowView(systemImageName: ImageNames.infoCircle, title: AppStrings.aboutIOsDev)
                     }
 
                     NavigationLink(value: InfoDestination.appInformation) {
-                        HStack {
-                            Image(systemName: "iphone.gen3")
-                            Text(AppStrings.appInfo)
-                        }
+                        NavigationRowView(systemImageName: ImageNames.iphone, title: AppStrings.appInfo)
                     }
 
                 } footer: {
