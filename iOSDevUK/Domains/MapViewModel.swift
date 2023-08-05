@@ -10,7 +10,7 @@ import SwiftUI
 import MapKit
 
 final class MapViewModel: ObservableObject {
-    @Published var region: MKCoordinateRegion = MKCoordinateRegion(center: MapDetails.startingLocation,
+    @Published var region: MKCoordinateRegion = MKCoordinateRegion(center: MapDetails.default2DLocation,
                                                                        span: MapDetails.defaultSpan)
 
     @Published var locationCategory: LocationType = .au
@@ -42,7 +42,7 @@ final class MapViewModel: ObservableObject {
     }
     
     func updateRegion() {
-        let regionCenter = filteredAnnotations().last?.coordinate ?? MapDetails.startingLocation
+        let regionCenter = filteredAnnotations().last?.coordinate ?? MapDetails.default2DLocation
         region = MKCoordinateRegion(center: regionCenter, span: MapDetails.defaultSpan)
     }
 
