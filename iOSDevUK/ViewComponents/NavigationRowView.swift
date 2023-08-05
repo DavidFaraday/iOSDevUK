@@ -14,7 +14,11 @@ struct NavigationRowView: View {
     var body: some View {
         HStack {
             Image(systemName: systemImageName)
+                .font(.title3)
+                .frame(width: 40)
+                .dynamicTypeSize(.medium ... .accessibility1)
             Text(title)
+                .padding(.leading, 10)
         }
     }
 }

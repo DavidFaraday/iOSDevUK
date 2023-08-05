@@ -16,7 +16,7 @@ struct AppStrings {
     static let slackChannel = "iOSDevUK Slack Channel"
     static let iOSDevTwitter = "@iOSDevUK on Twitter"
     static let aberCompTwitter = "@AberCompSci on Twitter"
-    static let iOSDevUK = "iOSDev UK"
+    static let iOSDevUK = "iOSDevUK"
     static let mySessions = "My Sessions"
     static let emptySessionMessage = "You currently have no sessions added. \n Please bookmark sessions to see them here."
     static let takeMeThere = "Take me there"
