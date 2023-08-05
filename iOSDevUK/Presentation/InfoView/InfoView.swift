@@ -10,13 +10,34 @@ import Factory
 
 struct InfoView: View {
     @Injected(\.firebaseAuthRepository) private var firebaseAuth
-
+    @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
 
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var showLoginView = false
     @State var clickCount = 0
     
-    
+    @ViewBuilder
+    private func sponsorSection(forCategory category: SponsorCategory) -> some View {
+        
+        let sponsors = viewModel.sponsors.filter({ $0.sponsorCategory == category })
+        
+        Section {
+            HStack {
+                ForEach(sponsors, id: \.id) { sponsor in
+                    RemoteImageView(url: colorScheme == .dark ? sponsor.imageUrlDark : sponsor.imageUrlLight)
+                        .frame(maxWidth: 200, maxHeight: 50)
+                        .padding(.leading)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+        } header: {
+            Text("Thank you to our \(category.rawValue) sponsor\(sponsors.count > 1 ? "s" : "")")
+                .frame(maxWidth: .infinity, alignment: .center)
+        }
+        .listRowSeparator(.hidden)
+    }
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
@@ -44,6 +65,9 @@ struct InfoView: View {
     var body: some View {
         NavigationStack(path: $router.infoPath) {
             Form {
+                sponsorSection(forCategory: .Platinum)
+                sponsorSection(forCategory: .Gold)
+                
                 Section {
                     NavigationLink(value: InfoDestination.locationList) {
                         NavigationRowView(systemImageName: ImageNames.mapPinEmpty, title: AppStrings.locations)
