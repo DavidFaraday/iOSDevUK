@@ -12,6 +12,7 @@ struct InformationItem: Codable, Identifiable, Comparable {
     let id: String
     let name: String
     let link: String
+    let imageName: String?
     
     var url: URL? {
         URL(string: link)

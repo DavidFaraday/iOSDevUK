@@ -71,4 +71,8 @@ extension Date {
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
+    
+    func isInRange(startDate: Date, endDate: Date) -> Bool {
+        self >= startDate && self <= endDate
+    }
 }

@@ -33,6 +33,7 @@ struct AllSessionsView: View {
             }
         }
         .navigationTitle(AppStrings.sessions)
+        .task(viewModel.listenForEventNotification)
         .task{ viewModel.setCurrentDate() }
         .safeAreaInset(edge: .top) {
             Picker("", selection: $viewModel.selectedDate.animation()) {

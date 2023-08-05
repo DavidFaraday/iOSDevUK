@@ -17,8 +17,7 @@ struct AttendeeView: View {
             ForEach(viewModel.infoItems) { item in
                 if let url = item.url {
                     Link(destination: url) {
-                        Text(item.name)
-                            .fontWeight(.semibold)
+                        NavigationRowView(systemImageName: item.imageName ?? ImageNames.questionmark, title: item.name)
                     }
                 } else {
                     Text(item.name)

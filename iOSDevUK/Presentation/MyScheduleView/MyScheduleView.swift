@@ -19,6 +19,16 @@ struct MyScheduleView: View {
     @StateObject private var viewModel = MyScheduleViewModel()
 
     @ViewBuilder
+    private func navigationBarTrailingItem() -> some View {
+        if !records.isEmpty {
+            Button(AppStrings.sessions) {
+                router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
+            }
+        }
+    }
+
+    
+    @ViewBuilder
     private func main() -> some View {
         ZStack {
             VStack {
@@ -60,6 +70,9 @@ struct MyScheduleView: View {
         NavigationStack(path: $router.schedulePath) {
             main()
                 .navigationTitle(AppStrings.mySessions)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
+                }
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
                     case .session(let session):

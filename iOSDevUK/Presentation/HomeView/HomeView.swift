@@ -20,11 +20,15 @@ struct HomeView: View {
                 Image(ImageNames.infoBackground)
                     .resizable(resizingMode: .tile)
                     .frame(height: 200.0)
+                    .cornerRadius(16)
+
                 Image(ImageNames.infoDevices)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200.0)
+                    .padding([.horizontal, .top])
             }
+            .padding(.bottom)
 
             Text(viewModel.eventInformation?.notification ?? AppStrings.loading)
                 .font(.headline)
@@ -140,6 +144,7 @@ struct HomeView: View {
         NavigationStack(path: $router.homePath) {
             main()
                 .navigationTitle(AppStrings.iOSDevUK)
+                .navigationBarTitleDisplayMode(.inline)
                 .task(viewModel.listenForEventNotification)
                 .task(viewModel.listenForSessions)
                 .task(viewModel.listenForSpeakers)

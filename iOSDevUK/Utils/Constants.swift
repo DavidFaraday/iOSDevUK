@@ -60,7 +60,7 @@ struct AppStrings {
     static let locationDetails = "Location Details"
     static let sponsorDetails = "Sponsor details"
     static let addSponsor = "Add Sponsor"
-
+    static let webLinks = "Link(s)"
 
 }
 
@@ -87,6 +87,14 @@ struct ImageNames {
     static let photo = "photo"
     static let infoBackground = "background"
     static let infoDevices = "devices"
+    static let questionmark = "questionmark.circle"
+    static let linkedIn = "linkedin"
+    static let twitter = "twitter"
+    static let mapPinEmpty = "mappin.circle"
+    static let persons3 = "person.3"
+    static let heart = "heart"
+    static let iphone = "iphone.gen3"
+    static let infoCircle = "info.circle"
 
 }
 

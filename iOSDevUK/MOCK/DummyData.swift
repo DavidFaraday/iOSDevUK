@@ -84,8 +84,8 @@ struct DummyData {
     static let contentForSession = "when an unknown printer."
 
     static let informationItems = [
-        InformationItem(id: UUID().uuidString, name: "Tickets", link: "http://users.aber.ac.uk/nst/iosdevuk/jump.php?to=tickets"),
-        InformationItem(id: UUID().uuidString, name: "Joining Instructions", link: "http://users.aber.ac.uk/nst/iosdevuk/jump.php?to=joining")
+        InformationItem(id: UUID().uuidString, name: "Tickets", link: "http://users.aber.ac.uk/nst/iosdevuk/jump.php?to=tickets", imageName: "questionmark"),
+        InformationItem(id: UUID().uuidString, name: "Joining Instructions", link: "http://users.aber.ac.uk/nst/iosdevuk/jump.php?to=joining", imageName: "questionmark")
     ]
 
     static let location = Location(id: "TestLocation123" ,name: "Great Hall", note: "Some notes about the location", imageLink: "https://picsum.photos/200", latitude: 52.416120, longitude: -4.083800, webLink: DummyData.link, locationType: .pubs)

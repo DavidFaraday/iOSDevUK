@@ -17,6 +17,7 @@ struct InfoView: View {
     @State var clickCount = 0
     
     
+    
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         if firebaseAuth.hasCurrentUser() {
@@ -44,11 +45,25 @@ struct InfoView: View {
         NavigationStack(path: $router.infoPath) {
             Form {
                 Section {
-                    NavigationLink(AppStrings.locations, value: InfoDestination.locationList)
-                    NavigationLink(AppStrings.inclusivity, value: InfoDestination.inclusivity)
-                    NavigationLink(AppStrings.sponsors, value: InfoDestination.sponsors)
-                    NavigationLink(AppStrings.aboutIOsDev, value: InfoDestination.aboutApp)
-                    NavigationLink(AppStrings.appInfo, value: InfoDestination.appInformation)
+                    NavigationLink(value: InfoDestination.locationList) {
+                        NavigationRowView(systemImageName: ImageNames.mapPinEmpty, title: AppStrings.locations)
+                    }
+                    NavigationLink(value: InfoDestination.inclusivity) {
+                        NavigationRowView(systemImageName: ImageNames.persons3, title: AppStrings.inclusivity)
+                    }
+
+                    NavigationLink(value: InfoDestination.sponsors) {
+                        NavigationRowView(systemImageName: ImageNames.heart, title: AppStrings.sponsors)
+                    }
+                    
+                    NavigationLink(value: InfoDestination.aboutApp) {
+                        NavigationRowView(systemImageName: ImageNames.infoCircle, title: AppStrings.aboutIOsDev)
+                    }
+
+                    NavigationLink(value: InfoDestination.appInformation) {
+                        NavigationRowView(systemImageName: ImageNames.iphone, title: AppStrings.appInfo)
+                    }
+
                 } footer: {
                     Text("Version: \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
                 }

@@ -11,6 +11,11 @@ struct Weblink: Codable, Hashable {
     let name: String
     let recordName: String
     let url: String
+    
+    var webUrl: URL? {
+        URL(string: url)
+    }
+
 }
 
 struct Speaker: Codable, Identifiable, Hashable, Comparable {

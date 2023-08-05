@@ -15,6 +15,7 @@ final class SpeakerDetailViewModel: ObservableObject {
 
     @Published private(set) var sessions:[Session] = []
     @Published private(set) var speaker: Speaker
+    @Published private(set) var webLinks: [Weblink] = []
     
     @Published var showError = false
     private var cancellables: Set<AnyCancellable> = []
@@ -28,7 +29,13 @@ final class SpeakerDetailViewModel: ObservableObject {
             self?.showError = true
             }
             .store(in: &cancellables)
+        
+        $speaker
+            .map( { $0.webLinks ?? [] })
+            .assign(to: &$webLinks)
     }
+    
+    
     
     @MainActor
     @Sendable func getSpeakerSessions() async {
