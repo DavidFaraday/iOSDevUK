@@ -11,9 +11,26 @@ struct AttendeeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
     
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     @ViewBuilder
     private func main() -> some View {
         Form {
+            ZStack {
+
+                if horizontalSizeClass == .regular {
+                    Image(ImageNames.infoBackground)
+                        .resizable(resizingMode: .tile)
+                        .frame(height: 200.0)
+                }
+
+                Image("AttendeesImage")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 400.0)
+                    .aspectRatio(contentMode: .fit)
+            }
+            
             ForEach(viewModel.infoItems) { item in
                 if let url = item.url {
                     Link(destination: url) {
