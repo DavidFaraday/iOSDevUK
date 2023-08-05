@@ -118,6 +118,28 @@ struct SpeakerDetailView: View {
             }
         }
     }
+
+    @ViewBuilder
+    private func webLinksView() -> some View {
+        if !viewModel.webLinks.isEmpty {
+            Divider()
+                        
+            Text(AppStrings.webLinks)
+                .font(.title3)
+                .foregroundColor(Color(ColorNames.secondary))
+                .padding(.top)
+                .padding(.bottom, 3)
+
+            ForEach(viewModel.webLinks, id: \.self) { link in
+                if let url = link.webUrl {
+                    Link(destination: url) {
+                        Text(link.name.capitalized)
+                            .padding(.bottom, 5)
+                    }
+                }
+            }
+        }
+    }
     
     @ViewBuilder
     private func main() -> some View {
@@ -126,6 +148,7 @@ struct SpeakerDetailView: View {
                 headerView()
                 Divider()
                 descriptionView()
+                webLinksView()
                 sessionsView()
             }
             .padding()

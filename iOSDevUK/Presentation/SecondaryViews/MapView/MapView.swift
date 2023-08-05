@@ -38,7 +38,7 @@ struct MapView: View {
             }
         }
         .pickerStyle(.segmented)
-        .padding(.vertical, 5)
+        .padding(5)
         .onChange(of: viewModel.locationCategory) {_ in
             viewModel.updateRegion()
         }

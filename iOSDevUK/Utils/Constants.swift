@@ -60,6 +60,7 @@ struct AppStrings {
     static let locationDetails = "Location Details"
     static let sponsorDetails = "Sponsor details"
     static let addSponsor = "Add Sponsor"
+    static let webLinks = "Link(s)"
 
 }
 
