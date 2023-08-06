@@ -19,9 +19,9 @@ struct SponsorRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             RemoteImageView(url: colorScheme == .dark ? sponsor.imageUrlDark : sponsor.imageUrlLight)
+                .aspectRatio(contentMode: .fit)
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
-                .aspectRatio(contentMode: .fit)
             
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 10)
