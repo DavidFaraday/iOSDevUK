@@ -106,7 +106,7 @@ struct SpeakerDetailView: View {
             
             Text(AppStrings.session)
                 .font(.title3)
-                .foregroundColor(.gray)
+                .foregroundColor(Color(ColorNames.secondary))
                 .bold()
                 .padding(.top)
                 .padding(.bottom, 5)

@@ -12,10 +12,10 @@ struct SessionRowView: View {
     let session: Session
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack {
                 Text(session.startDate.time)
-                    .foregroundColor(.red)
+                    .foregroundColor(.accentColor)
                 Text(session.endDate.time)
             }
             .font(.caption)

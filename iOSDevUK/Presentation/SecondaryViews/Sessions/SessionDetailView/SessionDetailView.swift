@@ -42,11 +42,26 @@ struct SessionDetailView: View {
     }
     
     @ViewBuilder
+    private func timeView() -> some View {
+        VStack(alignment: .leading) {
+            Text("Time")
+                .font(.title2)
+                .foregroundColor(Color(ColorNames.secondary))
+                .bold()
+                .padding(.top)
+                .padding(.bottom, 5)
+            
+            Text(viewModel.session?.duration ?? "Not set")
+        }
+        .padding(.horizontal)
+    }
+    
+    @ViewBuilder
     private func descriptionView() -> some View {
         VStack(alignment: .leading) {
             Text(AppStrings.description)
                 .font(.title2)
-                .foregroundColor(.gray)
+                .foregroundColor(Color(ColorNames.secondary))
                 .bold()
                 .padding(.top)
                 .padding(.bottom, 5)
@@ -64,7 +79,7 @@ struct SessionDetailView: View {
         VStack(alignment: .leading) {
             Text(AppStrings.speaker)
                 .font(.title3)
-                .foregroundColor(.gray)
+                .foregroundColor(Color(ColorNames.secondary))
                 .bold()
                 .padding(.top)
                 .padding(.bottom, 5)
@@ -94,7 +109,7 @@ struct SessionDetailView: View {
         VStack(alignment: .leading) {
             Text(AppStrings.location)
                 .font(.title3)
-                .foregroundColor(.gray)
+                .foregroundColor(Color(ColorNames.secondary))
                 .bold()
                 .padding(.top)
                 .padding(.bottom, 5)
@@ -129,6 +144,7 @@ struct SessionDetailView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 headerView()
+                timeView()
                 descriptionView()
                 if let speakers = viewModel.speakers, !speakers.isEmpty {
                     speakersView()
