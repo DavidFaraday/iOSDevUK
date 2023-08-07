@@ -49,7 +49,7 @@ struct InfoView: View {
                         NavigationRowView(systemImageName: ImageNames.mapPinEmpty, title: AppStrings.locations)
                     }
                     NavigationLink(value: InfoDestination.inclusivity) {
-                        NavigationRowView(systemImageName: ImageNames.persons3, title: AppStrings.inclusivity)
+                        NavigationRowView(systemImageName: ImageNames.personsCircle, title: AppStrings.inclusivity)
                     }
 
                     NavigationLink(value: InfoDestination.sponsors) {

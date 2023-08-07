@@ -36,12 +36,12 @@ struct WeatherView: View {
             
             Spacer()
             Image(systemName: currentWeather.symbolName)
-                .font(.system(size: 75))
+                .font(.system(size: 65))
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(Color.primary, Color.blue)
             
             Text(isCelsius ? currentWeather.feelsLikeC.roundNearest().toCelsius : currentWeather.feelsLikeF.roundNearest().toFahrenheit)
-                .font(.system(size: 45))
+                .font(.system(size: 40))
         }
         .padding(.horizontal, 16)
         

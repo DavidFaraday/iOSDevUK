@@ -43,17 +43,19 @@ struct SessionDetailView: View {
     
     @ViewBuilder
     private func timeView() -> some View {
-        VStack(alignment: .leading) {
-            Text("Time")
-                .font(.title2)
-                .foregroundColor(Color(ColorNames.secondary))
-                .bold()
-                .padding(.top)
-                .padding(.bottom, 5)
-            
-            Text(viewModel.session?.duration ?? "Not set")
+        if let duration = viewModel.session?.duration {
+            VStack(alignment: .leading) {
+                Text(AppStrings.time)
+                    .font(.title2)
+                    .foregroundColor(Color(ColorNames.secondary))
+                    .bold()
+                    .padding(.top)
+                    .padding(.bottom, 5)
+                
+                Text(duration)
+            }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
     
     @ViewBuilder
