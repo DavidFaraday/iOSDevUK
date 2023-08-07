@@ -17,7 +17,9 @@ struct WeatherView: View {
     
     @ViewBuilder
     func currentWeatherView(_ currentWeather: WeatherData) -> some View {
-        
+        Text(AppStrings.aberystwyth)
+            .font(.headline)
+            .padding(.horizontal, 16)
         HStack(spacing: 8) {
             
             Button {
@@ -87,7 +89,7 @@ struct WeatherView: View {
     
     var body: some View {
         main()
-            .task { viewModel.setLocation(location: locationManager.locationManager?.location) }
+            .task { viewModel.setLocation(location: MapDetails.defaultLocationAberystwyth) }
             .task(viewModel.getWeather)
     }
 }
