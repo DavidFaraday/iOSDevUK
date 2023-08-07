@@ -11,16 +11,16 @@ enum MapDetails {
     static let startingLatitude: CLLocationDegrees = 52.41483885670968
     static let startingLongitude: CLLocationDegrees =  -4.076185527558135
     static let defaultLocationAberystwyth = CLLocation(latitude: startingLatitude, longitude: startingLongitude)
-    static let default2DLocationAberystwyth = defaultLocationAberystwyth.coordinate
+    static let aberystwythCoordinates = defaultLocationAberystwyth.coordinate
     static let defaultSpan = MKCoordinateSpan.init(latitudeDelta: 0.025, longitudeDelta: 0.025)
 }
 
 class LocationService: NSObject, CLLocationManagerDelegate, ObservableObject {
     
-    @Published var region = MKCoordinateRegion(center: MapDetails.default2DLocationAberystwyth,
+    @Published var region = MKCoordinateRegion(center: MapDetails.aberystwythCoordinates,
                                                span: MapDetails.defaultSpan)
     
-    @Published var currentLocation = MapDetails.default2DLocationAberystwyth
+    @Published var currentLocation = MapDetails.aberystwythCoordinates
     
     static let shared = LocationService()
     

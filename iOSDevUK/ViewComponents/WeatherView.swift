@@ -17,9 +17,13 @@ struct WeatherView: View {
     
     @ViewBuilder
     func currentWeatherView(_ currentWeather: WeatherData) -> some View {
-        Text(AppStrings.aberystwyth)
-            .font(.headline)
-            .padding(.horizontal, 16)
+        HStack {
+            Text(AppStrings.aberystwyth)
+                .font(.headline)
+                .padding(.horizontal, 16)
+            Spacer()
+        }
+        
         HStack(spacing: 8) {
             
             Button {
@@ -38,12 +42,12 @@ struct WeatherView: View {
             
             Spacer()
             Image(systemName: currentWeather.symbolName)
-                .font(.system(size: 65))
+                .font(.system(size: 60))
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(Color.primary, Color.blue)
             
             Text(isCelsius ? currentWeather.feelsLikeC.roundNearest().toCelsius : currentWeather.feelsLikeF.roundNearest().toFahrenheit)
-                .font(.system(size: 40))
+                .font(.system(size: 35))
         }
         .padding(.horizontal, 16)
         
