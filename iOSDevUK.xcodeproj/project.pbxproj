@@ -984,6 +984,7 @@
 				DEVELOPMENT_TEAM = 7P6AJEE272;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOSDevUK/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "iOSDevUK uses your location to show on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1016,6 +1017,7 @@
 				DEVELOPMENT_TEAM = 7P6AJEE272;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOSDevUK/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "iOSDevUK uses your location to show on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -99,20 +99,30 @@ final class SessionDetailViewModel: ObservableObject {
         self.fetchError = nil
     }
     
+    
+    /// Add the current session to the CoreData store for the `My Sessions` list.
+    /// The code checks that there isn't already an entry with the same identifier in the data store. If there is no match,
+    /// a new record is added to the data store, which is then propagated to other connected devices using
+    /// Core Data and CloudKit synchronisation.
+    ///
+    /// - Parameter context: The Core Data context that will manage the data.
     func addToMySession(context: NSManagedObjectContext) {
         guard let session = session else { return }
 
-        let cdSession = SavedSession(context: context)
-        cdSession.title = session.title
-        cdSession.id = session.id
-        cdSession.startDate = session.startDate
-        cdSession.endDate = session.endDate
-        cdSession.content = session.content
-        cdSession.startDateName = session.startingDay
-        cdSession.locationName = location?.name
-        cdSession.locationId = location?.id
-        
-        DataController.save(context: context)
+        let exists = DataController.entityExists(forId: sessionId, inContext: context)
+        if !exists.description.isEmpty {
+            let cdSession = SavedSession(context: context)
+            cdSession.title = session.title
+            cdSession.id = session.id
+            cdSession.startDate = session.startDate
+            cdSession.endDate = session.endDate
+            cdSession.content = session.content
+            cdSession.startDateName = session.startingDay
+            cdSession.locationName = location?.name
+            cdSession.locationId = location?.id
+            
+            DataController.save(context: context)
+        }
     }
     
     func removeFromMySessions(savedSession: SavedSession, context: NSManagedObjectContext) {
