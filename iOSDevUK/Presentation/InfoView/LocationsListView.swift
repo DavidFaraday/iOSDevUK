@@ -61,5 +61,6 @@ struct LocationsListView: View {
 struct LocationsListView_Previews: PreviewProvider {
     static var previews: some View {
         LocationsListView()
+            .environmentObject(BaseViewModel.sharedMock)
     }
 }

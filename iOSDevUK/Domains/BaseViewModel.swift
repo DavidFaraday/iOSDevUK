@@ -14,16 +14,35 @@ class BaseViewModel: ObservableObject {
     @Published private(set) var fetchError: Error?
 
     @Published private(set) var eventInformation: EventInformation?
-    @Published private(set) var sessions: [Session] = []
-    @Published private(set) var speakers: [Speaker] = []
-    @Published private(set) var sponsors: [Sponsor] = []
-    @Published private(set) var locations: [Location] = []
-    @Published private(set) var infoItems: [InformationItem] = []
+    @Published private(set) var sessions: [Session]
+    @Published private(set) var speakers: [Speaker]
+    @Published private(set) var sponsors: [Sponsor]
+    @Published private(set) var locations: [Location]
+    @Published private(set) var infoItems: [InformationItem]
     @Published private(set) var currentWeather: WeatherData?
-    @Published private(set) var hourlyWeather: [WeatherData] = []
+    @Published private(set) var hourlyWeather: [WeatherData]
     
     private var cancellables: Set<AnyCancellable> = []
-    
+
+    init(eventInformation: EventInformation? = nil,
+         sessions: [Session] = [],
+         speakers: [Speaker] = [],
+         sponsors: [Sponsor] = [],
+         locations: [Location] = [],
+         infoItems: [InformationItem] = [],
+         currentWeather: WeatherData? = nil,
+         hourlyWeather: [WeatherData] = []
+    ){
+        self.eventInformation = eventInformation
+        self.sessions = sessions
+        self.speakers = speakers
+        self.sponsors = sponsors
+        self.locations = locations
+        self.infoItems = infoItems
+        self.currentWeather = currentWeather
+        self.hourlyWeather = hourlyWeather
+    }
+
     @MainActor
     @Sendable func listenForSessions() async {
         guard self.sessions.isEmpty else { return }
@@ -157,3 +176,18 @@ class BaseViewModel: ObservableObject {
         }
     }
 }
+
+#if DEBUG
+extension BaseViewModel {
+    static let sharedMock = BaseViewModel(
+        eventInformation: DummyData.eventInformation,
+        sessions: DummyData.sessions,
+        speakers: DummyData.speakers,
+        sponsors: DummyData.sponsors,
+        locations: [DummyData.location],
+        infoItems: DummyData.informationItems,
+        currentWeather: DummyData.weatherData,
+        hourlyWeather: [DummyData.weatherData]
+    )
+}
+#endif

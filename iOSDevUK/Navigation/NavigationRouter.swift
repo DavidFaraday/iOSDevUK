@@ -12,6 +12,8 @@ final class NavigationRouter: ObservableObject {
     @Published var schedulePath: [Destination] = []
     @Published var attendeePath: [Destination] = []
     @Published var infoPath: [InfoDestination] = []
+
+    static let shared = NavigationRouter()
 }
 
 

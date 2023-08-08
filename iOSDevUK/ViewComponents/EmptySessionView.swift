@@ -48,8 +48,10 @@ struct EmptySessionView: View {
 
 struct EmptySessionView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptySessionView(message: "You currently have no sessions added. \n Please bookmark sessions to see them here.") {
-            
+        NavigationStack() {
+            EmptySessionView(message: AppStrings.emptySessionMessage, buttonTitle: AppStrings.takeMeThere)  {
+            }
+            .navigationTitle(AppStrings.mySessions)
         }
     }
 }

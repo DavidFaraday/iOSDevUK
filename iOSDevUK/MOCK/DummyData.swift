@@ -102,11 +102,10 @@ struct DummyData {
         
         Session(id: "Session321", title: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout", content: contentForSession, startDate: Date(), endDate: Date(), locationId: "376A09A8-6E1D-404E-AAD6-05C8E950DF32", speakerIds: ["1667F0A8-A62E-4C66-8957-96B08550DB4D", "C3DD9203-7B66-492B-AE8B-FB77168FAED5"], type: .talk)
     ]
-
         
     static let speakers = [
-        Speaker(id: "Speaker1ID", name: "Kababyan", biography: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown ", linkedIn: "my linked in", twitterId: "@ArturIosDev", imageLink: "https://xsgames.co/randomusers/avatar.php?g=male", webLinks: nil),
-        Speaker(id: "Speaker2ID", name: "Somevewrylong Kababyan", biography: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown ", linkedIn: "my linked in", twitterId: "@ArturIosDev", imageLink: "https://xsgames.co/randomusers/avatar.php?g=female", webLinks: nil)
+        Speaker(id: "Speaker1ID", name: "Kababyan", biography: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown ", linkedIn: "davidkababyan", twitterId: "@ArturIosDev", imageLink: "https://xsgames.co/randomusers/avatar.php?g=male", webLinks: [link]),
+        Speaker(id: "Speaker2ID", name: "Somevewrylong Kababyan", biography: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown ", linkedIn: "davidkababyan", twitterId: "@ArturIosDev", imageLink: "https://xsgames.co/randomusers/avatar.php?g=female", webLinks: nil)
     ]
 
     static let aboutString = "iOSDevUK is a conference."
@@ -114,4 +113,12 @@ struct DummyData {
     static let eventNotification = "iOSDevUK 10 has finished."
     
     static let weatherData = WeatherData(tempDate: .now, condition: "Blowing Dust", symbolName: "sun.max", currentTempC: 22.1, feelsLikeC: 22.5)
+
+    static let eventInformation = EventInformation(
+        about: "iOSDevUK is a conference organised by the Computer Science Department at Aberystwyth University. iOS, iPhone, iPad, Apple Watch, watchOS, Apple TV and tvOS are trademarks of Apple Inc. For the avoidance of doubt, Apple Inc. has no association with this conference.",
+        notification: "iOSDevUK 11 will take place at Aberystwyth University from  4th to 7th September, 2023",
+        startDate: Calendar.current.date(from: DateComponents(year: 2023, month: 9, day: 4))!,
+        endDate:  Calendar.current.date(from: DateComponents(year: 2023, month: 9, day: 7))!,
+        inclusivityText: "We believe that anyone should be able to feel welcome, included, and safe at our conference. That means anyone, irrespective of gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, religion."
+    )
 }

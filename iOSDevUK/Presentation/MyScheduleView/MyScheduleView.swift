@@ -98,5 +98,8 @@ struct MyScheduleView: View {
 struct MyScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         MyScheduleView()
+            .environmentObject(BaseViewModel.sharedMock)
+            .environmentObject(NavigationRouter.shared)
+            .previewDisplayName("Empty view")
     }
 }

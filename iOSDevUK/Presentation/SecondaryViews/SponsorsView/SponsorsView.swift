@@ -31,5 +31,6 @@ struct SponsorsView: View {
 struct SponsorsView_Previews: PreviewProvider {
     static var previews: some View {
         SponsorsView()
+            .environmentObject(BaseViewModel.sharedMock)
     }
 }

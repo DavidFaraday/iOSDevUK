@@ -179,13 +179,19 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
         .previewDevice(PreviewDevice(rawValue: "iPhone 14 pro"))
         .previewDisplayName("iPhone 14")
+        .environmentObject(BaseViewModel.sharedMock)
+        .environmentObject(NavigationRouter.shared)
 
         HomeView()
         .previewDevice(PreviewDevice(rawValue: "iPad mini (6th generation)"))
         .previewDisplayName("iPad mini")
+        .environmentObject(BaseViewModel.sharedMock)
+        .environmentObject(NavigationRouter.shared)
 
         HomeView()
         .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
         .previewDisplayName("iPad pro 11")
+        .environmentObject(BaseViewModel.sharedMock)
+        .environmentObject(NavigationRouter.shared)
     }
 }

@@ -25,3 +25,9 @@ struct SectionHeaderView: View {
         .textCase(nil)
     }
 }
+
+struct SectionHeaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        SectionHeaderView(title: "Aberystwyth University")
+    }
+}

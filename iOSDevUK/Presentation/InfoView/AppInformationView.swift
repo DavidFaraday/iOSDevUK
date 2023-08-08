@@ -41,15 +41,8 @@ struct AppInformationView: View {
 
 struct AppInformationView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            NavigationView {
-                AppInformationView()
-                    .preferredColorScheme(.dark)
-            }
-            NavigationView {
-                AppInformationView()
-                    .preferredColorScheme(.light)
-            }
+        NavigationView {
+            AppInformationView()
         }
     }
 }

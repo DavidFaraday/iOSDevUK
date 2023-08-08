@@ -55,5 +55,7 @@ struct AttendeeView: View {
 struct AttendeeView_Previews: PreviewProvider {
     static var previews: some View {
         AttendeeView()
+            .environmentObject(BaseViewModel.sharedMock)
+            .environmentObject(NavigationRouter.shared)
     }
 }

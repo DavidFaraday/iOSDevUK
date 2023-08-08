@@ -33,5 +33,6 @@ struct InclusivityView: View {
 struct InclusivityViewView_Previews: PreviewProvider {
     static var previews: some View {
         InclusivityView()
+            .environmentObject(BaseViewModel.sharedMock)
     }
 }
