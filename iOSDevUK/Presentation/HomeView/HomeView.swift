@@ -12,6 +12,16 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
     
+    let columns = UIDevice.current.userInterfaceIdiom == .pad ? [
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120))
+    ] : [
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 120))
+    ]
+
     @ViewBuilder
     private func headerView() -> some View {
 
@@ -73,7 +83,7 @@ struct HomeView: View {
     private func speakerView() -> some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(AppStrings.speakers) .font(.title2).bold()
+                Text(AppStrings.speakers).font(.title2).bold()
                 Spacer()
                 NavigationLink(AppStrings.allSpeakers, value: Destination.speakers(viewModel.speakers))
             }
@@ -122,6 +132,24 @@ struct HomeView: View {
     }
 
     
+    @ViewBuilder
+    private func sponsorView() -> some View {
+        VStack {
+            HStack {
+                Text(AppStrings.sponsors).font(.title2).bold()
+                Spacer()
+            }
+            
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach(viewModel.sponsors) { sponsor in
+                    NavigationLink(value: Destination.sponsor) {
+                        SponsorCard(sponsor: sponsor)
+                    }
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
     
     @ViewBuilder
     private func main() -> some View {
@@ -129,11 +157,14 @@ struct HomeView: View {
             VStack(spacing: 20) {
                 WeatherView()
 
+                sessionView()
+                speakerView()
+                sponsorView()
+                
                 if viewModel.eventInformation != nil {
                     headerView()
                 }
-                sessionView()
-                speakerView()
+
                 footerView()
             }
         }
