@@ -61,16 +61,4 @@ final class SessionRowViewModel: ObservableObject {
             }
         }
     }
-    
-//    func speakerNames() -> String {
-//
-//        guard let speakers = speakers else { return "" }
-//
-//        let sortedNames = speakers.sorted()
-//
-//        var joinedNames = ""
-//        joinedNames.append(sortedNames.map{ "\($0.name)" }.joined(separator: ", "))
-//
-//        return joinedNames
-//    }
 }
