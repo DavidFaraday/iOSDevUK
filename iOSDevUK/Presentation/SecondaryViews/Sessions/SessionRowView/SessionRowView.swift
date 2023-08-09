@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SessionRowView: View {
     @StateObject private var viewModel = SessionRowViewModel()
+    
     let session: Session
     
     var body: some View {
@@ -24,8 +25,15 @@ struct SessionRowView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(session.title)
                     .font(.title3)
-                Text(viewModel.speakerNames())
-                    .padding(.trailing)
+                
+                if let names = viewModel.speakerNames {
+                    Text(names)
+                        .multilineTextAlignment(.leading)
+                        .minimumScaleFactor(0.8)
+                        .padding(.trailing)
+                        .foregroundColor(.accentColor)
+                }
+                
                 Text(viewModel.location?.name ?? "")
                     .font(.caption)
                     .foregroundColor(.gray)

@@ -7,13 +7,30 @@
 
 import SwiftUI
 import Factory
+import Combine
 
 final class SessionRowViewModel: ObservableObject {
     @Injected(\.firebaseRepository) private var firebaseRepository
     @Published private(set) var fetchError: Error?
     @Published private(set) var location: Location?
     @Published private(set) var speakers: [Speaker]?
+    @Published private(set) var speakerNames: String?
     
+    init() {
+        observerData()
+    }
+    
+    private func observerData() {
+        $speakers
+            .compactMap { $0 }
+            .filter { !$0.isEmpty }
+            .map { $0.sorted() }
+            .map { sortedSpeakers in
+                sortedSpeakers.map { $0.name }.joined(separator: ", ")
+            }
+            .assign(to: &$speakerNames)
+    }
+        
     @MainActor
     @Sendable func fetchSpeakers(with speakerIds: [String]) async {
         guard speakers == nil else { return }
@@ -45,15 +62,15 @@ final class SessionRowViewModel: ObservableObject {
         }
     }
     
-    func speakerNames() -> String {
-
-        guard let speakers = speakers else { return "" }
-        
-        let sortedNames = speakers.sorted()
-        
-        var joinedNames = ""
-        joinedNames.append(sortedNames.map{ "\($0.name)" }.joined(separator: ", "))
-       
-        return joinedNames
-    }
+//    func speakerNames() -> String {
+//
+//        guard let speakers = speakers else { return "" }
+//
+//        let sortedNames = speakers.sorted()
+//
+//        var joinedNames = ""
+//        joinedNames.append(sortedNames.map{ "\($0.name)" }.joined(separator: ", "))
+//
+//        return joinedNames
+//    }
 }
