@@ -15,7 +15,7 @@ struct SessionRowForLocalSession: View {
         HStack {
             VStack {
                 Text("\(session.startDate?.time ?? AppStrings.loading)")
-                    .foregroundColor(.red)
+                    .foregroundColor(.accentColor)
                 Text("\(session.endDate?.time ?? AppStrings.loading)")
             }
             .font(.caption)

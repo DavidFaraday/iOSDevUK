@@ -12,7 +12,7 @@ struct SessionRowView: View {
     let session: Session
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack {
             VStack {
                 Text(session.startDate.time)
                     .foregroundColor(.accentColor)
@@ -24,6 +24,8 @@ struct SessionRowView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(session.title)
                     .font(.title3)
+                Text(viewModel.speakerNames())
+                    .padding(.trailing)
                 Text(viewModel.location?.name ?? "")
                     .font(.caption)
                     .foregroundColor(.gray)
@@ -32,6 +34,7 @@ struct SessionRowView: View {
             .lineLimit(2)
         }
         .task {
+            await viewModel.fetchSpeakers(with: session.speakerIds)
             await viewModel.fetchLocation(with: session.locationId)
         }
     }
