@@ -16,8 +16,12 @@ struct AttendeeView: View {
         Form {
             ForEach(viewModel.infoItems) { item in
                 if let url = item.url {
-                    Link(destination: url) {
-                        NavigationRowView(systemImageName: item.imageName ?? ImageNames.questionmark, title: item.name)
+                    Section {
+                        Link(destination: url) {
+                            NavigationRowView(systemImageName: item.imageName ?? ImageNames.questionmark, title: item.name)
+                        }
+                    } footer: {
+                        Text(item.subtitle)
                     }
                 } else {
                     Text(item.name)
