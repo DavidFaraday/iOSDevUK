@@ -16,7 +16,7 @@ struct AppStrings {
     static let slackChannel = "iOSDevUK Slack Channel"
     static let iOSDevTwitter = "@iOSDevUK on Twitter"
     static let aberCompTwitter = "@AberCompSci on Twitter"
-    static let iOSDevUK = "iOSDev UK"
+    static let iOSDevUK = "iOSDevUK"
     static let mySessions = "My Sessions"
     static let emptySessionMessage = "You currently have no sessions added. \n Please bookmark sessions to see them here."
     static let takeMeThere = "Take me there"
@@ -61,6 +61,7 @@ struct AppStrings {
     static let sponsorDetails = "Sponsor details"
     static let addSponsor = "Add Sponsor"
     static let webLinks = "Link(s)"
+    static let time = "Time"
     static let aberystwyth = "Aberystwyth"
 
 }
@@ -92,10 +93,11 @@ struct ImageNames {
     static let linkedIn = "linkedin"
     static let twitter = "twitter"
     static let mapPinEmpty = "mappin.circle"
-    static let persons3 = "person.3"
+    static let personsCircle = "person.circle"
     static let heart = "heart"
     static let iphone = "iphone.gen3"
     static let infoCircle = "info.circle"
+    static let ticket = "ticket"
 
 }
 

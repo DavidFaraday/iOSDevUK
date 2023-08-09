@@ -27,6 +27,7 @@
 		6367516F29B4EB5B003B8B5A /* AdminLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367516E29B4EB5B003B8B5A /* AdminLocationViewModel.swift */; };
 		638402A62972F1D100DE8D59 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638402A52972F1D100DE8D59 /* LoginViewModel.swift */; };
 		639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639BEAF829099E8D009C3870 /* AdminViewModel.swift */; };
+		63A2BDB52A81680F000A1E5A /* SponsorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2BDB42A81680F000A1E5A /* SponsorCard.swift */; };
 		63A6A770290AED4C00940170 /* SponsorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6A76F290AED4C00940170 /* SponsorsView.swift */; };
 		63A6A772290AF08300940170 /* SponsorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6A771290AF08300940170 /* SponsorRow.swift */; };
 		63A8509B29917C1D0000AB15 /* FirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8509A29917C1D0000AB15 /* FirebaseFileManager.swift */; };
@@ -141,6 +142,7 @@
 		6367516E29B4EB5B003B8B5A /* AdminLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLocationViewModel.swift; sourceTree = "<group>"; };
 		638402A52972F1D100DE8D59 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		639BEAF829099E8D009C3870 /* AdminViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewModel.swift; sourceTree = "<group>"; };
+		63A2BDB42A81680F000A1E5A /* SponsorCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorCard.swift; sourceTree = "<group>"; };
 		63A6A76F290AED4C00940170 /* SponsorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsView.swift; sourceTree = "<group>"; };
 		63A6A771290AF08300940170 /* SponsorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorRow.swift; sourceTree = "<group>"; };
 		63A8509A29917C1D0000AB15 /* FirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFileManager.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				63C79DA329B5032E004319C1 /* EmptySessionView.swift */,
 				63A986A829D047260008DE95 /* WeatherView.swift */,
 				63D1D7F229D9E3A9001A4066 /* HourlyWeatherView.swift */,
+				63A2BDB42A81680F000A1E5A /* SponsorCard.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				63E8E861290E5898002419A7 /* String + Extensions.swift in Sources */,
 				63E9C55528EAE73000710C8F /* SessionDetailViewModel.swift in Sources */,
 				634E7AC128DB8166001DC796 /* SessionCardView.swift in Sources */,
+				63A2BDB52A81680F000A1E5A /* SponsorCard.swift in Sources */,
 				633604E829167F7A0032955B /* DataController.swift in Sources */,
 				63F7E0F028CC982200B2E1B7 /* AttendeeView.swift in Sources */,
 				EF8AC50F2932389300E19859 /* ServiceDependencies.swift in Sources */,
