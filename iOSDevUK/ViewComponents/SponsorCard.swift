@@ -9,18 +9,19 @@ import SwiftUI
 
 struct SponsorCard: View {
     @Environment(\.colorScheme) var colorScheme
-    
+    let height: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 60 : 40
+
     let sponsor: Sponsor
     
     var body: some View {
         VStack(alignment: .leading) {
             RemoteImageView(url: colorScheme == .dark ? sponsor.imageUrlDark : sponsor.imageUrlLight)
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 60)
+                .frame(height: height)
                 .frame(maxWidth: .infinity)
                 .padding()
         }
-        .background(RoundedRectangle(cornerRadius: 10).fill(sponsor.sponsorCategory.color).shadow(radius: 20))
+        .background(RoundedRectangle(cornerRadius: 10).stroke(sponsor.sponsorCategory.color).shadow(radius: 20))
     }
 }
 

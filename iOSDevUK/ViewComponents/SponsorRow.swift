@@ -26,10 +26,12 @@ struct SponsorRow: View {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(height: 50)
-                    .foregroundColor(sponsor.sponsorCategory.color)
-                
+                    .foregroundColor(sponsor.sponsorCategory.color.opacity(30))
+                    .background(RoundedRectangle(cornerRadius: 10).stroke(sponsor.sponsorCategory.color.gradient))
+
                 Text(sponsor.name)
                     .font(.title2)
+                    .foregroundColor(.black)
             }
             
             Text(sponsor.tagline)
