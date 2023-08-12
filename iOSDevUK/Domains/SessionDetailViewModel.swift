@@ -7,11 +7,12 @@
 
 import Factory
 import SwiftUI
-import CoreData
 import Combine
 
 final class SessionDetailViewModel: ObservableObject {
     @Injected(\.firebaseRepository) private var firebaseRepository
+    @Injected(\.localStorage) private var localStorage
+
     @Published private(set) var fetchError: Error?
 
     @Published private(set) var session: Session?
@@ -19,6 +20,9 @@ final class SessionDetailViewModel: ObservableObject {
     @Published private(set) var location: Location?
     
     @Published var showError = false
+    @Published var favoriteSessionIds: [String] = []
+    @Published var isSessionFavorite = false
+
     private var cancellables: Set<AnyCancellable> = []
 
     private let sessionId: String
@@ -33,6 +37,12 @@ final class SessionDetailViewModel: ObservableObject {
                 self?.showError = true
             }
             .store(in: &cancellables)
+        
+        $favoriteSessionIds
+            .map { $0.contains(sessionId) }
+            .assign(to: &$isSessionFavorite)
+        
+        loadFavSessions()
     }
     
     @MainActor
@@ -46,7 +56,6 @@ final class SessionDetailViewModel: ObservableObject {
         }
     }
 
-    
     @MainActor
     func fetchSpeakers() async {
         guard let session = session else { return }
@@ -78,7 +87,6 @@ final class SessionDetailViewModel: ObservableObject {
         }
     }
 
-
     @MainActor
     func fetchLocation() async {
 
@@ -98,25 +106,20 @@ final class SessionDetailViewModel: ObservableObject {
     func resetError() {
         self.fetchError = nil
     }
-    
-    func addToMySession(context: NSManagedObjectContext) {
-        guard let session = session else { return }
-
-        let cdSession = SavedSession(context: context)
-        cdSession.title = session.title
-        cdSession.id = session.id
-        cdSession.startDate = session.startDate
-        cdSession.endDate = session.endDate
-        cdSession.content = session.content
-        cdSession.startDateName = session.startingDay
-        cdSession.locationName = location?.name
-        cdSession.locationId = location?.id
         
-        DataController.save(context: context)
+    @MainActor
+    func updateFavoritSession() {
+        if let index = favoriteSessionIds.firstIndex(of: sessionId) {
+            favoriteSessionIds.remove(at: index)
+        } else {
+            favoriteSessionIds.append(sessionId)
+        }
+        
+        localStorage.save(items: favoriteSessionIds, for: AppConstants.sessionKey)
+        loadFavSessions()
     }
     
-    func removeFromMySessions(savedSession: SavedSession, context: NSManagedObjectContext) {
-        context.delete(savedSession)
-        DataController.save(context: context)
+    private func loadFavSessions() {
+        self.favoriteSessionIds = localStorage.loadArray(with: AppConstants.sessionKey)
     }
 }

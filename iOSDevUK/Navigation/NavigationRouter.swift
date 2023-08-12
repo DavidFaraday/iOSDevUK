@@ -22,7 +22,6 @@ enum Destination: Hashable {
     case sessions([Session])
     case sponsor
     case locations(locations: [Location])
-    case savedSession(SavedSession)
 }
 
 enum InfoDestination: Hashable {

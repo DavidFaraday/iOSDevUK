@@ -10,7 +10,6 @@ import Firebase
 
 @main
 struct iOSDevUKApp: App {
-    @StateObject var dataController = DataController()
     
     init() {
         FirebaseApp.configure()
@@ -22,7 +21,6 @@ struct iOSDevUKApp: App {
                 .environmentObject(NavigationRouter())
                 .environmentObject(BaseViewModel())
                 .environmentObject(LocationService.shared)
-                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
