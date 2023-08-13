@@ -18,10 +18,12 @@ struct SessionCardView: View {
     private func speakerImageView() -> some View {
         VStack(spacing: 5) {
             ForEach(viewModel.speakers?.prefix(3) ?? []) { speaker in
-                RemoteImageView(url: speaker.imageUrl)
-                    .scaledToFill()
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
+                if speaker.name != "You" {
+                    RemoteImageView(url: speaker.imageUrl)
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                }
             }
         }
         .padding(.trailing, 10)
