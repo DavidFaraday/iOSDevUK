@@ -132,6 +132,7 @@ struct FirebaseKeys {
 
 struct AppConstants {
     static let textViewHeight = 300.0
+    static let sessionKey = "favoriteSessionIds"
 }
 
 struct FirebaseLinks {

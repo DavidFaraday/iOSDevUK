@@ -6,63 +6,61 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct MyScheduleView: View {
     @Environment(\.managedObjectContext) var context
     @EnvironmentObject var router: NavigationRouter
     @EnvironmentObject var baseViewModel: BaseViewModel
 
-    @SectionedFetchRequest(sectionIdentifier: \.startDateName!, sortDescriptors: [SortDescriptor(\.startDate)], animation: .default)
-    private var records: SectionedFetchResults<String, SavedSession>
-
+        
     @StateObject private var viewModel = MyScheduleViewModel()
 
+    
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        if !records.isEmpty {
+        if !viewModel.favoriteSessionIds.isEmpty {
             Button(AppStrings.sessions) {
                 router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
             }
         }
     }
 
-    
+
     @ViewBuilder
     private func main() -> some View {
+        
         ZStack {
-            VStack {
-                List {
-                    ForEach(records) { section in
-                        
-                        Section {
-                            ForEach(section) { session in
-                                NavigationLink(value: Destination.savedSession(session)) {
-                                    SessionRowForLocalSession(session: session)
-                                }
+            List {
+                ForEach(viewModel.groupedSessions.keys.sorted(), id: \.self) { key in
+                    
+                    Section {
+                        ForEach(viewModel.groupedSessions[key] ?? []) { session in
+                            NavigationLink(value: Destination.session(session)) {
+                                SessionRowView(session: session)
                             }
-                            .onDelete { indexSet in
-                                withAnimation {
-                                    viewModel.deleteItem(
-                                        for: indexSet,
-                                        section: section,
-                                        viewContext: context)
-                                }
+                        }
+                        .onDelete { indexSet in
+                            withAnimation {
+                                viewModel.delete(
+                                    for: indexSet,
+                                    key: key)
                             }
-                        } header: {
-                            SectionHeaderView(title: section.id)
+                        }
+                    } header: {
+                        if !(viewModel.groupedSessions[key]?.isEmpty ?? true) {
+                            SectionHeaderView(title: key)
                                 .font(.headline)
                         }
                     }
                 }
             }
+
             
-            if records.isEmpty {
+            if viewModel.favoriteSessionIds.isEmpty {
                 EmptySessionView(message: AppStrings.emptySessionMessage, buttonTitle: AppStrings.takeMeThere) {
                     router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
                 }
             }
-
         }
     }
 
@@ -70,6 +68,11 @@ struct MyScheduleView: View {
         NavigationStack(path: $router.schedulePath) {
             main()
                 .navigationTitle(AppStrings.mySessions)
+                .onAppear {
+                    viewModel.loadFavSessions()
+                    viewModel.setSessions(allSessions: baseViewModel.sessions)
+                }
+                .task(viewModel.listenForEventNotification)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
                 }
@@ -87,8 +90,6 @@ struct MyScheduleView: View {
                         SponsorsView()
                     case .locations(let locations):
                         MapView(allLocations: locations)
-                    case .savedSession(let savedSession):
-                        SessionDetailView(sessionId: savedSession.id ?? "")
                     }
                 }
         }

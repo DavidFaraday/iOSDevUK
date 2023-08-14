@@ -57,7 +57,7 @@ final class SessionCardViewModel: ObservableObject {
         let sortedNames = speakers.sorted()
         
         var joinedNames = ""
-        joinedNames.append(sortedNames.map{ "\($0.name)" }.joined(separator: ", "))
+        joinedNames.append(sortedNames.map { "\($0.name)" }.joined(separator: ", "))
        
         return joinedNames
     }

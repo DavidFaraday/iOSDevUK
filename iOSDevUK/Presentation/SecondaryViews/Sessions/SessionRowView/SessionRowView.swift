@@ -9,10 +9,11 @@ import SwiftUI
 
 struct SessionRowView: View {
     @StateObject private var viewModel = SessionRowViewModel()
+    
     let session: Session
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack {
             VStack {
                 Text(session.startDate.time)
                     .foregroundColor(.accentColor)
@@ -24,6 +25,15 @@ struct SessionRowView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(session.title)
                     .font(.title3)
+                
+                if let names = viewModel.speakerNames {
+                    Text(names)
+                        .multilineTextAlignment(.leading)
+                        .minimumScaleFactor(0.8)
+                        .padding(.trailing)
+                        .foregroundColor(.accentColor)
+                }
+                
                 Text(viewModel.location?.name ?? "")
                     .font(.caption)
                     .foregroundColor(.gray)
@@ -32,6 +42,7 @@ struct SessionRowView: View {
             .lineLimit(2)
         }
         .task {
+            await viewModel.fetchSpeakers(with: session.speakerIds)
             await viewModel.fetchLocation(with: session.locationId)
         }
     }

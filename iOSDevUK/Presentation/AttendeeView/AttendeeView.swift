@@ -48,8 +48,6 @@ struct AttendeeView: View {
                             SponsorsView()
                         case .locations(let locations):
                             MapView(allLocations: locations)
-                        case .savedSession(let savedSession):
-                            SessionDetailView(sessionId: savedSession.id ?? "")
                     }
                 }
         }

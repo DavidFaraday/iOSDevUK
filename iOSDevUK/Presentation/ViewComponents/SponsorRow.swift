@@ -39,7 +39,7 @@ struct SponsorRow: View {
             
             Text(sponsor.urlText)
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.accentColor)
         }
     }
 }

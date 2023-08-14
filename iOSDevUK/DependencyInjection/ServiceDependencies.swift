@@ -24,4 +24,9 @@ extension Container {
         self { MappingUtils() }
             .shared
     }
+
+    var localStorage: Factory<LocalStorageServiceProtocol> {
+        self { LocalStorageService() }
+            .shared
+    }
 }
