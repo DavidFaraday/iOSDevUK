@@ -22,6 +22,8 @@ struct HomeView: View {
         GridItem(.adaptive(minimum: 120))
     ]
 
+    @State private var shuffledSpeakers: [Speaker] = []
+
     @ViewBuilder
     private func headerView() -> some View {
 
@@ -91,7 +93,7 @@ struct HomeView: View {
 
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
-                    ForEach(viewModel.speakers) { speaker in
+                    ForEach(shuffledSpeakers.isEmpty ? viewModel.speakers : shuffledSpeakers) { speaker in
                         NavigationLink(value: Destination.speaker(speaker)) {
                             SpeakerCardView(speaker: speaker)
                                 .frame(width: 120)
@@ -198,6 +200,9 @@ struct HomeView: View {
                         MapView(allLocations: locations)
                     }
                 }
+        }
+        .onAppear() {
+            shuffledSpeakers = viewModel.speakers.shuffled()
         }
     }
 }
