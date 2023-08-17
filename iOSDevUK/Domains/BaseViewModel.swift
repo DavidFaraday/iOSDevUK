@@ -16,6 +16,7 @@ class BaseViewModel: ObservableObject {
     @Published private(set) var eventInformation: EventInformation?
     @Published private(set) var sessions: [Session] = []
     @Published private(set) var speakers: [Speaker] = []
+    @Published private(set) var shuffledSpeakers: [Speaker] = []
     @Published private(set) var sponsors: [Sponsor] = []
     @Published private(set) var locations: [Location] = []
     @Published private(set) var infoItems: [InformationItem] = []
@@ -61,6 +62,7 @@ class BaseViewModel: ObservableObject {
                     }
                 }, receiveValue: { [weak self] allSpeakers in
                     self?.speakers = allSpeakers
+                    self?.shuffleSpeakers()
                 })
                 .store(in: &cancellables)
         } catch (let error) {
@@ -155,5 +157,9 @@ class BaseViewModel: ObservableObject {
         } catch (let error) {
             fetchError = error
         }
+    }
+
+    func shuffleSpeakers() {
+        self.shuffledSpeakers = self.speakers.shuffled()
     }
 }
