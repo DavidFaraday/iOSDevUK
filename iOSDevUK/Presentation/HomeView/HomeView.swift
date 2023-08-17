@@ -85,13 +85,13 @@ struct HomeView: View {
             HStack {
                 Text(AppStrings.speakers).font(.title2).bold()
                 Spacer()
-                NavigationLink(AppStrings.allSpeakers, value: Destination.speakers(viewModel.speakers))
+                NavigationLink(AppStrings.allSpeakers, value: Destination.speakers(viewModel.speakers.sorted()))
             }
             .padding(.horizontal)
 
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
-                    ForEach(viewModel.shuffledSpeakers) { speaker in
+                    ForEach(viewModel.speakers) { speaker in
                         NavigationLink(value: Destination.speaker(speaker)) {
                             SpeakerCardView(speaker: speaker)
                                 .frame(width: 120)
