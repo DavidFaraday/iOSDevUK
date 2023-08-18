@@ -61,6 +61,7 @@ class BaseViewModel: ObservableObject {
                     }
                 }, receiveValue: { [weak self] allSpeakers in
                     self?.speakers = allSpeakers
+                    self?.speakers.shuffle()
                 })
                 .store(in: &cancellables)
         } catch (let error) {
@@ -155,5 +156,9 @@ class BaseViewModel: ObservableObject {
         } catch (let error) {
             fetchError = error
         }
+    }
+
+    func shuffleSpeakers() {
+        self.speakers.shuffle()
     }
 }
