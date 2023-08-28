@@ -26,9 +26,8 @@ struct AllSessionsView: View {
     var body: some View {
         Form {
             ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
-                
                 NavigationLink(value: Destination.session(session)) {
-                    SessionRowView(session: session)
+                    SessionRowView(session: session, showFavouritebutton: true)
                 }
             }
         }

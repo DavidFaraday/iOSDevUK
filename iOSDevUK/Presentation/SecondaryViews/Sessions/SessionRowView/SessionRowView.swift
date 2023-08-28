@@ -11,7 +11,13 @@ struct SessionRowView: View {
     @StateObject private var viewModel = SessionRowViewModel()
     
     let session: Session
-    
+    let showFavouritebutton: Bool
+
+    init(session: Session, showFavouritebutton: Bool = false) {
+        self.session = session
+        self.showFavouritebutton = showFavouritebutton
+    }
+
     var body: some View {
         HStack {
             VStack {
@@ -39,7 +45,10 @@ struct SessionRowView: View {
                     .foregroundColor(.gray)
             }
             .minimumScaleFactor(0.8)
-            .lineLimit(2)
+            .lineLimit(3)
+            if showFavouritebutton {
+                SessionRowFavouriteButton(sessionId: session.id)
+            }
         }
         .task {
             await viewModel.fetchSpeakers(with: session.speakerIds)

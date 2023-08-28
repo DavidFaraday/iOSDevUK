@@ -82,4 +82,15 @@ final class MyScheduleViewModel: ObservableObject {
     func loadFavSessions() {
         self.favoriteSessionIds = localStorage.loadArray(with: AppConstants.sessionKey)
     }
+
+    func updateFavoriteSession(id: String) {
+        if let index = self.favoriteSessionIds.firstIndex(of: id) {
+            self.favoriteSessionIds.remove(at: index)
+        } else {
+            self.favoriteSessionIds.append(id)
+        }
+        
+        localStorage.save(items: self.favoriteSessionIds, for: AppConstants.sessionKey)
+        loadFavSessions()
+    }
 }
