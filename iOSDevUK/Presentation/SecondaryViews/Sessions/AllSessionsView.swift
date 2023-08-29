@@ -23,13 +23,20 @@ struct AllSessionsView: View {
         _viewModel = StateObject(wrappedValue: AllSessionsViewModel(sessions: sessions))
     }
     
-    
     var body: some View {
         Form {
             ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
                 
                 NavigationLink(value: Destination.session(session)) {
                     SessionRowView(session: session, isFavorite: baseViewModel.favoriteSessionIds.contains(session.id))
+                }
+                .swipeActions {
+                    Button {
+                        baseViewModel.updateFavoritSession(sessionId: session.id)
+                    } label: {
+                        Image(systemName: ImageNames.bookmark)
+                    }
+                    .tint(Color(ColorNames.primary))
                 }
             }
         }

@@ -160,6 +160,18 @@ class BaseViewModel: ObservableObject {
         }
     }
     
+    @MainActor
+    func updateFavoritSession(sessionId: String) {
+        if let index = favoriteSessionIds.firstIndex(of: sessionId) {
+            favoriteSessionIds.remove(at: index)
+        } else {
+            favoriteSessionIds.append(sessionId)
+        }
+        
+        localStorage.save(items: favoriteSessionIds, for: AppConstants.sessionKey)
+        loadFavSessions()
+    }
+
     func loadFavSessions() {
         self.favoriteSessionIds = localStorage.loadArray(with: AppConstants.sessionKey)
     }
