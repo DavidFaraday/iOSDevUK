@@ -64,6 +64,7 @@ class BaseViewModel: ObservableObject {
                     }
                 }, receiveValue: { [weak self] allSpeakers in
                     self?.speakers = allSpeakers
+                    self?.speakers.shuffle()
                 })
                 .store(in: &cancellables)
         } catch (let error) {
@@ -174,5 +175,9 @@ class BaseViewModel: ObservableObject {
 
     func loadFavSessions() {
         self.favoriteSessionIds = localStorage.loadArray(with: AppConstants.sessionKey)
+    }
+  
+    func shuffleSpeakers() {
+        self.speakers.shuffle()
     }
 }

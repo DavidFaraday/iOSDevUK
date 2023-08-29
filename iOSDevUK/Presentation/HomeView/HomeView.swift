@@ -85,7 +85,7 @@ struct HomeView: View {
             HStack {
                 Text(AppStrings.speakers).font(.title2).bold()
                 Spacer()
-                NavigationLink(AppStrings.allSpeakers, value: Destination.speakers(viewModel.speakers))
+                NavigationLink(AppStrings.allSpeakers, value: Destination.speakers(viewModel.speakers.sorted()))
             }
             .padding(.horizontal)
 
@@ -201,6 +201,9 @@ struct HomeView: View {
                         MapView(allLocations: locations)
                     }
                 }
+        }
+        .onAppear() {
+            viewModel.shuffleSpeakers()
         }
     }
 }

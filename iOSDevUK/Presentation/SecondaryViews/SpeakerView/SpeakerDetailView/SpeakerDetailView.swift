@@ -133,7 +133,7 @@ struct SpeakerDetailView: View {
             ForEach(viewModel.webLinks, id: \.self) { link in
                 if let url = link.webUrl {
                     Link(destination: url) {
-                        Text(link.name.capitalized)
+                        Text(link.name)
                             .padding(.bottom, 5)
                     }
                 }
