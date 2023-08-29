@@ -11,6 +11,8 @@ import SwiftUI
 
 class BaseViewModel: ObservableObject {
     @Injected(\.firebaseRepository) private var firebaseRepository
+    @Injected(\.localStorage) private var localStorage
+
     @Published private(set) var fetchError: Error?
 
     @Published private(set) var eventInformation: EventInformation?
@@ -21,7 +23,8 @@ class BaseViewModel: ObservableObject {
     @Published private(set) var infoItems: [InformationItem] = []
     @Published private(set) var currentWeather: WeatherData?
     @Published private(set) var hourlyWeather: [WeatherData] = []
-    
+    @Published var favoriteSessionIds: [String] = []
+
     private var cancellables: Set<AnyCancellable> = []
     
     @MainActor
@@ -155,5 +158,9 @@ class BaseViewModel: ObservableObject {
         } catch (let error) {
             fetchError = error
         }
+    }
+    
+    func loadFavSessions() {
+        self.favoriteSessionIds = localStorage.loadArray(with: AppConstants.sessionKey)
     }
 }

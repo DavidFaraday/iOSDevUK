@@ -12,9 +12,7 @@ struct MyScheduleView: View {
     @EnvironmentObject var router: NavigationRouter
     @EnvironmentObject var baseViewModel: BaseViewModel
 
-        
     @StateObject private var viewModel = MyScheduleViewModel()
-
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {

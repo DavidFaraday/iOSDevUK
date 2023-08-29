@@ -24,7 +24,7 @@ struct AdminSessions: View {
         Form {
             ForEach(viewModel.sessions, id: \.id) { session in
                 NavigationLink(value: InfoDestination.adminAddSession(session)) {
-                    SessionRowView(session: session)
+                    SessionRowView(session: session) 
                 }
             }
             .onDelete { indexSet in
