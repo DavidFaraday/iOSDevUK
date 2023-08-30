@@ -64,6 +64,7 @@ struct SessionRowView: View {
             
             if isFavorite {
                 Image(systemName: ImageNames.bookmarkFill)
+                    .foregroundStyle(Color(ColorNames.primary))
             }
         }
         .task {
