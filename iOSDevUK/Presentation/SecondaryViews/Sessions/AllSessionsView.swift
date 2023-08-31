@@ -10,7 +10,8 @@ import SwiftUI
 struct AllSessionsView: View {
     
     @StateObject private var viewModel: AllSessionsViewModel
-    
+    @EnvironmentObject var baseViewModel: BaseViewModel
+
     private var groupedSessions: [String : [Session]] {
         .init(
             grouping: viewModel.sessions,
@@ -22,19 +23,27 @@ struct AllSessionsView: View {
         _viewModel = StateObject(wrappedValue: AllSessionsViewModel(sessions: sessions))
     }
     
-    
     var body: some View {
         Form {
             ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
                 
                 NavigationLink(value: Destination.session(session)) {
-                    SessionRowView(session: session)
+                    SessionRowView(session: session, isFavorite: baseViewModel.favoriteSessionIds.contains(session.id))
+                }
+                .swipeActions {
+                    Button {
+                        baseViewModel.updateFavoritSession(sessionId: session.id)
+                    } label: {
+                        Image(systemName: ImageNames.bookmark)
+                    }
+                    .tint(Color(ColorNames.primary))
                 }
             }
         }
         .navigationTitle(AppStrings.sessions)
         .task(viewModel.listenForEventNotification)
-        .task{ viewModel.setCurrentDate() }
+        .task { viewModel.setCurrentDate() }
+        .task { baseViewModel.loadFavSessions() }
         .safeAreaInset(edge: .top) {
             Picker("", selection: $viewModel.selectedDate.animation()) {
                 ForEach(groupedSessions.keys.sorted(), id: \String.self) { weekDay in

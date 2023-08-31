@@ -11,6 +11,8 @@ import SwiftUI
 
 class BaseViewModel: ObservableObject {
     @Injected(\.firebaseRepository) private var firebaseRepository
+    @Injected(\.localStorage) private var localStorage
+
     @Published private(set) var fetchError: Error?
 
     @Published private(set) var eventInformation: EventInformation?
@@ -21,7 +23,8 @@ class BaseViewModel: ObservableObject {
     @Published private(set) var infoItems: [InformationItem] = []
     @Published private(set) var currentWeather: WeatherData?
     @Published private(set) var hourlyWeather: [WeatherData] = []
-    
+    @Published var favoriteSessionIds: [String] = []
+
     private var cancellables: Set<AnyCancellable> = []
     
     @MainActor
@@ -157,7 +160,23 @@ class BaseViewModel: ObservableObject {
             fetchError = error
         }
     }
+    
+    @MainActor
+    func updateFavoritSession(sessionId: String) {
+        if let index = favoriteSessionIds.firstIndex(of: sessionId) {
+            favoriteSessionIds.remove(at: index)
+        } else {
+            favoriteSessionIds.append(sessionId)
+        }
+        
+        localStorage.save(items: favoriteSessionIds, for: AppConstants.sessionKey)
+        loadFavSessions()
+    }
 
+    func loadFavSessions() {
+        self.favoriteSessionIds = localStorage.loadArray(with: AppConstants.sessionKey)
+    }
+  
     func shuffleSpeakers() {
         self.speakers.shuffle()
     }

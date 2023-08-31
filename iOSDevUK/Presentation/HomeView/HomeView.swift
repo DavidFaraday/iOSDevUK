@@ -182,6 +182,9 @@ struct HomeView: View {
                 .task(viewModel.listenForSponsors)
                 .task(viewModel.listenForLocations)
                 .task(viewModel.listenForInfoItems)
+                .task {
+                    viewModel.loadFavSessions()
+                }
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
                     case .session(let session):
