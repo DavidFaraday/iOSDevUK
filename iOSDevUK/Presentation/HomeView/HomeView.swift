@@ -68,7 +68,10 @@ struct HomeView: View {
                     ForEach(viewModel.sessions) { session in
                         
                         NavigationLink(value: Destination.session(session)) {
-                            SessionCardView(session: session).frame(width: 300, height: 150)
+                            SessionCardView(session: session,
+                                            speakers: viewModel.getSpeakers(with: session.speakerIds), 
+                                            location: viewModel.getLocation(with: session.locationId))
+                                .frame(width: 300, height: 150)
                         }
                     }
                 }
