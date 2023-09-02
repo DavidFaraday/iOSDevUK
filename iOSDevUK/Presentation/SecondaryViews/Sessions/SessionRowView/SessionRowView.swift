@@ -12,11 +12,20 @@ struct SessionRowView: View {
     
     let session: Session
     let isFavorite: Bool
+    let location: Location?
+    let speakers: [Speaker]
     
-    init(session: Session, isFavorite: Bool = false) {
+    init(session: Session,
+         isFavorite: Bool = false,
+         location: Location?,
+         speakers: [Speaker]) {
+        
         self.session = session
         self.isFavorite = isFavorite
+        self.location = location
+        self.speakers = speakers
     }
+    
     
     @ViewBuilder
     private func timeView() -> some View {
@@ -45,7 +54,7 @@ struct SessionRowView: View {
                     .fixedSize()
             }
             
-            Text(viewModel.location?.name ?? "")
+            Text(location?.name ?? "")
                 .font(.caption)
                 .foregroundColor(.gray)
                 .fixedSize()
@@ -67,15 +76,8 @@ struct SessionRowView: View {
                     .foregroundStyle(Color(ColorNames.primary))
             }
         }
-        .task {
-            await viewModel.fetchSpeakers(with: session.speakerIds)
-            await viewModel.fetchLocation(with: session.locationId)
+        .onAppear {
+            viewModel.setSpeakers(speakers: self.speakers)
         }
-    }
-}
-
-struct SessionRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        SessionRowView(session: DummyData.sessions[0])
     }
 }

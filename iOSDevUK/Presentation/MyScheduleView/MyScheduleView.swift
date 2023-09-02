@@ -34,7 +34,9 @@ struct MyScheduleView: View {
                     Section {
                         ForEach(viewModel.groupedSessions[key] ?? []) { session in
                             NavigationLink(value: Destination.session(session)) {
-                                SessionRowView(session: session)
+                                SessionRowView(session: session,
+                                               location: baseViewModel.getLocation(with: session.locationId),
+                                               speakers: baseViewModel.getSpeakers(with: session.speakerIds) )
                             }
                         }
                         .onDelete { indexSet in

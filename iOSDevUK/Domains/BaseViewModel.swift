@@ -180,4 +180,18 @@ class BaseViewModel: ObservableObject {
     func shuffleSpeakers() {
         self.speakers.shuffle()
     }
+    
+    func getLocation(with id: String?) -> Location? {
+        guard id != nil else { return nil }
+        
+        return self.locations.first(where: { $0.id == id })
+    }
+    
+    func getSpeakers(with ids: [String]) ->  [Speaker] {
+        self.speakers.filter( { ids.contains($0.id) } )
+    }
+    
+    func isFavorite(_ sessionId: String) -> Bool {
+        favoriteSessionIds.contains(sessionId)
+    }
 }
