@@ -40,7 +40,7 @@ struct SessionRowView: View {
     }
     
     private func nameView() -> some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(session.title)
                 .font(.headline)
                 .minimumScaleFactor(0.6)
