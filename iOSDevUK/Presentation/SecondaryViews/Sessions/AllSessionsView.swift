@@ -14,7 +14,7 @@ struct AllSessionsView: View {
 
     private var groupedSessions: [String : [Session]] {
         .init(
-            grouping: viewModel.sessions,
+            grouping: baseViewModel.sessions,
             by: {$0.startingDay }
         )
     }
@@ -32,6 +32,7 @@ struct AllSessionsView: View {
                                    isFavorite: baseViewModel.isFavorite(session.id),
                                    location: baseViewModel.getLocation(with: session.locationId),
                                    speakers: baseViewModel.getSpeakers(with: session.speakerIds))
+                        .id(session)
                 }
                 .swipeActions {
                     Button {

@@ -71,6 +71,7 @@ struct HomeView: View {
                             SessionCardView(session: session,
                                             speakers: viewModel.getSpeakers(with: session.speakerIds), 
                                             location: viewModel.getLocation(with: session.locationId))
+                                .id(session)
                                 .frame(width: 300, height: 150)
                         }
                     }

@@ -16,7 +16,7 @@ Is using this code as a basis for a different conference app, change the Bundle 
 The application uses Firebase for the data storage and the location of the image files.
 
 * **AppInformation** - Information for the application. The collection contains one item, which has the fields for the application. 
-* **InformationItem** - A collection of links to further infomration, e.g. joining instructions.
+* **InformationItem** - A collection of links to further information, e.g. joining instructions.
 * **Location** - A collection of locations, associated with a location type (e.g. supermarkets, EV charging points).
 * **Session** - A collection of sessions, which includes talks, workshops and social events.
 * **Speaker** - A collection of infomration about the speakers for the conference.
