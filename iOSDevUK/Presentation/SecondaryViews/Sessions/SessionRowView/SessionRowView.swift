@@ -46,8 +46,8 @@ struct SessionRowView: View {
                 .minimumScaleFactor(0.6)
                 .lineLimit(3)
             
-            if let names = viewModel.speakerNames {
-                Text(names)
+            if !self.speakers.isEmpty {
+                Text(viewModel.speakerNames ?? " ")
                     .multilineTextAlignment(.leading)
                     .padding(.trailing)
                     .foregroundColor(.accentColor)
