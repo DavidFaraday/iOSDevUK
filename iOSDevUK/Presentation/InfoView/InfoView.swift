@@ -65,7 +65,7 @@ struct InfoView: View {
                     }
 
                 } footer: {
-                    Text("Version: \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
+                    Text("Version: \(Bundle.main.appVersionLong)")
                 }
             }
             .navigationTitle(AppStrings.info)

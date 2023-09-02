@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct SessionCardView: View {       
-    @StateObject private var viewModel: SessionCardViewModel
+    @StateObject private var viewModel = SessionRowViewModel()
 
-    init(session: Session) {
-        _viewModel = StateObject(wrappedValue: SessionCardViewModel(session: session))
-    }
-    
+    let session: Session
+    let speakers: [Speaker]?
+    let location: Location?
+        
     @ViewBuilder
     private func speakerImageView() -> some View {
         VStack(spacing: 5) {
-            ForEach(viewModel.speakers?.prefix(3) ?? []) { speaker in
+            ForEach(speakers?.prefix(3) ?? []) { speaker in
                 if speaker.name != "You" {
                     RemoteImageView(url: speaker.imageUrl)
                         .scaledToFill()
@@ -33,12 +33,12 @@ struct SessionCardView: View {
     private func cardContent() -> some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                Text(viewModel.session.title)
+                Text(session.title)
                     .font(.title2)
                     .padding(.bottom, 10)
 
-                if let speakers = viewModel.speakers {
-                    Text(viewModel.speakerNames(from: speakers))
+                if let names = viewModel.speakerNames {
+                    Text(names)
                         .font(.subheadline)
                         .lineLimit(2)
                         .minimumScaleFactor(0.8)
@@ -47,8 +47,8 @@ struct SessionCardView: View {
                 Spacer()
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(viewModel.location?.name ?? "")
-                    Text(viewModel.session.duration)
+                    Text(location?.name ?? "")
+                    Text(session.duration)
                 }
                 .font(.subheadline)
                 .padding(.bottom, 10)
@@ -81,14 +81,9 @@ struct SessionCardView: View {
     
     var body: some View {
         main()
-            .task(viewModel.fetchSpeakers)
-            .task(viewModel.fetchLocation)
+            .onAppear {
+                viewModel.setSpeakers(speakers: speakers ?? [])
+            }
             .frame(height: 150)
-    }
-}
-
-struct SessionCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        SessionCardView(session: DummyData.sessions[0])
     }
 }

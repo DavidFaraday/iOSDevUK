@@ -28,7 +28,10 @@ struct AllSessionsView: View {
             ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
                 
                 NavigationLink(value: Destination.session(session)) {
-                    SessionRowView(session: session, isFavorite: baseViewModel.favoriteSessionIds.contains(session.id))
+                    SessionRowView(session: session,
+                                   isFavorite: baseViewModel.isFavorite(session.id),
+                                   location: baseViewModel.getLocation(with: session.locationId),
+                                   speakers: baseViewModel.getSpeakers(with: session.speakerIds))
                 }
                 .swipeActions {
                     Button {

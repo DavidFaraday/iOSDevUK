@@ -38,7 +38,6 @@
 		63A986A629D039710008DE95 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A986A529D039710008DE95 /* WeatherViewModel.swift */; };
 		63A986A929D047260008DE95 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A986A829D047260008DE95 /* WeatherView.swift */; };
 		63A986AB29D04D540008DE95 /* Double + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A986AA29D04D540008DE95 /* Double + Extensions.swift */; };
-		63B80EDD28F01EC400445E63 /* SessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */; };
 		63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE028F075D400445E63 /* SessionRowView.swift */; };
 		63B80EE328F0760A00445E63 /* SessionRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */; };
 		63BC3A2529CF1C5F0018286E /* LocationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC3A2429CF1C5F0018286E /* LocationsListView.swift */; };
@@ -153,7 +152,6 @@
 		63A986A729D03B3C0008DE95 /* iOSDevUK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSDevUK.entitlements; sourceTree = "<group>"; };
 		63A986A829D047260008DE95 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		63A986AA29D04D540008DE95 /* Double + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extensions.swift"; sourceTree = "<group>"; };
-		63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCardViewModel.swift; sourceTree = "<group>"; };
 		63B80EE028F075D400445E63 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
 		63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModel.swift; sourceTree = "<group>"; };
 		63BC3A2429CF1C5F0018286E /* LocationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListView.swift; sourceTree = "<group>"; };
@@ -603,7 +601,6 @@
 				63F7E0FA28CC999000B2E1B7 /* MyScheduleViewModel.swift */,
 				63E8E85E290E541C002419A7 /* AllSessionsViewModel.swift */,
 				63E9C55428EAE73000710C8F /* SessionDetailViewModel.swift */,
-				63B80EDC28F01EC400445E63 /* SessionCardViewModel.swift */,
 				63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */,
 				63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */,
 				63EBF13D29CF431800A4AE6B /* MapViewModel.swift */,
@@ -799,7 +796,6 @@
 				63E394E82972B1ED0035C1E0 /* FirebaseAuthenticationService.swift in Sources */,
 				63F7E10728CC9E7300B2E1B7 /* RemoteImage.swift in Sources */,
 				63C79DA429B5032E004319C1 /* EmptySessionView.swift in Sources */,
-				63B80EDD28F01EC400445E63 /* SessionCardViewModel.swift in Sources */,
 				63F7E0EE28CC981500B2E1B7 /* MyScheduleView.swift in Sources */,
 				63FD528B2A7E0EC5009D3902 /* NavigationRowView.swift in Sources */,
 				63F7E10428CC9D9500B2E1B7 /* Speaker.swift in Sources */,

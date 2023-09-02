@@ -6,13 +6,9 @@
 //
 
 import SwiftUI
-import Factory
 import Combine
 
 final class SessionRowViewModel: ObservableObject {
-    @Injected(\.firebaseRepository) private var firebaseRepository
-    @Published private(set) var fetchError: Error?
-    @Published private(set) var location: Location?
     @Published private(set) var speakers: [Speaker]?
     @Published private(set) var speakerNames: String?
     
@@ -30,35 +26,8 @@ final class SessionRowViewModel: ObservableObject {
             }
             .assign(to: &$speakerNames)
     }
-        
-    @MainActor
-    @Sendable func fetchSpeakers(with speakerIds: [String]) async {
-        guard speakers == nil else { return }
-
-        var tempSpeakers: [Speaker] = []
-                
-        for id in speakerIds {
-            do {
-                let speaker: Speaker? = try await firebaseRepository.getDocument(from: .Speaker, with: id)
-                guard let speaker = speaker else { return }
-                tempSpeakers.append(speaker)
-            } catch (let error) {
-                fetchError = error
-            }
-        }
-        
-        self.speakers = tempSpeakers
-    }
-       
-    @MainActor
-    func fetchLocation(with id: String?) async {
-        guard let id = id else { return }
-        if location == nil {
-            do {
-                self.location = try await firebaseRepository.getDocument(from: .Location, with: id)
-            } catch (let error) {
-                fetchError = error
-            }
-        }
+    
+    func setSpeakers(speakers: [Speaker]) {
+        self.speakers = speakers
     }
 }
