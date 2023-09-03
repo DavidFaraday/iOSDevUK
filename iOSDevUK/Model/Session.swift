@@ -54,5 +54,15 @@ struct Session: Codable, Identifiable, Hashable, Comparable {
     static func < (lhs: Session, rhs: Session) -> Bool {
         lhs.startDate < rhs.startDate
     }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+        hasher.combine(content)
+        hasher.combine(startDate)
+        hasher.combine(endDate)
+        hasher.combine(locationId)
+        hasher.combine(speakerIds)
+        hasher.combine(type)
+    }
 }
 

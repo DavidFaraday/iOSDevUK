@@ -40,14 +40,14 @@ struct SessionRowView: View {
     }
     
     private func nameView() -> some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(session.title)
                 .font(.headline)
                 .minimumScaleFactor(0.6)
                 .lineLimit(3)
             
-            if let names = viewModel.speakerNames {
-                Text(names)
+            if !self.speakers.isEmpty {
+                Text(viewModel.speakerNames ?? " ")
                     .multilineTextAlignment(.leading)
                     .padding(.trailing)
                     .foregroundColor(.accentColor)

@@ -14,14 +14,10 @@ final class AllSessionsViewModel: ObservableObject {
     
     @Published private(set) var fetchError: Error?
     @Published private(set) var eventInformation: EventInformation?
-    @Published var sessions: [Session]
+    @Published var sessions: [Session] = []
     @Published var selectedDate = ""
     
     private var cancellables: Set<AnyCancellable> = []
-
-    init(sessions: [Session]) {
-        self.sessions = sessions
-    }
     
     @MainActor
     func setCurrentDate() {
@@ -70,4 +66,7 @@ final class AllSessionsViewModel: ObservableObject {
         }
     }
 
+    func setSessions(sessions: [Session]) {
+        self.sessions = sessions
+    }
 }

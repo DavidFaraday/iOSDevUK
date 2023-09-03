@@ -16,7 +16,7 @@ struct MyScheduleView: View {
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
-        if !viewModel.favoriteSessionIds.isEmpty {
+        if !baseViewModel.favoriteSessionIds.isEmpty {
             Button(AppStrings.sessions) {
                 router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
             }
@@ -56,7 +56,7 @@ struct MyScheduleView: View {
             }
 
             
-            if viewModel.favoriteSessionIds.isEmpty {
+            if baseViewModel.favoriteSessionIds.isEmpty {
                 EmptySessionView(message: AppStrings.emptySessionMessage, buttonTitle: AppStrings.takeMeThere) {
                     router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
                 }
@@ -69,10 +69,9 @@ struct MyScheduleView: View {
             main()
                 .navigationTitle(AppStrings.mySessions)
                 .onAppear {
-                    viewModel.loadFavSessions()
-                    viewModel.setSessions(allSessions: baseViewModel.sessions)
+                    baseViewModel.loadFavSessions()
+                    viewModel.setSessions(allSessions: baseViewModel.sessions, favSessionIds: baseViewModel.favoriteSessionIds)
                 }
-                .task(viewModel.listenForEventNotification)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
                 }
