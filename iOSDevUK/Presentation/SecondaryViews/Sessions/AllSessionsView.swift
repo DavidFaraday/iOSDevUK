@@ -15,7 +15,7 @@ struct AllSessionsView: View {
     let sessions: [Session]
     private var groupedSessions: [String : [Session]] {
         .init(
-            grouping: viewModel.sessions,
+            grouping: baseViewModel.sessions,
             by: {$0.startingDay }
         )
     }

@@ -65,7 +65,7 @@ struct HomeView: View {
             
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
-                    ForEach(viewModel.sessions) { session in
+                    ForEach(viewModel.homeViewSessions) { session in
                         
                         NavigationLink(value: Destination.session(session)) {
                             SessionCardView(session: session,

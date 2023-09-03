@@ -20,7 +20,6 @@ final class SessionRowViewModel: ObservableObject {
         $speakers
             .compactMap { $0 }
             .filter { !$0.isEmpty }
-            .filter { $0.first?.name != "You" }
             .map { $0.sorted() }
             .map { sortedSpeakers in
                 sortedSpeakers.map { $0.name }.joined(separator: ", ")
