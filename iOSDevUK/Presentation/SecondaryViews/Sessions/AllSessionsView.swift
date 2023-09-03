@@ -30,7 +30,6 @@ struct AllSessionsView: View {
                                    location: baseViewModel.getLocation(with: session.locationId),
                                    speakers: baseViewModel.getSpeakers(with: session.speakerIds))
                     .id(session)
-                    
                 }
                 .swipeActions {
                     Button {
