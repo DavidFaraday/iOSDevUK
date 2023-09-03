@@ -21,17 +21,17 @@ struct HomeView: View {
         GridItem(.adaptive(minimum: 120)),
         GridItem(.adaptive(minimum: 120))
     ]
-
+    
     @ViewBuilder
     private func headerView() -> some View {
-
+        
         VStack {
             ZStack {
                 Image(ImageNames.infoBackground)
                     .resizable(resizingMode: .tile)
                     .frame(height: 200.0)
                     .cornerRadius(16)
-
+                
                 Image(ImageNames.infoDevices)
                     .resizable()
                     .scaledToFit()
@@ -39,7 +39,7 @@ struct HomeView: View {
                     .padding([.horizontal, .top])
             }
             .padding(.bottom)
-
+            
             Text(viewModel.eventInformation?.notification ?? AppStrings.loading)
                 .font(.headline)
                 .multilineTextAlignment(.center)
@@ -50,7 +50,7 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding(.horizontal)
     }
-
+    
     
     @ViewBuilder
     private func sessionView() -> some View {
@@ -65,23 +65,24 @@ struct HomeView: View {
             
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
-                    ForEach(viewModel.sessions) { session in
+                    ForEach(viewModel.homeViewSessions) { session in
                         
                         NavigationLink(value: Destination.session(session)) {
                             SessionCardView(session: session,
-                                            speakers: viewModel.getSpeakers(with: session.speakerIds), 
+                                            speakers: viewModel.getSpeakers(with: session.speakerIds),
                                             location: viewModel.getLocation(with: session.locationId))
-                                .frame(width: 300, height: 150)
+                            .id(session)
+                            .frame(width: 300, height: 150)
                         }
                     }
                 }
             }
             .scrollIndicators(.hidden)
             .padding(.leading)
-
+            
         }
     }
-
+    
     @ViewBuilder
     private func speakerView() -> some View {
         VStack(alignment: .leading) {
@@ -91,7 +92,7 @@ struct HomeView: View {
                 NavigationLink(AppStrings.allSpeakers, value: Destination.speakers(viewModel.speakers.sorted()))
             }
             .padding(.horizontal)
-
+            
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 10) {
                     ForEach(viewModel.speakers) { speaker in
@@ -133,7 +134,7 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding(.horizontal)
     }
-
+    
     
     @ViewBuilder
     private func sponsorView() -> some View {
@@ -159,7 +160,7 @@ struct HomeView: View {
         ScrollView {
             VStack(spacing: 20) {
                 WeatherView()
-
+                
                 sessionView()
                 speakerView()
                 sponsorView()
@@ -167,13 +168,13 @@ struct HomeView: View {
                 if viewModel.eventInformation != nil {
                     headerView()
                 }
-
+                
                 footerView()
             }
         }
         .scrollIndicators(.hidden)
     }
-
+    
     var body: some View {
         NavigationStack(path: $router.homePath) {
             main()
@@ -190,18 +191,18 @@ struct HomeView: View {
                 }
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
-                    case .session(let session):
-                        SessionDetailView(sessionId: session.id)
-                    case .sessions(let sessions):
-                        AllSessionsView(sessions: sessions)
-                    case .speaker(let speaker):
-                        SpeakerDetailView(speaker: speaker)
-                    case .speakers(let speakers):
-                        AllSpeakersView(speakers: speakers)
-                    case .sponsor:
-                        SponsorsView()
-                    case .locations(let locations):
-                        MapView(allLocations: locations)
+                        case .session(let session):
+                            SessionDetailView(sessionId: session.id)
+                        case .sessions(let sessions):
+                            AllSessionsView(sessions: sessions)
+                        case .speaker(let speaker):
+                            SpeakerDetailView(speaker: speaker)
+                        case .speakers(let speakers):
+                            AllSpeakersView(speakers: speakers)
+                        case .sponsor:
+                            SponsorsView()
+                        case .locations(let locations):
+                            MapView(allLocations: locations)
                     }
                 }
         }
@@ -215,15 +216,15 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         
         HomeView()
-        .previewDevice(PreviewDevice(rawValue: "iPhone 14 pro"))
-        .previewDisplayName("iPhone 14")
-
+            .previewDevice(PreviewDevice(rawValue: "iPhone 14 pro"))
+            .previewDisplayName("iPhone 14")
+        
         HomeView()
-        .previewDevice(PreviewDevice(rawValue: "iPad mini (6th generation)"))
-        .previewDisplayName("iPad mini")
-
+            .previewDevice(PreviewDevice(rawValue: "iPad mini (6th generation)"))
+            .previewDisplayName("iPad mini")
+        
         HomeView()
-        .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
-        .previewDisplayName("iPad pro 11")
+            .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
+            .previewDisplayName("iPad pro 11")
     }
 }

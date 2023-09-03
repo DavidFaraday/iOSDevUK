@@ -12,11 +12,12 @@ import SwiftUI
 class BaseViewModel: ObservableObject {
     @Injected(\.firebaseRepository) private var firebaseRepository
     @Injected(\.localStorage) private var localStorage
-
+    
     @Published private(set) var fetchError: Error?
-
+    
     @Published private(set) var eventInformation: EventInformation?
     @Published private(set) var sessions: [Session] = []
+    @Published private(set) var homeViewSessions: [Session] = []
     @Published private(set) var speakers: [Speaker] = []
     @Published private(set) var sponsors: [Sponsor] = []
     @Published private(set) var locations: [Location] = []
@@ -24,21 +25,36 @@ class BaseViewModel: ObservableObject {
     @Published private(set) var currentWeather: WeatherData?
     @Published private(set) var hourlyWeather: [WeatherData] = []
     @Published var favoriteSessionIds: [String] = []
-
+    
     private var cancellables: Set<AnyCancellable> = []
+    
+    init() {
+        observerData()
+    }
+    
+    private func observerData() {
+        $sessions
+            .map { sessions in
+                sessions
+                    .filter { $0.type != .lunch }
+                    .filter { $0.type != .coffeeBiscuits }
+                    .filter { $0.type != .dinner }
+            }
+            .assign(to: &$homeViewSessions)
+    }
     
     @MainActor
     @Sendable func listenForSessions() async {
         guard self.sessions.isEmpty else { return }
-
+        
         do {
             try await firebaseRepository.listen(from: .Session)
                 .sink(receiveCompletion: { completion in
                     switch completion {
-                    case .finished:
-                        return
-                    case .failure(let error):
-                        print("Error: \(error.localizedDescription)")
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] allSessions in
                     self?.sessions = allSessions.sorted()
@@ -52,15 +68,15 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSpeakers() async {
         guard self.speakers.isEmpty else { return }
-
+        
         do {
             try await firebaseRepository.listen(from: .Speaker)
                 .sink(receiveCompletion: { completion in
                     switch completion {
-                    case .finished:
-                        return
-                    case .failure(let error):
-                        print("Error: \(error.localizedDescription)")
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] allSpeakers in
                     self?.speakers = allSpeakers
@@ -75,15 +91,15 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForEventNotification() async {
         guard eventInformation == nil else { return }
-
+        
         do {
             try await firebaseRepository.listen(from: .AppInformation)
                 .sink(receiveCompletion: { completion in
                     switch completion {
-                    case .finished:
-                        return
-                    case .failure(let error):
-                        print("Error: \(error.localizedDescription)")
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] eventInformations in
                     self?.eventInformation = eventInformations.first
@@ -98,15 +114,15 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSponsors() async {
         guard self.sponsors.isEmpty else { return }
-
+        
         do {
             try await firebaseRepository.listen(from: .Sponsor)
                 .sink(receiveCompletion: { completion in
                     switch completion {
-                    case .finished:
-                        return
-                    case .failure(let error):
-                        print("Error: \(error.localizedDescription)")
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] allSponsors in
                     self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
@@ -120,15 +136,15 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForLocations() async {
         guard self.locations.isEmpty else { return }
-
+        
         do {
             try await firebaseRepository.listen(from: .Location)
                 .sink(receiveCompletion: { completion in
                     switch completion {
-                    case .finished:
-                        return
-                    case .failure(let error):
-                        print("Error: \(error.localizedDescription)")
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] allLocations in
                     self?.locations = allLocations
@@ -142,15 +158,15 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForInfoItems() async {
         guard self.infoItems.isEmpty else { return }
-
+        
         do {
             try await firebaseRepository.listen(from: .InformationItem)
                 .sink(receiveCompletion: { completion in
                     switch completion {
-                    case .finished:
-                        return
-                    case .failure(let error):
-                        print("Error: \(error.localizedDescription)")
+                        case .finished:
+                            return
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] infoItems in
                     self?.infoItems = infoItems
@@ -172,11 +188,11 @@ class BaseViewModel: ObservableObject {
         localStorage.save(items: favoriteSessionIds, for: AppConstants.sessionKey)
         loadFavSessions()
     }
-
+    
     func loadFavSessions() {
         self.favoriteSessionIds = localStorage.loadArray(with: AppConstants.sessionKey)
     }
-  
+    
     func shuffleSpeakers() {
         self.speakers.shuffle()
     }

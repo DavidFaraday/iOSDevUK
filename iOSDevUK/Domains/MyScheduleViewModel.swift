@@ -9,19 +9,15 @@ import SwiftUI
 import Factory
 
 final class MyScheduleViewModel: ObservableObject {
-    @Injected(\.firebaseRepository) private var firebaseRepository
     @Injected(\.localStorage) private var localStorage
     
     @Published private(set) var favoriteSessionIds: [String] = []
     @Published private(set) var sessions: [Session] = []
     @Published private(set) var groupedSessions: [String: [Session]] = [:]
-    @Published private(set) var eventInformation: EventInformation?
-    @Published private(set) var fetchError: Error?
 
     private var cancellables: Set<AnyCancellable> = []
 
     init() {
-        self.loadFavSessions()
         self.observerData()
     }
     
@@ -40,32 +36,11 @@ final class MyScheduleViewModel: ObservableObject {
     }
 
     
-    func setSessions(allSessions: [Session]) {
+    func setSessions(allSessions: [Session], favSessionIds: [String]) {
+        self.favoriteSessionIds = favSessionIds
         self.sessions = allSessions
     }
     
-
-    @MainActor
-    @Sendable func listenForEventNotification() async {
-        guard eventInformation == nil else { return }
-
-        do {
-            try await firebaseRepository.listen(from: .AppInformation)
-                .sink(receiveCompletion: { completion in
-                    switch completion {
-                    case .finished:
-                        return
-                    case .failure(let error):
-                        print("Error: \(error.localizedDescription)")
-                    }
-                }, receiveValue: { [weak self] eventInformations in
-                    self?.eventInformation = eventInformations.first
-                })
-                .store(in: &cancellables)
-        } catch (let error) {
-            fetchError = error
-        }
-    }
     
     func delete(for indexSet: IndexSet, key: String) {
         guard let firstIndex = indexSet.first,
@@ -76,10 +51,5 @@ final class MyScheduleViewModel: ObservableObject {
         groupedSessions[key]?.remove(at: firstIndex)
         favoriteSessionIds.removeAll { $0 == session.id }
         localStorage.save(items: favoriteSessionIds, for: AppConstants.sessionKey)
-    }
-    
-    
-    func loadFavSessions() {
-        self.favoriteSessionIds = localStorage.loadArray(with: AppConstants.sessionKey)
     }
 }
