@@ -68,9 +68,10 @@ struct MyScheduleView: View {
         NavigationStack(path: $router.schedulePath) {
             main()
                 .navigationTitle(AppStrings.mySessions)
+                .task(viewModel.listenForSessions)
                 .onAppear {
                     baseViewModel.loadFavSessions()
-                    viewModel.setSessions(allSessions: baseViewModel.sessions, favSessionIds: baseViewModel.favoriteSessionIds)
+                    viewModel.setFavSessions(favSessionIds: baseViewModel.favoriteSessionIds)
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
