@@ -12,10 +12,9 @@
 		630FEA8E28FF159400D483B2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FEA8D28FF159400D483B2 /* MapView.swift */; };
 		63221B1C28DA295A003EC2D5 /* SpeakerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */; };
 		63221B1F28DADB1E003EC2D5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63221B1E28DADB1E003EC2D5 /* Session.swift */; };
-		632DC63A2A8A39BF004BA50F /* GoogleService-InfoNEW.plist in Resources */ = {isa = PBXBuildFile; fileRef = 632DC6392A8A39BF004BA50F /* GoogleService-InfoNEW.plist */; };
+		632DC63A2A8A39BF004BA50F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 632DC6392A8A39BF004BA50F /* GoogleService-Info.plist */; };
 		6336403529B6188500D6860A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6336403429B6188500D6860A /* Kingfisher */; };
 		634452472A378CAC00DE3927 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 634452462A378CAC00DE3927 /* Factory */; };
-		63485FB12AA5F382007EB4A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63485FB02AA5F382007EB4A3 /* GoogleService-Info.plist */; };
 		63497D5128E6084300C7613B /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63497D5028E6084300C7613B /* Date + Extensions.swift */; };
 		634E7AB828DB7B5C001DC796 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E7AB728DB7B5C001DC796 /* Sponsor.swift */; };
 		634E7ABC28DB806F001DC796 /* AllSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E7ABB28DB806F001DC796 /* AllSessionsView.swift */; };
@@ -130,8 +129,7 @@
 		630FEA8D28FF159400D483B2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewModel.swift; sourceTree = "<group>"; };
 		63221B1E28DADB1E003EC2D5 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		632DC6392A8A39BF004BA50F /* GoogleService-InfoNEW.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-InfoNEW.plist"; sourceTree = "<group>"; };
-		63485FB02AA5F382007EB4A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		632DC6392A8A39BF004BA50F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63497D5028E6084300C7613B /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
 		634E7AB728DB7B5C001DC796 /* Sponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
 		634E7ABB28DB806F001DC796 /* AllSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsView.swift; sourceTree = "<group>"; };
@@ -452,8 +450,7 @@
 				63BC3A2629CF24F80018286E /* DependencyInjection */,
 				63F7E0BD28CC942200B2E1B7 /* Assets.xcassets */,
 				63F7E0C728CC942200B2E1B7 /* Info.plist */,
-				632DC6392A8A39BF004BA50F /* GoogleService-InfoNEW.plist */,
-				63485FB02AA5F382007EB4A3 /* GoogleService-Info.plist */,
+				632DC6392A8A39BF004BA50F /* GoogleService-Info.plist */,
 				63F7E0BF28CC942200B2E1B7 /* Preview Content */,
 			);
 			path = iOSDevUK;
@@ -730,8 +727,7 @@
 				63EA2B8E2A7ACE8C003E0419 /* sponsors.json in Resources */,
 				63EA2B8F2A7ACE8C003E0419 /* sessions.json in Resources */,
 				63EA2B8C2A7ACE8C003E0419 /* speakers.json in Resources */,
-				63485FB12AA5F382007EB4A3 /* GoogleService-Info.plist in Resources */,
-				632DC63A2A8A39BF004BA50F /* GoogleService-InfoNEW.plist in Resources */,
+				632DC63A2A8A39BF004BA50F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
