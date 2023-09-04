@@ -37,6 +37,7 @@ struct MyScheduleView: View {
                                 SessionRowView(session: session,
                                                location: baseViewModel.getLocation(with: session.locationId),
                                                speakers: baseViewModel.getSpeakers(with: session.speakerIds) )
+                                .id(session)
                             }
                         }
                         .onDelete { indexSet in
