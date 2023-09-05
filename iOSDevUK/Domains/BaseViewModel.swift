@@ -46,7 +46,7 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSessions() async {
         guard self.sessions.isEmpty else { return }
-        
+
         do {
             try await firebaseRepository.listen(from: .Session)
                 .sink(receiveCompletion: { completion in
@@ -68,7 +68,7 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSpeakers() async {
         guard self.speakers.isEmpty else { return }
-        
+
         do {
             try await firebaseRepository.listen(from: .Speaker)
                 .sink(receiveCompletion: { completion in
@@ -91,7 +91,7 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForEventNotification() async {
         guard eventInformation == nil else { return }
-        
+
         do {
             try await firebaseRepository.listen(from: .AppInformation)
                 .sink(receiveCompletion: { completion in
@@ -114,7 +114,7 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSponsors() async {
         guard self.sponsors.isEmpty else { return }
-        
+
         do {
             try await firebaseRepository.listen(from: .Sponsor)
                 .sink(receiveCompletion: { completion in
@@ -136,7 +136,7 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForLocations() async {
         guard self.locations.isEmpty else { return }
-        
+
         do {
             try await firebaseRepository.listen(from: .Location)
                 .sink(receiveCompletion: { completion in
@@ -158,7 +158,7 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForInfoItems() async {
         guard self.infoItems.isEmpty else { return }
-        
+
         do {
             try await firebaseRepository.listen(from: .InformationItem)
                 .sink(receiveCompletion: { completion in
