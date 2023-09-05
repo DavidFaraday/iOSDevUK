@@ -30,7 +30,7 @@ final class SessionDetailViewModel: ObservableObject {
     init(sessionId: String, session: Session? = nil) {
         self.sessionId = sessionId
         self.session = session
-        
+
         $fetchError
             .dropFirst()
             .sink { [weak self] _ in

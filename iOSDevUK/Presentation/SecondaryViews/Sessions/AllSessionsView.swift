@@ -42,6 +42,7 @@ struct AllSessionsView: View {
             }
         }
         .navigationTitle(AppStrings.sessions)
+        .navigationBarTitleDisplayMode(.inline)
         .task(viewModel.listenForEventNotification)
         .task { baseViewModel.loadFavSessions() }
         .task { viewModel.setCurrentDate() }

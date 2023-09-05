@@ -46,7 +46,7 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSessions() async {
         guard self.sessions.isEmpty else { return }
-        
+        print("listen sessions")
         do {
             try await firebaseRepository.listen(from: .Session)
                 .sink(receiveCompletion: { completion in
@@ -58,6 +58,7 @@ class BaseViewModel: ObservableObject {
                     }
                 }, receiveValue: { [weak self] allSessions in
                     self?.sessions = allSessions.sorted()
+                    print("set sessions")
                 })
                 .store(in: &cancellables)
         } catch (let error) {
@@ -68,7 +69,8 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSpeakers() async {
         guard self.speakers.isEmpty else { return }
-        
+        print("listen speakers")
+
         do {
             try await firebaseRepository.listen(from: .Speaker)
                 .sink(receiveCompletion: { completion in
@@ -81,6 +83,8 @@ class BaseViewModel: ObservableObject {
                 }, receiveValue: { [weak self] allSpeakers in
                     self?.speakers = allSpeakers
                     self?.speakers.shuffle()
+                    print("set speakers")
+
                 })
                 .store(in: &cancellables)
         } catch (let error) {
@@ -91,7 +95,8 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForEventNotification() async {
         guard eventInformation == nil else { return }
-        
+        print("listen events")
+
         do {
             try await firebaseRepository.listen(from: .AppInformation)
                 .sink(receiveCompletion: { completion in
@@ -103,6 +108,8 @@ class BaseViewModel: ObservableObject {
                     }
                 }, receiveValue: { [weak self] eventInformations in
                     self?.eventInformation = eventInformations.first
+                    print("set events")
+
                 })
                 .store(in: &cancellables)
         } catch (let error) {
@@ -114,7 +121,8 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForSponsors() async {
         guard self.sponsors.isEmpty else { return }
-        
+        print("listen sponsor")
+
         do {
             try await firebaseRepository.listen(from: .Sponsor)
                 .sink(receiveCompletion: { completion in
@@ -126,6 +134,8 @@ class BaseViewModel: ObservableObject {
                     }
                 }, receiveValue: { [weak self] allSponsors in
                     self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
+                    print("set sponsors")
+
                 })
                 .store(in: &cancellables)
         } catch (let error) {
@@ -136,7 +146,8 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForLocations() async {
         guard self.locations.isEmpty else { return }
-        
+        print("listen location")
+
         do {
             try await firebaseRepository.listen(from: .Location)
                 .sink(receiveCompletion: { completion in
@@ -148,6 +159,8 @@ class BaseViewModel: ObservableObject {
                     }
                 }, receiveValue: { [weak self] allLocations in
                     self?.locations = allLocations
+                    print("set locations")
+
                 })
                 .store(in: &cancellables)
         } catch (let error) {
@@ -158,7 +171,8 @@ class BaseViewModel: ObservableObject {
     @MainActor
     @Sendable func listenForInfoItems() async {
         guard self.infoItems.isEmpty else { return }
-        
+        print("listen info")
+
         do {
             try await firebaseRepository.listen(from: .InformationItem)
                 .sink(receiveCompletion: { completion in
@@ -170,6 +184,8 @@ class BaseViewModel: ObservableObject {
                     }
                 }, receiveValue: { [weak self] infoItems in
                     self?.infoItems = infoItems
+                    print("set info")
+
                 })
                 .store(in: &cancellables)
         } catch (let error) {
