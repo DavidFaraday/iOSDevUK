@@ -29,7 +29,6 @@
 		6367516F29B4EB5B003B8B5A /* AdminLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367516E29B4EB5B003B8B5A /* AdminLocationViewModel.swift */; };
 		638098922AA8945E00EFF533 /* SessionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638098912AA8945E00EFF533 /* SessionDetail.swift */; };
 		638402A62972F1D100DE8D59 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638402A52972F1D100DE8D59 /* LoginViewModel.swift */; };
-		638F38892A87807300C393CA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 638F38882A87807300C393CA /* KeychainAccess */; };
 		639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639BEAF829099E8D009C3870 /* AdminViewModel.swift */; };
 		63A2BDB52A81680F000A1E5A /* SponsorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2BDB42A81680F000A1E5A /* SponsorCard.swift */; };
 		63A6A770290AED4C00940170 /* SponsorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6A76F290AED4C00940170 /* SponsorsView.swift */; };
@@ -230,7 +229,6 @@
 				EF1782592941EC0200EFFB2D /* FirebaseDatabaseSwift in Frameworks */,
 				634452472A378CAC00DE3927 /* Factory in Frameworks */,
 				EF1782572941EC0200EFFB2D /* FirebaseDatabase in Frameworks */,
-				638F38892A87807300C393CA /* KeychainAccess in Frameworks */,
 				6336403529B6188500D6860A /* Kingfisher in Frameworks */,
 				6360A8B72972BA5D00908280 /* FirebaseAuth in Frameworks */,
 				EF17825D2941EC0200EFFB2D /* FirebaseStorage in Frameworks */,
@@ -641,7 +639,6 @@
 				6360A8B62972BA5D00908280 /* FirebaseAuth */,
 				6336403429B6188500D6860A /* Kingfisher */,
 				634452462A378CAC00DE3927 /* Factory */,
-				638F38882A87807300C393CA /* KeychainAccess */,
 			);
 			productName = iOSDevUK;
 			productReference = EF17827B2941F08600EFFB2D /* iOSDevUK.app */;
@@ -704,7 +701,6 @@
 				EF1782552941EC0200EFFB2D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				6336403329B6188500D6860A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				634452452A378CAB00DE3927 /* XCRemoteSwiftPackageReference "Factory" */,
-				638F38872A87807300C393CA /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 63F7E0AD28CC942100B2E1B7;
 			projectDirPath = "";
@@ -1115,14 +1111,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		638F38872A87807300C393CA /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		EF1782552941EC0200EFFB2D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1148,11 +1136,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF1782552941EC0200EFFB2D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
-		};
-		638F38882A87807300C393CA /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 638F38872A87807300C393CA /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
 		};
 		EF1782562941EC0200EFFB2D /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
