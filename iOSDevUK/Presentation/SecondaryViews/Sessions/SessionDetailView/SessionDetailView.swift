@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct SessionDetailView: View {
+    @EnvironmentObject var baseViewModel: BaseViewModel
     
-    @StateObject private var viewModel: SessionDetailViewModel
-    
-    init(sessionId: String) {
-        _viewModel = StateObject(wrappedValue: SessionDetailViewModel(sessionId: sessionId))
-    }
+    let sessionDetail: SessionDetail
     
     @ViewBuilder
     private func headerView() -> some View {
@@ -24,7 +21,7 @@ struct SessionDetailView: View {
                 .aspectRatio(contentMode: .fit)
             
             HStack(alignment: .center) {
-                Text(viewModel.session?.title ?? "")
+                Text(sessionDetail.session.title)
                     .font(.title)
                     .foregroundColor(.white)
                     .padding()
@@ -37,19 +34,17 @@ struct SessionDetailView: View {
     
     @ViewBuilder
     private func timeView() -> some View {
-        if let duration = viewModel.session?.duration {
-            VStack(alignment: .leading) {
-                Text(AppStrings.time)
-                    .font(.title2)
-                    .foregroundColor(Color(ColorNames.secondary))
-                    .bold()
-                    .padding(.top)
-                    .padding(.bottom, 5)
-                
-                Text(duration)
-            }
-            .padding(.horizontal)
+        VStack(alignment: .leading) {
+            Text(AppStrings.time)
+                .font(.title2)
+                .foregroundColor(Color(ColorNames.secondary))
+                .bold()
+                .padding(.top)
+                .padding(.bottom, 5)
+            
+            Text(sessionDetail.session.duration)
         }
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -62,7 +57,7 @@ struct SessionDetailView: View {
                 .padding(.top)
                 .padding(.bottom, 5)
             
-            Text(viewModel.session?.content ?? "")
+            Text(sessionDetail.session.content)
                 .multilineTextAlignment(.leading)
                 .padding(.bottom, 10)
         }
@@ -80,7 +75,7 @@ struct SessionDetailView: View {
                 .padding(.top)
                 .padding(.bottom, 5)
             
-            ForEach(viewModel.speakers ?? []) { speaker in
+            ForEach(sessionDetail.speakers) { speaker in
                 
                 NavigationLink(value: Destination.speaker(speaker)) {
                     HStack(spacing: 5) {
@@ -88,7 +83,7 @@ struct SessionDetailView: View {
                             .scaledToFill()
                             .frame(width: 40, height: 40)
                             .clipShape(Circle())
-
+                        
                         Text(speaker.name)
                             .font(.title3)
                             .padding(.bottom, 5)
@@ -123,9 +118,9 @@ struct SessionDetailView: View {
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         Button {
-            viewModel.updateFavoritSession()
+            baseViewModel.updateFavoritSession(sessionId: sessionDetail.session.id)
         } label: {
-            Image(systemName: viewModel.isSessionFavorite ? ImageNames.bookmarkFill : ImageNames.bookmark)
+            Image(systemName: baseViewModel.isFavorite(sessionDetail.session.id) ? ImageNames.bookmarkFill : ImageNames.bookmark)
         }
     }
     
@@ -138,39 +133,23 @@ struct SessionDetailView: View {
                 headerView()
                 timeView()
                 descriptionView()
-                if let speakers = viewModel.speakers, !speakers.isEmpty {
+                if !sessionDetail.speakers.isEmpty {
                     speakersView()
                 }
-                if let location = viewModel.location {
+                if let location = sessionDetail.location {
                     locationView(location)
                 }
             }
         }
         .scrollIndicators(.hidden)
-        .alert(isPresented: $viewModel.showError, content: {
-            Alert(title: Text(AppStrings.error), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text(AppStrings.ok)))
-        })
     }
     
     var body: some View {
         main()
             .edgesIgnoringSafeArea(.top)
-            .task {
-                await viewModel.fetchSession()
-                await viewModel.fetchSpeakers()
-                await viewModel.fetchLocation()
-            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }
         
-    }
-}
-
-struct SessionDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            SessionDetailView(sessionId: DummyData.sessions[0].id)
-        }
     }
 }

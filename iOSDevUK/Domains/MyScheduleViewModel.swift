@@ -26,13 +26,7 @@ final class MyScheduleViewModel: ObservableObject {
     private func observerData() {
         $sessions
             .sink(receiveValue: { receivedSessions in
-                
-                let filteredSessions = receivedSessions.filter { self.favoriteSessionIds.contains($0.id) }
-
-                self.groupedSessions = .init(
-                    grouping: filteredSessions,
-                    by: { $0.startingDay }
-                )
+                self.updateGroupedSessions(sessions: receivedSessions)
             })
             .store(in: &cancellables)
     }
@@ -62,8 +56,17 @@ final class MyScheduleViewModel: ObservableObject {
     
     func setFavSessions(favSessionIds: [String]) {
         self.favoriteSessionIds = favSessionIds
+        updateGroupedSessions(sessions: self.sessions)
     }
-    
+
+    private func updateGroupedSessions(sessions: [Session]) {
+        let filteredSessions = sessions.filter { self.favoriteSessionIds.contains($0.id) }
+
+        self.groupedSessions = .init(
+            grouping: filteredSessions,
+            by: { $0.startingDay }
+        )
+    }
     
     func delete(for indexSet: IndexSet, key: String) {
         guard let firstIndex = indexSet.first,

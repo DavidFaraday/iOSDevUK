@@ -33,7 +33,11 @@ struct MyScheduleView: View {
                     
                     Section {
                         ForEach(viewModel.groupedSessions[key] ?? []) { session in
-                            NavigationLink(value: Destination.session(session)) {
+                            NavigationLink(value: Destination.session(
+                                SessionDetail(session: session,
+                                              speakers: baseViewModel.getSpeakers(with: session.speakerIds),
+                                              location: baseViewModel.getLocation(with: session.locationId))
+                            )) {
                                 SessionRowView(session: session,
                                                location: baseViewModel.getLocation(with: session.locationId),
                                                speakers: baseViewModel.getSpeakers(with: session.speakerIds) )
@@ -44,6 +48,7 @@ struct MyScheduleView: View {
                                 viewModel.delete(
                                     for: indexSet,
                                     key: key)
+                                baseViewModel.loadFavSessions()
                             }
                         }
                     } header: {
@@ -78,8 +83,8 @@ struct MyScheduleView: View {
                 }
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
-                    case .session(let session):
-                        SessionDetailView(sessionId: session.id)
+                    case .session(let sessionDetail):
+                        SessionDetailView(sessionDetail: sessionDetail)
                     case .sessions(let sessions):
                         AllSessionsView(sessions: sessions)
                     case .speaker(let speaker):
