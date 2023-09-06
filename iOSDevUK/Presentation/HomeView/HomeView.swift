@@ -67,7 +67,11 @@ struct HomeView: View {
                 LazyHStack(spacing: 10) {
                     ForEach(viewModel.homeViewSessions) { session in
                         
-                        NavigationLink(value: Destination.session(session)) {
+                        NavigationLink(value: Destination.session(
+                            SessionDetail(session: session,
+                                          speakers: viewModel.getSpeakers(with: session.speakerIds),
+                                          location: viewModel.getLocation(with: session.locationId))
+                        )) {
                             SessionCardView(session: session,
                                             speakers: viewModel.getSpeakers(with: session.speakerIds),
                                             location: viewModel.getLocation(with: session.locationId))
@@ -191,8 +195,8 @@ struct HomeView: View {
                 }
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
-                        case .session(let session):
-                            SessionDetailView(sessionId: session.id)
+                        case .session(let sessionDetail):
+                            SessionDetailView(sessionDetail: sessionDetail)
                         case .sessions(let sessions):
                             AllSessionsView(sessions: sessions)
                         case .speaker(let speaker):

@@ -112,7 +112,11 @@ struct SpeakerDetailView: View {
                 .padding(.bottom, 5)
             
             ForEach(viewModel.sessions) { session in
-                NavigationLink(value: Destination.session(session)) {
+                NavigationLink(value: Destination.session(
+                    SessionDetail(session: session,
+                                  speakers: baseViewModel.getSpeakers(with: session.speakerIds),
+                                  location: baseViewModel.getLocation(with: session.locationId))
+                )) {
                     sessionsRaw(session: session)
                 }
             }

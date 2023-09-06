@@ -25,7 +25,6 @@ protocol FirebaseRepositoryProtocol {
 final class FirebaseRepository: FirebaseRepositoryProtocol {
     
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]? {
-
         let snapshot = try await FirebaseReference(collection).getDocuments()
 
         return snapshot.documents.compactMap { queryDocumentSnapshot -> T? in
@@ -35,7 +34,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
 
     
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? {
-        
+
         let snapshot = try await FirebaseReference(collection).whereField(field, isEqualTo: value).getDocuments()
 
         return snapshot.documents.compactMap { queryDocumentSnapshot -> T? in
@@ -45,7 +44,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     
     
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {
-        
+
         let snapshot = try await FirebaseReference(collection).whereField(field, arrayContains: value).getDocuments()
 
         return snapshot.documents.compactMap { queryDocumentSnapshot -> T? in
@@ -54,7 +53,7 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     }
     
     func getDocument<T: Codable>(from collection: FCollectionReference, with id: String) async throws -> T? {
-        
+
         let snapshot = try await FirebaseReference(collection).document(id).getDocument()
         return try? snapshot.data(as: T.self)
     }
@@ -62,7 +61,6 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     
     func listen<T: Codable>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error> {
                 
-        
         let subject = PassthroughSubject<[T], Error>()
         
         let handle = FirebaseReference(collection).addSnapshotListener { querySnapshot, error in

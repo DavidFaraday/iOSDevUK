@@ -27,6 +27,7 @@
 		6366D5CF28D0BA180051542E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366D5CE28D0BA180051542E /* AboutView.swift */; };
 		6367516D29B48160003B8B5A /* AdminSponsorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367516C29B48160003B8B5A /* AdminSponsorViewModel.swift */; };
 		6367516F29B4EB5B003B8B5A /* AdminLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367516E29B4EB5B003B8B5A /* AdminLocationViewModel.swift */; };
+		638098922AA8945E00EFF533 /* SessionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638098912AA8945E00EFF533 /* SessionDetail.swift */; };
 		638402A62972F1D100DE8D59 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638402A52972F1D100DE8D59 /* LoginViewModel.swift */; };
 		638F38892A87807300C393CA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 638F38882A87807300C393CA /* KeychainAccess */; };
 		639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639BEAF829099E8D009C3870 /* AdminViewModel.swift */; };
@@ -63,7 +64,6 @@
 		63E8E85F290E541C002419A7 /* AllSessionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E85E290E541C002419A7 /* AllSessionsViewModel.swift */; };
 		63E8E861290E5898002419A7 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E860290E5898002419A7 /* String + Extensions.swift */; };
 		63E9C55228EAE6FF00710C8F /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9C55128EAE6FF00710C8F /* SessionDetailView.swift */; };
-		63E9C55528EAE73000710C8F /* SessionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9C55428EAE73000710C8F /* SessionDetailViewModel.swift */; };
 		63E9C55728EF3FB400710C8F /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9C55628EF3FB400710C8F /* DummyData.swift */; };
 		63E9C55928EF419A00710C8F /* InformationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9C55828EF419A00710C8F /* InformationItem.swift */; };
 		63EA2B8C2A7ACE8C003E0419 /* speakers.json in Resources */ = {isa = PBXBuildFile; fileRef = 63EA2B882A7ACE8C003E0419 /* speakers.json */; };
@@ -141,6 +141,7 @@
 		6366D5CE28D0BA180051542E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		6367516C29B48160003B8B5A /* AdminSponsorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSponsorViewModel.swift; sourceTree = "<group>"; };
 		6367516E29B4EB5B003B8B5A /* AdminLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLocationViewModel.swift; sourceTree = "<group>"; };
+		638098912AA8945E00EFF533 /* SessionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetail.swift; sourceTree = "<group>"; };
 		638402A52972F1D100DE8D59 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		639BEAF829099E8D009C3870 /* AdminViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewModel.swift; sourceTree = "<group>"; };
 		63A2BDB42A81680F000A1E5A /* SponsorCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorCard.swift; sourceTree = "<group>"; };
@@ -177,7 +178,6 @@
 		63E8E85E290E541C002419A7 /* AllSessionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsViewModel.swift; sourceTree = "<group>"; };
 		63E8E860290E5898002419A7 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
 		63E9C55128EAE6FF00710C8F /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
-		63E9C55428EAE73000710C8F /* SessionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewModel.swift; sourceTree = "<group>"; };
 		63E9C55628EF3FB400710C8F /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		63E9C55828EF419A00710C8F /* InformationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationItem.swift; sourceTree = "<group>"; };
 		63EA2B882A7ACE8C003E0419 /* speakers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = speakers.json; sourceTree = "<group>"; };
@@ -543,6 +543,7 @@
 				63F7E10328CC9D9500B2E1B7 /* Speaker.swift */,
 				634E7AB728DB7B5C001DC796 /* Sponsor.swift */,
 				630C0B4929D8A75C001424CA /* WeatherData.swift */,
+				638098912AA8945E00EFF533 /* SessionDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -600,7 +601,6 @@
 				63F7E0F828CC998000B2E1B7 /* BaseViewModel.swift */,
 				63F7E0FA28CC999000B2E1B7 /* MyScheduleViewModel.swift */,
 				63E8E85E290E541C002419A7 /* AllSessionsViewModel.swift */,
-				63E9C55428EAE73000710C8F /* SessionDetailViewModel.swift */,
 				63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */,
 				63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */,
 				63EBF13D29CF431800A4AE6B /* MapViewModel.swift */,
@@ -766,13 +766,13 @@
 				63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */,
 				63A8509B29917C1D0000AB15 /* FirebaseFileManager.swift in Sources */,
 				636161F32A8814E000E94C07 /* LocalStorageService.swift in Sources */,
+				638098922AA8945E00EFF533 /* SessionDetail.swift in Sources */,
 				639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */,
 				63F7E0FB28CC999000B2E1B7 /* MyScheduleViewModel.swift in Sources */,
 				63E394E42971DCCB0035C1E0 /* LoginView.swift in Sources */,
 				63F7E12E28CE527700B2E1B7 /* InclusivityView.swift in Sources */,
 				63E9C55228EAE6FF00710C8F /* SessionDetailView.swift in Sources */,
 				63E8E861290E5898002419A7 /* String + Extensions.swift in Sources */,
-				63E9C55528EAE73000710C8F /* SessionDetailViewModel.swift in Sources */,
 				634E7AC128DB8166001DC796 /* SessionCardView.swift in Sources */,
 				63A2BDB52A81680F000A1E5A /* SponsorCard.swift in Sources */,
 				63F7E0F028CC982200B2E1B7 /* AttendeeView.swift in Sources */,
@@ -983,6 +983,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1015,6 +1016,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
