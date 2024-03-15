@@ -22,7 +22,7 @@ struct SpeakerCardView: View {
                 .foregroundStyle(Color(ColorNames.textColor))
                 .minimumScaleFactor(0.6)
                 .lineLimit(2, reservesSpace: true)
-                .font(.subheadline)
+                .semiboldAppFont(size: 14)
         }
     }
 }
