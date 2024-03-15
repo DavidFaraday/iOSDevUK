@@ -22,9 +22,11 @@ struct AllSpeakersView: View {
                     }
                 }
             }
-            .padding(.horizontal, 16)
+            .padding([.top, .horizontal], 16)
         }
+        .scrollIndicators(.hidden)
         .navigationTitle(AppStrings.speakers)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

@@ -21,66 +21,76 @@ struct SpeakerDetailView: View {
     
     
     @ViewBuilder
-    private func socialMediaRow(imageName: String, label: String) -> some View {
-        HStack(spacing: 5) {
-            Image(imageName)
-                .resizable()
-                .frame(width: 30, height: 30)
-            Text(label)
-                .minimumScaleFactor(0.7)
-                .multilineTextAlignment(.leading)
+    private func socialMediaRow() -> some View {
+        HStack {
+            if let twitterId = viewModel.speaker.twitterId,
+                let twitterUrl = URL(string: "\(BaseUrl.twitter)\(twitterId)") {
+                Link(destination: twitterUrl) {
+                    Label(twitterId, image: ImageNames.twitter)
+                        .tint(Color(.purple300))
+                }
+                .buttonBackgroundView()
+            }
+            
+            if let linkedIn = viewModel.speaker.linkedIn,
+                let linkedInUrl = URL(string: "\(BaseUrl.linkedIn)\(linkedIn)") {
+                
+                Link(destination: linkedInUrl) {
+                    Label("LinkedIn", image: ImageNames.linkedIn)
+                        .tint(Color(.purple300))
+                }
+                .buttonBackgroundView()
+            }
         }
+        .padding(.bottom, 20)
     }
     
     
     @ViewBuilder
     private func headerView() -> some View {
-        HStack {
-            RemoteImageView(url: viewModel.speaker.imageUrl)
-                .cornerRadius(16)
-                .scaledToFill()
-                .frame(width: 130, height: 150)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16).stroke(Color(ColorNames.primary), lineWidth: 4)
-                )
+        VStack(spacing: 15) {
+            Spacer()
             
-            VStack(alignment: .leading, spacing: 10) {
-                Text(viewModel.speaker.name)
-                    .font(.title)
-                    .minimumScaleFactor(0.7)
-
-                if let twitterId = viewModel.speaker.twitterId, let twitterUrl = URL(string: "\(BaseUrl.twitter)\(twitterId)") {
-                    Link(destination: twitterUrl) {
-                        socialMediaRow(imageName: ImageNames.twitter, label: twitterId)
-                    }
-                }
-
-                if let linkedIn = viewModel.speaker.linkedIn, let linkedInUrl = URL(string: "\(BaseUrl.linkedIn)\(linkedIn)") {
-                    
-                    Link(destination: linkedInUrl) {
-                        socialMediaRow(imageName: ImageNames.linkedIn, label: linkedIn)
-                    }
-                }
-                
-                Spacer()
+            RemoteImageView(url: viewModel.speaker.imageUrl)
+                .scaledToFill()
+                .frame(width: 120, height: 120)
+                .clipShape(Circle())
+                .padding(.top, 20)
+            
+            Text(viewModel.speaker.name)
+                .boldAppFont(size: 24)
+            
+            if let position = viewModel.speaker.currentPosition {
+                Text(position)
+                    .foregroundStyle(Color(.textGrey))
+                    .minimumScaleFactor(0.8)
+                    .semiboldAppFont(size: 16)
             }
-            .padding(.bottom, 20)
+
+            socialMediaRow()
+        }
+        .frame(minHeight: 340)
+        .frame(maxWidth: .infinity)
+        .background {
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundStyle(Color(.speakerCardBackground))
         }
     }
     
     @ViewBuilder
     private func descriptionView() -> some View {
-        Text(AppStrings.biography)
-            .font(.title2)
-            .bold()
-            .foregroundColor(Color(ColorNames.secondary))
-            .padding(.top)
-            .padding(.bottom, 5)
-        
-        Text(viewModel.speaker.biography)
-            .multilineTextAlignment(.leading)
-            .padding(.bottom, 10)
+        VStack(alignment: .leading, spacing: 10) {
+            Text(AppStrings.biography)
+                .semiboldAppFont(size: 18)
+                .foregroundColor(Color(.textGrey))
+                .padding(.top, 20)
+            
+            Text(viewModel.speaker.biography)
+                .appFont(size: 16)
+                .foregroundColor(Color(.textGrey))
+                .multilineTextAlignment(.leading)
+        }
+        .padding(.horizontal, 16)
     }
     
     @ViewBuilder
@@ -102,61 +112,68 @@ struct SpeakerDetailView: View {
     @ViewBuilder
     private func sessionsView() -> some View {
         if !viewModel.sessions.isEmpty {
-            Divider()
-            
-            Text(AppStrings.session)
-                .font(.title3)
-                .foregroundColor(Color(ColorNames.secondary))
-                .bold()
-                .padding(.top)
-                .padding(.bottom, 5)
-            
-            ForEach(viewModel.sessions) { session in
-                NavigationLink(value: Destination.session(
-                    SessionDetail(session: session,
-                                  speakers: baseViewModel.getSpeakers(with: session.speakerIds),
-                                  location: baseViewModel.getLocation(with: session.locationId))
-                )) {
-                    sessionsRaw(session: session)
+            VStack(alignment: .leading, spacing: 8) {
+                Divider()
+                    .frame(height: 2)
+                    .overlay(Color(.divider))
+                    .padding(.vertical, 10)
+
+                Text(AppStrings.session)
+                    .boldAppFont(size: 18)
+                    .foregroundColor(Color(.textGrey))
+                
+                ForEach(viewModel.sessions) { session in
+                    NavigationLink(
+                        value: Destination.session(
+                            SessionDetail(
+                                session: session,
+                                speakers: baseViewModel.getSpeakers(with: session.speakerIds),
+                                location: baseViewModel.getLocation(with: session.locationId)
+                            )
+                        )
+                    ) {
+                        sessionsRaw(session: session)
+                    }
                 }
             }
+            .padding(.horizontal, 16)
         }
     }
 
     @ViewBuilder
     private func webLinksView() -> some View {
         if !viewModel.webLinks.isEmpty {
-            Divider()
-                        
-            Text(AppStrings.webLinks)
-                .font(.title3)
-                .foregroundColor(Color(ColorNames.secondary))
-                .padding(.top)
-                .padding(.bottom, 3)
-
-            ForEach(viewModel.webLinks, id: \.self) { link in
-                if let url = link.webUrl {
-                    Link(destination: url) {
-                        Text(link.name)
-                            .padding(.bottom, 5)
+            VStack(alignment: .leading, spacing: 10) {
+                Divider()
+                    .frame(height: 2)
+                    .overlay(Color(.divider))
+                    .padding(.vertical, 10)
+                
+                Text(AppStrings.webLinks)
+                    .boldAppFont(size: 18)
+                    .foregroundColor(Color(.textGrey))
+                
+                ForEach(viewModel.webLinks, id: \.self) { link in
+                    if let url = link.webUrl {
+                        LinkRowView(name: link.name, url: url)
                     }
                 }
             }
+            .padding(.horizontal, 16)
         }
     }
+    
     
     @ViewBuilder
     private func main() -> some View {
         ScrollView {
-            VStack(alignment: .leading) {
-                headerView()
-                Divider()
-                descriptionView()
-                webLinksView()
-                sessionsView()
-            }
-            .padding()
+            headerView()
+            descriptionView()
+            
+            webLinksView()
+            sessionsView()
         }
+        .ignoresSafeArea(edges: .top)
         .scrollIndicators(.hidden)
         .alert(isPresented: $viewModel.showError, content: {
             Alert(title: Text(AppStrings.error), message: Text(viewModel.fetchError?.localizedDescription ?? ""), dismissButton: .default(Text(AppStrings.ok)))
@@ -165,7 +182,6 @@ struct SpeakerDetailView: View {
     
     var body: some View {
         main()
-            .navigationBarTitleDisplayMode(.inline)
             .task(viewModel.getSpeakerSessions)
     }
 }
