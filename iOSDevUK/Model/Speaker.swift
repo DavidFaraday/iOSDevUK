@@ -22,6 +22,7 @@ struct Speaker: Codable, Identifiable, Hashable, Comparable {
 
     let id: String
     let name: String
+    let currentPosition: String?
     let biography: String
     let linkedIn: String?
     let twitterId: String?

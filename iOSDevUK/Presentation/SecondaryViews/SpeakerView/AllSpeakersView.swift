@@ -26,16 +26,23 @@ struct AllSpeakersView: View {
     let scaleSize: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 6 : 4
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(speakers) { speaker in
-                    NavigationLink(value: Destination.speaker(speaker)) {
-                        SpeakerCardView(speaker: speaker)
-                    }
-                }
+        List(speakers) { speaker in
+            NavigationLink(value: Destination.speaker(speaker)) {
+                SpeakerRowView(speaker: speaker)
             }
-            .padding(.horizontal)
         }
+        .padding(.horizontal)
+
+//        ScrollView {
+//            LazyVGrid(columns: columns, spacing: 20) {
+//                ForEach(speakers) { speaker in
+//                    NavigationLink(value: Destination.speaker(speaker)) {
+//                        SpeakerCardView(speaker: speaker)
+//                    }
+//                }
+//            }
+//            .padding(.horizontal)
+//        }
         .navigationTitle(AppStrings.speakers)
     }
 }

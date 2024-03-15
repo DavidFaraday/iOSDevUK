@@ -61,6 +61,7 @@
 		63D877B02BA4549B00E6A07A /* SFPRODISPLAYTHINITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D877A42BA4549B00E6A07A /* SFPRODISPLAYTHINITALIC.OTF */; };
 		63D877B12BA4549B00E6A07A /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D877A52BA4549B00E6A07A /* SFPRODISPLAYULTRALIGHTITALIC.OTF */; };
 		63D877B32BA454F100E6A07A /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D877B22BA454F100E6A07A /* FontModifier.swift */; };
+		63D877B62BA45CDD00E6A07A /* SpeakerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D877B52BA45CDD00E6A07A /* SpeakerRowView.swift */; };
 		63D989652901B04B0018FDD6 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989642901B04B0018FDD6 /* AdminView.swift */; };
 		63D989682901B06B0018FDD6 /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989672901B06B0018FDD6 /* AddSession.swift */; };
 		63D9896A2901B0730018FDD6 /* AddSpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989692901B0730018FDD6 /* AddSpeakerView.swift */; };
@@ -188,6 +189,7 @@
 		63D877A42BA4549B00E6A07A /* SFPRODISPLAYTHINITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYTHINITALIC.OTF; sourceTree = "<group>"; };
 		63D877A52BA4549B00E6A07A /* SFPRODISPLAYULTRALIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYULTRALIGHTITALIC.OTF; sourceTree = "<group>"; };
 		63D877B22BA454F100E6A07A /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
+		63D877B52BA45CDD00E6A07A /* SpeakerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerRowView.swift; sourceTree = "<group>"; };
 		63D989642901B04B0018FDD6 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		63D989672901B06B0018FDD6 /* AddSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSession.swift; sourceTree = "<group>"; };
 		63D989692901B0730018FDD6 /* AddSpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpeakerView.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 				63F7E10628CC9E7300B2E1B7 /* RemoteImage.swift */,
 				634E7AC028DB8166001DC796 /* SessionCardView.swift */,
 				63F7E11B28CCF6B200B2E1B7 /* SpeakerCardView.swift */,
+				63D877B52BA45CDD00E6A07A /* SpeakerRowView.swift */,
 				63A6A771290AF08300940170 /* SponsorRow.swift */,
 				63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */,
 				EF99912A292A8C9F00B4DB8B /* SectionHeaderView.swift */,
@@ -856,6 +859,7 @@
 				63D9896C2901B0810018FDD6 /* AddLocation.swift in Sources */,
 				63F7E0EC28CC980A00B2E1B7 /* HomeView.swift in Sources */,
 				630C0B4A29D8A75C001424CA /* WeatherData.swift in Sources */,
+				63D877B62BA45CDD00E6A07A /* SpeakerRowView.swift in Sources */,
 				63D9897A2901B1A90018FDD6 /* AdminSponsors.swift in Sources */,
 				63A6A772290AF08300940170 /* SponsorRow.swift in Sources */,
 				63F7E0EA28CC94FF00B2E1B7 /* TabBarView.swift in Sources */,
