@@ -41,7 +41,7 @@ final class AdminSpeakerViewModel: ObservableObject {
     }
     
     func save() async {
-        let newSpeaker = Speaker(id: speaker?.id ?? fullName.removeSpaces, name: fullName, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: imageLink, webLinks: nil)
+        let newSpeaker = Speaker(id: speaker?.id ?? fullName.removeSpaces, name: fullName, currentPosition: nil, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: imageLink, webLinks: nil)
 
         do {
             try firebaseRepository.saveData(data: newSpeaker, to: .Speaker)

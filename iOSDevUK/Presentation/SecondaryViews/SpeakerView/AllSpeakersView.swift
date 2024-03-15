@@ -10,31 +10,19 @@ import SwiftUI
 struct AllSpeakersView: View {
     
     let speakers: [Speaker]
-    
-    let columns = UIDevice.current.userInterfaceIdiom == .pad ? [
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120))
-    ] : [
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120))
-    ]
-    
-    let scaleSize: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 6 : 4
-    
+        
     var body: some View {
+        
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
+            LazyVStack {
                 ForEach(speakers) { speaker in
                     NavigationLink(value: Destination.speaker(speaker)) {
-                        SpeakerCardView(speaker: speaker)
+                        SpeakerRowView(speaker: speaker)
+                            .padding(.bottom, 5)
                     }
                 }
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 16)
         }
         .navigationTitle(AppStrings.speakers)
     }
@@ -47,14 +35,14 @@ struct SpeakersView_Previews: PreviewProvider {
         }
         .previewDevice(PreviewDevice(rawValue: "iPhone 14 pro"))
         .previewDisplayName("iPhone 14")
-
-        AllSpeakersView(speakers: DummyData.speakers)
-        .previewDevice(PreviewDevice(rawValue: "iPad mini (6th generation)"))
-        .previewDisplayName("iPad mini")
         
         AllSpeakersView(speakers: DummyData.speakers)
-        .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
-        .previewDisplayName("iPad pro 11")
-
+            .previewDevice(PreviewDevice(rawValue: "iPad mini (6th generation)"))
+            .previewDisplayName("iPad mini")
+        
+        AllSpeakersView(speakers: DummyData.speakers)
+            .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
+            .previewDisplayName("iPad pro 11")
+        
     }
 }

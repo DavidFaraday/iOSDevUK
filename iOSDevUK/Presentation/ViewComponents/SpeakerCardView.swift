@@ -19,7 +19,7 @@ struct SpeakerCardView: View {
                 .clipShape(Circle())
             
             Text(speaker.name)
-                .foregroundStyle(Color(ColorNames.textColor))
+                .foregroundStyle(Color(.mainText))
                 .minimumScaleFactor(0.6)
                 .lineLimit(2, reservesSpace: true)
                 .semiboldAppFont(size: 14)
