@@ -87,30 +87,6 @@ struct HomeView: View {
         }
     }
     
-    @ViewBuilder
-    private func speakerView() -> some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(AppStrings.speakers).font(.title2).bold()
-                Spacer()
-                NavigationLink(AppStrings.allSpeakers, value: Destination.speakers(viewModel.speakers.sorted()))
-            }
-            .padding(.horizontal)
-            
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 10) {
-                    ForEach(viewModel.speakers) { speaker in
-                        NavigationLink(value: Destination.speaker(speaker)) {
-                            SpeakerCardView(speaker: speaker)
-                                .frame(width: 120)
-                        }
-                    }
-                }
-            }
-            .scrollIndicators(.hidden)
-            .padding(.leading)
-        }
-    }
     
     @ViewBuilder
     private func footerView() -> some View {
@@ -165,8 +141,9 @@ struct HomeView: View {
             VStack(spacing: 20) {
                 WeatherView()
                 
+                SpeakersHorizontalRowView(speakers: viewModel.speakers)
                 sessionView()
-                speakerView()
+
                 sponsorView()
                 
                 if viewModel.eventInformation != nil {

@@ -108,6 +108,8 @@ struct ColorNames {
     static let primary = "primary"
     static let secondary = "secondary"
     static let backgroundColor = "backgroundColor"
+    static let textColor = "textColor"
+    static let textGrey = "textGrey"
 }
 
 struct TwitterAccounts {
