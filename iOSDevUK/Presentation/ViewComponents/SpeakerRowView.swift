@@ -11,7 +11,7 @@ struct SpeakerRowView: View {
     let speaker: Speaker
     
     var body: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: 12) {
             RemoteImageView(url: speaker.imageUrl)
                 .scaledToFit()
                 .frame(width: 60, height: 60)
@@ -19,22 +19,28 @@ struct SpeakerRowView: View {
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(speaker.name)
-                    .foregroundStyle(Color(ColorNames.textColor))
+                    .foregroundStyle(Color(.mainText))
                     .minimumScaleFactor(0.8)
                     .lineLimit(2)
-                    .boldAppFont(size: 16)
+                    .boldAppFont(size: 18)
                 
                 if let position = speaker.currentPosition {
                     Text(position)
-                        .foregroundStyle(Color(ColorNames.textGrey))
+                        .foregroundStyle(Color(.textGrey))
                         .minimumScaleFactor(0.8)
-                        .semiboldAppFont(size: 14)
+                        .semiboldAppFont(size: 16)
                 }
             }
+            Spacer()
+        }
+        .padding(12)
+        .background {
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundStyle(Color(.rowBackground))
         }
     }
 }
 
 #Preview {
-    SpeakerRowView()
+    SpeakerRowView(speaker: DummyData.speakers.first!)
 }
