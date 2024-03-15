@@ -25,7 +25,7 @@ struct SpeakersHorizontalRowView: View {
                     ForEach(speakers) { speaker in
                         NavigationLink(value: Destination.speaker(speaker)) {
                             SpeakerCardView(speaker: speaker)
-                                .frame(width: 100)
+                                .frame(width: 110)
                         }
                     }
                 }

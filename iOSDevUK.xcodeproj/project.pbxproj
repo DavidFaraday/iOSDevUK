@@ -49,6 +49,18 @@
 		63D2070629F2FEF70031A9A1 /* SelectSpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D2070529F2FEF70031A9A1 /* SelectSpeakerView.swift */; };
 		63D602DE290E9B8E00BC01B9 /* LocationMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */; };
 		63D660372974021300EAAFEB /* AdminSpeakerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D660362974021300EAAFEB /* AdminSpeakerViewModel.swift */; };
+		63D877A72BA4549B00E6A07A /* SFProDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63D8779B2BA4549B00E6A07A /* SFProDisplay-Light.ttf */; };
+		63D877A82BA4549B00E6A07A /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63D8779C2BA4549B00E6A07A /* SFProDisplay-Semibold.ttf */; };
+		63D877A92BA4549B00E6A07A /* SFPRODISPLAYBLACKITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D8779D2BA4549B00E6A07A /* SFPRODISPLAYBLACKITALIC.OTF */; };
+		63D877AA2BA4549B00E6A07A /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D8779E2BA4549B00E6A07A /* SFPRODISPLAYBOLD.OTF */; };
+		63D877AB2BA4549B00E6A07A /* SFPRODISPLAYHEAVYITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D8779F2BA4549B00E6A07A /* SFPRODISPLAYHEAVYITALIC.OTF */; };
+		63D877AC2BA4549B00E6A07A /* SFPRODISPLAYLIGHTITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D877A02BA4549B00E6A07A /* SFPRODISPLAYLIGHTITALIC.OTF */; };
+		63D877AD2BA4549B00E6A07A /* SFPRODISPLAYMEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D877A12BA4549B00E6A07A /* SFPRODISPLAYMEDIUM.OTF */; };
+		63D877AE2BA4549B00E6A07A /* SFPRODISPLAYREGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D877A22BA4549B00E6A07A /* SFPRODISPLAYREGULAR.OTF */; };
+		63D877AF2BA4549B00E6A07A /* SFPRODISPLAYSEMIBOLDITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D877A32BA4549B00E6A07A /* SFPRODISPLAYSEMIBOLDITALIC.OTF */; };
+		63D877B02BA4549B00E6A07A /* SFPRODISPLAYTHINITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D877A42BA4549B00E6A07A /* SFPRODISPLAYTHINITALIC.OTF */; };
+		63D877B12BA4549B00E6A07A /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 63D877A52BA4549B00E6A07A /* SFPRODISPLAYULTRALIGHTITALIC.OTF */; };
+		63D877B32BA454F100E6A07A /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D877B22BA454F100E6A07A /* FontModifier.swift */; };
 		63D989652901B04B0018FDD6 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989642901B04B0018FDD6 /* AdminView.swift */; };
 		63D989682901B06B0018FDD6 /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989672901B06B0018FDD6 /* AddSession.swift */; };
 		63D9896A2901B0730018FDD6 /* AddSpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989692901B0730018FDD6 /* AddSpeakerView.swift */; };
@@ -164,6 +176,18 @@
 		63D2070529F2FEF70031A9A1 /* SelectSpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSpeakerView.swift; sourceTree = "<group>"; };
 		63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapAnnotation.swift; sourceTree = "<group>"; };
 		63D660362974021300EAAFEB /* AdminSpeakerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSpeakerViewModel.swift; sourceTree = "<group>"; };
+		63D8779B2BA4549B00E6A07A /* SFProDisplay-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Light.ttf"; sourceTree = "<group>"; };
+		63D8779C2BA4549B00E6A07A /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
+		63D8779D2BA4549B00E6A07A /* SFPRODISPLAYBLACKITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBLACKITALIC.OTF; sourceTree = "<group>"; };
+		63D8779E2BA4549B00E6A07A /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
+		63D8779F2BA4549B00E6A07A /* SFPRODISPLAYHEAVYITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYHEAVYITALIC.OTF; sourceTree = "<group>"; };
+		63D877A02BA4549B00E6A07A /* SFPRODISPLAYLIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYLIGHTITALIC.OTF; sourceTree = "<group>"; };
+		63D877A12BA4549B00E6A07A /* SFPRODISPLAYMEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYMEDIUM.OTF; sourceTree = "<group>"; };
+		63D877A22BA4549B00E6A07A /* SFPRODISPLAYREGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.OTF; sourceTree = "<group>"; };
+		63D877A32BA4549B00E6A07A /* SFPRODISPLAYSEMIBOLDITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYSEMIBOLDITALIC.OTF; sourceTree = "<group>"; };
+		63D877A42BA4549B00E6A07A /* SFPRODISPLAYTHINITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYTHINITALIC.OTF; sourceTree = "<group>"; };
+		63D877A52BA4549B00E6A07A /* SFPRODISPLAYULTRALIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYULTRALIGHTITALIC.OTF; sourceTree = "<group>"; };
+		63D877B22BA454F100E6A07A /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
 		63D989642901B04B0018FDD6 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		63D989672901B06B0018FDD6 /* AddSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSession.swift; sourceTree = "<group>"; };
 		63D989692901B0730018FDD6 /* AddSpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpeakerView.swift; sourceTree = "<group>"; };
@@ -296,6 +320,40 @@
 				63B80EE028F075D400445E63 /* SessionRowView.swift */,
 			);
 			path = SessionRowView;
+			sourceTree = "<group>";
+		};
+		63D8779A2BA4548500E6A07A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63D877A62BA4549B00E6A07A /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		63D877A62BA4549B00E6A07A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				63D8779B2BA4549B00E6A07A /* SFProDisplay-Light.ttf */,
+				63D8779C2BA4549B00E6A07A /* SFProDisplay-Semibold.ttf */,
+				63D8779D2BA4549B00E6A07A /* SFPRODISPLAYBLACKITALIC.OTF */,
+				63D8779E2BA4549B00E6A07A /* SFPRODISPLAYBOLD.OTF */,
+				63D8779F2BA4549B00E6A07A /* SFPRODISPLAYHEAVYITALIC.OTF */,
+				63D877A02BA4549B00E6A07A /* SFPRODISPLAYLIGHTITALIC.OTF */,
+				63D877A12BA4549B00E6A07A /* SFPRODISPLAYMEDIUM.OTF */,
+				63D877A22BA4549B00E6A07A /* SFPRODISPLAYREGULAR.OTF */,
+				63D877A32BA4549B00E6A07A /* SFPRODISPLAYSEMIBOLDITALIC.OTF */,
+				63D877A42BA4549B00E6A07A /* SFPRODISPLAYTHINITALIC.OTF */,
+				63D877A52BA4549B00E6A07A /* SFPRODISPLAYULTRALIGHTITALIC.OTF */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		63D877B42BA4552600E6A07A /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				63D877B22BA454F100E6A07A /* FontModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		63D989662901B0570018FDD6 /* AdminSection */ = {
@@ -437,6 +495,8 @@
 			children = (
 				63A986A729D03B3C0008DE95 /* iOSDevUK.entitlements */,
 				63F7E0B928CC942100B2E1B7 /* iOSDevUKApp.swift */,
+				63D877B42BA4552600E6A07A /* Modifiers */,
+				63D8779A2BA4548500E6A07A /* Resources */,
 				EF8AC5082931F7CF00E19859 /* Domains */,
 				63F7E0F328CC993F00B2E1B7 /* Presentation */,
 				EF8AC50A2932353300E19859 /* Navigation */,
@@ -720,13 +780,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63D877AD2BA4549B00E6A07A /* SFPRODISPLAYMEDIUM.OTF in Resources */,
 				63F7E0C128CC942200B2E1B7 /* Preview Assets.xcassets in Resources */,
+				63D877A92BA4549B00E6A07A /* SFPRODISPLAYBLACKITALIC.OTF in Resources */,
+				63D877A82BA4549B00E6A07A /* SFProDisplay-Semibold.ttf in Resources */,
 				63EA2B8D2A7ACE8C003E0419 /* locations.json in Resources */,
 				63F7E0BE28CC942200B2E1B7 /* Assets.xcassets in Resources */,
+				63D877AC2BA4549B00E6A07A /* SFPRODISPLAYLIGHTITALIC.OTF in Resources */,
+				63D877B02BA4549B00E6A07A /* SFPRODISPLAYTHINITALIC.OTF in Resources */,
 				63EA2B8E2A7ACE8C003E0419 /* sponsors.json in Resources */,
 				63EA2B8F2A7ACE8C003E0419 /* sessions.json in Resources */,
+				63D877AA2BA4549B00E6A07A /* SFPRODISPLAYBOLD.OTF in Resources */,
+				63D877AF2BA4549B00E6A07A /* SFPRODISPLAYSEMIBOLDITALIC.OTF in Resources */,
 				63EA2B8C2A7ACE8C003E0419 /* speakers.json in Resources */,
+				63D877AB2BA4549B00E6A07A /* SFPRODISPLAYHEAVYITALIC.OTF in Resources */,
+				63D877B12BA4549B00E6A07A /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */,
 				63485FB52AA7D1E5007EB4A3 /* GoogleService-Info.plist in Resources */,
+				63D877AE2BA4549B00E6A07A /* SFPRODISPLAYREGULAR.OTF in Resources */,
+				63D877A72BA4549B00E6A07A /* SFProDisplay-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +892,7 @@
 				63E9C55728EF3FB400710C8F /* DummyData.swift in Sources */,
 				63F7E12C28CDB61F00B2E1B7 /* Networking.swift in Sources */,
 				630FEA8C28FF147600D483B2 /* Constants.swift in Sources */,
+				63D877B32BA454F100E6A07A /* FontModifier.swift in Sources */,
 				63D2070629F2FEF70031A9A1 /* SelectSpeakerView.swift in Sources */,
 				6367516D29B48160003B8B5A /* AdminSponsorViewModel.swift in Sources */,
 				63EBF13E29CF431800A4AE6B /* MapViewModel.swift in Sources */,
@@ -976,6 +1048,7 @@
 				DEVELOPMENT_TEAM = 7P6AJEE272;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOSDevUK/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "iOSDevUK uses your location to show on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1009,6 +1082,7 @@
 				DEVELOPMENT_TEAM = 7P6AJEE272;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOSDevUK/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "iOSDevUK uses your location to show on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
