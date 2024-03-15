@@ -103,6 +103,7 @@
 		EF1782932941F3C300EFFB2D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EF1782922941F3C300EFFB2D /* FirebaseStorage */; };
 		EF1782952941F58400EFFB2D /* FactorySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1782942941F58400EFFB2D /* FactorySetup.swift */; };
 		EF178297294207D900EFFB2D /* AllSessionsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */; };
+		EF330BE22BA43869002BA4B7 /* SpeakersHorizontalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF330BE12BA43869002BA4B7 /* SpeakersHorizontalRowView.swift */; };
 		EF3470992944F18700B24854 /* SessionRowViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */; };
 		EF34709C2945C73F00B24854 /* SessionDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34709B2945C73F00B24854 /* SessionDetailViewModelTest.swift */; };
 		EF8AC50F2932389300E19859 /* ServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AC50E2932389300E19859 /* ServiceDependencies.swift */; };
@@ -211,6 +212,7 @@
 		EF1782822941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewModelTests.swift; sourceTree = "<group>"; };
 		EF1782942941F58400EFFB2D /* FactorySetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorySetup.swift; sourceTree = "<group>"; };
 		EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsViewModelTest.swift; sourceTree = "<group>"; };
+		EF330BE12BA43869002BA4B7 /* SpeakersHorizontalRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakersHorizontalRowView.swift; sourceTree = "<group>"; };
 		EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModelTest.swift; sourceTree = "<group>"; };
 		EF34709B2945C73F00B24854 /* SessionDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewModelTest.swift; sourceTree = "<group>"; };
 		EF8AC50E2932389300E19859 /* ServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDependencies.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				63F7E0EB28CC980A00B2E1B7 /* HomeView.swift */,
+				EF330BE12BA43869002BA4B7 /* SpeakersHorizontalRowView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				63A8509B29917C1D0000AB15 /* FirebaseFileManager.swift in Sources */,
 				636161F32A8814E000E94C07 /* LocalStorageService.swift in Sources */,
 				638098922AA8945E00EFF533 /* SessionDetail.swift in Sources */,
+				EF330BE22BA43869002BA4B7 /* SpeakersHorizontalRowView.swift in Sources */,
 				639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */,
 				63F7E0FB28CC999000B2E1B7 /* MyScheduleViewModel.swift in Sources */,
 				63E394E42971DCCB0035C1E0 /* LoginView.swift in Sources */,
