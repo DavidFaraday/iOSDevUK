@@ -35,8 +35,8 @@ struct AppStrings {
     static let location = "Location"
     static let error = "Error!"
     static let ok = "OK"
-    static let biography = "Biography"
-    static let session = "Session(s)"
+    static let biography = "BIOGRAPHY"
+    static let session = "SESSIONS"
     static let home = "Home"
     static let schedule = "Schedule"
     static let attendee = "Attendee"
@@ -60,7 +60,7 @@ struct AppStrings {
     static let locationDetails = "Location Details"
     static let sponsorDetails = "Sponsor details"
     static let addSponsor = "Add Sponsor"
-    static let webLinks = "Link(s)"
+    static let webLinks = "LINKS"
     static let time = "Time"
     static let aberystwyth = "Aberystwyth"
 
@@ -98,6 +98,8 @@ struct ImageNames {
     static let iphone = "iphone.gen3"
     static let infoCircle = "info.circle"
     static let ticket = "ticket"
+    static let link = "link"
+    static let location = "mapPin"
 
 }
 
