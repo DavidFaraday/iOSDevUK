@@ -21,7 +21,7 @@ struct SpeakerDetailView: View {
     
     
     @ViewBuilder
-    private func socialMediaRow() -> some View {
+    private func socialMediaView() -> some View {
         HStack {
             if let twitterId = viewModel.speaker.twitterId,
                 let twitterUrl = URL(string: "\(BaseUrl.twitter)\(twitterId)") {
@@ -29,7 +29,7 @@ struct SpeakerDetailView: View {
                     Label(twitterId, image: ImageNames.twitter)
                         .tint(Color(.purple300))
                 }
-                .buttonBackgroundView()
+                .capsuleBackgroundView()
             }
             
             if let linkedIn = viewModel.speaker.linkedIn,
@@ -39,7 +39,7 @@ struct SpeakerDetailView: View {
                     Label("LinkedIn", image: ImageNames.linkedIn)
                         .tint(Color(.purple300))
                 }
-                .buttonBackgroundView()
+                .capsuleBackgroundView()
             }
         }
         .padding(.bottom, 20)
@@ -67,19 +67,17 @@ struct SpeakerDetailView: View {
                     .semiboldAppFont(size: 16)
             }
 
-            socialMediaRow()
+            socialMediaView()
         }
         .frame(minHeight: 340)
         .frame(maxWidth: .infinity)
-        .background {
-            RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(Color(.speakerCardBackground))
-        }
+        .roundBackgroundView(color: Color(.speakerCardBackground))
     }
     
     @ViewBuilder
     private func descriptionView() -> some View {
         VStack(alignment: .leading, spacing: 10) {
+            
             Text(AppStrings.biography)
                 .semiboldAppFont(size: 18)
                 .foregroundColor(Color(.textGrey))
@@ -88,24 +86,8 @@ struct SpeakerDetailView: View {
             Text(viewModel.speaker.biography)
                 .appFont(size: 16)
                 .foregroundColor(Color(.textGrey))
-                .multilineTextAlignment(.leading)
         }
         .padding(.horizontal, 16)
-    }
-    
-    @ViewBuilder
-    private func sessionsRaw(session: Session) -> some View {
-        VStack(alignment: .leading) {
-            Text("\(session.title)")
-                .font(.subheadline)
-                .lineLimit(2)
-                .multilineTextAlignment(.leading)
-                
-            Text("\(session.duration)")
-                .font(.caption)
-                .foregroundColor(.gray)
-        }
-        .padding(.bottom, 10)
     }
 
     
@@ -132,7 +114,7 @@ struct SpeakerDetailView: View {
                             )
                         )
                     ) {
-                        sessionsRaw(session: session)
+                        NewSessionCard(session: session)
                     }
                 }
             }

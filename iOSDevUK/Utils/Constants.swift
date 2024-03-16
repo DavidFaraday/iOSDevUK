@@ -98,6 +98,8 @@ struct ImageNames {
     static let iphone = "iphone.gen3"
     static let infoCircle = "info.circle"
     static let ticket = "ticket"
+    static let link = "link"
+    static let location = "mapPin"
 
 }
 

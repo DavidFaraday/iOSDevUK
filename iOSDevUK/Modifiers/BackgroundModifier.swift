@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ButtonBackgroundModifier: ViewModifier {
-        
+    
+    let height: CGFloat
+    
     func body(content: Content) -> some View {
         content
             .padding(.vertical, 10)
@@ -16,14 +18,14 @@ struct ButtonBackgroundModifier: ViewModifier {
             .background {
                 Capsule()
                     .foregroundStyle(Color(.linkButton))
-                    .frame(height: 35)
+                    .frame(height: height)
             }
     }
 }
 
 extension View {
-    func buttonBackgroundView() -> some View {
-        self.modifier(ButtonBackgroundModifier())
+    func capsuleBackgroundView(height: CGFloat = 35) -> some View {
+        self.modifier(ButtonBackgroundModifier(height: height))
     }
 }
 

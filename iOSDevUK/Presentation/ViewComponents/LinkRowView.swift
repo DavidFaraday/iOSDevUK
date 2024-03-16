@@ -14,8 +14,8 @@ struct LinkRowView: View {
     var body: some View {
         Link(destination: url) {
             HStack(spacing: 10) {
-                Image(systemName: "link")
-                    .tint(Color(.purple300))
+                Image(systemName: ImageNames.link)
+                    .tint(Color(.icon))
                     .roundBackgroundView(color: Color(.linkButton))
 
                 Text(name)
