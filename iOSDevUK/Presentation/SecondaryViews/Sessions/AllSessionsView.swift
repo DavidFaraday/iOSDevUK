@@ -25,7 +25,7 @@ struct AllSessionsView: View {
             ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
                 
                 NavigationLink(value: Destination.session(
-                    SessionDetail(session: session,
+                    SessionDetailModel(session: session,
                                   speakers: baseViewModel.getSpeakers(with: session.speakerIds),
                                   location: baseViewModel.getLocation(with: session.locationId))
                 )) {
