@@ -83,6 +83,7 @@
 		63E9E32D2BA4A429003497C0 /* BackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9E32C2BA4A429003497C0 /* BackgroundModifier.swift */; };
 		63E9E32F2BA4B9E2003497C0 /* InfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9E32E2BA4B9E2003497C0 /* InfoRowView.swift */; };
 		63E9E3312BA578A0003497C0 /* NewSessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9E3302BA578A0003497C0 /* NewSessionCard.swift */; };
+		63E9E3332BA5D693003497C0 /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9E3322BA5D693003497C0 /* ButtonModifier.swift */; };
 		63EA2B8C2A7ACE8C003E0419 /* speakers.json in Resources */ = {isa = PBXBuildFile; fileRef = 63EA2B882A7ACE8C003E0419 /* speakers.json */; };
 		63EA2B8D2A7ACE8C003E0419 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 63EA2B892A7ACE8C003E0419 /* locations.json */; };
 		63EA2B8E2A7ACE8C003E0419 /* sponsors.json in Resources */ = {isa = PBXBuildFile; fileRef = 63EA2B8A2A7ACE8C003E0419 /* sponsors.json */; };
@@ -205,6 +206,7 @@
 		63E9E32C2BA4A429003497C0 /* BackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModifier.swift; sourceTree = "<group>"; };
 		63E9E32E2BA4B9E2003497C0 /* InfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRowView.swift; sourceTree = "<group>"; };
 		63E9E3302BA578A0003497C0 /* NewSessionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionCard.swift; sourceTree = "<group>"; };
+		63E9E3322BA5D693003497C0 /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
 		63EA2B882A7ACE8C003E0419 /* speakers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = speakers.json; sourceTree = "<group>"; };
 		63EA2B892A7ACE8C003E0419 /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		63EA2B8A2A7ACE8C003E0419 /* sponsors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sponsors.json; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			children = (
 				63D877B22BA454F100E6A07A /* FontModifier.swift */,
 				63E9E32C2BA4A429003497C0 /* BackgroundModifier.swift */,
+				63E9E3322BA5D693003497C0 /* ButtonModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 				636161F32A8814E000E94C07 /* LocalStorageService.swift in Sources */,
 				638098922AA8945E00EFF533 /* SessionDetailModel.swift in Sources */,
 				EF330BE22BA43869002BA4B7 /* SpeakersHorizontalRowView.swift in Sources */,
+				63E9E3332BA5D693003497C0 /* ButtonModifier.swift in Sources */,
 				639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */,
 				63F7E0FB28CC999000B2E1B7 /* MyScheduleViewModel.swift in Sources */,
 				63E394E42971DCCB0035C1E0 /* LoginView.swift in Sources */,

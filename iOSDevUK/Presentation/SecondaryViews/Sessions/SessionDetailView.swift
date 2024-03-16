@@ -12,16 +12,6 @@ struct SessionDetailView: View {
     
     let sessionDetail: SessionDetailModel
     
-//    @ViewBuilder
-//    private func navigationBarTrailingItem() -> some View {
-//        Button {
-//            baseViewModel.updateFavoritSession(sessionId: sessionDetail.session.id)
-//        } label: {
-//            Image(systemName: baseViewModel.isFavorite(sessionDetail.session.id) ? ImageNames.bookmarkFill : ImageNames.bookmark)
-//        }
-//    }
-    
-    
     @ViewBuilder
     private func main() -> some View {
         
@@ -64,10 +54,10 @@ struct SessionDetailView: View {
             Button {
                 baseViewModel.updateFavoritSession(sessionId: sessionDetail.session.id)
             } label: {
-                Text("Save")
+                Text(baseViewModel.isFavorite(sessionDetail.session.id) ? "Remove from schedule" : "Add to schedule")
             }
-            .buttonStyle(.borderedProminent)
-            .tint(Color(ColorNames.secondary))
+            .buttonStyle(.appPrimary)
+            .padding([.bottom, .horizontal], 16)
         }
     }
     
