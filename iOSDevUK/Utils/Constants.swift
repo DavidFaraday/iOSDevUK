@@ -100,6 +100,7 @@ struct ImageNames {
     static let ticket = "ticket"
     static let link = "link"
     static let location = "mapPin"
+    static let calendar = "calendar"
 
 }
 

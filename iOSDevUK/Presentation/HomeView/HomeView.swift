@@ -68,7 +68,7 @@ struct HomeView: View {
                     ForEach(viewModel.homeViewSessions) { session in
                         
                         NavigationLink(value: Destination.session(
-                            SessionDetail(session: session,
+                            SessionDetailModel(session: session,
                                           speakers: viewModel.getSpeakers(with: session.speakerIds),
                                           location: viewModel.getLocation(with: session.locationId))
                         )) {

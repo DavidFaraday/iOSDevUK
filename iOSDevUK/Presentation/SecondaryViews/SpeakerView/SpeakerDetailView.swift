@@ -80,7 +80,7 @@ struct SpeakerDetailView: View {
             
             Text(AppStrings.biography)
                 .semiboldAppFont(size: 18)
-                .foregroundColor(Color(.textGrey))
+                .foregroundColor(Color(.textBody))
                 .padding(.top, 20)
             
             Text(viewModel.speaker.biography)
@@ -107,7 +107,7 @@ struct SpeakerDetailView: View {
                 ForEach(viewModel.sessions) { session in
                     NavigationLink(
                         value: Destination.session(
-                            SessionDetail(
+                            SessionDetailModel(
                                 session: session,
                                 speakers: baseViewModel.getSpeakers(with: session.speakerIds),
                                 location: baseViewModel.getLocation(with: session.locationId)
@@ -137,7 +137,9 @@ struct SpeakerDetailView: View {
                 
                 ForEach(viewModel.webLinks, id: \.self) { link in
                     if let url = link.webUrl {
-                        LinkRowView(name: link.name, url: url)
+                        Link(destination: url) {
+                            InfoRowView(text: link.name, imageName: ImageNames.link)
+                        }
                     }
                 }
             }

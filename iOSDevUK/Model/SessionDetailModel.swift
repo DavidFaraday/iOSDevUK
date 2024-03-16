@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SessionDetail: Hashable {
+struct SessionDetailModel: Hashable {
     let session: Session
     let speakers: [Speaker]
     let location: Location?

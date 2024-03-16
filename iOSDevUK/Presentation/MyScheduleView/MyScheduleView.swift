@@ -34,7 +34,7 @@ struct MyScheduleView: View {
                     Section {
                         ForEach(viewModel.groupedSessions[key] ?? []) { session in
                             NavigationLink(value: Destination.session(
-                                SessionDetail(session: session,
+                                SessionDetailModel(session: session,
                                               speakers: baseViewModel.getSpeakers(with: session.speakerIds),
                                               location: baseViewModel.getLocation(with: session.locationId))
                             )) {
