@@ -62,7 +62,7 @@ struct MyScheduleView: View {
 
             
             if baseViewModel.favoriteSessionIds.isEmpty {
-                EmptySessionView(message: AppStrings.emptySessionMessage, buttonTitle: AppStrings.takeMeThere) {
+                EmptyContentView(image: Image(.emptySchedule), title: "No sessions yet!", description: "Please bookmark sessions to see them here", buttonTitle: "Explore sessions") {
                     router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
                 }
             }
