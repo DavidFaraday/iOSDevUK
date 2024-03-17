@@ -17,7 +17,6 @@ struct InfoView: View {
     @State var clickCount = 0
     
     
-    
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         if firebaseAuth.hasCurrentUser() {
@@ -43,32 +42,39 @@ struct InfoView: View {
     
     var body: some View {
         NavigationStack(path: $router.infoPath) {
-            Form {
-                Section {
-                    NavigationLink(value: InfoDestination.locationList) {
-                        NavigationRowView(systemImageName: ImageNames.mapPinEmpty, title: AppStrings.locations)
-                    }
-                    NavigationLink(value: InfoDestination.inclusivity) {
-                        NavigationRowView(systemImageName: ImageNames.personsCircle, title: AppStrings.inclusivity)
-                    }
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Here you can find information about us and our values.")
+                    .semiboldAppFont(size: 16)
+                    .foregroundStyle(Color(.textGrey))
+                    .padding(.bottom, 15)
 
-                    NavigationLink(value: InfoDestination.sponsors) {
-                        NavigationRowView(systemImageName: ImageNames.heart, title: AppStrings.sponsors)
-                    }
-                    
-                    NavigationLink(value: InfoDestination.aboutApp) {
-                        NavigationRowView(systemImageName: ImageNames.infoCircle, title: AppStrings.aboutIOsDev)
-                    }
-
-                    NavigationLink(value: InfoDestination.appInformation) {
-                        NavigationRowView(systemImageName: ImageNames.iphone, title: AppStrings.appInfo)
-                    }
-
-                } footer: {
-                    Text("Version: \(Bundle.main.appVersionLong)")
+                NavigationLink(value: InfoDestination.locationList) {
+                    NavigationRowView(imageName: ImageNames.location, title: AppStrings.locations)
                 }
+                
+                NavigationLink(value: InfoDestination.inclusivity) {
+                    NavigationRowView(imageName: ImageNames.inclusivity, title: AppStrings.inclusivity)
+                }
+
+                NavigationLink(value: InfoDestination.sponsors) {
+                    NavigationRowView(imageName: ImageNames.sponsors, title: AppStrings.sponsors)
+                }
+                
+                NavigationLink(value: InfoDestination.aboutApp) {
+                    NavigationRowView(imageName: ImageNames.about, title: AppStrings.aboutIOsDev)
+                }
+
+                NavigationLink(value: InfoDestination.appInformation) {
+                    NavigationRowView(imageName: ImageNames.phone, title: AppStrings.appInfo)
+                }
+                
+                Text("Version: \(Bundle.main.appVersionLong)")
+                    .appFont(size: 12)
+                    .foregroundStyle(Color(.textGrey))
+                Spacer()
             }
-            .navigationTitle(AppStrings.info)
+            .padding([.top, .horizontal], 16)
+            .navigationTitle("Information")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

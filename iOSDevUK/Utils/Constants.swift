@@ -73,7 +73,7 @@ struct ImageNames {
     static let conferenceImage = "conferenceImage"
     static let bookmark = "bookmark"
     static let bookmarkFill = "bookmark.fill"
-    static let house = "house"
+    static let home = "home"
     static let list = "list.bullet"
     static let person = "person"
     static let info = "info"
@@ -95,12 +95,17 @@ struct ImageNames {
     static let mapPinEmpty = "mappin.circle"
     static let personsCircle = "person.circle"
     static let heart = "heart"
-    static let iphone = "iphone.gen3"
+    static let phone = "phone"
     static let infoCircle = "info.circle"
     static let ticket = "ticket"
     static let link = "link"
     static let location = "mapPin"
     static let calendar = "calendar"
+    static let about = "about"
+    static let inclusivity = "inclusivity"
+    static let sponsors = "inclusivity"
+    static let schedule = "schedule"
+    static let attendee = "attendee"
 
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-    
+        
     var body: some View {
         TabView {
             ForEach(Tab.allCases) { tab in
@@ -17,7 +17,6 @@ struct TabBarView: View {
                         tab.icon
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                        Text(tab.name)
                     }
             }
         }
@@ -34,44 +33,31 @@ extension TabBarView {
         var id: Int {
             self.hashValue
         }
-        
+                
         var icon: Image {
             switch self {
-            case .home:
-                return Image(systemName: ImageNames.house)
-            case .mySchedule:
-                return Image(systemName: ImageNames.list)
-            case .attendee:
-                return Image(systemName: ImageNames.person)
-            case .info:
-                return Image(systemName: ImageNames.info)
-            }
-        }
-        
-        var name: String {
-            switch self {
-            case .home:
-                return AppStrings.home
-            case .mySchedule:
-                return AppStrings.schedule
-            case .attendee:
-                return AppStrings.attendee
-            case .info:
-                return AppStrings.info
+                case .home:
+                    return Image(ImageNames.home)
+                case .mySchedule:
+                    return Image(ImageNames.schedule)
+                case .attendee:
+                    return Image(ImageNames.attendee)
+                case .info:
+                    return Image(ImageNames.info)
             }
         }
         
         @ViewBuilder
         var view: some View {
             switch self {
-            case .home:
-                HomeView()
-            case .mySchedule:
-                MyScheduleView()
-            case .attendee:
-                AttendeeScreen()
-            case .info:
-                InfoView()
+                case .home:
+                    HomeView()
+                case .mySchedule:
+                    MyScheduleView()
+                case .attendee:
+                    AttendeeScreen()
+                case .info:
+                    InfoView()
             }
         }
     }

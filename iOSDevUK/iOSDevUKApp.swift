@@ -15,11 +15,14 @@ struct iOSDevUKApp: App {
         FirebaseApp.configure()
     }
         
+    @State private var router = NavigationRouter()
+    @State private var baseViewModel = BaseViewModel()
+
     var body: some Scene {
         WindowGroup {
             TabBarView()
-                .environmentObject(NavigationRouter())
-                .environmentObject(BaseViewModel())
+                .environmentObject(router)
+                .environmentObject(baseViewModel)
                 .environmentObject(LocationService.shared)
         }
     }
