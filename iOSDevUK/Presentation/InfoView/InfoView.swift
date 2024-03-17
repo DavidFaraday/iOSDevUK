@@ -83,7 +83,7 @@ struct InfoView: View {
                 case .inclusivity:
                     InclusivityView()
                 case .sponsors:
-                    SponsorsView()
+                    SponsorsScreen()
                 case .aboutApp:
                     AboutView()
                 case .appInformation:

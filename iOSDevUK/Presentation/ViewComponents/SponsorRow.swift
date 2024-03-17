@@ -10,11 +10,7 @@ import SwiftUI
 struct SponsorRow: View {
     @Environment(\.colorScheme) var colorScheme
     
-    private let sponsor: Sponsor
-    
-    init(sponsor: Sponsor) {
-        self.sponsor = sponsor
-    }
+    let sponsor: Sponsor
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -22,25 +18,27 @@ struct SponsorRow: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
+                .padding(.vertical, 5)
+                .padding(.horizontal, 10)
             
-            ZStack(alignment: .center) {
-                RoundedRectangle(cornerRadius: 10)
-                    .frame(height: 50)
-                    .foregroundColor(sponsor.sponsorCategory.color.opacity(30))
-                    .background(RoundedRectangle(cornerRadius: 10).stroke(sponsor.sponsorCategory.color.gradient))
+            Divider()
+                .frame(height: 2)
+                .overlay(Color(.divider))
+                .padding(.vertical, 10)
 
-                Text(sponsor.name)
-                    .font(.title2)
-                    .foregroundColor(.black)
-            }
-            
             Text(sponsor.tagline)
                 .multilineTextAlignment(.leading)
+                .appFont(size: 18)
             
-            Text(sponsor.urlText)
-                .font(.caption)
-                .foregroundColor(.accentColor)
+            if let url = sponsor.webUrl {
+                Link(destination: url) {
+                    Text(sponsor.urlText)
+                }
+                .buttonStyle(.appPrimary)
+                .padding(.vertical, 10)
+            }
         }
+        .roundBackgroundView(color: Color(.speakerCardBackground))
     }
 }
 
