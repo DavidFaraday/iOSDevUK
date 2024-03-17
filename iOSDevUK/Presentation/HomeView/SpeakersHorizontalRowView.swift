@@ -11,11 +11,15 @@ struct SpeakersHorizontalRowView: View {
     let speakers: [Speaker]
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text(AppStrings.speakers).font(.title2).bold()
+                Text(AppStrings.speakers)
+                    .foregroundStyle(Color(.mainText))
+                    .boldAppFont(size: 20)
+
                 Spacer()
-                NavigationLink(AppStrings.allSpeakers, value: Destination.speakers(speakers.sorted()))
+                
+                NavigationLink(AppStrings.viewAll, value: Destination.speakers(speakers.sorted()))
                     .foregroundStyle(Color(ColorNames.textGrey))
             }
             .padding(.horizontal)

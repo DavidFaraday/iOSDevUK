@@ -51,7 +51,7 @@ extension TabBarView {
         var view: some View {
             switch self {
                 case .home:
-                    HomeView()
+                    HomeScreen()
                 case .mySchedule:
                     MyScheduleView()
                 case .attendee:

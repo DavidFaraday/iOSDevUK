@@ -8,7 +8,7 @@
 import SwiftUI
 import Factory
 
-struct HomeView: View {
+struct HomeScreen: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
     
@@ -59,7 +59,7 @@ struct HomeView: View {
             HStack {
                 Text(AppStrings.sessions).font(.title2).bold()
                 Spacer()
-                NavigationLink(AppStrings.allSessions, value: Destination.sessions(viewModel.sessions))
+                NavigationLink(AppStrings.viewAll, value: Destination.sessions(viewModel.sessions))
             }
             .padding(.horizontal)
             
@@ -118,12 +118,11 @@ struct HomeView: View {
     
     @ViewBuilder
     private func sponsorView() -> some View {
-        VStack {
-            HStack {
-                Text(AppStrings.sponsors).font(.title2).bold()
-                Spacer()
-            }
-            
+        VStack(alignment: .leading, spacing: 20) {
+            Text(AppStrings.sponsors)
+                .foregroundStyle(Color(.mainText))
+                .boldAppFont(size: 20)
+
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(viewModel.sponsors) { sponsor in
                     NavigationLink(value: Destination.sponsor) {
@@ -196,15 +195,15 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         
-        HomeView()
+        HomeScreen()
             .previewDevice(PreviewDevice(rawValue: "iPhone 14 pro"))
             .previewDisplayName("iPhone 14")
         
-        HomeView()
+        HomeScreen()
             .previewDevice(PreviewDevice(rawValue: "iPad mini (6th generation)"))
             .previewDisplayName("iPad mini")
         
-        HomeView()
+        HomeScreen()
             .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
             .previewDisplayName("iPad pro 11")
     }
