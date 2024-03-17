@@ -12,7 +12,7 @@ struct AppStrings {
     static let loading = "Loading..."
     static let allSessions = "All Sessions"
     static let speakers = "Speakers"
-    static let allSpeakers = "All Speakers"
+    static let viewAll = "View all"
     static let slackChannel = "iOSDevUK Slack Channel"
     static let iOSDevTwitter = "@iOSDevUK on X"
     static let aberCompTwitter = "@AberCompSci on X"
