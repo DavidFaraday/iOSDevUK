@@ -52,7 +52,7 @@ struct SessionDetailView: View {
         .scrollIndicators(.hidden)
         .safeAreaInset(edge: .bottom) {
             Button {
-                baseViewModel.updateFavoritSession(sessionId: sessionDetail.session.id)
+                baseViewModel.updateFavoriteSession(sessionId: sessionDetail.session.id)
             } label: {
                 Text(baseViewModel.isFavorite(sessionDetail.session.id) ? "Remove from schedule" : "Add to schedule")
             }

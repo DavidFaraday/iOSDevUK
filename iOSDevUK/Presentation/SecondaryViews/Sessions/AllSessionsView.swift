@@ -37,7 +37,7 @@ struct AllSessionsView: View {
                 }
                 .swipeActions {
                     Button {
-                        baseViewModel.updateFavoritSession(sessionId: session.id)
+                        baseViewModel.updateFavoriteSession(sessionId: session.id)
                     } label: {
                         Image(systemName: ImageNames.bookmark)
                     }

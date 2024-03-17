@@ -20,14 +20,18 @@ struct HourlyWeatherView: View {
     var body: some View {
         VStack(spacing: 5) {
             Text(weatherData.tempDate.formatted(date: .omitted, time: .shortened))
-            HStack {
+                .appFont(size: 16)
+
+            HStack(spacing: 5) {
                 Image(systemName: weatherData.symbolName)
                     .symbolRenderingMode(.palette)
-                    .foregroundStyle(Color.primary, Color.blue)
-                
+                    .foregroundStyle(Color.primary, Color(.purple200))
+
                 Text(isCelsius ? weatherData.feelsLikeC.roundNearest().toCelsius : weatherData.feelsLikeF.roundNearest().toFahrenheit)
             }
         }
+        .appFont(size: 14)
+        .foregroundStyle(Color(.mainText))
     }
 }
 

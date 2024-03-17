@@ -44,7 +44,7 @@ class BaseViewModel: ObservableObject {
     }
     
     @MainActor
-    @Sendable func listenForSessions() async {
+    func listenForSessions() async {
         guard self.sessions.isEmpty else { return }
 
         do {
@@ -66,7 +66,7 @@ class BaseViewModel: ObservableObject {
     }
     
     @MainActor
-    @Sendable func listenForSpeakers() async {
+    func listenForSpeakers() async {
         guard self.speakers.isEmpty else { return }
 
         do {
@@ -89,7 +89,7 @@ class BaseViewModel: ObservableObject {
     }
     
     @MainActor
-    @Sendable func listenForEventNotification() async {
+    private func listenForEventNotification() async {
         guard eventInformation == nil else { return }
 
         do {
@@ -112,7 +112,7 @@ class BaseViewModel: ObservableObject {
     
     
     @MainActor
-    @Sendable func listenForSponsors() async {
+    private func listenForSponsors() async {
         guard self.sponsors.isEmpty else { return }
 
         do {
@@ -134,7 +134,7 @@ class BaseViewModel: ObservableObject {
     }
     
     @MainActor
-    @Sendable func listenForLocations() async {
+    private func listenForLocations() async {
         guard self.locations.isEmpty else { return }
 
         do {
@@ -156,7 +156,7 @@ class BaseViewModel: ObservableObject {
     }
     
     @MainActor
-    @Sendable func listenForInfoItems() async {
+    private func listenForInfoItems() async {
         guard self.infoItems.isEmpty else { return }
 
         do {
@@ -178,7 +178,7 @@ class BaseViewModel: ObservableObject {
     }
     
     @MainActor
-    func updateFavoritSession(sessionId: String) {
+    func updateFavoriteSession(sessionId: String) {
         if let index = favoriteSessionIds.firstIndex(of: sessionId) {
             favoriteSessionIds.remove(at: index)
         } else {
@@ -187,6 +187,15 @@ class BaseViewModel: ObservableObject {
         
         localStorage.save(items: favoriteSessionIds, for: AppConstants.sessionKey)
         loadFavSessions()
+    }
+    
+    func listenForData() async {
+        await listenForEventNotification()
+        await listenForSessions()
+        await listenForSpeakers()
+        await listenForSponsors()
+        await listenForLocations()
+        await listenForInfoItems()
     }
     
     func loadFavSessions() {

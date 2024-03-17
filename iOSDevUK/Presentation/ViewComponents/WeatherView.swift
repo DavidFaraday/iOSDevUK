@@ -17,43 +17,28 @@ struct WeatherView: View {
     
     @ViewBuilder
     func currentWeatherView(_ currentWeather: WeatherData) -> some View {
-        HStack {
-            Text(AppStrings.aberystwyth)
-                .font(.headline)
-                .padding(.horizontal, 16)
-            Spacer()
-        }
         
-        HStack(spacing: 8) {
+        HStack(spacing: 10) {
             
-            Button {
-                withAnimation{isCelsius.toggle()}
-            } label: {
-                ZStack {
-                    Circle()
-                        .fill(Color(ColorNames.secondary))
-                        .frame(width: 30)
-                    Text(isCelsius ? "°F" : "°C")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                }
+            Image(systemName: currentWeather.symbolName)
+                .font(.system(size: 40))
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(Color.primary, Color(.purple200))
+            
+            VStack(alignment: .leading) {
+                Text(AppStrings.aberystwyth)
+                    .semiboldAppFont(size: 18)
+                
+                Text(currentWeather.condition)
+                    .appFont(size: 14)
             }
+            .foregroundStyle(Color(.mainText))
             
             Spacer()
-            Image(systemName: currentWeather.symbolName)
-                .font(.system(size: 60))
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(Color.primary, Color.blue)
             
             Text(isCelsius ? currentWeather.feelsLikeC.roundNearest().toCelsius : currentWeather.feelsLikeF.roundNearest().toFahrenheit)
-                .font(.system(size: 35))
+                .appFont(size: 40)
         }
-        .padding(.horizontal, 16)
-        
-        Text(currentWeather.condition)
-            .font(.subheadline)
-            .padding(.horizontal, 16)
     }
     
     @ViewBuilder
@@ -67,15 +52,40 @@ struct WeatherView: View {
             }
         }
         .scrollIndicators(.hidden)
-        .padding([.leading, .top])
     }
     
+    @ViewBuilder
+    func weatherTitleView() -> some View {
+        HStack {
+            Text("WEATHER")
+                .semiboldAppFont(size: 12)
+                .foregroundStyle(Color(.textGrey))
+            
+            Spacer()
+            
+            Button {
+                withAnimation{isCelsius.toggle()}
+            } label: {
+                Text(isCelsius ? "°F" : "°C")
+                    .semiboldAppFont(size: 15)
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .background {
+                        Circle()
+                            .fill(Color(.purple200))
+                    }
+            }
+        }
+    }
+    
+    @ViewBuilder
     func main() -> some View {
         VStack {
-            
             if let currentWeather = viewModel.currentWeather {
                 
-                VStack(alignment: .trailing) {
+                VStack(alignment: .leading, spacing: 10) {
+                    weatherTitleView()
+                    
                     currentWeatherView(currentWeather)
                     
                     if showHourlyData {
@@ -89,6 +99,7 @@ struct WeatherView: View {
                 }
             }
         }
+        .padding(.horizontal, 16)
     }
     
     var body: some View {
