@@ -137,8 +137,9 @@ struct HomeScreen: View {
     @ViewBuilder
     private func main() -> some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: 30) {
                 WeatherView()
+//                    .padding(.bottom, 10)
                 
                 SpeakersHorizontalRowView(speakers: viewModel.speakers)
                 sessionView()
@@ -160,13 +161,8 @@ struct HomeScreen: View {
             main()
                 .navigationTitle(AppStrings.iOSDevUK)
                 .navigationBarTitleDisplayMode(.inline)
-                .task(viewModel.listenForEventNotification)
-                .task(viewModel.listenForSessions)
-                .task(viewModel.listenForSpeakers)
-                .task(viewModel.listenForSponsors)
-                .task(viewModel.listenForLocations)
-                .task(viewModel.listenForInfoItems)
                 .task {
+                    await viewModel.listenForData()
                     viewModel.loadFavSessions()
                 }
                 .navigationDestination(for: Destination.self) { destination in
