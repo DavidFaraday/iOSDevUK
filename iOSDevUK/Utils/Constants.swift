@@ -95,12 +95,15 @@ struct ImageNames {
     static let mapPinEmpty = "mappin.circle"
     static let personsCircle = "person.circle"
     static let heart = "heart"
-    static let iphone = "iphone.gen3"
+    static let phone = "phone"
     static let infoCircle = "info.circle"
     static let ticket = "ticket"
     static let link = "link"
     static let location = "mapPin"
     static let calendar = "calendar"
+    static let about = "about"
+    static let inclusivity = "inclusivity"
+    static let sponsors = "inclusivity"
 
 }
 

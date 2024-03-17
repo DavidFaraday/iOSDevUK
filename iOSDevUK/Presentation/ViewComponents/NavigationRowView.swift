@@ -8,19 +8,29 @@
 import SwiftUI
 
 struct NavigationRowView: View {
-    let systemImageName: String
+    let imageName: String
     let title: String
     
     var body: some View {
-        HStack {
-            Image(systemName: systemImageName)
+        HStack(spacing: 15) {
+            Image(imageName)
+                .tint(Color(.mainText))
+            
             Text(title)
+                .semiboldAppFont(size: 16)
+                .foregroundStyle(Color(.mainText))
+            
+            Spacer()
+            Image(systemName: ImageNames.chevronRight)
+                .tint(Color(.mainText))
         }
+        .padding(4)
+        .roundBackgroundView(color: Color(.speakerCardBackground))
     }
 }
 
 struct NavigationRowView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationRowView(systemImageName: ImageNames.heart, title: AppStrings.sponsors)
+        NavigationRowView(imageName: ImageNames.heart, title: AppStrings.sponsors)
     }
 }
