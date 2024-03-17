@@ -69,7 +69,7 @@ extension TabBarView {
             case .mySchedule:
                 MyScheduleView()
             case .attendee:
-                AttendeeView()
+                AttendeeScreen()
             case .info:
                 InfoView()
             }

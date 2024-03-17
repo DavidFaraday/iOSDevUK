@@ -7,33 +7,41 @@
 
 import SwiftUI
 
-struct AttendeeView: View {
+struct AttendeeScreen: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
     
     @ViewBuilder
     private func main() -> some View {
-        Form {
-            ForEach(viewModel.infoItems) { item in
-                if let url = item.url {
-                    Section {
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 15) {
+                ForEach(viewModel.infoItems) { item in
+                    if let url = item.url {
                         Link(destination: url) {
-                            NavigationRowView(systemImageName: item.imageName ?? ImageNames.questionmark, title: item.name)
+                            AttendeeRowView(
+                                subtitle: item.imageName == "ticket" ? "LINK" : "PDF",
+                                title: item.name,
+                                description: item.subtitle,
+                                image: Image(item.imageName ?? "")
+                            )
                         }
-                    } footer: {
-                        Text(item.subtitle)
+                    } else {
+                        AttendeeRowView(
+                            title: item.name,
+                            description: item.subtitle,
+                            image: Image(item.imageName ?? "")
+                        )
                     }
-                } else {
-                    Text(item.name)
                 }
             }
+            .padding([.horizontal, .top], 16)
         }
     }
     
     var body: some View {
         NavigationStack(path: $router.attendeePath) {
             main()
-                .navigationTitle(AppStrings.attendeeInfo)
+                .navigationTitle("Attendee Information")
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
                         case .session(let sessionDetail):
@@ -56,6 +64,6 @@ struct AttendeeView: View {
 
 struct AttendeeView_Previews: PreviewProvider {
     static var previews: some View {
-        AttendeeView()
+        AttendeeScreen()
     }
 }

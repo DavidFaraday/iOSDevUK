@@ -70,6 +70,7 @@
 		63D989742901B14C0018FDD6 /* AdminSpeakers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989732901B14C0018FDD6 /* AdminSpeakers.swift */; };
 		63D989782901B19F0018FDD6 /* AdminLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989772901B19F0018FDD6 /* AdminLocations.swift */; };
 		63D9897A2901B1A90018FDD6 /* AdminSponsors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D989792901B1A90018FDD6 /* AdminSponsors.swift */; };
+		63E17F3E2BA6C0D300F05E0E /* AttendeeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E17F3D2BA6C0D300F05E0E /* AttendeeRowView.swift */; };
 		63E394E42971DCCB0035C1E0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E394E32971DCCB0035C1E0 /* LoginView.swift */; };
 		63E394E82972B1ED0035C1E0 /* FirebaseAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E394E72972B1ED0035C1E0 /* FirebaseAuthenticationService.swift */; };
 		63E8E85F290E541C002419A7 /* AllSessionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E85E290E541C002419A7 /* AllSessionsViewModel.swift */; };
@@ -95,7 +96,7 @@
 		63F7E0EA28CC94FF00B2E1B7 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E0E928CC94FF00B2E1B7 /* TabBarView.swift */; };
 		63F7E0EC28CC980A00B2E1B7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E0EB28CC980A00B2E1B7 /* HomeView.swift */; };
 		63F7E0EE28CC981500B2E1B7 /* MyScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E0ED28CC981500B2E1B7 /* MyScheduleView.swift */; };
-		63F7E0F028CC982200B2E1B7 /* AttendeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E0EF28CC982200B2E1B7 /* AttendeeView.swift */; };
+		63F7E0F028CC982200B2E1B7 /* AttendeeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E0EF28CC982200B2E1B7 /* AttendeeScreen.swift */; };
 		63F7E0F228CC982900B2E1B7 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E0F128CC982900B2E1B7 /* InfoView.swift */; };
 		63F7E0F928CC998000B2E1B7 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E0F828CC998000B2E1B7 /* BaseViewModel.swift */; };
 		63F7E0FB28CC999000B2E1B7 /* MyScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E0FA28CC999000B2E1B7 /* MyScheduleViewModel.swift */; };
@@ -196,6 +197,7 @@
 		63D989732901B14C0018FDD6 /* AdminSpeakers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSpeakers.swift; sourceTree = "<group>"; };
 		63D989772901B19F0018FDD6 /* AdminLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLocations.swift; sourceTree = "<group>"; };
 		63D989792901B1A90018FDD6 /* AdminSponsors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSponsors.swift; sourceTree = "<group>"; };
+		63E17F3D2BA6C0D300F05E0E /* AttendeeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeRowView.swift; sourceTree = "<group>"; };
 		63E394E32971DCCB0035C1E0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		63E394E72972B1ED0035C1E0 /* FirebaseAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationService.swift; sourceTree = "<group>"; };
 		63E8E85E290E541C002419A7 /* AllSessionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsViewModel.swift; sourceTree = "<group>"; };
@@ -219,7 +221,7 @@
 		63F7E0E928CC94FF00B2E1B7 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		63F7E0EB28CC980A00B2E1B7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		63F7E0ED28CC981500B2E1B7 /* MyScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScheduleView.swift; sourceTree = "<group>"; };
-		63F7E0EF28CC982200B2E1B7 /* AttendeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeView.swift; sourceTree = "<group>"; };
+		63F7E0EF28CC982200B2E1B7 /* AttendeeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeScreen.swift; sourceTree = "<group>"; };
 		63F7E0F128CC982900B2E1B7 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		63F7E0F828CC998000B2E1B7 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		63F7E0FA28CC999000B2E1B7 /* MyScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -539,7 +541,8 @@
 		63F7E0F628CC996300B2E1B7 /* AttendeeView */ = {
 			isa = PBXGroup;
 			children = (
-				63F7E0EF28CC982200B2E1B7 /* AttendeeView.swift */,
+				63F7E0EF28CC982200B2E1B7 /* AttendeeScreen.swift */,
+				63E17F3D2BA6C0D300F05E0E /* AttendeeRowView.swift */,
 			);
 			path = AttendeeView;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				63A986A929D047260008DE95 /* WeatherView.swift in Sources */,
 				63D989652901B04B0018FDD6 /* AdminView.swift in Sources */,
 				63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailView.swift in Sources */,
+				63E17F3E2BA6C0D300F05E0E /* AttendeeRowView.swift in Sources */,
 				63BC3A2529CF1C5F0018286E /* LocationsListView.swift in Sources */,
 				63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */,
 				63A8509B29917C1D0000AB15 /* FirebaseFileManager.swift in Sources */,
@@ -827,7 +831,7 @@
 				63E8E861290E5898002419A7 /* String + Extensions.swift in Sources */,
 				634E7AC128DB8166001DC796 /* SessionCardView.swift in Sources */,
 				63A2BDB52A81680F000A1E5A /* SponsorCard.swift in Sources */,
-				63F7E0F028CC982200B2E1B7 /* AttendeeView.swift in Sources */,
+				63F7E0F028CC982200B2E1B7 /* AttendeeScreen.swift in Sources */,
 				EF8AC50F2932389300E19859 /* ServiceDependencies.swift in Sources */,
 				63F7E0F928CC998000B2E1B7 /* BaseViewModel.swift in Sources */,
 				63F7E0BA28CC942100B2E1B7 /* iOSDevUKApp.swift in Sources */,
