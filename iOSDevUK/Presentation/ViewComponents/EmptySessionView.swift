@@ -7,48 +7,6 @@
 
 import SwiftUI
 
-//struct EmptySessionView: View {
-//    
-//    private let title: String
-//    private let message: String
-//    private let buttonTitle: String
-//    private let buttonAction: () -> Void?
-//    
-//    init(title: String, message: String, buttonTitle: String = "", buttonAction: @escaping () -> Void) {
-//        self.message = message
-//        self.buttonTitle = buttonTitle
-//        self.buttonAction = buttonAction
-//    }
-//    
-//    var body: some View {
-//
-//        VStack(spacing: 12) {
-//            Image(.emotySchedule)
-//                .resizable()
-//                .frame(width: 80, height: 80)
-//                .foregroundStyle(Color(.emptyIcon))
-//
-//            Text(message)
-//                .semiboldAppFont(size: 20)
-//                .foregroundStyle(Color(.mainText))
-//            
-//            Button(buttonTitle, action: buttonAction)
-//                .buttonStyle(.borderedProminent)
-//                .tint(Color(ColorNames.secondary))
-//        }
-//        .offset(y: -50)
-//    }
-//}
-//
-//struct EmptySessionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EmptySessionView(message: "You currently have no sessions added. \n Please bookmark sessions to see them here.") {
-//            
-//        }
-//    }
-//}
-
-
 struct EmptyContentView: View {
     let image: Image
     let title: String
