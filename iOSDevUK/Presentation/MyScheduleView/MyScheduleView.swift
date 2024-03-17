@@ -92,7 +92,7 @@ struct MyScheduleView: View {
                     case .speakers(let speakers):
                         AllSpeakersView(speakers: speakers)
                     case .sponsor:
-                        SponsorsView()
+                        SponsorsScreen()
                     case .locations(let locations):
                         MapView(allLocations: locations)
                     }

@@ -30,7 +30,7 @@
 		638402A62972F1D100DE8D59 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638402A52972F1D100DE8D59 /* LoginViewModel.swift */; };
 		639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639BEAF829099E8D009C3870 /* AdminViewModel.swift */; };
 		63A2BDB52A81680F000A1E5A /* SponsorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2BDB42A81680F000A1E5A /* SponsorCard.swift */; };
-		63A6A770290AED4C00940170 /* SponsorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6A76F290AED4C00940170 /* SponsorsView.swift */; };
+		63A6A770290AED4C00940170 /* SponsorsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6A76F290AED4C00940170 /* SponsorsScreen.swift */; };
 		63A6A772290AF08300940170 /* SponsorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6A771290AF08300940170 /* SponsorRow.swift */; };
 		63A8509B29917C1D0000AB15 /* FirebaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8509A29917C1D0000AB15 /* FirebaseFileManager.swift */; };
 		63A8509D29917D7C0000AB15 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8509C29917D7C0000AB15 /* Reachability.swift */; };
@@ -156,7 +156,7 @@
 		638402A52972F1D100DE8D59 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		639BEAF829099E8D009C3870 /* AdminViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewModel.swift; sourceTree = "<group>"; };
 		63A2BDB42A81680F000A1E5A /* SponsorCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorCard.swift; sourceTree = "<group>"; };
-		63A6A76F290AED4C00940170 /* SponsorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsView.swift; sourceTree = "<group>"; };
+		63A6A76F290AED4C00940170 /* SponsorsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsScreen.swift; sourceTree = "<group>"; };
 		63A6A771290AF08300940170 /* SponsorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorRow.swift; sourceTree = "<group>"; };
 		63A8509A29917C1D0000AB15 /* FirebaseFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFileManager.swift; sourceTree = "<group>"; };
 		63A8509C29917D7C0000AB15 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -423,7 +423,7 @@
 		63E5840F2917A8600034F0D7 /* SponsorsView */ = {
 			isa = PBXGroup;
 			children = (
-				63A6A76F290AED4C00940170 /* SponsorsView.swift */,
+				63A6A76F290AED4C00940170 /* SponsorsScreen.swift */,
 			);
 			path = SponsorsView;
 			sourceTree = "<group>";
@@ -863,7 +863,7 @@
 				638402A62972F1D100DE8D59 /* LoginViewModel.swift in Sources */,
 				636161F12A8813CA00E94C07 /* Array + Extension.swift in Sources */,
 				63D660372974021300EAAFEB /* AdminSpeakerViewModel.swift in Sources */,
-				63A6A770290AED4C00940170 /* SponsorsView.swift in Sources */,
+				63A6A770290AED4C00940170 /* SponsorsScreen.swift in Sources */,
 				634E7AB828DB7B5C001DC796 /* Sponsor.swift in Sources */,
 				63BC3A2829CF251F0018286E /* LocationService.swift in Sources */,
 				EF99912B292A8C9F00B4DB8B /* SectionHeaderView.swift in Sources */,

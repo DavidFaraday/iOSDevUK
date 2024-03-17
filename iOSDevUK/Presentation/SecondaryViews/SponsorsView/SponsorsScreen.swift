@@ -7,22 +7,18 @@
 
 import SwiftUI
 
-struct SponsorsView: View {
+struct SponsorsScreen: View {
     @EnvironmentObject var viewModel: BaseViewModel
 
     var body: some View {
-        List {
-            ForEach(viewModel.sponsors, id: \.id) { sponsor in
-                if let url = sponsor.webUrl {
-                    Link(destination: url) {
-                        SponsorRow(sponsor: sponsor)
-                    }
-                } else {
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 20) {
+                ForEach(viewModel.sponsors) { sponsor in
                     SponsorRow(sponsor: sponsor)
                 }
             }
+            .padding([.top, .horizontal], 16)
         }
-        .listStyle(.plain)
         .navigationTitle(AppStrings.sponsors)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -30,6 +26,6 @@ struct SponsorsView: View {
 
 struct SponsorsView_Previews: PreviewProvider {
     static var previews: some View {
-        SponsorsView()
+        SponsorsScreen()
     }
 }
