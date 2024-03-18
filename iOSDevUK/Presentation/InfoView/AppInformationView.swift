@@ -15,26 +15,35 @@ struct AppInformationView: View {
         ScrollView {
             VStack(spacing: 20) {
                                 
-                Text("The app has been created with Beer & SwiftUI by David Kababyan ([@Dave_iOSDev](https://twitter.com/Dave_iOSDev)), with contributions from Neil Taylor ([@digidol](https://twitter.com/digidol)).\n\nApp data wrangling by Chris Price ([@iOSDevUK](https://twitter.com/iOSDevUK)).")
+                Text("The app has been developed by David Kababyan ([@Dave_iOSDev](https://twitter.com/Dave_iOSDev)), with contributions from Neil Taylor ([@digidol](https://twitter.com/digidol)).\n\nApp data wrangling by Chris Price ([@iOSDevUK](https://twitter.com/iOSDevUK)).")
+                
+                Text("Designed by Oksana Korotun ([@LinkedIn](https://linkedin.com/in/oksana-korotun/)).")
 
                 Text("Thanks to John Gilbey ([@John_Gilbey](https://twitter.com/John_Gilbey)) for his picture of conference attendees that is used in this app.")
 
                 Text("Other images by Neil & Chris.")
                 
-                if let twitterUrl = URL(string: TwitterAccounts.developer) {
-                    Link("Contact the developer", destination: twitterUrl)
-                }
-                if let twitterUrl = URL(string: TwitterAccounts.digidol) {
-                    Link("Contact @digidol", destination: twitterUrl)
+                VStack(spacing: 10) {
+                    if let twitterUrl = URL(string: ContactAccounts.developer) {
+                        Link("Contact the developer", destination: twitterUrl)
+                    }
+                    
+                    if let linkedInUrl = URL(string: ContactAccounts.designer) {
+                        Link("Contact the designer", destination: linkedInUrl)
+                    }
+                    
+                    if let twitterUrl = URL(string: ContactAccounts.digidol) {
+                        Link("Contact @digidol", destination: twitterUrl)
+                    }
                 }
 
                 Spacer()
             }
+            .appFont(size: 16)
             .multilineTextAlignment(.center)
             .padding(.top, 25)
             .padding()
             .navigationTitle(AppStrings.appInfo)
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

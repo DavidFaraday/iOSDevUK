@@ -68,13 +68,13 @@ struct HomeScreen: View {
                 }
             }
             
-            if let twitterUrl = URL(string: TwitterAccounts.iOSDevUK) {
+            if let twitterUrl = URL(string: ContactAccounts.iOSDevUK) {
                 Link(destination: twitterUrl) {
                     ContactButtonView(imageName: "twitter", title: AppStrings.iOSDevUK)
                 }
             }
             
-            if let twitterUrl = URL(string: TwitterAccounts.aberCompSci) {
+            if let twitterUrl = URL(string: ContactAccounts.aberCompSci) {
                 Link(destination: twitterUrl) {
                     ContactButtonView(imageName: "twitter", title: AppStrings.aberCompTwitter)
                 }
@@ -114,10 +114,12 @@ struct HomeScreen: View {
 
                 sponsorView()
                 
-                //viewModel.eventInformation?.notification
                 if viewModel.eventInformation != nil {
-                    EventInfoView(eventDate: "4-7 September 2023", notificationBody: viewModel.eventInformation?.about)
-                        .padding(.horizontal, 16)
+                    EventInfoView(
+                        eventDate: viewModel.eventDate,
+                        notificationBody: viewModel.eventInformation?.about
+                    )
+                    .padding(.horizontal, 16)
                 }
                 
                 usefulLinks()

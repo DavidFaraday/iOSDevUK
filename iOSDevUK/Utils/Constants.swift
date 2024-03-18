@@ -118,8 +118,9 @@ struct ColorNames {
     static let textGrey = "textGrey"
 }
 
-struct TwitterAccounts {
+struct ContactAccounts {
     static let developer = "\(BaseUrl.twitter)Dave_iOSDev"
+    static let designer = "\(BaseUrl.linkedIn)oksana-korotun"
     static let aberCompSci = "\(BaseUrl.twitter)AberCompSci"
     static let iOSDevUK = "\(BaseUrl.twitter)iOSDevUK"
     static let digidol = "\(BaseUrl.twitter)digidol"
