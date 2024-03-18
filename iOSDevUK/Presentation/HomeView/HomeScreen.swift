@@ -22,35 +22,6 @@ struct HomeScreen: View {
         GridItem(.adaptive(minimum: 120))
     ]
     
-    @ViewBuilder
-    private func headerView() -> some View {
-        
-        VStack {
-            ZStack {
-                Image(ImageNames.infoBackground)
-                    .resizable(resizingMode: .tile)
-                    .frame(height: 200.0)
-                    .cornerRadius(16)
-                
-                Image(ImageNames.infoDevices)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 200.0)
-                    .padding([.horizontal, .top])
-            }
-            .padding(.bottom)
-            
-            Text(viewModel.eventInformation?.notification ?? AppStrings.loading)
-                .font(.headline)
-                .multilineTextAlignment(.center)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(10)
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .padding(.horizontal)
-    }
-    
     
     @ViewBuilder
     private func sessionView() -> some View {
@@ -83,36 +54,33 @@ struct HomeScreen: View {
             }
             .scrollIndicators(.hidden)
             .padding(.leading)
-            
         }
     }
     
-    
+
     @ViewBuilder
-    private func footerView() -> some View {
+    private func usefulLinks() -> some View {
         VStack(alignment: .center, spacing: 10) {
-            if viewModel.eventInformation != nil {
-                Text(viewModel.eventInformation?.about ?? AppStrings.loading)
-                    .multilineTextAlignment(.center)
-                    .font(.body)
-                    .padding(10)
-            }
             
             if let slackUrl = URL(string: Slack.channelLink) {
-                Link(AppStrings.slackChannel, destination: slackUrl)
+                Link(destination: slackUrl) {
+                    ContactButtonView(imageName: "slack", title: AppStrings.iOSDevUK)
+                }
             }
+            
             if let twitterUrl = URL(string: TwitterAccounts.iOSDevUK) {
-                Link(AppStrings.iOSDevTwitter, destination: twitterUrl)
+                Link(destination: twitterUrl) {
+                    ContactButtonView(imageName: "twitter", title: AppStrings.iOSDevUK)
+                }
             }
+            
             if let twitterUrl = URL(string: TwitterAccounts.aberCompSci) {
-                Link(AppStrings.aberCompTwitter, destination: twitterUrl)
+                Link(destination: twitterUrl) {
+                    ContactButtonView(imageName: "twitter", title: AppStrings.aberCompTwitter)
+                }
             }
         }
-        .frame(maxWidth: .infinity)
-        .padding(10)
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .padding(.horizontal)
+        .padding([.bottom, .horizontal], 16)
     }
     
     
@@ -138,19 +106,21 @@ struct HomeScreen: View {
     private func main() -> some View {
         ScrollView {
             VStack(spacing: 30) {
+                
                 WeatherView()
-//                    .padding(.bottom, 10)
                 
                 SpeakersHorizontalRowView(speakers: viewModel.speakers)
                 sessionView()
 
                 sponsorView()
                 
+                //viewModel.eventInformation?.notification
                 if viewModel.eventInformation != nil {
-                    headerView()
+                    EventInfoView(eventDate: "4-7 September 2023", notificationBody: viewModel.eventInformation?.about)
+                        .padding(.horizontal, 16)
                 }
                 
-                footerView()
+                usefulLinks()
             }
         }
         .scrollIndicators(.hidden)

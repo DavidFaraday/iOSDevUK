@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct ButtonBackgroundModifier: ViewModifier {
+struct CapsuleBackgroundModifier: ViewModifier {
     
     let height: CGFloat
+    let color: Color
     
     func body(content: Content) -> some View {
         content
@@ -17,17 +18,18 @@ struct ButtonBackgroundModifier: ViewModifier {
             .padding(.horizontal, 16)
             .background {
                 Capsule()
-                    .foregroundStyle(Color(.linkButton))
+                    .foregroundStyle(color)
                     .frame(height: height)
             }
     }
 }
 
 extension View {
-    func capsuleBackgroundView(height: CGFloat = 35) -> some View {
-        self.modifier(ButtonBackgroundModifier(height: height))
+    func capsuleBackgroundView(height: CGFloat = 35, color: Color = Color(.linkButton)) -> some View {
+        self.modifier(CapsuleBackgroundModifier(height: height, color: color))
     }
 }
+
 
 struct RoundBackgroundModifier: ViewModifier {
     let color: Color
@@ -45,5 +47,29 @@ struct RoundBackgroundModifier: ViewModifier {
 extension View {
     func roundBackgroundView(color: Color) -> some View {
         self.modifier(RoundBackgroundModifier(color: color))
+    }
+}
+
+
+struct CapsuleOutlineModifier: ViewModifier {
+    
+    let height: CGFloat
+    let color: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(.vertical, 10)
+            .padding(.horizontal, 16)
+            .background {
+                Capsule()
+                    .stroke(color, lineWidth: 2)
+                    .frame(height: height)
+            }
+    }
+}
+
+extension View {
+    func capsuleOutlineView(height: CGFloat = 40, color: Color = Color(.outline)) -> some View {
+        self.modifier(CapsuleOutlineModifier(height: height, color: color))
     }
 }

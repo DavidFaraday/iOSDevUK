@@ -97,7 +97,7 @@ struct SpeakerDetailView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Divider()
                     .frame(height: 2)
-                    .overlay(Color(.divider))
+                    .overlay(Color(.emptyIcon))
                     .padding(.vertical, 10)
 
                 Text(AppStrings.session)
@@ -128,7 +128,7 @@ struct SpeakerDetailView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Divider()
                     .frame(height: 2)
-                    .overlay(Color(.divider))
+                    .overlay(Color(.emptyIcon))
                     .padding(.vertical, 10)
                 
                 Text(AppStrings.webLinks)
