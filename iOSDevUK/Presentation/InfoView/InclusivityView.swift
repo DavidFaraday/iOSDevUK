@@ -17,14 +17,19 @@ struct InclusivityView: View {
                 .aspectRatio(contentMode: .fit)
 
             Text(AppStrings.inclusivityPolicy)
-                .font(.largeTitle)
+                .semiboldAppFont(size: 24)
+                .foregroundStyle(Color(.mainText))
                 .minimumScaleFactor(0.7)
             
             Spacer()
 
-            Text(viewModel.eventInformation?.inclusivityText ?? "")
-                .lineLimit(nil)
-                .padding()
+            if let inclusivityText = viewModel.eventInformation?.inclusivityText {
+                Text(inclusivityText)
+                    .appFont(size: 16)
+                    .foregroundStyle(Color(.textBody))
+                    .lineLimit(nil)
+                    .padding()
+            }
         }
         .edgesIgnoringSafeArea(.top)
     }

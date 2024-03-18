@@ -32,6 +32,13 @@ class BaseViewModel: ObservableObject {
         observerData()
     }
     
+    var eventDate: String {
+        guard let startDate = eventInformation?.startDate,
+              let endDate = eventInformation?.endDate else { return "" }
+        
+        return "\(startDate.dayOfTheMonth)-\(endDate.dayAndMonth) \(endDate.year)"
+    }
+    
     private func observerData() {
         $sessions
             .map { sessions in

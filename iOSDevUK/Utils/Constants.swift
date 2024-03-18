@@ -13,10 +13,8 @@ struct AppStrings {
     static let allSessions = "All Sessions"
     static let speakers = "Speakers"
     static let viewAll = "View all"
-    static let slackChannel = "iOSDevUK Slack Channel"
-    static let iOSDevTwitter = "@iOSDevUK on X"
-    static let aberCompTwitter = "@AberCompSci on X"
     static let iOSDevUK = "iOSDevUK"
+    static let aberCompTwitter = "AberCompSci"
     static let mySessions = "My Sessions"
     static let emptySessionMessage = "You currently have no sessions added. \n Please bookmark sessions to see them here."
     static let takeMeThere = "Take me there"
@@ -120,8 +118,9 @@ struct ColorNames {
     static let textGrey = "textGrey"
 }
 
-struct TwitterAccounts {
+struct ContactAccounts {
     static let developer = "\(BaseUrl.twitter)Dave_iOSDev"
+    static let designer = "\(BaseUrl.linkedIn)oksana-korotun"
     static let aberCompSci = "\(BaseUrl.twitter)AberCompSci"
     static let iOSDevUK = "\(BaseUrl.twitter)iOSDevUK"
     static let digidol = "\(BaseUrl.twitter)digidol"

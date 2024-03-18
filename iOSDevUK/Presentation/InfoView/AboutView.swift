@@ -26,6 +26,8 @@ struct AboutView: View {
             }
             .padding(20)
         }
+        .appFont(size: 16)
+        .foregroundStyle(Color(.textBody))
         .edgesIgnoringSafeArea(.top)
     }
 }

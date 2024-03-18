@@ -54,6 +54,12 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var year: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter.string(from: self)
+    }
+    
     var dayAndMonth: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMMM"
