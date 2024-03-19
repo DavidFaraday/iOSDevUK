@@ -33,11 +33,7 @@ struct SpeakerRowView: View {
             }
             Spacer()
         }
-        .padding(12)
-        .background {
-            RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(Color(.rowBackground))
-        }
+        .roundBackgroundView(color: Color(.rowBackground))
     }
 }
 

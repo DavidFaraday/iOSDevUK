@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-        
+    
     var body: some View {
         TabView {
             ForEach(Tab.allCases) { tab in
@@ -33,7 +33,7 @@ extension TabBarView {
         var id: Int {
             self.hashValue
         }
-                
+        
         var icon: Image {
             switch self {
                 case .home:

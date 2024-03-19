@@ -9,8 +9,30 @@ import SwiftUI
 
 struct NewSessionCard: View {
     @EnvironmentObject var baseViewModel: BaseViewModel
-
+    
     let session: Session
+    let showSpeakers: Bool
+    
+    init(session: Session, showSpeakers: Bool = false) {
+        self.session = session
+        self.showSpeakers = showSpeakers
+    }
+    
+    @ViewBuilder
+    private func speakerRowView(speaker: Speaker) -> some View {
+        HStack(spacing: 8) {
+            RemoteImageView(url: speaker.imageUrl)
+                .scaledToFit()
+                .frame(width: 24, height: 24)
+                .clipShape(Circle())
+            
+            Text(speaker.name)
+                .foregroundStyle(Color(.mainText))
+                .minimumScaleFactor(0.8)
+                .lineLimit(2)
+                .appFont(size: 14)
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -22,23 +44,27 @@ struct NewSessionCard: View {
                 
                 Spacer()
                 
-                Button {
-                    
-                } label: {
-                    Image(systemName: ImageNames.bookmark)
-                }
-
+                Image(systemName: baseViewModel.isFavorite(session.id) ? ImageNames.bookmarkFill : ImageNames.bookmark)
             }
+            
             Text("\(session.title)")
                 .boldAppFont(size: 18)
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
                 .foregroundStyle(Color(.mainText))
-
+            
             if let location = baseViewModel.getLocation(with: session.locationId) {
                 Label("\(location.name)", image: ImageNames.location)
                     .tint(Color(.purple300))
                     .capsuleBackgroundView(height: 30)
+            }
+            
+            if showSpeakers {
+                HStack(spacing: 10) {
+                    ForEach(baseViewModel.getSpeakers(with: session.speakerIds)) { speaker in
+                        speakerRowView(speaker: speaker)
+                    }
+                }
             }
         }
         .roundBackgroundView(color: Color(.speakerCardBackground))
