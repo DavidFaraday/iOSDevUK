@@ -44,8 +44,8 @@ struct AttendeeScreen: View {
                 .navigationTitle("Attendee Information")
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
-                        case .session(let sessionDetail):
-                            SessionDetailView(sessionDetail: sessionDetail)
+                        case .session(let session):
+                            SessionDetailView(session: session)
                         case .sessions(let sessions):
                             AllSessionsView(sessions: sessions)
                         case .speaker(let speaker):

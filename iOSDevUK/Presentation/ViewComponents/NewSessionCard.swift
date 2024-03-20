@@ -12,10 +12,12 @@ struct NewSessionCard: View {
     
     let session: Session
     let showSpeakers: Bool
+    let showBookmark: Bool
     
-    init(session: Session, showSpeakers: Bool = false) {
+    init(session: Session, showSpeakers: Bool = false, showBookmark: Bool = false) {
         self.session = session
         self.showSpeakers = showSpeakers
+        self.showBookmark = showBookmark
     }
     
     @ViewBuilder
@@ -44,7 +46,9 @@ struct NewSessionCard: View {
                 
                 Spacer()
                 
-                Image(systemName: baseViewModel.isFavorite(session.id) ? ImageNames.bookmarkFill : ImageNames.bookmark)
+                if showBookmark {
+                    Image(systemName: baseViewModel.isFavorite(session.id) ? ImageNames.bookmarkFill : ImageNames.bookmark)
+                }
             }
             
             Text("\(session.title)")
@@ -59,7 +63,7 @@ struct NewSessionCard: View {
                     .capsuleBackgroundView(height: 30)
             }
             
-            if showSpeakers {
+            if showSpeakers && !baseViewModel.getSpeakers(with: session.speakerIds).isEmpty {
                 HStack(spacing: 10) {
                     ForEach(baseViewModel.getSpeakers(with: session.speakerIds)) { speaker in
                         speakerRowView(speaker: speaker)

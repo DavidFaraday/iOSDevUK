@@ -14,7 +14,7 @@ struct MyScheduleView: View {
     
     @StateObject private var viewModel = MyScheduleViewModel()
     
-    @State private var selectedType: ScheduleType = .mySchedule
+    @State private var selectedType: Int = 0
     
     //    @ViewBuilder
     //    private func navigationBarTrailingItem() -> some View {
@@ -37,15 +37,10 @@ struct MyScheduleView: View {
                 .appFont(size: 24)
                 .foregroundStyle(Color(.mainText))
 
-            
-            Picker("", selection: $selectedType) {
-                ForEach(ScheduleType.allCases, id: \.self) { type in
-                    Text(type.rawValue).tag(type)
-                }
-            }
-            .pickerStyle(.segmented)
-            .padding(.vertical, 10)
+            AppSegmentedControl<ScheduleType>(selection: $selectedType)
+                .padding(.top, 15)
         }
+        .padding(.horizontal, 16)
         .frame(minHeight: 130)
         .roundBackgroundView(color: Color(.speakerCardBackground))
     }
@@ -59,11 +54,7 @@ struct MyScheduleView: View {
                     
                     Section {
                         ForEach(viewModel.groupedSessions[key] ?? []) { session in
-                            NavigationLink(value: Destination.session(
-                                SessionDetailModel(session: session,
-                                                   speakers: baseViewModel.getSpeakers(with: session.speakerIds),
-                                                   location: baseViewModel.getLocation(with: session.locationId))
-                            )) {
+                            NavigationLink(value: Destination.session(session)) {
                                 NewSessionCard(session: session, showSpeakers: true)
                             }
                         }
@@ -91,8 +82,13 @@ struct MyScheduleView: View {
         } else {
             VStack(alignment: .leading) {
                 headerView()
+                Spacer()
+                if selectedType == 0 {
+                    sessionsListView()
+                } else {
+                    AllSessionsView(sessions: baseViewModel.sessions)
+                }
                 
-                sessionsListView()
             }
             .ignoresSafeArea(edges: .top)
         }
@@ -108,8 +104,8 @@ struct MyScheduleView: View {
                 }
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
-                        case .session(let sessionDetail):
-                            SessionDetailView(sessionDetail: sessionDetail)
+                        case .session(let session):
+                            SessionDetailView(session: session)
                         case .sessions(let sessions):
                             AllSessionsView(sessions: sessions)
                         case .speaker(let speaker):
@@ -130,11 +126,4 @@ struct MyScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         MyScheduleView()
     }
-}
-
-
-
-enum ScheduleType: String, CaseIterable {
-    case mySchedule = "My Schedule"
-    case allSessions = "All Sessions"
 }

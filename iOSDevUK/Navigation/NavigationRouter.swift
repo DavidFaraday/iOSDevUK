@@ -18,7 +18,7 @@ final class NavigationRouter: ObservableObject {
 enum Destination: Hashable {
     case speaker(Speaker)
     case speakers([Speaker])
-    case session(SessionDetailModel)
+    case session(Session)
     case sessions([Session])
     case sponsor
     case locations(locations: [Location])

@@ -10,37 +10,37 @@ import SwiftUI
 struct SessionDetailView: View {
     @EnvironmentObject var baseViewModel: BaseViewModel
     
-    let sessionDetail: SessionDetailModel
-    
+    let session: Session
+
     @ViewBuilder
     private func main() -> some View {
         
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
                 
-                Text(sessionDetail.session.title)
+                Text(session.title)
                     .boldAppFont(size: 24)
                     .foregroundStyle(Color(.mainText))
                     .padding(.top, 10)
 
-                Text(sessionDetail.session.content)
+                Text(session.content)
                     .foregroundStyle(Color(.textBody))
                     .appFont(size: 16)
                     .multilineTextAlignment(.leading)
                     .padding(.vertical, 10)
 
 
-                InfoRowView(text: sessionDetail.session.duration, imageName: ImageNames.calendar)
+                InfoRowView(text: session.duration, imageName: ImageNames.calendar)
                 
                 
-                if let location = sessionDetail.location {
+                if let location = baseViewModel.getLocation(with: session.locationId) {
                     NavigationLink(value: Destination.locations(locations: [location])) {
                         InfoRowView(text: location.name, imageName: ImageNames.location)
                     }
                 }
 
-                if !sessionDetail.speakers.isEmpty {
-                    ForEach(sessionDetail.speakers) { speaker in
+                if !baseViewModel.getSpeakers(with: session.speakerIds).isEmpty {
+                    ForEach(baseViewModel.getSpeakers(with: session.speakerIds)) { speaker in
                         NavigationLink(value: Destination.speaker(speaker)) {
                             SpeakerRowView(speaker: speaker)
                         }
@@ -52,9 +52,9 @@ struct SessionDetailView: View {
         .scrollIndicators(.hidden)
         .safeAreaInset(edge: .bottom) {
             Button {
-                baseViewModel.updateFavoriteSession(sessionId: sessionDetail.session.id)
+                baseViewModel.updateFavoriteSession(sessionId: session.id)
             } label: {
-                Text(baseViewModel.isFavorite(sessionDetail.session.id) ? "Remove from schedule" : "Add to schedule")
+                Text(baseViewModel.isFavorite(session.id) ? "Remove from schedule" : "Add to schedule")
             }
             .buttonStyle(.appPrimary)
             .padding([.bottom, .horizontal], 16)

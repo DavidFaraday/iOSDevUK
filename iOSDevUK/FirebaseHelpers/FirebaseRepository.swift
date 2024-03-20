@@ -14,7 +14,7 @@ public typealias CodableIdentifiable = Codable & Identifiable
 
 protocol FirebaseRepositoryProtocol {
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]?
-    func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]?
+//    func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]?
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]?
     func getDocument<T: Codable>(from collection: FCollectionReference, with id: String) async throws -> T?
     func listen<T: Codable>(from collection: FCollectionReference) async throws -> AnyPublisher<[T], Error>
@@ -33,14 +33,14 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
     }
 
     
-    func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? {
-
-        let snapshot = try await FirebaseReference(collection).whereField(field, isEqualTo: value).getDocuments()
-
-        return snapshot.documents.compactMap { queryDocumentSnapshot -> T? in
-            return try? queryDocumentSnapshot.data(as: T.self)
-        }
-    }
+//    func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, isEqualTo value: String) async throws -> [T]? {
+//
+//        let snapshot = try await FirebaseReference(collection).whereField(field, isEqualTo: value).getDocuments()
+//
+//        return snapshot.documents.compactMap { queryDocumentSnapshot -> T? in
+//            return try? queryDocumentSnapshot.data(as: T.self)
+//        }
+//    }
     
     
     func getDocuments<T: Codable>(from collection: FCollectionReference, where field: String, arrayContains value: String) async throws -> [T]? {

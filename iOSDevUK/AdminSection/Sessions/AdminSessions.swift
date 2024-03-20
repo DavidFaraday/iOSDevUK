@@ -25,9 +25,9 @@ struct AdminSessions: View {
             ForEach(viewModel.sessions, id: \.id) { session in
                 NavigationLink(value: InfoDestination.adminAddSession(session)) {
 
-                    SessionRowView(session: session,
-                                   location: viewModel.getLocation(with: session.locationId),
-                                   speakers: viewModel.getSpeakers(with: session.speakerIds))
+//                    SessionRowView(session: session,
+//                                   location: viewModel.getLocation(with: session.locationId),
+//                                   speakers: viewModel.getSpeakers(with: session.speakerIds))
                 }
             }
             .onDelete { indexSet in
