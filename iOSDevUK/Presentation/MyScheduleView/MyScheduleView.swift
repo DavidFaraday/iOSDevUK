@@ -16,14 +16,9 @@ struct MyScheduleView: View {
     
     @State private var selectedType: Int = 0
     
-    //    @ViewBuilder
-    //    private func navigationBarTrailingItem() -> some View {
-    //        if !baseViewModel.favoriteSessionIds.isEmpty {
-    //            Button(AppStrings.sessions) {
-    //                router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
-    //            }
-    //        }
-    //    }
+    init(selectedType: Int = 0) {
+        self._selectedType = State(initialValue: selectedType)
+    }
     
     @ViewBuilder
     private func headerView() -> some View {
@@ -42,7 +37,7 @@ struct MyScheduleView: View {
         }
         .padding(.horizontal, 16)
         .frame(minHeight: 130)
-        .roundBackgroundView(color: Color(.speakerCardBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
     }
     
     
@@ -68,36 +63,46 @@ struct MyScheduleView: View {
                 }
             }
             .padding(.horizontal, 16)
+            
         }
     }
     
     
     @ViewBuilder
     private func main() -> some View {
-        
-        if baseViewModel.favoriteSessionIds.isEmpty {
-            EmptyContentView(image: Image(.emptySchedule), title: "No sessions yet!", description: "Please bookmark sessions to see them here", buttonTitle: "Explore sessions") {
-                router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
-            }
-        } else {
-            VStack(alignment: .leading) {
-                headerView()
-                Spacer()
-                if selectedType == 0 {
-                    sessionsListView()
+        VStack(alignment: .leading) {
+            headerView()
+
+            if selectedType == 0 {
+                if baseViewModel.favoriteSessionIds.isEmpty {
+                    EmptyContentView(
+                        image: Image(.emptySchedule),
+                        title: "No sessions yet!",
+                        description: "Please bookmark sessions to see them here",
+                        buttonTitle: "Explore sessions"
+                    ) {
+                        router.schedulePath.append(Destination.sessions(baseViewModel.sessions))
+                    }
                 } else {
-                    AllSessionsView(sessions: baseViewModel.sessions)
+                    
+                    Spacer()
+                    sessionsListView()
                 }
-                
+
+            } else {
+                AllSessionsView(sessions: baseViewModel.sessions)
             }
-            .ignoresSafeArea(edges: .top)
+
         }
+        .ignoresSafeArea(edges: .top)
+
     }
     
     var body: some View {
         NavigationStack(path: $router.schedulePath) {
             main()
                 .task(viewModel.listenForSessions)
+                .animation(.smooth, value: selectedType)
                 .onAppear {
                     baseViewModel.loadFavSessions()
                     viewModel.setFavSessions(favSessionIds: baseViewModel.favoriteSessionIds)

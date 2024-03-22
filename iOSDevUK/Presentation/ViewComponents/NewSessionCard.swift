@@ -71,7 +71,7 @@ struct NewSessionCard: View {
                 }
             }
         }
-        .roundBackgroundView(color: Color(.speakerCardBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
         .padding(.bottom, 10)
     }
 }

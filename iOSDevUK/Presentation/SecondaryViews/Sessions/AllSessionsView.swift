@@ -38,8 +38,16 @@ struct AllSessionsView: View {
         .task { viewModel.setCurrentDate() }
         .onAppear { viewModel.setSessions(sessions: sessions) }
         .safeAreaInset(edge: .top) {
-            DayPickerView(days: groupedSessions.keys.sorted(), selection: $viewModel.selectedDate.animation())
-                .padding(.vertical, 16)
+            Picker("", selection: $viewModel.selectedDate.animation()) {
+                ForEach(groupedSessions.keys.sorted(), id: \String.self) { weekDay in
+                    Text(weekDay.removeDigits)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding(10)
+            .background(Color(ColorNames.backgroundColor))
+//            DayPickerView(days: groupedSessions.keys.sorted(), selection: $viewModel.selectedDate.animation())
+//                .padding(.vertical, 16)
         }
     }
 }

@@ -24,7 +24,7 @@ struct DayPickerView: View {
                     }
                     .frame(width: 54, height: 56)
                     .foregroundStyle(selection == day ? Color(.buttonTitle) : Color(.mainText))
-                    .roundBackgroundView(color: selection == day ? Color(.pickerSelected) : Color(.pickerBackground))
+                    .roundBackgroundView(color: selection == day ? Color(.pickerSelected) : Color(.cardBackground))
                     .onTapGesture {
                         selection = day
                     }

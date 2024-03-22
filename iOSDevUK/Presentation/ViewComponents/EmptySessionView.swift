@@ -37,7 +37,7 @@ struct EmptyContentView: View {
                         .resizable()
                         .frame(width: 80, height: 80)
                         .aspectRatio(contentMode: .fill)
-                        .foregroundStyle(Color(.emptyIcon))
+                        .foregroundStyle(Color(.linkButton))
                     
                     Text(title)
                         .boldAppFont(size: 20)
@@ -65,7 +65,7 @@ struct EmptyContentView: View {
                 image
                     .resizable()
                     .frame(width: 80, height: 80)
-                    .foregroundStyle(Color(.emptyIcon))
+                    .foregroundStyle(Color(.linkButton))
                 
                 Text(title)
                     .semiboldAppFont(size: 20)

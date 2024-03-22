@@ -23,7 +23,7 @@ struct SponsorRow: View {
             
             Divider()
                 .frame(height: 2)
-                .overlay(Color(.emptyIcon))
+                .overlay(Color(.linkButton))
                 .padding(.vertical, 10)
 
             Text(sponsor.tagline)
@@ -38,7 +38,7 @@ struct SponsorRow: View {
                 .padding(.vertical, 10)
             }
         }
-        .roundBackgroundView(color: Color(.speakerCardBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
     }
 }
 

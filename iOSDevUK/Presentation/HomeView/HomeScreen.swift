@@ -31,6 +31,7 @@ struct HomeScreen: View {
                 Text(AppStrings.sessions).font(.title2).bold()
                 Spacer()
                 NavigationLink(AppStrings.viewAll, value: Destination.sessions(viewModel.sessions))
+                    .foregroundStyle(Color(ColorNames.textGrey))
             }
             .padding(.horizontal)
             
@@ -47,9 +48,9 @@ struct HomeScreen: View {
                         }
                     }
                 }
+                .padding(.leading)
             }
             .scrollIndicators(.hidden)
-            .padding(.leading)
         }
     }
     

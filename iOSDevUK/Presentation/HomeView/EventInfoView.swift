@@ -17,7 +17,8 @@ struct EventInfoView: View {
         ZStack {
             Image("mapImage")
                 .resizable()
-                .frame(height: 150)
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 170)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
             
             VStack(alignment: .leading, spacing: 10) {

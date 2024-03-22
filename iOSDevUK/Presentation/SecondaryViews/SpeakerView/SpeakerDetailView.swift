@@ -71,7 +71,7 @@ struct SpeakerDetailView: View {
         }
         .frame(minHeight: 340)
         .frame(maxWidth: .infinity)
-        .roundBackgroundView(color: Color(.speakerCardBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
     }
     
     @ViewBuilder
@@ -97,7 +97,7 @@ struct SpeakerDetailView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Divider()
                     .frame(height: 2)
-                    .overlay(Color(.emptyIcon))
+                    .overlay(Color(.linkButton))
                     .padding(.vertical, 10)
 
                 Text(AppStrings.session)
@@ -120,7 +120,7 @@ struct SpeakerDetailView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Divider()
                     .frame(height: 2)
-                    .overlay(Color(.emptyIcon))
+                    .overlay(Color(.linkButton))
                     .padding(.vertical, 10)
                 
                 Text(AppStrings.webLinks)

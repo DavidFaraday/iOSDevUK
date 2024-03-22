@@ -33,7 +33,7 @@ struct SpeakerRowView: View {
             }
             Spacer()
         }
-        .roundBackgroundView(color: Color(.rowBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
     }
 }
 
