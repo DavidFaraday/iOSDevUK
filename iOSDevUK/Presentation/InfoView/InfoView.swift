@@ -68,7 +68,7 @@ struct InfoView: View {
                     NavigationRowView(imageName: ImageNames.phone, title: AppStrings.appInfo)
                 }
                 
-                Text("Version: \(Bundle.main.appVersionLong)")
+                Text("Version: \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
                     .appFont(size: 12)
                     .foregroundStyle(Color(.textGrey))
                 Spacer()

@@ -11,6 +11,9 @@ extension String {
     var removeDigits: String {
         components(separatedBy: CharacterSet.decimalDigits).joined()
     }
+    var removeChars: String {
+        components(separatedBy: CharacterSet.letters).joined()
+    }
 
     var removeSpaces: String {
         self.replacingOccurrences(of: " ", with: "")

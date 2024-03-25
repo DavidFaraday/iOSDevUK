@@ -25,7 +25,7 @@ struct NavigationRowView: View {
                 .tint(Color(.mainText))
         }
         .padding(4)
-        .roundBackgroundView(color: Color(.speakerCardBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
     }
 }
 

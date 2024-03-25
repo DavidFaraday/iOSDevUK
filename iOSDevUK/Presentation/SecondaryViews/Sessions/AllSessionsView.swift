@@ -16,38 +16,29 @@ struct AllSessionsView: View {
     private var groupedSessions: [String : [Session]] {
         .init(
             grouping: baseViewModel.sessions,
-            by: {$0.startingDay }
+            by: { $0.startingDay }
         )
     }
         
     var body: some View {
-        Form {
-            ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
-                
-                NavigationLink(value: Destination.session(
-                    SessionDetailModel(session: session,
-                                  speakers: baseViewModel.getSpeakers(with: session.speakerIds),
-                                  location: baseViewModel.getLocation(with: session.locationId))
-                )) {
-                    SessionRowView(session: session,
-                                   isFavorite: baseViewModel.isFavorite(session.id),
-                                   location: baseViewModel.getLocation(with: session.locationId),
-                                   speakers: baseViewModel.getSpeakers(with: session.speakerIds))
-                    .id(session)
-                }
-                .swipeActions {
-                    Button {
-                        baseViewModel.updateFavoriteSession(sessionId: session.id)
-                    } label: {
-                        Image(systemName: ImageNames.bookmark)
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 10) {
+                ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
+                    
+                    NavigationLink(value: Destination.session(session)) {
+                        SessionRowView(
+                            session: session,
+                            showSpeakers: true
+                        ) {
+                            baseViewModel.updateFavoriteSession(sessionId: session.id)
+                        }
+                        .id(session)
                     }
-                    .tint(Color(ColorNames.primary))
                 }
             }
+            .padding(.horizontal, 16)
         }
-        .navigationTitle(AppStrings.sessions)
-        .navigationBarTitleDisplayMode(.inline)
-        .task(viewModel.listenForEventNotification)
+        .task { await viewModel.fetchEventNotification() }
         .task { baseViewModel.loadFavSessions() }
         .task { viewModel.setCurrentDate() }
         .onAppear { viewModel.setSessions(sessions: sessions) }
@@ -60,6 +51,8 @@ struct AllSessionsView: View {
             .pickerStyle(.segmented)
             .padding(10)
             .background(Color(ColorNames.backgroundColor))
+//            DayPickerView(days: groupedSessions.keys.sorted(), selection: $viewModel.selectedDate.animation())
+//                .padding(.vertical, 16)
         }
     }
 }

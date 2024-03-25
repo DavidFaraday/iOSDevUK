@@ -71,7 +71,7 @@ struct SpeakerDetailView: View {
         }
         .frame(minHeight: 340)
         .frame(maxWidth: .infinity)
-        .roundBackgroundView(color: Color(.speakerCardBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
     }
     
     @ViewBuilder
@@ -97,7 +97,7 @@ struct SpeakerDetailView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Divider()
                     .frame(height: 2)
-                    .overlay(Color(.emptyIcon))
+                    .overlay(Color(.linkButton))
                     .padding(.vertical, 10)
 
                 Text(AppStrings.session)
@@ -105,16 +105,13 @@ struct SpeakerDetailView: View {
                     .foregroundColor(Color(.textGrey))
                 
                 ForEach(viewModel.sessions) { session in
-                    NavigationLink(
-                        value: Destination.session(
-                            SessionDetailModel(
-                                session: session,
-                                speakers: baseViewModel.getSpeakers(with: session.speakerIds),
-                                location: baseViewModel.getLocation(with: session.locationId)
-                            )
-                        )
-                    ) {
-                        NewSessionCard(session: session)
+                    NavigationLink(value: Destination.session(session)) {
+                        SessionRowView(
+                            session: session,
+                            showSpeakers: true
+                        ) {
+                            baseViewModel.updateFavoriteSession(sessionId: session.id)
+                        }
                     }
                 }
             }
@@ -128,7 +125,7 @@ struct SpeakerDetailView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Divider()
                     .frame(height: 2)
-                    .overlay(Color(.emptyIcon))
+                    .overlay(Color(.linkButton))
                     .padding(.vertical, 10)
                 
                 Text(AppStrings.webLinks)

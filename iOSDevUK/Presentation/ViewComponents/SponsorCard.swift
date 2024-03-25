@@ -21,7 +21,7 @@ struct SponsorCard: View {
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 10)
         }
-        .roundBackgroundView(color: Color(.speakerCardBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
     }
 }
 

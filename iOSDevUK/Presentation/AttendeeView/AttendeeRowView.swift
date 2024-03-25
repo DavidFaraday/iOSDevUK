@@ -44,7 +44,7 @@ struct AttendeeRowView: View {
             image
         }
         .padding(10)
-        .roundBackgroundView(color: Color(.speakerCardBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
     }
 }
 

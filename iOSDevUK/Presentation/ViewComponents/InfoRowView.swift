@@ -26,7 +26,7 @@ struct InfoRowView: View {
             
             Spacer()
         }
-        .roundBackgroundView(color: Color(.speakerCardBackground))
+        .roundBackgroundView(color: Color(.cardBackground))
 
     }
 }
