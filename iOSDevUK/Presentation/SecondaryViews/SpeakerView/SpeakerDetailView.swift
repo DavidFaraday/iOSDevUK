@@ -106,7 +106,12 @@ struct SpeakerDetailView: View {
                 
                 ForEach(viewModel.sessions) { session in
                     NavigationLink(value: Destination.session(session)) {
-                        NewSessionCard(session: session, showBookmark: true)
+                        SessionRowView(
+                            session: session,
+                            showSpeakers: true
+                        ) {
+                            baseViewModel.updateFavoriteSession(sessionId: session.id)
+                        }
                     }
                 }
             }

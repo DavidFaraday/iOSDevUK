@@ -41,7 +41,6 @@
 		63A986A629D039710008DE95 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A986A529D039710008DE95 /* WeatherViewModel.swift */; };
 		63A986A929D047260008DE95 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A986A829D047260008DE95 /* WeatherView.swift */; };
 		63A986AB29D04D540008DE95 /* Double + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A986AA29D04D540008DE95 /* Double + Extensions.swift */; };
-		63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE028F075D400445E63 /* SessionRowView.swift */; };
 		63B80EE328F0760A00445E63 /* SessionRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */; };
 		63BC3A2529CF1C5F0018286E /* LocationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC3A2429CF1C5F0018286E /* LocationsListView.swift */; };
 		63BC3A2829CF251F0018286E /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC3A2729CF251F0018286E /* LocationService.swift */; };
@@ -87,7 +86,7 @@
 		63E9E32B2BA489D3003497C0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 63E9E32A2BA489D3003497C0 /* FirebaseStorage */; };
 		63E9E32D2BA4A429003497C0 /* BackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9E32C2BA4A429003497C0 /* BackgroundModifier.swift */; };
 		63E9E32F2BA4B9E2003497C0 /* InfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9E32E2BA4B9E2003497C0 /* InfoRowView.swift */; };
-		63E9E3312BA578A0003497C0 /* NewSessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9E3302BA578A0003497C0 /* NewSessionCard.swift */; };
+		63E9E3312BA578A0003497C0 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9E3302BA578A0003497C0 /* SessionRowView.swift */; };
 		63E9E3332BA5D693003497C0 /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9E3322BA5D693003497C0 /* ButtonModifier.swift */; };
 		63EA2B8C2A7ACE8C003E0419 /* speakers.json in Resources */ = {isa = PBXBuildFile; fileRef = 63EA2B882A7ACE8C003E0419 /* speakers.json */; };
 		63EA2B8D2A7ACE8C003E0419 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 63EA2B892A7ACE8C003E0419 /* locations.json */; };
@@ -172,7 +171,6 @@
 		63A986A729D03B3C0008DE95 /* iOSDevUK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSDevUK.entitlements; sourceTree = "<group>"; };
 		63A986A829D047260008DE95 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		63A986AA29D04D540008DE95 /* Double + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extensions.swift"; sourceTree = "<group>"; };
-		63B80EE028F075D400445E63 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
 		63B80EE228F0760A00445E63 /* SessionRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModel.swift; sourceTree = "<group>"; };
 		63BC3A2429CF1C5F0018286E /* LocationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListView.swift; sourceTree = "<group>"; };
 		63BC3A2729CF251F0018286E /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -215,7 +213,7 @@
 		63E9C55828EF419A00710C8F /* InformationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationItem.swift; sourceTree = "<group>"; };
 		63E9E32C2BA4A429003497C0 /* BackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModifier.swift; sourceTree = "<group>"; };
 		63E9E32E2BA4B9E2003497C0 /* InfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRowView.swift; sourceTree = "<group>"; };
-		63E9E3302BA578A0003497C0 /* NewSessionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionCard.swift; sourceTree = "<group>"; };
+		63E9E3302BA578A0003497C0 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
 		63E9E3322BA5D693003497C0 /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
 		63EA2B882A7ACE8C003E0419 /* speakers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = speakers.json; sourceTree = "<group>"; };
 		63EA2B892A7ACE8C003E0419 /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
@@ -315,7 +313,6 @@
 		63C3E0D928F4878E00D4B4B1 /* SessionRowView */ = {
 			isa = PBXGroup;
 			children = (
-				63B80EE028F075D400445E63 /* SessionRowView.swift */,
 			);
 			path = SessionRowView;
 			sourceTree = "<group>";
@@ -576,7 +573,7 @@
 				63FD528A2A7E0EC5009D3902 /* NavigationRowView.swift */,
 				63F7E10628CC9E7300B2E1B7 /* RemoteImage.swift */,
 				634E7AC028DB8166001DC796 /* SessionCardView.swift */,
-				63E9E3302BA578A0003497C0 /* NewSessionCard.swift */,
+				63E9E3302BA578A0003497C0 /* SessionRowView.swift */,
 				63F7E11B28CCF6B200B2E1B7 /* SpeakerCardView.swift */,
 				63D877B52BA45CDD00E6A07A /* SpeakerRowView.swift */,
 				63A6A771290AF08300940170 /* SponsorRow.swift */,
@@ -828,7 +825,6 @@
 				63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailView.swift in Sources */,
 				63E17F3E2BA6C0D300F05E0E /* AttendeeRowView.swift in Sources */,
 				63BC3A2529CF1C5F0018286E /* LocationsListView.swift in Sources */,
-				63B80EE128F075D400445E63 /* SessionRowView.swift in Sources */,
 				63A8509B29917C1D0000AB15 /* FirebaseFileManager.swift in Sources */,
 				636161F32A8814E000E94C07 /* LocalStorageService.swift in Sources */,
 				EF330BE22BA43869002BA4B7 /* SpeakersHorizontalRowView.swift in Sources */,
@@ -897,7 +893,7 @@
 				63D2070629F2FEF70031A9A1 /* SelectSpeakerView.swift in Sources */,
 				6367516D29B48160003B8B5A /* AdminSponsorViewModel.swift in Sources */,
 				63EBF13E29CF431800A4AE6B /* MapViewModel.swift in Sources */,
-				63E9E3312BA578A0003497C0 /* NewSessionCard.swift in Sources */,
+				63E9E3312BA578A0003497C0 /* SessionRowView.swift in Sources */,
 				63601D562BA858E900A67E59 /* EventInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1046,7 +1042,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iOSDevUK/iOSDevUK.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"iOSDevUK/Preview Content\"";
 				DEVELOPMENT_TEAM = 7P6AJEE272;
 				ENABLE_PREVIEWS = YES;
@@ -1064,7 +1060,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.0.4;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosdevschool.iOSDevUK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1080,7 +1076,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iOSDevUK/iOSDevUK.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"iOSDevUK/Preview Content\"";
 				DEVELOPMENT_TEAM = 7P6AJEE272;
 				ENABLE_PREVIEWS = YES;
@@ -1098,7 +1094,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.0.4;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosdevschool.iOSDevUK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

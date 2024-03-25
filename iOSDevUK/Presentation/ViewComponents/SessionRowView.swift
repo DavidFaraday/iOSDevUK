@@ -7,17 +7,21 @@
 
 import SwiftUI
 
-struct NewSessionCard: View {
+struct SessionRowView: View {
     @EnvironmentObject var baseViewModel: BaseViewModel
     
     let session: Session
     let showSpeakers: Bool
-    let showBookmark: Bool
-    
-    init(session: Session, showSpeakers: Bool = false, showBookmark: Bool = false) {
+    var action: (() -> Void)?
+
+    init(
+        session: Session,
+        showSpeakers: Bool = false,
+        action: (() -> Void)? = nil
+    ) {
         self.session = session
         self.showSpeakers = showSpeakers
-        self.showBookmark = showBookmark
+        self.action = action
     }
     
     @ViewBuilder
@@ -46,8 +50,10 @@ struct NewSessionCard: View {
                 
                 Spacer()
                 
-                if showBookmark {
-                    Image(systemName: baseViewModel.isFavorite(session.id) ? ImageNames.bookmarkFill : ImageNames.bookmark)
+                if let action = action {
+                    Button(action: action) {
+                        Image(systemName: baseViewModel.isFavorite(session.id) ? ImageNames.bookmarkFill : ImageNames.bookmark)
+                    }
                 }
             }
             
@@ -77,5 +83,5 @@ struct NewSessionCard: View {
 }
 
 #Preview {
-    NewSessionCard(session: DummyData.sessions.first!)
+    SessionRowView(session: DummyData.sessions.first!)
 }

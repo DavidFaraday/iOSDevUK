@@ -67,15 +67,4 @@ final class MyScheduleViewModel: ObservableObject {
             by: { $0.startingDay }
         )
     }
-    
-//    func delete(for indexSet: IndexSet, key: String) {
-//        guard let firstIndex = indexSet.first,
-//              let session = groupedSessions[key]?.at(firstIndex) else {
-//            return
-//        }
-//
-//        groupedSessions[key]?.remove(at: firstIndex)
-//        favoriteSessionIds.removeAll { $0 == session.id }
-//        localStorage.save(items: favoriteSessionIds, for: AppConstants.sessionKey)
-//    }
 }

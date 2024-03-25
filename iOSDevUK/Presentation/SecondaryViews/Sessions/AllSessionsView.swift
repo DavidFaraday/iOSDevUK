@@ -26,8 +26,13 @@ struct AllSessionsView: View {
                 ForEach(groupedSessions[viewModel.selectedDate]?.sorted() ?? [], id: \.id) { session in
                     
                     NavigationLink(value: Destination.session(session)) {
-                        NewSessionCard(session: session, showSpeakers: true, showBookmark: true)
-                            .id(session)
+                        SessionRowView(
+                            session: session,
+                            showSpeakers: true
+                        ) {
+                            baseViewModel.updateFavoriteSession(sessionId: session.id)
+                        }
+                        .id(session)
                     }
                 }
             }

@@ -50,7 +50,7 @@ struct MyScheduleView: View {
                     Section {
                         ForEach(viewModel.groupedSessions[key] ?? []) { session in
                             NavigationLink(value: Destination.session(session)) {
-                                NewSessionCard(session: session, showSpeakers: true)
+                                SessionRowView(session: session, showSpeakers: true)
                             }
                         }
                     } header: {
@@ -63,7 +63,6 @@ struct MyScheduleView: View {
                 }
             }
             .padding(.horizontal, 16)
-            
         }
     }
     
@@ -103,7 +102,7 @@ struct MyScheduleView: View {
             main()
                 .task(viewModel.listenForSessions)
                 .animation(.smooth, value: selectedType)
-                .onAppear {
+                .task(id: selectedType) {
                     baseViewModel.loadFavSessions()
                     viewModel.setFavSessions(favSessionIds: baseViewModel.favoriteSessionIds)
                 }

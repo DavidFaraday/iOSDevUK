@@ -53,23 +53,6 @@ final class AllSessionsViewModel: ObservableObject {
         } catch (let error) {
             fetchError = error
         }
-
-//        do {
-//            try await firebaseRepository.listen(from: .AppInformation)
-//                .sink(receiveCompletion: { completion in
-//                    switch completion {
-//                    case .finished:
-//                        return
-//                    case .failure(let error):
-//                        print("Error: \(error.localizedDescription)")
-//                    }
-//                }, receiveValue: { [weak self] eventInformations in
-//                    self?.eventInformation = eventInformations.first
-//                })
-//                .store(in: &cancellables)
-//        } catch (let error) {
-//            fetchError = error
-//        }
     }
 
     func setSessions(sessions: [Session]) {
