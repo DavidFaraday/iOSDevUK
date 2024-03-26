@@ -104,8 +104,10 @@ struct WeatherView: View {
     
     var body: some View {
         main()
-            .task { viewModel.setLocation(location: MapDetails.defaultLocationAberystwyth) }
-            .task(viewModel.getWeather)
+            .task {
+                viewModel.setLocation(location: MapDetails.defaultLocationAberystwyth)
+                await viewModel.getWeather()
+            }
     }
 }
 

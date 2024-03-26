@@ -14,6 +14,10 @@ protocol LocalStorageServiceProtocol {
 
 final class LocalStorageService: LocalStorageServiceProtocol {
     
+    static let shared = LocalStorageService()
+    
+    private init() {}
+    
     func save(items: [String], for key: String) {
         UserDefaults.standard.set(items, forKey: key)
     }

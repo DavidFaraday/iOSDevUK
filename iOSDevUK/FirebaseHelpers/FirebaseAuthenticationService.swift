@@ -16,6 +16,10 @@ protocol FirebaseAuthenticationServiceProtocol {
 
 class FirebaseAuthenticationService: FirebaseAuthenticationServiceProtocol {
     
+    static let shared = FirebaseAuthenticationService()
+    
+    private init() {}
+    
     func hasCurrentUser() -> Bool {
         Auth.auth().currentUser != nil
     }

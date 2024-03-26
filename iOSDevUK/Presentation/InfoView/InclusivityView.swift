@@ -12,7 +12,7 @@ struct InclusivityView: View {
 
     var body: some View {
         ScrollView {
-            Image(ImageNames.conferenceImage)
+            Image(.conference)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
 

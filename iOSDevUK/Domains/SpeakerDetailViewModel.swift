@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-import Factory
 import Combine
 
 final class SpeakerDetailViewModel: ObservableObject {
-    @Injected(\.firebaseRepository) private var firebaseRepository
+    private let firebaseRepository: FirebaseRepositoryProtocol
+    
     @Published private(set) var fetchError: Error?
 
     @Published private(set) var sessions:[Session] = []
@@ -20,8 +20,9 @@ final class SpeakerDetailViewModel: ObservableObject {
     @Published var showError = false
     private var cancellables: Set<AnyCancellable> = []
 
-    init(speaker: Speaker) {
+    init(speaker: Speaker, firebaseRepository: FirebaseRepositoryProtocol = FirebaseRepository.shared) {
         self.speaker = speaker
+        self.firebaseRepository = firebaseRepository
         
         $fetchError
             .dropFirst()
@@ -38,7 +39,7 @@ final class SpeakerDetailViewModel: ObservableObject {
     
     
     @MainActor
-    @Sendable func getSpeakerSessions() async {
+    func getSpeakerSessions() async {
         do {
             sessions = try await firebaseRepository.getDocuments(from: .Session, where: FirebaseKeys.speakerIds, arrayContains: speaker.id) ?? []
         } catch (let error) {

@@ -65,37 +65,19 @@ struct AppStrings {
 }
 
 struct ImageNames {
-    static let sessionImage = "sessionImage"
-    static let aboutImage = "aboutImage"
-    static let appIcon = "appIcon"
-    static let conferenceImage = "conferenceImage"
     static let bookmark = "bookmark"
     static let bookmarkFill = "bookmark.fill"
-    static let home = "home"
-    static let list = "list.bullet"
-    static let person = "person"
-    static let info = "info"
     static let mapPin = "mappin.circle.fill"
     static let chevronRight = "chevron.right"
     static let checkmark = "checkmark"
-    static let placeholder = "placeholder"
-    static let bulletPoint = "list.bullet.rectangle.portrait"
     static let xmark = "xmark.circle"
     static let envelope = "envelope"
     static let lock = "lock"
     static let plus = "plus"
     static let photo = "photo"
-    static let infoBackground = "background"
-    static let infoDevices = "devices"
-    static let questionmark = "questionmark.circle"
     static let linkedIn = "linkedin"
     static let twitter = "twitter"
-    static let mapPinEmpty = "mappin.circle"
-    static let personsCircle = "person.circle"
-    static let heart = "heart"
     static let phone = "phone"
-    static let infoCircle = "info.circle"
-    static let ticket = "ticket"
     static let link = "link"
     static let location = "mapPin"
     static let calendar = "calendar"
@@ -104,19 +86,8 @@ struct ImageNames {
     static let sponsors = "inclusivity"
     static let schedule = "schedule"
     static let attendee = "attendee"
-
 }
 
-struct ColorNames {
-    static let goldColor = "goldColor"
-    static let platinumColor = "platinumColor"
-    static let silverColor = "silverColor"
-    static let primary = "primary"
-    static let secondary = "secondary"
-    static let backgroundColor = "backgroundColor"
-    static let textColor = "textColor"
-    static let textGrey = "textGrey"
-}
 
 struct ContactAccounts {
     static let developer = "\(BaseUrl.twitter)Dave_iOSDev"

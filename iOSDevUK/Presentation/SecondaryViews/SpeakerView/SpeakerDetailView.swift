@@ -163,7 +163,9 @@ struct SpeakerDetailView: View {
     
     var body: some View {
         main()
-            .task(viewModel.getSpeakerSessions)
+            .task {
+                await viewModel.getSpeakerSessions()
+            }
     }
 }
 

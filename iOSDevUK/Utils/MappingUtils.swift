@@ -16,6 +16,10 @@ protocol MappingUtilsProtocol {
 
 class MappingUtils: MappingUtilsProtocol {
     
+    static let shared = MappingUtils()
+    
+    private init() {}
+    
    func convert(input: HourWeather) -> WeatherData {
         
         WeatherData(

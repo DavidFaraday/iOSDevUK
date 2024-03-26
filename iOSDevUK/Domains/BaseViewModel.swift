@@ -5,13 +5,12 @@
 //  Created by David Kababyan on 10/09/2022.
 //
 
-import Factory
 import Combine
 import SwiftUI
 
 class BaseViewModel: ObservableObject {
-    @Injected(\.firebaseRepository) private var firebaseRepository
-    @Injected(\.localStorage) private var localStorage
+    private let firebaseRepository: FirebaseRepositoryProtocol
+    private let localStorage: LocalStorageServiceProtocol
     
     @Published private(set) var fetchError: Error?
     
@@ -28,7 +27,12 @@ class BaseViewModel: ObservableObject {
     
     private var cancellables: Set<AnyCancellable> = []
     
-    init() {
+    init(
+        firebaseRepository: FirebaseRepositoryProtocol = FirebaseRepository.shared,
+        localStorage: LocalStorageServiceProtocol = LocalStorageService.shared
+    ) {
+        self.firebaseRepository = firebaseRepository
+        self.localStorage = localStorage
         observerData()
     }
     

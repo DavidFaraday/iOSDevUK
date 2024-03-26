@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import Factory
 
 final class AdminViewModel: ObservableObject {
-    @Injected(\.firebaseAuthRepository) private var firebaseAuth
+    private let firebaseAuth: FirebaseAuthenticationServiceProtocol
     
     @Published var logoutError: Error?
     @Published var showError = false
@@ -25,8 +24,12 @@ final class AdminViewModel: ObservableObject {
         showError = logoutError != nil
     }
     
+    init(firebaseAuth: FirebaseAuthenticationServiceProtocol =  FirebaseAuthenticationService.shared) {
+        self.firebaseAuth = firebaseAuth
+    }
+    
     @MainActor
-    @Sendable func uploadNewData() async {
+    func uploadNewData() async {
 //        try? await FileUploadService.shared.uploadNewData(from: "sponsors.json", to: .Sponsor, objectType: Sponsor.self)
 //        sleep(2)
 //        try? await FileUploadService.shared.uploadNewData(from: "speakers.json", to: .Speaker, objectType: Speaker.self)

@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import Factory
 import Combine
 
 final class AllSessionsViewModel: ObservableObject {
-    @Injected(\.firebaseRepository) private var firebaseRepository
+    private let firebaseRepository: FirebaseRepositoryProtocol
     
     @Published private(set) var fetchError: Error?
     @Published private(set) var eventInformation: EventInformation?
@@ -18,6 +17,11 @@ final class AllSessionsViewModel: ObservableObject {
     @Published var selectedDate = ""
     
     private var cancellables: Set<AnyCancellable> = []
+    
+    
+    init(firebaseRepository: FirebaseRepositoryProtocol = FirebaseRepository.shared) {
+        self.firebaseRepository = firebaseRepository
+    }
     
     @MainActor
     func setCurrentDate() {

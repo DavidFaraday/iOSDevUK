@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
-import Factory
 
 final class LoginViewModel: ObservableObject {
-    @Injected(\.firebaseAuthRepository) private var firebaseAuth
+    private var firebaseAuth: FirebaseAuthenticationServiceProtocol
 
     @Published var loginSuccessful = false
     @Published var loginError: Error?
     @Published var showError = false
+    
+    init(firebaseAuth: FirebaseAuthenticationServiceProtocol = FirebaseAuthenticationService.shared) {
+        self.firebaseAuth = firebaseAuth
+    }
     
     @MainActor
     func loginUserWith(email: String, password: String) async {

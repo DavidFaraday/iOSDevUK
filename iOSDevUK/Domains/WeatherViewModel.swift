@@ -8,10 +8,9 @@
 import Foundation
 import WeatherKit
 import CoreLocation
-import Factory
 
 final class WeatherViewModel: ObservableObject {
-    @Injected(\.mappingUtils) private var mappingUtils
+    private var mappingUtils: MappingUtilsProtocol
     
     @Published private var weather: Weather?
     @Published private var hourlyWeatherData: Forecast<HourWeather>?
@@ -21,8 +20,12 @@ final class WeatherViewModel: ObservableObject {
     let weatherService: WeatherService
     var location: CLLocation?
     
-    init(weatherService: WeatherService) {
+    init(
+        weatherService: WeatherService,
+        mappingUtils: MappingUtilsProtocol = MappingUtils.shared
+    ) {
         self.weatherService = weatherService
+        self.mappingUtils = mappingUtils
         observerData()
     }
     
@@ -37,7 +40,7 @@ final class WeatherViewModel: ObservableObject {
     }
     
     @MainActor
-    @Sendable func getWeather() async {
+    func getWeather() async {
         guard let location = location else { return }
         guard weather == nil else { return }
         

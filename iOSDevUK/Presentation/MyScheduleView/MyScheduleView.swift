@@ -100,7 +100,9 @@ struct MyScheduleView: View {
     var body: some View {
         NavigationStack(path: $router.schedulePath) {
             main()
-                .task(viewModel.listenForSessions)
+                .task {
+                    await viewModel.listenForSessions()
+                }
                 .animation(.smooth, value: selectedType)
                 .task(id: selectedType) {
                     baseViewModel.loadFavSessions()
