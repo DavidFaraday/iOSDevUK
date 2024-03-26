@@ -20,7 +20,7 @@ struct SpeakersHorizontalRowView: View {
                 Spacer()
                 
                 NavigationLink(AppStrings.viewAll, value: Destination.speakers(speakers.sorted()))
-                    .foregroundStyle(Color(ColorNames.textGrey))
+                    .foregroundStyle(Color(.textGrey))
             }
             .padding(.horizontal)
             

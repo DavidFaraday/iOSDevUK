@@ -29,7 +29,9 @@ struct AdminView: View {
             NavigationLink(AppStrings.locations, value: InfoDestination.adminLocations)
             NavigationLink(AppStrings.sponsors, value: InfoDestination.adminSponsors)
         }
-        .task(viewModel.uploadNewData)
+        .task {
+            await viewModel.uploadNewData()
+        }
         .navigationTitle(AppStrings.adminArea)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)

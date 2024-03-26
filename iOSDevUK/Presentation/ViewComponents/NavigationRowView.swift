@@ -31,6 +31,6 @@ struct NavigationRowView: View {
 
 struct NavigationRowView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationRowView(imageName: ImageNames.heart, title: AppStrings.sponsors)
+        NavigationRowView(imageName: ImageNames.mapPin, title: AppStrings.sponsors)
     }
 }

@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
-import Factory
 
 struct InfoView: View {
-    @Injected(\.firebaseAuthRepository) private var firebaseAuth
+    private var firebaseAuth: FirebaseAuthenticationServiceProtocol
 
     @EnvironmentObject var router: NavigationRouter
 
     @State var showLoginView = false
     @State var clickCount = 0
     
+    init(firebaseAuth: FirebaseAuthenticationServiceProtocol = FirebaseAuthenticationService.shared) {
+        self.firebaseAuth = firebaseAuth
+    }
     
     @ViewBuilder
     private func navigationBarTrailingItem() -> some View {

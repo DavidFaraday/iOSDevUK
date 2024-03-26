@@ -25,11 +25,11 @@ enum SponsorCategory: String, Codable, Comparable, Hashable, CaseIterable {
     var color: Color {
         switch self {
         case .Platinum:
-            return Color(ColorNames.platinumColor)
+                return Color(.platinum)
         case .Gold:
-            return Color(ColorNames.goldColor)
+            return Color(.gold)
         case .Silver:
-            return Color(ColorNames.silverColor)
+            return Color(.silver)
         }
     }
     

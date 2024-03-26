@@ -50,7 +50,7 @@ struct AllSessionsView: View {
             }
             .pickerStyle(.segmented)
             .padding(10)
-            .background(Color(ColorNames.backgroundColor))
+            .background(Color(.background))
 //            DayPickerView(days: groupedSessions.keys.sorted(), selection: $viewModel.selectedDate.animation())
 //                .padding(.vertical, 16)
         }

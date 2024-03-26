@@ -24,6 +24,10 @@ protocol FirebaseRepositoryProtocol {
 
 final class FirebaseRepository: FirebaseRepositoryProtocol {
     
+    static let shared = FirebaseRepository()
+    
+    private init() {}
+    
     func getDocuments<T: Codable>(from collection: FCollectionReference) async throws -> [T]? {
         let snapshot = try await FirebaseReference(collection).getDocuments()
 

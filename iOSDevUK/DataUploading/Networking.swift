@@ -57,7 +57,7 @@ struct CustomSession: Codable, Identifiable {
 //MARK: - used only to get files from JSON and save to Firebase
 final class FileUploadService {
     static let shared = FileUploadService()
-    let firebaseRepo = FirebaseRepository()
+    let firebaseRepo = FirebaseRepository.shared
     
     private init() { }
 

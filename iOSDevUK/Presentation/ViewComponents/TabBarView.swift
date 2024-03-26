@@ -37,13 +37,13 @@ extension TabBarView {
         var icon: Image {
             switch self {
                 case .home:
-                    return Image(ImageNames.home)
+                    return Image(.home)
                 case .mySchedule:
-                    return Image(ImageNames.schedule)
+                    return Image(.schedule)
                 case .attendee:
-                    return Image(ImageNames.attendee)
+                    return Image(.attendee)
                 case .info:
-                    return Image(ImageNames.info)
+                    return Image(.info)
             }
         }
         

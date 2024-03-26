@@ -6,11 +6,10 @@
 //
 import Combine
 import SwiftUI
-import Factory
 
 final class MyScheduleViewModel: ObservableObject {
-    @Injected(\.localStorage) private var localStorage
-    @Injected(\.firebaseRepository) private var firebaseRepository
+    private let localStorage: LocalStorageServiceProtocol
+    private let firebaseRepository: FirebaseRepositoryProtocol
 
     @Published private(set) var favoriteSessionIds: [String] = []
     @Published private(set) var sessions: [Session] = []
@@ -19,7 +18,12 @@ final class MyScheduleViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init() {
+    init(
+        localStorage: LocalStorageServiceProtocol = LocalStorageService.shared,
+        firebaseRepository: FirebaseRepositoryProtocol = FirebaseRepository.shared
+    ) {
+        self.localStorage = localStorage
+        self.firebaseRepository = firebaseRepository
         self.observerData()
     }
     
@@ -32,7 +36,7 @@ final class MyScheduleViewModel: ObservableObject {
     }
 
     @MainActor
-    @Sendable func listenForSessions() async {
+    func listenForSessions() async {
         guard self.sessions.isEmpty else { return }
         
         do {

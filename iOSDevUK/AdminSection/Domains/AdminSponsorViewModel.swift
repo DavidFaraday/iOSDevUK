@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import Factory
 
 final class AdminSponsorViewModel: ObservableObject {
-    @Injected(\.firebaseRepository) private var firebaseRepository
+    private var firebaseRepository: FirebaseRepositoryProtocol
 
     @Published var name = ""
     @Published var url = ""
@@ -21,8 +20,12 @@ final class AdminSponsorViewModel: ObservableObject {
     
     var sponsor: Sponsor?
     
-    init(sponsor: Sponsor? = nil) {
+    init(
+        sponsor: Sponsor? = nil,
+        firebaseRepository: FirebaseRepositoryProtocol = FirebaseRepository.shared
+    ) {
         self.sponsor = sponsor
+        self.firebaseRepository = firebaseRepository
         setupUI()
     }
     

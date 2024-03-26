@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import Factory
 
 final class AdminLocationViewModel: ObservableObject {
-    @Injected(\.firebaseRepository) private var firebaseRepository
+    private var firebaseRepository: FirebaseRepositoryProtocol
 
     @Published var name = ""
     @Published var note = "Notes"
@@ -20,8 +19,9 @@ final class AdminLocationViewModel: ObservableObject {
     
     var location: Location?
     
-    init(location: Location? = nil) {
+    init(location: Location? = nil, firebaseRepository: FirebaseRepositoryProtocol = FirebaseRepository.shared) {
         self.location = location
+        self.firebaseRepository = firebaseRepository
         setupUI()
     }
     

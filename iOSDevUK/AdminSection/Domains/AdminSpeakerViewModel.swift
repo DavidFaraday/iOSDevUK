@@ -7,10 +7,9 @@
 
 import SwiftUI
 import PhotosUI
-import Factory
 
 final class AdminSpeakerViewModel: ObservableObject {
-    @Injected(\.firebaseRepository) private var firebaseRepository
+    private var firebaseRepository: FirebaseRepositoryProtocol
 
     @Published var fullName = ""
     @Published var twitter = ""
@@ -25,8 +24,9 @@ final class AdminSpeakerViewModel: ObservableObject {
 
     var speaker: Speaker?
 
-    init(speaker: Speaker? = nil) {
+    init(speaker: Speaker? = nil, firebaseRepository: FirebaseRepositoryProtocol = FirebaseRepository.shared) {
         self.speaker = speaker
+        self.firebaseRepository = firebaseRepository
         setupUI()
     }
     

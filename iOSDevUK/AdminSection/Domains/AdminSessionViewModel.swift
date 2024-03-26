@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import Factory
 import Combine
 
 
 final class AdminSessionViewModel: ObservableObject {
-    @Injected(\.firebaseRepository) private var firebaseRepository
+    private let firebaseRepository: FirebaseRepositoryProtocol
 
     @Published var title = ""
     @Published var content = "Session content"
@@ -31,7 +30,8 @@ final class AdminSessionViewModel: ObservableObject {
 
     var session: Session?
     
-    init(session: Session? = nil) {
+    init(session: Session? = nil, firebaseRepository: FirebaseRepositoryProtocol = FirebaseRepository.shared) {
+        self.firebaseRepository = firebaseRepository
         self.session = session
         setupUI()
         observerData()

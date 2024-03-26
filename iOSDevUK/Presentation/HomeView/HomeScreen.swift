@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Factory
 
 struct HomeScreen: View {
     @EnvironmentObject var viewModel: BaseViewModel
@@ -31,7 +30,7 @@ struct HomeScreen: View {
                 Text(AppStrings.sessions).font(.title2).bold()
                 Spacer()
                 NavigationLink(AppStrings.viewAll, value: Destination.sessions(viewModel.sessions))
-                    .foregroundStyle(Color(ColorNames.textGrey))
+                    .foregroundStyle(Color(.textGrey))
             }
             .padding(.horizontal)
             

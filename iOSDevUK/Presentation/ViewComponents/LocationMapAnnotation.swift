@@ -46,7 +46,7 @@ struct LocationMapAnnotation: View {
 
                 Button(AppStrings.navigate, action: buttonAction)
                     .buttonStyle(.borderedProminent)
-                    .tint(Color(ColorNames.secondary))
+                    .tint(Color(.secondary))
 
             }
             .opacity(pinTapped ? 1.0 : 0.0)
