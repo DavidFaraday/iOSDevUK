@@ -18,35 +18,33 @@ struct LocationsListView: View {
     }
     
     @ViewBuilder
-    private func navigationBarTrailingItem() -> some View {
-        NavigationLink(AppStrings.map, value: InfoDestination.locations(locations: viewModel.locations))
-    }
-    
-
-    @ViewBuilder
     private func main() -> some View {
-        
-        ScrollView {
-            ForEach(groupedLocations.keys.sorted(), id: \String.self) { key in
-                let locationType: LocationType = LocationType(rawValue: key) ?? .au
-
-                DropDownRowView(
-                    title: locationType.name,
-                    imageName: locationType.shortName,
-                    locations: groupedLocations[key] ?? []
-                )
-                .padding(.horizontal, 16)
+        VStack(alignment: .leading, spacing: 10) {
+            NavigationLink(value: InfoDestination.locations(locations: viewModel.locations)) {
+                UniversityMapView()
+                    .padding(.horizontal, 16)
+            }
+            .buttonStyle(.plain)
+            
+            ScrollView {
+                ForEach(groupedLocations.keys.sorted(), id: \String.self) { key in
+                    let locationType: LocationType = LocationType(rawValue: key) ?? .au
+                    
+                    DropDownRowView(
+                        title: locationType.name,
+                        imageName: locationType.shortName,
+                        locations: groupedLocations[key] ?? []
+                    )
+                    .padding(.horizontal, 16)
+                }
             }
         }
     }
-
-
+    
+    
     var body: some View {
         main()
             .navigationBarTitle(AppStrings.locations, displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
-            }
     }
 }
 

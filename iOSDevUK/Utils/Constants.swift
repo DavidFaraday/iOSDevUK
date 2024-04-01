@@ -88,6 +88,7 @@ struct ImageNames {
     static let sponsors = "inclusivity"
     static let schedule = "schedule"
     static let attendee = "attendee"
+    static let mapImage = "mapImage"
 }
 
 

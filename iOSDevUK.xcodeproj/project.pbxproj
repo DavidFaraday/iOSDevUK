@@ -94,6 +94,7 @@
 		63EBF13E29CF431800A4AE6B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBF13D29CF431800A4AE6B /* MapViewModel.swift */; };
 		63F55D2E2BBABF13008C5D80 /* DropDownRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F55D2D2BBABF13008C5D80 /* DropDownRowView.swift */; };
 		63F55D302BBAC3D7008C5D80 /* LocationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F55D2F2BBAC3D7008C5D80 /* LocationHeaderView.swift */; };
+		63F55D322BBACB10008C5D80 /* UniversityMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F55D312BBACB10008C5D80 /* UniversityMapView.swift */; };
 		63F7E0BA28CC942100B2E1B7 /* iOSDevUKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E0B928CC942100B2E1B7 /* iOSDevUKApp.swift */; };
 		63F7E0BE28CC942200B2E1B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63F7E0BD28CC942200B2E1B7 /* Assets.xcassets */; };
 		63F7E0C128CC942200B2E1B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63F7E0C028CC942200B2E1B7 /* Preview Assets.xcassets */; };
@@ -222,6 +223,7 @@
 		63EBF13D29CF431800A4AE6B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		63F55D2D2BBABF13008C5D80 /* DropDownRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownRowView.swift; sourceTree = "<group>"; };
 		63F55D2F2BBAC3D7008C5D80 /* LocationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHeaderView.swift; sourceTree = "<group>"; };
+		63F55D312BBACB10008C5D80 /* UniversityMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityMapView.swift; sourceTree = "<group>"; };
 		63F7E0B928CC942100B2E1B7 /* iOSDevUKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDevUKApp.swift; sourceTree = "<group>"; };
 		63F7E0BD28CC942200B2E1B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63F7E0C028CC942200B2E1B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 				63E9E32E2BA4B9E2003497C0 /* InfoRowView.swift */,
 				6390B7362BAAF5F800BD9B0F /* AppSegmentControl.swift */,
 				6390B73A2BAB55AF00BD9B0F /* DayPickerView.swift */,
+				63F55D312BBACB10008C5D80 /* UniversityMapView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				63F7E0F028CC982200B2E1B7 /* AttendeeScreen.swift in Sources */,
 				63F7E0F928CC998000B2E1B7 /* BaseViewModel.swift in Sources */,
 				63F7E0BA28CC942100B2E1B7 /* iOSDevUKApp.swift in Sources */,
+				63F55D322BBACB10008C5D80 /* UniversityMapView.swift in Sources */,
 				63C79DA629B50C0D004319C1 /* AdminSessionViewModel.swift in Sources */,
 				6366D5CC28D0B7120051542E /* Bundle + Extensions.swift in Sources */,
 				63D602DE290E9B8E00BC01B9 /* LocationMapAnnotation.swift in Sources */,
