@@ -69,6 +69,8 @@ struct ImageNames {
     static let bookmarkFill = "bookmark.fill"
     static let mapPin = "mappin.circle.fill"
     static let chevronRight = "chevron.right"
+    static let chevronUp = "chevron.up"
+    static let chevronDown = "chevron.down"
     static let checkmark = "checkmark"
     static let xmark = "xmark.circle"
     static let envelope = "envelope"
