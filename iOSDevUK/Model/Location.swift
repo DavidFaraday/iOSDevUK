@@ -13,33 +13,33 @@ enum LocationType: String, Codable, CaseIterable {
     
     var name: String {
         switch self {
-        case .au:
-            return "Aberystwyth University"
-        case .transport:
-            return "Transport"
-        case .ev:
-            return "Electric Vehicle"
-        case .pubs:
-            return "Pubs"
-        case .sm:
-            return "Supermarket"
+            case .au:
+                return "Aberystwyth University"
+            case .transport:
+                return "Transport"
+            case .ev:
+                return "Electric Vehicle"
+            case .pubs:
+                return "Pubs"
+            case .sm:
+                return "Supermarket"
         }
     }
-
+    
     var shortName: String {
         switch self {
-        case .au:
-          return "University"
-        case .transport:
-          return "Transport"
-        case .ev:
-          return "EV"
-        case .pubs:
-          return "Pubs"
-        case .sm:
-          return "Shops"
+            case .au:
+                return "University"
+            case .transport:
+                return "Transport"
+            case .ev:
+                return "EV"
+            case .pubs:
+                return "Pubs"
+            case .sm:
+                return "Shops"
         }
-      }
+    }
 }
 
 struct Location: Codable, Identifiable, Hashable, Comparable {
