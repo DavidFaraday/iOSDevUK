@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		630C0B4A29D8A75C001424CA /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0B4929D8A75C001424CA /* WeatherData.swift */; };
 		630FEA8C28FF147600D483B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FEA8B28FF147600D483B2 /* Constants.swift */; };
-		630FEA8E28FF159400D483B2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FEA8D28FF159400D483B2 /* MapView.swift */; };
+		630FEA8E28FF159400D483B2 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FEA8D28FF159400D483B2 /* MapScreen.swift */; };
 		63221B1C28DA295A003EC2D5 /* SpeakerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */; };
 		63221B1F28DADB1E003EC2D5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63221B1E28DADB1E003EC2D5 /* Session.swift */; };
 		6336403529B6188500D6860A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6336403429B6188500D6860A /* Kingfisher */; };
@@ -27,6 +27,9 @@
 		6366D5CF28D0BA180051542E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366D5CE28D0BA180051542E /* AboutView.swift */; };
 		6367516D29B48160003B8B5A /* AdminSponsorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367516C29B48160003B8B5A /* AdminSponsorViewModel.swift */; };
 		6367516F29B4EB5B003B8B5A /* AdminLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367516E29B4EB5B003B8B5A /* AdminLocationViewModel.swift */; };
+		6369AD082BC11B03005C802C /* MapPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369AD072BC11B03005C802C /* MapPinView.swift */; };
+		6369AD0A2BC11B1A005C802C /* MapPinShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369AD092BC11B1A005C802C /* MapPinShape.swift */; };
+		6369AD0C2BC17993005C802C /* LocationInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369AD0B2BC17993005C802C /* LocationInfoCardView.swift */; };
 		638402A62972F1D100DE8D59 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638402A52972F1D100DE8D59 /* LoginViewModel.swift */; };
 		6390B7372BAAF5F800BD9B0F /* AppSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390B7362BAAF5F800BD9B0F /* AppSegmentControl.swift */; };
 		6390B7392BAAFBC700BD9B0F /* ScheduleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390B7382BAAFBC700BD9B0F /* ScheduleType.swift */; };
@@ -48,7 +51,6 @@
 		63D1D7F129D9B327001A4066 /* MappingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1D7F029D9B327001A4066 /* MappingUtils.swift */; };
 		63D1D7F329D9E3A9001A4066 /* HourlyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1D7F229D9E3A9001A4066 /* HourlyWeatherView.swift */; };
 		63D2070629F2FEF70031A9A1 /* SelectSpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D2070529F2FEF70031A9A1 /* SelectSpeakerView.swift */; };
-		63D602DE290E9B8E00BC01B9 /* LocationMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */; };
 		63D660372974021300EAAFEB /* AdminSpeakerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D660362974021300EAAFEB /* AdminSpeakerViewModel.swift */; };
 		63D877A72BA4549B00E6A07A /* SFProDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63D8779B2BA4549B00E6A07A /* SFProDisplay-Light.ttf */; };
 		63D877A82BA4549B00E6A07A /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63D8779C2BA4549B00E6A07A /* SFProDisplay-Semibold.ttf */; };
@@ -110,7 +112,7 @@
 		63F7E10B28CC9F6C00B2E1B7 /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E10A28CC9F6C00B2E1B7 /* FCollectionReference.swift */; };
 		63F7E11728CCF50A00B2E1B7 /* AllSpeakersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11628CCF50A00B2E1B7 /* AllSpeakersView.swift */; };
 		63F7E11C28CCF6B200B2E1B7 /* SpeakerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11B28CCF6B200B2E1B7 /* SpeakerCardView.swift */; };
-		63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11D28CCFC0C00B2E1B7 /* SpeakerDetailView.swift */; };
+		63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11D28CCFC0C00B2E1B7 /* SpeakerDetailScreen.swift */; };
 		63F7E12028CD022E00B2E1B7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E11F28CD022E00B2E1B7 /* Location.swift */; };
 		63F7E12C28CDB61F00B2E1B7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E12B28CDB61F00B2E1B7 /* Networking.swift */; };
 		63F7E12E28CE527700B2E1B7 /* InclusivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F7E12D28CE527700B2E1B7 /* InclusivityView.swift */; };
@@ -141,7 +143,7 @@
 /* Begin PBXFileReference section */
 		630C0B4929D8A75C001424CA /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		630FEA8B28FF147600D483B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		630FEA8D28FF159400D483B2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		630FEA8D28FF159400D483B2 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewModel.swift; sourceTree = "<group>"; };
 		63221B1E28DADB1E003EC2D5 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		63485FB42AA7D1E5007EB4A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -158,6 +160,9 @@
 		6366D5CE28D0BA180051542E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		6367516C29B48160003B8B5A /* AdminSponsorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSponsorViewModel.swift; sourceTree = "<group>"; };
 		6367516E29B4EB5B003B8B5A /* AdminLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLocationViewModel.swift; sourceTree = "<group>"; };
+		6369AD072BC11B03005C802C /* MapPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinView.swift; sourceTree = "<group>"; };
+		6369AD092BC11B1A005C802C /* MapPinShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinShape.swift; sourceTree = "<group>"; };
+		6369AD0B2BC17993005C802C /* LocationInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoCardView.swift; sourceTree = "<group>"; };
 		638402A52972F1D100DE8D59 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		6390B7362BAAF5F800BD9B0F /* AppSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSegmentControl.swift; sourceTree = "<group>"; };
 		6390B7382BAAFBC700BD9B0F /* ScheduleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleType.swift; sourceTree = "<group>"; };
@@ -180,7 +185,6 @@
 		63D1D7F029D9B327001A4066 /* MappingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingUtils.swift; sourceTree = "<group>"; };
 		63D1D7F229D9E3A9001A4066 /* HourlyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherView.swift; sourceTree = "<group>"; };
 		63D2070529F2FEF70031A9A1 /* SelectSpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSpeakerView.swift; sourceTree = "<group>"; };
-		63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapAnnotation.swift; sourceTree = "<group>"; };
 		63D660362974021300EAAFEB /* AdminSpeakerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSpeakerViewModel.swift; sourceTree = "<group>"; };
 		63D8779B2BA4549B00E6A07A /* SFProDisplay-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Light.ttf"; sourceTree = "<group>"; };
 		63D8779C2BA4549B00E6A07A /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
@@ -240,7 +244,7 @@
 		63F7E10A28CC9F6C00B2E1B7 /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
 		63F7E11628CCF50A00B2E1B7 /* AllSpeakersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSpeakersView.swift; sourceTree = "<group>"; };
 		63F7E11B28CCF6B200B2E1B7 /* SpeakerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardView.swift; sourceTree = "<group>"; };
-		63F7E11D28CCFC0C00B2E1B7 /* SpeakerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailView.swift; sourceTree = "<group>"; };
+		63F7E11D28CCFC0C00B2E1B7 /* SpeakerDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailScreen.swift; sourceTree = "<group>"; };
 		63F7E11F28CD022E00B2E1B7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		63F7E12B28CDB61F00B2E1B7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		63F7E12D28CE527700B2E1B7 /* InclusivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InclusivityView.swift; sourceTree = "<group>"; };
@@ -406,7 +410,7 @@
 		63E5840E2917A8580034F0D7 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				630FEA8D28FF159400D483B2 /* MapView.swift */,
+				630FEA8D28FF159400D483B2 /* MapScreen.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -564,7 +568,9 @@
 				63F7E11B28CCF6B200B2E1B7 /* SpeakerCardView.swift */,
 				63D877B52BA45CDD00E6A07A /* SpeakerRowView.swift */,
 				63A6A771290AF08300940170 /* SponsorRow.swift */,
-				63D602DD290E9B8E00BC01B9 /* LocationMapAnnotation.swift */,
+				6369AD072BC11B03005C802C /* MapPinView.swift */,
+				6369AD092BC11B1A005C802C /* MapPinShape.swift */,
+				6369AD0B2BC17993005C802C /* LocationInfoCardView.swift */,
 				EF99912A292A8C9F00B4DB8B /* SectionHeaderView.swift */,
 				63C79DA329B5032E004319C1 /* EmptySessionView.swift */,
 				63A986A829D047260008DE95 /* WeatherView.swift */,
@@ -598,7 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				63F7E11628CCF50A00B2E1B7 /* AllSpeakersView.swift */,
-				63F7E11D28CCFC0C00B2E1B7 /* SpeakerDetailView.swift */,
+				63F7E11D28CCFC0C00B2E1B7 /* SpeakerDetailScreen.swift */,
 			);
 			path = SpeakerView;
 			sourceTree = "<group>";
@@ -794,11 +800,12 @@
 				6366D5CF28D0BA180051542E /* AboutView.swift in Sources */,
 				63E9E32F2BA4B9E2003497C0 /* InfoRowView.swift in Sources */,
 				63E8E85F290E541C002419A7 /* AllSessionsViewModel.swift in Sources */,
+				6369AD082BC11B03005C802C /* MapPinView.swift in Sources */,
 				EF999124292A1DD900B4DB8B /* NavigationRouter.swift in Sources */,
 				63221B1C28DA295A003EC2D5 /* SpeakerDetailViewModel.swift in Sources */,
 				63F7E11C28CCF6B200B2E1B7 /* SpeakerCardView.swift in Sources */,
 				63D9896E2901B08A0018FDD6 /* AddSponsorView.swift in Sources */,
-				630FEA8E28FF159400D483B2 /* MapView.swift in Sources */,
+				630FEA8E28FF159400D483B2 /* MapScreen.swift in Sources */,
 				634E7ABC28DB806F001DC796 /* AllSessionsView.swift in Sources */,
 				63A986AB29D04D540008DE95 /* Double + Extensions.swift in Sources */,
 				EF8AC511293350FA00E19859 /* AppErrors.swift in Sources */,
@@ -808,7 +815,7 @@
 				63D1D7F329D9E3A9001A4066 /* HourlyWeatherView.swift in Sources */,
 				63A986A929D047260008DE95 /* WeatherView.swift in Sources */,
 				63D989652901B04B0018FDD6 /* AdminView.swift in Sources */,
-				63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailView.swift in Sources */,
+				63F7E11E28CCFC0C00B2E1B7 /* SpeakerDetailScreen.swift in Sources */,
 				63F55D2E2BBABF13008C5D80 /* DropDownRowView.swift in Sources */,
 				63E17F3E2BA6C0D300F05E0E /* AttendeeRowView.swift in Sources */,
 				63BC3A2529CF1C5F0018286E /* LocationsListView.swift in Sources */,
@@ -831,7 +838,6 @@
 				63F55D322BBACB10008C5D80 /* UniversityMapView.swift in Sources */,
 				63C79DA629B50C0D004319C1 /* AdminSessionViewModel.swift in Sources */,
 				6366D5CC28D0B7120051542E /* Bundle + Extensions.swift in Sources */,
-				63D602DE290E9B8E00BC01B9 /* LocationMapAnnotation.swift in Sources */,
 				63D9896C2901B0810018FDD6 /* AddLocation.swift in Sources */,
 				63F7E0EC28CC980A00B2E1B7 /* HomeScreen.swift in Sources */,
 				630C0B4A29D8A75C001424CA /* WeatherData.swift in Sources */,
@@ -845,6 +851,7 @@
 				63E9C55928EF419A00710C8F /* InformationItem.swift in Sources */,
 				63D989742901B14C0018FDD6 /* AdminSpeakers.swift in Sources */,
 				63E394E82972B1ED0035C1E0 /* FirebaseAuthenticationService.swift in Sources */,
+				6369AD0C2BC17993005C802C /* LocationInfoCardView.swift in Sources */,
 				63F7E10728CC9E7300B2E1B7 /* RemoteImage.swift in Sources */,
 				63C79DA429B5032E004319C1 /* EmptySessionView.swift in Sources */,
 				63F7E0EE28CC981500B2E1B7 /* MyScheduleView.swift in Sources */,
@@ -858,6 +865,7 @@
 				6390B7372BAAF5F800BD9B0F /* AppSegmentControl.swift in Sources */,
 				636161F12A8813CA00E94C07 /* Array + Extension.swift in Sources */,
 				63D660372974021300EAAFEB /* AdminSpeakerViewModel.swift in Sources */,
+				6369AD0A2BC11B1A005C802C /* MapPinShape.swift in Sources */,
 				63601D582BA883F700A67E59 /* ContactButtonView.swift in Sources */,
 				63A6A770290AED4C00940170 /* SponsorsScreen.swift in Sources */,
 				634E7AB828DB7B5C001DC796 /* Sponsor.swift in Sources */,

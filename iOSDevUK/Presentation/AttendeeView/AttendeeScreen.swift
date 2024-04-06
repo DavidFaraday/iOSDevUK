@@ -49,13 +49,13 @@ struct AttendeeScreen: View {
                         case .sessions(let sessions):
                             AllSessionsView(sessions: sessions)
                         case .speaker(let speaker):
-                            SpeakerDetailView(speaker: speaker)
+                            SpeakerDetailScreen(speaker: speaker)
                         case .speakers(let speakers):
                             AllSpeakersView(speakers: speakers)
                         case .sponsor:
                             SponsorsScreen()
                         case .locations(let locations):
-                            MapView(allLocations: locations)
+                            MapScreen(allLocations: locations)
                     }
                 }
         }

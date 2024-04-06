@@ -111,7 +111,7 @@ struct InfoView: View {
                 case .locationList:
                     LocationsListView()
                 case .locations(let locations):
-                    MapView(allLocations: locations)
+                    MapScreen(allLocations: locations)
                 }
             }
         }

@@ -36,6 +36,7 @@ struct AppInformationView: View {
                         Link("Contact @digidol", destination: twitterUrl)
                     }
                 }
+                .tint(Color(.purple300))
 
                 Spacer()
             }

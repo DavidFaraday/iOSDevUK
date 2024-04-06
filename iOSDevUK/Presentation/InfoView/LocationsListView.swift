@@ -32,7 +32,7 @@ struct LocationsListView: View {
                     
                     DropDownRowView(
                         title: locationType.name,
-                        imageName: locationType.shortName,
+                        imageName: locationType.shortName.lowercased(),
                         locations: groupedLocations[key] ?? []
                     )
                     .padding(.horizontal, 16)
