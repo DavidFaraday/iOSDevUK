@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SpeakerDetailView: View {
+struct SpeakerDetailScreen: View {
     @StateObject private var viewModel: SpeakerDetailViewModel
     @EnvironmentObject var baseViewModel: BaseViewModel
     
@@ -173,7 +173,7 @@ struct SpeakerDetailView_Previews: PreviewProvider {
 
     static var previews: some View {
         NavigationView {
-            SpeakerDetailView(speaker: DummyData.speakers[0])
+            SpeakerDetailScreen(speaker: DummyData.speakers[0])
         }
     }
 }
