@@ -46,10 +46,11 @@ class BaseViewModel: ObservableObject {
     private func observerData() {
         $sessions
             .map { sessions in
-                sessions
-                    .filter { $0.type != .lunch }
-                    .filter { $0.type != .coffeeBiscuits }
-                    .filter { $0.type != .dinner }
+                sessions.filter { session in
+                    session.type != .lunch &&
+                    session.type != .coffeeBiscuits &&
+                    session.type != .dinner
+                }
             }
             .assign(to: &$homeViewSessions)
     }

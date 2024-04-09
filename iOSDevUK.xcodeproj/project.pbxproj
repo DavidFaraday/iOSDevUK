@@ -10,6 +10,7 @@
 		630C0B4A29D8A75C001424CA /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0B4929D8A75C001424CA /* WeatherData.swift */; };
 		630FEA8C28FF147600D483B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FEA8B28FF147600D483B2 /* Constants.swift */; };
 		630FEA8E28FF159400D483B2 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FEA8D28FF159400D483B2 /* MapScreen.swift */; };
+		63176B272BC5AFB500661F47 /* SessionsHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63176B262BC5AFB500661F47 /* SessionsHorizontalScrollView.swift */; };
 		63221B1C28DA295A003EC2D5 /* SpeakerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */; };
 		63221B1F28DADB1E003EC2D5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63221B1E28DADB1E003EC2D5 /* Session.swift */; };
 		6336403529B6188500D6860A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6336403429B6188500D6860A /* Kingfisher */; };
@@ -121,7 +122,7 @@
 		EF1782832941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1782822941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift */; };
 		EF1782952941F58400EFFB2D /* FactorySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1782942941F58400EFFB2D /* FactorySetup.swift */; };
 		EF178297294207D900EFFB2D /* AllSessionsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */; };
-		EF330BE22BA43869002BA4B7 /* SpeakersHorizontalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF330BE12BA43869002BA4B7 /* SpeakersHorizontalRowView.swift */; };
+		EF330BE22BA43869002BA4B7 /* SpeakersHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF330BE12BA43869002BA4B7 /* SpeakersHorizontalScrollView.swift */; };
 		EF3470992944F18700B24854 /* SessionRowViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */; };
 		EF34709C2945C73F00B24854 /* SessionDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34709B2945C73F00B24854 /* SessionDetailViewModelTest.swift */; };
 		EF8AC511293350FA00E19859 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AC510293350FA00E19859 /* AppErrors.swift */; };
@@ -144,6 +145,7 @@
 		630C0B4929D8A75C001424CA /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		630FEA8B28FF147600D483B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		630FEA8D28FF159400D483B2 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		63176B262BC5AFB500661F47 /* SessionsHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsHorizontalScrollView.swift; sourceTree = "<group>"; };
 		63221B1B28DA295A003EC2D5 /* SpeakerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewModel.swift; sourceTree = "<group>"; };
 		63221B1E28DADB1E003EC2D5 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		63485FB42AA7D1E5007EB4A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -255,7 +257,7 @@
 		EF1782822941F2D800EFFB2D /* SpeakerDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewModelTests.swift; sourceTree = "<group>"; };
 		EF1782942941F58400EFFB2D /* FactorySetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorySetup.swift; sourceTree = "<group>"; };
 		EF178296294207D900EFFB2D /* AllSessionsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsViewModelTest.swift; sourceTree = "<group>"; };
-		EF330BE12BA43869002BA4B7 /* SpeakersHorizontalRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakersHorizontalRowView.swift; sourceTree = "<group>"; };
+		EF330BE12BA43869002BA4B7 /* SpeakersHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakersHorizontalScrollView.swift; sourceTree = "<group>"; };
 		EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModelTest.swift; sourceTree = "<group>"; };
 		EF34709B2945C73F00B24854 /* SessionDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewModelTest.swift; sourceTree = "<group>"; };
 		EF8AC510293350FA00E19859 /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
@@ -519,7 +521,8 @@
 			isa = PBXGroup;
 			children = (
 				63F7E0EB28CC980A00B2E1B7 /* HomeScreen.swift */,
-				EF330BE12BA43869002BA4B7 /* SpeakersHorizontalRowView.swift */,
+				EF330BE12BA43869002BA4B7 /* SpeakersHorizontalScrollView.swift */,
+				63176B262BC5AFB500661F47 /* SessionsHorizontalScrollView.swift */,
 				63601D552BA858E900A67E59 /* EventInfoView.swift */,
 				63601D572BA883F700A67E59 /* ContactButtonView.swift */,
 			);
@@ -821,7 +824,7 @@
 				63BC3A2529CF1C5F0018286E /* LocationsListView.swift in Sources */,
 				63A8509B29917C1D0000AB15 /* FirebaseFileManager.swift in Sources */,
 				636161F32A8814E000E94C07 /* LocalStorageService.swift in Sources */,
-				EF330BE22BA43869002BA4B7 /* SpeakersHorizontalRowView.swift in Sources */,
+				EF330BE22BA43869002BA4B7 /* SpeakersHorizontalScrollView.swift in Sources */,
 				63E9E3332BA5D693003497C0 /* ButtonModifier.swift in Sources */,
 				639BEAF929099E8D009C3870 /* AdminViewModel.swift in Sources */,
 				63F7E0FB28CC999000B2E1B7 /* MyScheduleViewModel.swift in Sources */,
@@ -854,6 +857,7 @@
 				6369AD0C2BC17993005C802C /* LocationInfoCardView.swift in Sources */,
 				63F7E10728CC9E7300B2E1B7 /* RemoteImage.swift in Sources */,
 				63C79DA429B5032E004319C1 /* EmptySessionView.swift in Sources */,
+				63176B272BC5AFB500661F47 /* SessionsHorizontalScrollView.swift in Sources */,
 				63F7E0EE28CC981500B2E1B7 /* MyScheduleView.swift in Sources */,
 				63FD528B2A7E0EC5009D3902 /* NavigationRowView.swift in Sources */,
 				63F7E10428CC9D9500B2E1B7 /* Speaker.swift in Sources */,

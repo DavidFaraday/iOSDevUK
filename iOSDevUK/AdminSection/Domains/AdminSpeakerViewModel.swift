@@ -12,6 +12,7 @@ final class AdminSpeakerViewModel: ObservableObject {
     private var firebaseRepository: FirebaseRepositoryProtocol
 
     @Published var fullName = ""
+    @Published var currentPosition = ""
     @Published var twitter = ""
     @Published var linkedIn = ""
     @Published var imageLink = ""
@@ -34,6 +35,7 @@ final class AdminSpeakerViewModel: ObservableObject {
         guard let speaker = speaker else { return }
         
         fullName = speaker.name
+        currentPosition = speaker.currentPosition ?? ""
         twitter = speaker.twitterId ?? ""
         linkedIn = speaker.linkedIn ?? ""
         imageLink = speaker.imageLink
@@ -41,7 +43,7 @@ final class AdminSpeakerViewModel: ObservableObject {
     }
     
     func save() async {
-        let newSpeaker = Speaker(id: speaker?.id ?? fullName.removeSpaces, name: fullName, currentPosition: nil, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: imageLink, webLinks: nil)
+        let newSpeaker = Speaker(id: speaker?.id ?? fullName.removeSpaces, name: fullName, currentPosition: currentPosition, biography: bio, linkedIn: linkedIn, twitterId: twitter, imageLink: imageLink, webLinks: nil)
 
         do {
             try firebaseRepository.saveData(data: newSpeaker, to: .Speaker)

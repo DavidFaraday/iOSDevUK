@@ -12,6 +12,17 @@ struct AdminSessions: View {
     @StateObject private var adminSessionViewModel = AdminSessionViewModel()
 
     @ViewBuilder
+    private func sessionRowView(session: Session) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(session.title)
+                .appFont(size: 18)
+            Text("\(session.duration)")
+                .appFont(size: 14)
+        }
+        .foregroundStyle(Color(.mainText))
+    }
+    
+    @ViewBuilder
     private func navigationBarTrailingItem() -> some View {
         NavigationLink(value: InfoDestination.adminAddSession(nil)) {
             Image(systemName: ImageNames.plus)
@@ -24,7 +35,7 @@ struct AdminSessions: View {
         Form {
             ForEach(viewModel.sessions, id: \.id) { session in
                 NavigationLink(value: InfoDestination.adminAddSession(session)) {
-                    SessionRowView(session: session)
+                    sessionRowView(session: session)
                 }
             }
             .onDelete { indexSet in

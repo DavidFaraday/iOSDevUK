@@ -7,83 +7,98 @@
 
 import SwiftUI
 
-struct SessionCardView: View {       
-    @StateObject private var viewModel = SessionRowViewModel()
+struct SessionCardView: View {
+    @EnvironmentObject var baseViewModel: BaseViewModel
+
+    @State private var offset = CGSize.zero
+    let widthScale = UIDevice.current.userInterfaceIdiom == .pad ? 0.6 : 0.9
 
     let session: Session
-    let speakers: [Speaker]?
-    let location: Location?
-        
+    let geometry: GeometryProxy
+    
     @ViewBuilder
-    private func speakerImageView() -> some View {
-        VStack(spacing: 5) {
-            ForEach(speakers?.prefix(3) ?? []) { speaker in
-                if speaker.name != "You" {
-                    RemoteImageView(url: speaker.imageUrl)
-                        .scaledToFill()
-                        .frame(width: 40, height: 40)
-                        .clipShape(Circle())
-                }
+    func saveButton() -> some View {
+        Button(baseViewModel.isFavorite(session.id) ? "Remove" : "Save") {
+            withAnimation {
+                baseViewModel.updateFavoriteSession(sessionId: session.id)
             }
         }
-        .padding(.trailing, 10)
+        .capsuleBackgroundView(color: .white)
+        .foregroundStyle(.black)
     }
     
     @ViewBuilder
-    private func cardContent() -> some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading) {
-                Text(session.title)
-                    .font(.title2)
-                    .padding(.bottom, 10)
-
-                if let names = viewModel.speakerNames {
-                    Text(names)
-                        .font(.subheadline)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.8)
-                }
-
-                Spacer()
-                
-                VStack(alignment: .leading, spacing: 0) {
-                    Text(location?.name ?? "")
-                    Text(session.duration)
-                }
-                .font(.subheadline)
-                .padding(.bottom, 10)
-            }
-            .foregroundColor(.white)
-            .multilineTextAlignment(.leading)
-            .minimumScaleFactor(0.6)
-            .lineLimit(2)
-            .bold()
+    func timeView() -> some View {
+        HStack(spacing: 10) {
+            Text(session.startDate.formatted(date: .abbreviated, time: .omitted))
+                .capsuleBackgroundView(color: .white.opacity(0.1))
+            
+            Text(session.startDate.formatted(date: .omitted, time: .shortened))
+                .capsuleBackgroundView(color: .white.opacity(0.1))
 
             Spacer()
-            speakerImageView()
         }
-        .padding([.top, .leading])
+        .semiboldAppFont(size: 14)
+
     }
     
     @ViewBuilder
-    private func main() -> some View {
-        VStack {
-            ZStack(alignment: .topLeading) {
-                Rectangle()
-                    .fill(Color(.primary).gradient)
-                    .background(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-
-                cardContent()
+    func speakerRow(speaker: Speaker) -> some View {
+        if speaker.name != "You" {
+            HStack {
+                RemoteImageView(url: speaker.imageUrl)
+                    .scaledToFill()
+                    .frame(width: 30, height: 30)
+                    .clipShape(Circle())
+                
+                Text(speaker.name)
+                    .font(.subheadline)
             }
+            .padding(.bottom, 4)
+        } else {
+            Spacer()
+                .frame(height: 34)
         }
     }
-    
+
     var body: some View {
-        main()
-            .onAppear {
-                viewModel.setSpeakers(speakers: speakers ?? [])
+        VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading) {
+                
+                timeView()
+                
+                Spacer()
+                
+                Text(session.title)
+                    .semiboldAppFont(size: 22)
+                    .padding(.bottom, 10)
+                    .multilineTextAlignment(.leading)
+                
+                if let name = baseViewModel.getLocation(with: session.locationId)?.name {
+                    Label(name, image: ImageNames.location)
+                        .semiboldAppFont(size: 14)
+                }
+
+                ForEach(baseViewModel.getSpeakers(with: session.speakerIds)) { speaker in
+                    speakerRow(speaker: speaker)
+                }
             }
-            .frame(height: 150)
+            .overlay(alignment: .bottomTrailing) {
+                saveButton()
+            }
+            .padding(16)
+        }
+        .foregroundStyle(.white)
+        .frame(width: geometry.size.width * widthScale, height: 250)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(
+                    .linearGradient(
+                        colors: [Color(.cardBottom), Color(.cardTop)],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+        )
     }
 }

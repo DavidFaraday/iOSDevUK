@@ -1,5 +1,5 @@
 //
-//  SpeakersHorizontalRow.swift
+//  SpeakersHorizontalScrollView.swift
 //  iOSDevUK
 //
 //  Created by David Kababyan on 15/03/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SpeakersHorizontalRowView: View {
+struct SpeakersHorizontalScrollView: View {
     let speakers: [Speaker]
     
     var body: some View {
@@ -41,5 +41,5 @@ struct SpeakersHorizontalRowView: View {
 }
 
 #Preview {
-    SpeakersHorizontalRowView(speakers: DummyData.speakers)
+    SpeakersHorizontalScrollView(speakers: DummyData.speakers)
 }
