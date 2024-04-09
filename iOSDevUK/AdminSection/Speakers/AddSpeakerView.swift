@@ -59,6 +59,7 @@ struct AddSpeakerView: View {
         Form {
             Section {
                 TextField(AppStrings.fullName, text: $viewModel.fullName)
+                TextField(AppStrings.position, text: $viewModel.currentPosition)
                 TextField(AppStrings.twitter, text: $viewModel.twitter)
                 TextField(AppStrings.linkedIn, text: $viewModel.linkedIn)
                 HStack {

@@ -39,6 +39,7 @@ struct AdminSpeakers: View {
     var body: some View {
         main()
             .navigationTitle(AppStrings.speakers)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: navigationBarTrailingItem)
             }

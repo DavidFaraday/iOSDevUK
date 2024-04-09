@@ -24,7 +24,7 @@ struct SpeakerRowView: View {
                     .lineLimit(2)
                     .boldAppFont(size: 18)
                 
-                if let position = speaker.currentPosition {
+                if let position = speaker.currentPosition, !position.isEmpty {
                     Text(position)
                         .foregroundStyle(Color(.textGrey))
                         .minimumScaleFactor(0.8)

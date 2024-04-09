@@ -11,6 +11,7 @@ struct HomeScreen: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
     
+    
     let columns = UIDevice.current.userInterfaceIdiom == .pad ? [
         GridItem(.adaptive(minimum: 120)),
         GridItem(.adaptive(minimum: 120)),
@@ -20,40 +21,8 @@ struct HomeScreen: View {
         GridItem(.adaptive(minimum: 120)),
         GridItem(.adaptive(minimum: 120))
     ]
+      
     
-    
-    @ViewBuilder
-    private func sessionView() -> some View {
-        
-        VStack(alignment: .leading) {
-            HStack {
-                Text(AppStrings.sessions).font(.title2).bold()
-                Spacer()
-                NavigationLink(AppStrings.viewAll, value: Destination.sessions(viewModel.sessions))
-                    .foregroundStyle(Color(.textGrey))
-            }
-            .padding(.horizontal)
-            
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 10) {
-                    ForEach(viewModel.homeViewSessions) { session in
-                        
-                        NavigationLink(value: Destination.session(session)) {
-                            SessionCardView(session: session,
-                                            speakers: viewModel.getSpeakers(with: session.speakerIds),
-                                            location: viewModel.getLocation(with: session.locationId))
-                            .id(session)
-                            .frame(width: 300, height: 150)
-                        }
-                    }
-                }
-                .padding(.leading)
-            }
-            .scrollIndicators(.hidden)
-        }
-    }
-    
-
     @ViewBuilder
     private func usefulLinks() -> some View {
         VStack(alignment: .center, spacing: 10) {
@@ -86,7 +55,7 @@ struct HomeScreen: View {
             Text(AppStrings.sponsors)
                 .foregroundStyle(Color(.mainText))
                 .boldAppFont(size: 20)
-
+            
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(viewModel.sponsors) { sponsor in
                     NavigationLink(value: Destination.sponsor) {
@@ -100,28 +69,30 @@ struct HomeScreen: View {
     
     @ViewBuilder
     private func main() -> some View {
-        ScrollView {
-            VStack(spacing: 30) {
-                
-                WeatherView()
-                
-                SpeakersHorizontalRowView(speakers: viewModel.speakers)
-                sessionView()
-
-                sponsorView()
-                
-                if viewModel.eventInformation != nil {
-                    EventInfoView(
-                        eventDate: viewModel.eventDate,
-                        notificationBody: viewModel.eventInformation?.about
-                    )
-                    .padding(.horizontal, 16)
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 30) {
+                    
+                    WeatherView()
+                    
+                    SpeakersHorizontalScrollView(speakers: viewModel.speakers)
+                    SessionsHorizontalScrollView(sessions: viewModel.homeViewSessions, geometry: geometry)
+                    
+                    sponsorView()
+                    
+                    if viewModel.eventInformation != nil {
+                        EventInfoView(
+                            eventDate: viewModel.eventDate,
+                            notificationBody: viewModel.eventInformation?.about
+                        )
+                        .padding(.horizontal, 16)
+                    }
+                    
+                    usefulLinks()
                 }
-                
-                usefulLinks()
             }
+            .scrollIndicators(.hidden)
         }
-        .scrollIndicators(.hidden)
     }
     
     var body: some View {
@@ -170,5 +141,14 @@ struct HomeView_Previews: PreviewProvider {
         HomeScreen()
             .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
             .previewDisplayName("iPad pro 11")
+    }
+}
+
+
+extension View {
+    func stacked(at position: Int, in total: Int = 3) -> some View {
+        let offset = Double(total - position)
+        
+        return self.offset(y: offset * 10)
     }
 }

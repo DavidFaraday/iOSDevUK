@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var router: NavigationRouter
     @Environment(\.dismiss) var dismiss
     
     @StateObject var viewModel = LoginViewModel()
@@ -21,12 +20,8 @@ struct LoginView: View {
         ZStack(alignment: .topTrailing) {
             HStack {
                 Spacer()
-                Button { dismiss() }
-                label: {
-                    Image(systemName: ImageNames.xmark)
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.accentColor)
+                Button("Close") {
+                    dismiss()
                 }
                 .padding()
             }
@@ -42,10 +37,11 @@ struct LoginView: View {
             
         } label: {
             Text(AppStrings.login)
+                .foregroundStyle(Color(.darkText))
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity)
         }
-        .buttonStyle(.borderedProminent)
+        .capsuleBackgroundView(color: Color(.buttonBackground))
         .padding(.top, 10)
         .onChange(of: viewModel.loginSuccessful, perform: { newValue in
             if newValue {
@@ -58,8 +54,8 @@ struct LoginView: View {
     private func loginComponent() -> some View {
         VStack(spacing: 10) {
             Text(AppStrings.login)
-                .font(.title)
-                .fontWeight(.semibold)
+                .semiboldAppFont(size: 20)
+                .foregroundStyle(Color(.mainText))
             
             HStack {
                 Image(systemName: ImageNames.envelope)
