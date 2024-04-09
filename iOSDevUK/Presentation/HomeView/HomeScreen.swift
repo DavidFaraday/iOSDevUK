@@ -21,42 +21,7 @@ struct HomeScreen: View {
         GridItem(.adaptive(minimum: 120)),
         GridItem(.adaptive(minimum: 120))
     ]
-    
-    
-//    @ViewBuilder
-//    private func sessionView(geometry: GeometryProxy) -> some View {
-//        
-//        VStack(alignment: .leading) {
-//            HStack {
-//                Text(AppStrings.sessions)
-//                    .foregroundStyle(Color(.mainText))
-//                    .boldAppFont(size: 20)
-//                
-//                Spacer()
-//                NavigationLink(AppStrings.viewAll, value: Destination.sessions(viewModel.sessions))
-//                    .foregroundStyle(Color(.textGrey))
-//            }
-//            .padding(.horizontal)
-//            
-//            ScrollView(.horizontal) {
-//                LazyHStack(spacing: 10) {
-//                    ForEach(viewModel.homeViewSessions, id: \.self) { session in
-//                        
-//                        NavigationLink(value: Destination.session(session)) {
-//                            SessionCardView(session: session, geometry: geometry)
-//                                .id(session)
-//                        }
-//                    }
-//                }
-//                .padding(.leading)
-//                
-//            }
-//            .scrollIndicators(.hidden)
-//            
-//            
-//        }
-//    }
-    
+      
     
     @ViewBuilder
     private func usefulLinks() -> some View {
