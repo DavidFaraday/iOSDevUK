@@ -12,6 +12,8 @@ struct AllSessionsView: View {
     @StateObject private var viewModel = AllSessionsViewModel()
     @EnvironmentObject var baseViewModel: BaseViewModel
     
+    @Environment(\.presentationMode) var presentationMode
+    var showBackButton: Bool = true
     let sessions: [Session]
     private var groupedSessions: [String : [Session]] {
         .init(
@@ -20,6 +22,14 @@ struct AllSessionsView: View {
         )
     }
         
+    
+    @ViewBuilder
+    private func navigationBarLeadingItem() -> some View {
+        Button { presentationMode.wrappedValue.dismiss() }
+        label: { Image(.back) }
+            .tint(Color(.mainText))
+    }
+
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 10) {
@@ -51,8 +61,14 @@ struct AllSessionsView: View {
             .pickerStyle(.segmented)
             .padding(10)
             .background(Color(.background))
-//            DayPickerView(days: groupedSessions.keys.sorted(), selection: $viewModel.selectedDate.animation())
-//                .padding(.vertical, 16)
+        }
+        .navigationTitle(showBackButton ? "All Sessions" : "")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            if showBackButton {
+                ToolbarItem(placement: .topBarLeading, content: navigationBarLeadingItem)
+            }
         }
     }
 }

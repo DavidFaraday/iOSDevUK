@@ -10,7 +10,7 @@ import SwiftUI
 struct SessionsHorizontalScrollView: View {
     let sessions: [Session]
     let geometry: GeometryProxy
-    
+        
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -25,22 +25,37 @@ struct SessionsHorizontalScrollView: View {
             }
             .padding(.horizontal)
             
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 10) {
-                    ForEach(sessions, id: \.self) { session in
-                        
-                        NavigationLink(value: Destination.session(session)) {
-                            SessionCardView(session: session, geometry: geometry)
-                                .id(session)
+            if #available(iOS 17.0, *) {
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 10) {
+                        ForEach(sessions, id: \.self) { session in
+                            
+                            NavigationLink(value: Destination.session(session)) {
+                                SessionCardView(session: session, geometry: geometry)
+                                    .id(session)
+                            }
                         }
                     }
+                    .scrollTargetLayout()
                 }
-                .padding(.leading)
-                
+                .scrollTargetBehavior(.viewAligned)
+                .safeAreaPadding(.horizontal, 20)
+                .scrollIndicators(.hidden)
+            } else {
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 10) {
+                        ForEach(sessions, id: \.self) { session in
+                            
+                            NavigationLink(value: Destination.session(session)) {
+                                SessionCardView(session: session, geometry: geometry)
+                                    .id(session)
+                            }
+                        }
+                    }
+                    .padding(.leading, 16)
+                }
+                .scrollIndicators(.hidden)
             }
-            .scrollIndicators(.hidden)
-            
-            
         }
     }
 }

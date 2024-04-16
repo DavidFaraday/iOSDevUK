@@ -10,7 +10,8 @@ import SwiftUI
 struct SpeakerDetailScreen: View {
     @StateObject private var viewModel: SpeakerDetailViewModel
     @EnvironmentObject var baseViewModel: BaseViewModel
-    
+    @Environment(\.presentationMode) var presentationMode
+
     init(speaker: Speaker) {
         self.init(viewModel: SpeakerDetailViewModel(speaker: speaker))
     }
@@ -19,6 +20,13 @@ struct SpeakerDetailScreen: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
+    @ViewBuilder
+    private func navigationBarLeadingItem() -> some View {
+        Button { presentationMode.wrappedValue.dismiss() }
+        label: { Image(.back) }
+            .tint(Color(.mainText))
+    }
+
     
     @ViewBuilder
     private func socialMediaView() -> some View {
@@ -163,8 +171,12 @@ struct SpeakerDetailScreen: View {
     
     var body: some View {
         main()
+            .navigationBarBackButtonHidden()
             .task {
                 await viewModel.getSpeakerSessions()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading, content: navigationBarLeadingItem)
             }
     }
 }

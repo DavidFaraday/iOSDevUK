@@ -18,7 +18,7 @@ struct ContactButtonView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 22)
                 .foregroundStyle(Color(.mainText))
-            
+
             Spacer()
             
             Text(title)
@@ -27,6 +27,7 @@ struct ContactButtonView: View {
             
             Spacer()
         }
+        .padding(.vertical, 2)
         .capsuleOutlineView()
     }
 }

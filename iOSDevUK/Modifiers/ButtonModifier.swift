@@ -12,7 +12,7 @@ struct AppButtonStyle: ButtonStyle {
     let fontSize: CGFloat
     let height: CGFloat
     
-    init(color: Color, fontSize: CGFloat = 15, height: CGFloat = 20) {
+    init(color: Color, fontSize: CGFloat = 15, height: CGFloat = 16) {
         self.color = color
         self.fontSize = fontSize
         self.height = height

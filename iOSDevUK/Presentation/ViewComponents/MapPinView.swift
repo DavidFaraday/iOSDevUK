@@ -15,7 +15,7 @@ struct MapPinView: View {
         ZStack(alignment: .top) {
             MapPinShape()
                 .fill(isSelected ? Color(.purple300) : Color(.mapPin))
-                .frame(width: 70, height: 45)
+                .frame(width: 70, height: 50)
             
             Image(imageName.lowercased())
                 .resizable()

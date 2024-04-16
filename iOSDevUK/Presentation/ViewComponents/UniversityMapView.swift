@@ -50,7 +50,7 @@ struct UniversityMapView: View {
                 .roundBackgroundView(color: Color(.buttonTitle))
             }
             .padding(.horizontal, 20)
-            .padding(.top, 10)
+            .padding(.top, 2)
         }
     }
 }

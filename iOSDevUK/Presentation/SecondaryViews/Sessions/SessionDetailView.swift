@@ -9,8 +9,16 @@ import SwiftUI
 
 struct SessionDetailView: View {
     @EnvironmentObject var baseViewModel: BaseViewModel
-    
+    @Environment(\.presentationMode) var presentationMode
+
     let session: Session
+
+    @ViewBuilder
+    private func navigationBarLeadingItem() -> some View {
+        Button { presentationMode.wrappedValue.dismiss() }
+        label: { Image(.back) }
+            .tint(Color(.mainText))
+    }
 
     @ViewBuilder
     private func main() -> some View {
@@ -65,5 +73,10 @@ struct SessionDetailView: View {
         main()
             .navigationTitle("Event Info")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading, content: navigationBarLeadingItem)
+            }
+
     }
 }

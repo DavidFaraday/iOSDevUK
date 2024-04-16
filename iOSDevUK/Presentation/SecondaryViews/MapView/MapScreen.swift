@@ -10,6 +10,8 @@ import MapKit
 
 struct MapScreen: View {
     @EnvironmentObject var locationManager: LocationService
+    @Environment(\.presentationMode) var presentationMode
+
     @StateObject var viewModel: MapViewModel
     @State var selectedLocation: Location?
     
@@ -21,6 +23,13 @@ struct MapScreen: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
+    @ViewBuilder
+    private func navigationBarLeadingItem() -> some View {
+        Button { presentationMode.wrappedValue.dismiss() }
+        label: { Image(.back) }
+            .tint(Color(.mainText))
+    }
+
     @ViewBuilder
     private func locationDeniedLabel() -> some View {
         Text("Location access denied.\n You can enable it in Setting->Privacy & Security.")
@@ -88,6 +97,11 @@ struct MapScreen: View {
         .onAppear() {
             viewModel.updateRegion()
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading, content: navigationBarLeadingItem)
+        }
+
     }
 }
 
