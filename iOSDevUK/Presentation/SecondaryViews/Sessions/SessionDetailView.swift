@@ -59,12 +59,14 @@ struct SessionDetailView: View {
         }
         .scrollIndicators(.hidden)
         .safeAreaInset(edge: .bottom) {
-            Button {
-                baseViewModel.updateFavoriteSession(sessionId: session.id)
-            } label: {
-                Text(baseViewModel.isFavorite(session.id) ? "Remove from schedule" : "Add to schedule")
-            }
-            .buttonStyle(.appPrimary)
+            AnimatedButtonView(
+                title: baseViewModel.isFavorite(session.id) ? "Remove from schedule" : "Add to schedule",
+                color: Color(.buttonBackground),
+                action: {
+                    baseViewModel.updateFavoriteSession(sessionId: session.id)
+                }
+            )
+            .frame(height: 50)
             .padding([.bottom, .horizontal], 16)
         }
     }

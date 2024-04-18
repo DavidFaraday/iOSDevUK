@@ -124,6 +124,7 @@
 		EF330BE22BA43869002BA4B7 /* SpeakersHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF330BE12BA43869002BA4B7 /* SpeakersHorizontalScrollView.swift */; };
 		EF3470992944F18700B24854 /* SessionRowViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */; };
 		EF34709C2945C73F00B24854 /* SessionDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34709B2945C73F00B24854 /* SessionDetailViewModelTest.swift */; };
+		EF40F6A22BD1078400F9497B /* AnimatedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF40F6A12BD1078400F9497B /* AnimatedButtonView.swift */; };
 		EF8AC511293350FA00E19859 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AC510293350FA00E19859 /* AppErrors.swift */; };
 		EF999124292A1DD900B4DB8B /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF999123292A1DD900B4DB8B /* NavigationRouter.swift */; };
 		EF99912B292A8C9F00B4DB8B /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF99912A292A8C9F00B4DB8B /* SectionHeaderView.swift */; };
@@ -258,6 +259,7 @@
 		EF330BE12BA43869002BA4B7 /* SpeakersHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakersHorizontalScrollView.swift; sourceTree = "<group>"; };
 		EF3470982944F18700B24854 /* SessionRowViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowViewModelTest.swift; sourceTree = "<group>"; };
 		EF34709B2945C73F00B24854 /* SessionDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewModelTest.swift; sourceTree = "<group>"; };
+		EF40F6A12BD1078400F9497B /* AnimatedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedButtonView.swift; sourceTree = "<group>"; };
 		EF8AC510293350FA00E19859 /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		EF999123292A1DD900B4DB8B /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		EF99912A292A8C9F00B4DB8B /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 				6390B7362BAAF5F800BD9B0F /* AppSegmentControl.swift */,
 				6390B73A2BAB55AF00BD9B0F /* DayPickerView.swift */,
 				63F55D312BBACB10008C5D80 /* UniversityMapView.swift */,
+				EF40F6A12BD1078400F9497B /* AnimatedButtonView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				63E9C55228EAE6FF00710C8F /* SessionDetailView.swift in Sources */,
 				63E8E861290E5898002419A7 /* String + Extensions.swift in Sources */,
 				634E7AC128DB8166001DC796 /* SessionCardView.swift in Sources */,
+				EF40F6A22BD1078400F9497B /* AnimatedButtonView.swift in Sources */,
 				63A2BDB52A81680F000A1E5A /* SponsorCard.swift in Sources */,
 				63F7E0F028CC982200B2E1B7 /* AttendeeScreen.swift in Sources */,
 				63F7E0F928CC998000B2E1B7 /* BaseViewModel.swift in Sources */,
