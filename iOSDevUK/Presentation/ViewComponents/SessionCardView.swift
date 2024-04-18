@@ -23,6 +23,7 @@ struct SessionCardView: View {
                 baseViewModel.updateFavoriteSession(sessionId: session.id)
             }
         }
+        .frame(width: 70)
         .capsuleBackgroundView(color: .white)
         .foregroundStyle(.black)
     }

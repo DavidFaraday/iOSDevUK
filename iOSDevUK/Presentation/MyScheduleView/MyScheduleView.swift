@@ -89,7 +89,7 @@ struct MyScheduleView: View {
                 }
 
             } else {
-                AllSessionsView(sessions: baseViewModel.sessions)
+                AllSessionsView(showBackButton: false, sessions: baseViewModel.sessions)
             }
 
         }

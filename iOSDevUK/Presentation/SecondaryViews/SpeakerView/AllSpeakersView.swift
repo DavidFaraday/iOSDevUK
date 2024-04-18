@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct AllSpeakersView: View {
-    
+    @Environment(\.presentationMode) var presentationMode
+
     let speakers: [Speaker]
-        
+    
+    @ViewBuilder
+    private func navigationBarLeadingItem() -> some View {
+        Button { presentationMode.wrappedValue.dismiss() }
+        label: { Image(.back) }
+            .tint(Color(.mainText))
+    }
+
+    
     var body: some View {
         
         ScrollView {
@@ -27,6 +36,10 @@ struct AllSpeakersView: View {
         .scrollIndicators(.hidden)
         .navigationTitle(AppStrings.speakers)
         .navigationBarTitleDisplayMode(.large)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading, content: navigationBarLeadingItem)
+        }
     }
 }
 

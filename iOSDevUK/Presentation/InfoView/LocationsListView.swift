@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LocationsListView: View {
     @EnvironmentObject var viewModel: BaseViewModel
+    @Environment(\.presentationMode) var presentationMode
+
     @State var expanded: Bool = true
     var groupedLocations: [String : [Location]] {
         .init(
@@ -17,6 +19,13 @@ struct LocationsListView: View {
         )
     }
     
+    @ViewBuilder
+    private func navigationBarLeadingItem() -> some View {
+        Button { presentationMode.wrappedValue.dismiss() }
+        label: { Image(.back) }
+            .tint(Color(.mainText))
+    }
+
     @ViewBuilder
     private func main() -> some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -45,6 +54,10 @@ struct LocationsListView: View {
     var body: some View {
         main()
             .navigationBarTitle(AppStrings.locations, displayMode: .inline)
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading, content: navigationBarLeadingItem)
+            }
     }
 }
 
