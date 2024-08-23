@@ -24,18 +24,36 @@ struct SpeakersHorizontalScrollView: View {
             }
             .padding(.horizontal)
             
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 8) {
-                    ForEach(speakers) { speaker in
-                        NavigationLink(value: Destination.speaker(speaker)) {
-                            SpeakerCardView(speaker: speaker)
-                                .frame(width: 110)
+            
+            if #available(iOS 17.0, *) {
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 5) {
+                        ForEach(speakers) { speaker in
+                            NavigationLink(value: Destination.speaker(speaker)) {
+                                SpeakerCardView(speaker: speaker)
+                                    .frame(width: 110)
+                            }
                         }
                     }
+                    .scrollTargetLayout()
                 }
-                .padding(.leading)
+                .scrollTargetBehavior(.viewAligned)
+                .safeAreaPadding(.horizontal, 10)
+                .scrollIndicators(.hidden)
+            } else {
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 10) {
+                        ForEach(speakers) { speaker in
+                            NavigationLink(value: Destination.speaker(speaker)) {
+                                SpeakerCardView(speaker: speaker)
+                                    .frame(width: 110)
+                            }
+                        }
+                    }
+                    .padding(.leading, 16)
+                }
+                .scrollIndicators(.hidden)
             }
-            .scrollIndicators(.hidden)
         }
     }
 }

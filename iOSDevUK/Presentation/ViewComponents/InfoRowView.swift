@@ -16,7 +16,7 @@ struct InfoRowView: View {
         HStack(spacing: 10) {
             Image(imageName)
                 .resizable()
-                .frame(width: 20, height: 20)
+                .frame(width: 30, height: 30)
                 .foregroundStyle(Color(.icon))
                 .roundBackgroundView(color: Color(.linkButton))
             

@@ -9,6 +9,14 @@ import SwiftUI
 
 struct AboutView: View {
     @EnvironmentObject var viewModel: BaseViewModel
+    @Environment(\.presentationMode) var presentationMode
+
+    @ViewBuilder
+    private func navigationBarLeadingItem() -> some View {
+        Button { presentationMode.wrappedValue.dismiss() }
+        label: { Image(.back) }
+            .tint(Color(.mainText))
+    }
 
     var body: some View {
         ScrollView {
@@ -29,6 +37,11 @@ struct AboutView: View {
         .appFont(size: 16)
         .foregroundStyle(Color(.textBody))
         .edgesIgnoringSafeArea(.top)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading, content: navigationBarLeadingItem)
+        }
+
     }
 }
 
