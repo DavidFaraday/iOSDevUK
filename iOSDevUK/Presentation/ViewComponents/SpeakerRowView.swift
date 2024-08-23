@@ -29,6 +29,7 @@ struct SpeakerRowView: View {
                         .foregroundStyle(Color(.textGrey))
                         .minimumScaleFactor(0.8)
                         .semiboldAppFont(size: 16)
+                        .multilineTextAlignment(.leading)
                 }
             }
             Spacer()
