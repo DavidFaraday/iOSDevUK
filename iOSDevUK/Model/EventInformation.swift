@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct EventInformation: Codable {
+struct EventInformation: Codable, Identifiable {
+    let id: String
     let about: String
     let notification: String
     let startDate: Date
