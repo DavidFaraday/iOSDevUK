@@ -49,6 +49,8 @@ struct Sponsor: Codable, Identifiable, Equatable, Hashable, Comparable {
     let sponsorCategory: SponsorCategory
     let imageLinkDark: String?
     let imageLinkLight: String?
+    let sponsorshipNote: String?
+    let sortOrder: Int
     
     var imageUrlDark: URL? {
         URL(string: imageLinkDark ?? "")
@@ -62,7 +64,7 @@ struct Sponsor: Codable, Identifiable, Equatable, Hashable, Comparable {
     }
     
     static func < (lhs: Sponsor, rhs: Sponsor) -> Bool {
-        lhs.sponsorCategory < rhs.sponsorCategory
+        lhs.sortOrder < rhs.sortOrder
     }
     
     static func ==(lhs: Sponsor, rhs: Sponsor) -> Bool {

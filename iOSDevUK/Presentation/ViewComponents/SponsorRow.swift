@@ -30,6 +30,8 @@ struct SponsorRow: View {
                 .multilineTextAlignment(.leading)
                 .appFont(size: 18)
             
+            Text("\(sponsor.sponsorCategory) sponsor. \(sponsor.sponsorshipNote ?? "")")
+            
             if let url = sponsor.webUrl {
                 Link(destination: url) {
                     Text(sponsor.urlText)
