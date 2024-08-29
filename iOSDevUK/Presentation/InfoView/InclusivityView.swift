@@ -23,7 +23,9 @@ struct InclusivityView: View {
         ScrollView {
             Image(.conference)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
+                .frame(maxHeight: 600, alignment: .center )
+                .clipped()
 
             Text(AppStrings.inclusivityPolicy)
                 .semiboldAppFont(size: 24)
@@ -40,7 +42,8 @@ struct InclusivityView: View {
                     .padding()
             }
         }
-        .edgesIgnoringSafeArea(.top)
+        .navigationTitle(AppStrings.inclusivity)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading, content: navigationBarLeadingItem)

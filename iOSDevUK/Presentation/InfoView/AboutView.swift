@@ -22,7 +22,9 @@ struct AboutView: View {
         ScrollView {
             Image(.aboutBackground)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
+                .frame(maxHeight: 600, alignment: .center )
+                .clipped()
 
             VStack(alignment: .leading, spacing: 20) {
 
@@ -36,7 +38,8 @@ struct AboutView: View {
         }
         .appFont(size: 16)
         .foregroundStyle(Color(.textBody))
-        .edgesIgnoringSafeArea(.top)
+        .navigationTitle(AppStrings.aboutIOsDev)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading, content: navigationBarLeadingItem)
