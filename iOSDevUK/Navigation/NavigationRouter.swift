@@ -20,7 +20,7 @@ enum Destination: Hashable {
     case speakers([Speaker])
     case session(Session)
     case sessions([Session])
-    case sponsor
+    case sponsor(Sponsor?)
     case locations(locations: [Location])
 }
 

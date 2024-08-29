@@ -51,14 +51,21 @@ struct HomeScreen: View {
     
     @ViewBuilder
     private func sponsorView() -> some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text(AppStrings.sponsors)
-                .foregroundStyle(Color(.mainText))
-                .boldAppFont(size: 20)
+        VStack(alignment: .leading) {
+            HStack {
+                Text(AppStrings.sponsors)
+                    .foregroundStyle(Color(.mainText))
+                    .boldAppFont(size: 20)
+
+                Spacer()
+                
+                NavigationLink(AppStrings.viewAll, value: Destination.sponsor(nil))
+                    .foregroundStyle(Color(.textGrey))
+            }
             
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(viewModel.sponsors) { sponsor in
-                    NavigationLink(value: Destination.sponsor) {
+                    NavigationLink(value: Destination.sponsor(sponsor)) {
                         SponsorCard(sponsor: sponsor)
                     }
                 }
@@ -114,8 +121,8 @@ struct HomeScreen: View {
                             SpeakerDetailScreen(speaker: speaker)
                         case .speakers(let speakers):
                             AllSpeakersView(speakers: speakers)
-                        case .sponsor:
-                            SponsorsScreen()
+                        case .sponsor(let sponsor):
+                            SponsorsScreen(sponsor: sponsor)
                         case .locations(let locations):
                             MapScreen(allLocations: locations)
                     }
