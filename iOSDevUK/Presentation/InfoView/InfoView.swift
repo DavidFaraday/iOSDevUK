@@ -45,7 +45,7 @@ struct InfoView: View {
     var body: some View {
         NavigationStack(path: $router.infoPath) {
             VStack(alignment: .leading, spacing: 10) {
-                Text("Here you can find information about us and our values.")
+                Text("Find out about us and our values.")
                     .semiboldAppFont(size: 16)
                     .foregroundStyle(Color(.textGrey))
                     .padding(.bottom, 15)

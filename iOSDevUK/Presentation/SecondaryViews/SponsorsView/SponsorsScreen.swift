@@ -20,6 +20,10 @@ struct SponsorsScreen: View {
 
     var body: some View {
         ScrollView {
+            Text("Our generous sponsors make it possible for us to make a great conference at a reasonable price. Please speak to them to find out more about what they offer, and check out their talks during the conference.")
+                .appFont(size: 20)
+                .padding(20)
+            
             LazyVStack(alignment: .leading, spacing: 20) {
                 ForEach(viewModel.sponsors) { sponsor in
                     SponsorRow(sponsor: sponsor)
