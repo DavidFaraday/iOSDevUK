@@ -10,18 +10,24 @@ import SwiftUI
 struct HomeScreen: View {
     @EnvironmentObject var viewModel: BaseViewModel
     @EnvironmentObject var router: NavigationRouter
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
-    
-    let columns = UIDevice.current.userInterfaceIdiom == .pad ? [
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120))
-    ] : [
-        GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 120))
-    ]
-      
+    func columns() -> [GridItem] {
+        
+        if horizontalSizeClass == .compact {
+            return [
+                GridItem(.flexible(minimum: 120)),
+                GridItem(.flexible(minimum: 120))
+            ]
+        }
+        else {
+            return [
+                GridItem(.flexible(minimum: 120)),
+                GridItem(.flexible(minimum: 120)),
+                GridItem(.flexible(minimum: 120))
+            ]
+        }
+    }
     
     @ViewBuilder
     private func usefulLinks() -> some View {
@@ -63,7 +69,7 @@ struct HomeScreen: View {
                     .foregroundStyle(Color(.textGrey))
             }
             
-            LazyVGrid(columns: columns, spacing: 10) {
+            LazyVGrid(columns: columns(), spacing: 10) {
                 ForEach(viewModel.sponsors) { sponsor in
                     NavigationLink(value: Destination.sponsor(sponsor)) {
                         SponsorCard(sponsor: sponsor)

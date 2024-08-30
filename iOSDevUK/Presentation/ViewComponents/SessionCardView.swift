@@ -17,18 +17,6 @@ struct SessionCardView: View {
     let geometry: GeometryProxy
     
     @ViewBuilder
-    func saveButton() -> some View {
-        Button(baseViewModel.isFavorite(session.id) ? "Remove" : "Save") {
-            withAnimation {
-                baseViewModel.updateFavoriteSession(sessionId: session.id)
-            }
-        }
-        .frame(width: 70)
-        .capsuleBackgroundView(color: .white)
-        .foregroundStyle(.black)
-    }
-    
-    @ViewBuilder
     func timeView() -> some View {
         HStack(spacing: 10) {
             Text(session.startDate.formatted(date: .abbreviated, time: .omitted))
@@ -84,8 +72,12 @@ struct SessionCardView: View {
                     speakerRow(speaker: speaker)
                 }
             }
-            .overlay(alignment: .bottomTrailing) {
-                saveButton()
+            .overlay(alignment: .topTrailing) {
+                Button(action: {
+                    baseViewModel.updateFavoriteSession(sessionId: session.id)
+                }) {
+                    Image(systemName: baseViewModel.isFavorite(session.id) ? ImageNames.bookmarkFill : ImageNames.bookmark)
+                }
             }
             .padding(16)
         }
