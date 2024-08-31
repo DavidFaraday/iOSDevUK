@@ -37,7 +37,9 @@ final class AdminViewModel: ObservableObject {
 //        try? await FileUploadService.shared.uploadNewData(from: "locations.json", to: .Location, objectType: Location.self)
 //        sleep(2)
 //        try? await FileUploadService.shared.uploadNewData(from: "sessions.json", to: .Session, objectType: CustomSession.self)
+//        sleep(2)
+//        try? await FileUploadService.shared.uploadNewData(from: "eventInformation.json", to: .AppInformation, objectType: CustomEventInformation.self)
         
-        print("DEBUG: Uploaded new data to firestore!")
+//        print("DEBUG: Uploaded new data to firestore!")
     }
 }

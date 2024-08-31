@@ -52,8 +52,8 @@ struct AttendeeScreen: View {
                             SpeakerDetailScreen(speaker: speaker)
                         case .speakers(let speakers):
                             AllSpeakersView(speakers: speakers)
-                        case .sponsor:
-                            SponsorsScreen()
+                        case .sponsor(let sponsor):
+                            SponsorsScreen(sponsor: sponsor)
                         case .locations(let locations):
                             MapScreen(allLocations: locations)
                     }

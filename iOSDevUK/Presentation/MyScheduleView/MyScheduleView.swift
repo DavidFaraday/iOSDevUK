@@ -119,7 +119,7 @@ struct MyScheduleView: View {
                         case .speakers(let speakers):
                             AllSpeakersView(speakers: speakers)
                         case .sponsor:
-                            SponsorsScreen()
+                            SponsorsScreen(sponsor: nil)
                         case .locations(let locations):
                             MapScreen(allLocations: locations)
                     }

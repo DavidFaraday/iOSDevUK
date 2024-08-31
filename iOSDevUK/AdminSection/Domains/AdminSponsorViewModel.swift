@@ -17,6 +17,8 @@ final class AdminSponsorViewModel: ObservableObject {
     @Published var imageLinkDark = ""
     @Published var imageLinkLight = ""
     @Published var tagline = "About the sponsor"
+    @Published var sponsorshipNote = ""
+    @Published var sortOrder = 0
     
     var sponsor: Sponsor?
     
@@ -39,10 +41,12 @@ final class AdminSponsorViewModel: ObservableObject {
         imageLinkLight = sponsor.imageLinkLight ?? ""
         tagline = sponsor.tagline
         category = sponsor.sponsorCategory
+        sponsorshipNote = sponsor.sponsorshipNote ?? ""
+        sortOrder = sponsor.sortOrder
     }
     
     func save() async {
-        let newSponsor = Sponsor(id: sponsor?.id ?? name.removeSpaces, name: name, tagline: tagline, url: url, urlText: urlText, sponsorCategory: category, imageLinkDark: imageLinkDark, imageLinkLight: imageLinkLight)
+        let newSponsor = Sponsor(id: sponsor?.id ?? name.removeSpaces, name: name, tagline: tagline, url: url, urlText: urlText, sponsorCategory: category, imageLinkDark: imageLinkDark, imageLinkLight: imageLinkLight, sponsorshipNote: sponsorshipNote, sortOrder: sortOrder)
     
         do {
             try firebaseRepository.saveData(data: newSponsor, to: .Sponsor)

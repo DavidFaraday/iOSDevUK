@@ -35,6 +35,10 @@ struct LocationsListView: View {
             }
             .buttonStyle(.plain)
             
+            Text("The University locations are used by the conference. The other locations are a selection of places that attendees have used in previous years. There are lots of other cafes and pubs in the town and along the seafront for you to enjoy.")
+                .padding(.horizontal, 16)
+            
+            
             ScrollView {
                 ForEach(groupedLocations.keys.sorted(), id: \String.self) { key in
                     let locationType: LocationType = LocationType(rawValue: key) ?? .au

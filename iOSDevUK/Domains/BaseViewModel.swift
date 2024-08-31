@@ -137,7 +137,7 @@ class BaseViewModel: ObservableObject {
                             print("Error: \(error.localizedDescription)")
                     }
                 }, receiveValue: { [weak self] allSponsors in
-                    self?.sponsors = allSponsors.sorted { $0.sponsorCategory < $1.sponsorCategory }
+                    self?.sponsors = allSponsors.sorted { $0 < $1 }
                 })
                 .store(in: &cancellables)
         } catch (let error) {

@@ -28,6 +28,8 @@ struct AppInformationView: View {
                 Text("Designed by Oksana Korotun ([@LinkedIn](https://linkedin.com/in/oksana-korotun/)).")
 
                 Text("Thanks to John Gilbey ([@John_Gilbey](https://twitter.com/John_Gilbey)) for his picture of conference attendees that is used in this app.")
+                
+                Text("The static map image of Aberystwyth is taken from OpenStreetMap data, which is licensed under the Open Data Commons Open Database License (ODbL) by the OpenStreetMap Foundation (OSMF). Source map at: [osm.org](https://osm.org/go/euZC2qEa1-?m=)")
 
                 Text("Other images by Neil & Chris.")
                 
